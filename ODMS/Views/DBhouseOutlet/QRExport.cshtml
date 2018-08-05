@@ -1,0 +1,27 @@
+﻿@using ReportViewerForMvc
+
+
+        <div class="row">
+            <div class="col-md-12">
+                <div class="panel panel-primary">
+                    <div class="panel-heading">
+
+                        <h6>qr</h6>
+
+                    </div>
+                    <div class="panel-body">
+                       
+                                @Html.ReportViewer(ViewBag.ReportViewer as Microsoft.Reporting.WebForms.ReportViewer, new {scrolling = "yes", height = "500px"})
+                           
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+<style>
+    iframe {
+        border: none;
+        width: 100% !important;
+    }
+</style>
