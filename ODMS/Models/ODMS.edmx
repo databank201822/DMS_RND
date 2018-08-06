@@ -286,6 +286,35 @@ warning 6002: The table/view 'ODMS.dbo.tbld_distribution_employee' does not have
           <Property Name="code" Type="varchar" MaxLength="50" />
           <Property Name="description" Type="varchar" MaxLength="50" />
         </EntityType>
+        <EntityType Name="tbld_Outlet_new">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="OutletCode" Type="varchar" MaxLength="50" />
+          <Property Name="OutletName" Type="varchar" MaxLength="200" />
+          <Property Name="OutletName_b" Type="varchar" MaxLength="200" />
+          <Property Name="Location" Type="varchar" MaxLength="200" />
+          <Property Name="Address" Type="varchar" MaxLength="200" />
+          <Property Name="GpsLocation" Type="varchar(max)" />
+          <Property Name="OwnerName" Type="varchar" MaxLength="100" />
+          <Property Name="ContactNo" Type="varchar" MaxLength="50" />
+          <Property Name="Distributorid" Type="int" Nullable="false" />
+          <Property Name="HaveVisicooler" Type="int" Nullable="false" />
+          <Property Name="parentid" Type="int" Nullable="false" />
+          <Property Name="outlet_category_id" Type="int" Nullable="false" />
+          <Property Name="grading" Type="int" Nullable="false" />
+          <Property Name="channel" Type="int" Nullable="false" />
+          <Property Name="Latitude" Type="varchar" MaxLength="50" />
+          <Property Name="Longitude" Type="varchar" MaxLength="50" />
+          <Property Name="picture" Type="varchar" MaxLength="200" />
+          <Property Name="IsActive" Type="int" Nullable="false" />
+          <Property Name="verify_status" Type="int" Nullable="false" />
+          <Property Name="verifydate" Type="datetime" Nullable="false" />
+          <Property Name="verify_by" Type="int" Nullable="false" />
+          <Property Name="psr_id" Type="int" Nullable="false" />
+          <Property Name="createdate" Type="datetime" Nullable="false" />
+        </EntityType>
         <EntityType Name="tbld_ReportList">
           <Key>
             <PropertyRef Name="id" />
@@ -371,7 +400,13 @@ warning 6002: The table/view 'ODMS.dbo.tbld_distribution_employee' does not have
           <Property Name="element_description" Type="varchar" MaxLength="50" Nullable="false" />
           <Property Name="element_category_id" Type="int" Nullable="false" />
           <Property Name="parent_element_id" Type="int" Nullable="false" />
-          <Property Name="image" Type="varchar" MaxLength="255" Nullable="false" />
+        </EntityType>
+        <EntityType Name="tbld_SKU_Brand_category">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="brand_category" Type="varchar" MaxLength="50" />
         </EntityType>
         <EntityType Name="tbld_sku_category">
           <Key>
@@ -462,6 +497,15 @@ warning 6002: The table/view 'ODMS.dbo.tbld_distribution_employee' does not have
           <Property Name="tx_date" Type="datetime2" Precision="7" />
           <Property Name="tx_challan" Type="int" />
         </EntityType>
+        <EntityType Name="tblm_notorder_reason">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="exception_name" Type="varchar" MaxLength="30" Nullable="false" />
+          <Property Name="exception_code" Type="varchar" MaxLength="30" Nullable="false" />
+          <Property Name="exception_description" Type="varchar" MaxLength="30" Nullable="false" />
+        </EntityType>
         <EntityType Name="tblm_UserLogin">
           <Key>
             <PropertyRef Name="id" />
@@ -510,18 +554,6 @@ warning 6002: The table/view 'ODMS.dbo.tbld_distribution_employee' does not have
           </Key>
           <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="visittype" Type="varchar" MaxLength="50" Nullable="false" />
-        </EntityType>
-        <EntityType Name="tblr_Psrlogin">
-          <Key>
-            <PropertyRef Name="id" />
-          </Key>
-          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="date" Type="date" Nullable="false" />
-          <Property Name="date_time_stamp" Type="datetime2" Precision="0" Nullable="false" />
-          <Property Name="emp_id" Type="int" Nullable="false" />
-          <Property Name="current_lat" Type="varchar" MaxLength="100" Nullable="false" />
-          <Property Name="current_lon" Type="varchar" MaxLength="100" Nullable="false" />
-          <Property Name="event_name" Type="int" Nullable="false" />
         </EntityType>
         <EntityType Name="tblt_Challan">
           <Key>
@@ -1029,12 +1061,14 @@ warning 6002: The table/view 'ODMS.dbo.tbld_db_zone_view' does not have a primar
           <EntitySet Name="tbld_Outlet_category" EntityType="Self.tbld_Outlet_category" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="tbld_Outlet_channel" EntityType="Self.tbld_Outlet_channel" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="tbld_Outlet_grade" EntityType="Self.tbld_Outlet_grade" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tbld_Outlet_new" EntityType="Self.tbld_Outlet_new" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="tbld_ReportList" EntityType="Self.tbld_ReportList" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="tbld_Route_Plan" EntityType="Self.tbld_Route_Plan" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="tbld_Route_Plan_Detail" EntityType="Self.tbld_Route_Plan_Detail" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="tbld_Route_Plan_Mapping" EntityType="Self.tbld_Route_Plan_Mapping" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="tbld_SKU" EntityType="Self.tbld_SKU" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="tbld_SKU_Brand" EntityType="Self.tbld_SKU_Brand" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tbld_SKU_Brand_category" EntityType="Self.tbld_SKU_Brand_category" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="tbld_sku_category" EntityType="Self.tbld_sku_category" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="tbld_SKU_unit" EntityType="Self.tbld_SKU_unit" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="tbld_SKUContainertype" EntityType="Self.tbld_SKUContainertype" Schema="dbo" store:Type="Tables" />
@@ -1043,11 +1077,11 @@ warning 6002: The table/view 'ODMS.dbo.tbld_db_zone_view' does not have a primar
           <EntitySet Name="tbld_Target_Details" EntityType="Self.tbld_Target_Details" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="tbld_Target_PSR_Details" EntityType="Self.tbld_Target_PSR_Details" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="tbll_inventory_log" EntityType="Self.tbll_inventory_log" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblm_notorder_reason" EntityType="Self.tblm_notorder_reason" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="tblm_UserLogin" EntityType="Self.tblm_UserLogin" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="tblm_visicooler_info" EntityType="Self.tblm_visicooler_info" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="tblm_visit_detail" EntityType="Self.tblm_visit_detail" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="tblm_visit_type" EntityType="Self.tblm_visit_type" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="tblr_Psrlogin" EntityType="Self.tblr_Psrlogin" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="tblt_Challan" EntityType="Self.tblt_Challan" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="tblt_Challan_line" EntityType="Self.tblt_Challan_line" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="tblt_inventory" EntityType="Self.tblt_inventory" Schema="dbo" store:Type="Tables" />
@@ -1408,18 +1442,6 @@ warning 6002: The table/view 'ODMS.dbo.tbld_db_zone_view' does not have a primar
           <Property Name="SKUlpc" Type="Int32" Nullable="false" />
           <Property Name="SKUUnit" Type="Int32" Nullable="false" />
         </EntityType>
-        <EntityType Name="tbld_SKU_Brand">
-          <Key>
-            <PropertyRef Name="id" />
-          </Key>
-          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="element_name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="element_code" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="element_description" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="element_category_id" Type="Int32" Nullable="false" />
-          <Property Name="parent_element_id" Type="Int32" Nullable="false" />
-          <Property Name="image" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
-        </EntityType>
         <EntityType Name="tbld_sku_category">
           <Key>
             <PropertyRef Name="Id" />
@@ -1626,7 +1648,6 @@ warning 6002: The table/view 'ODMS.dbo.tbld_db_zone_view' does not have a primar
           <EntitySet Name="tbld_Outlet_channel" EntityType="Self.tbld_Outlet_channel" />
           <EntitySet Name="tbld_Outlet_grade" EntityType="Self.tbld_Outlet_grade" />
           <EntitySet Name="tbld_SKU" EntityType="Self.tbld_SKU" />
-          <EntitySet Name="tbld_SKU_Brand" EntityType="Self.tbld_SKU_Brand" />
           <EntitySet Name="tbld_sku_category" EntityType="Self.tbld_sku_category" />
           <EntitySet Name="tbld_SKU_unit" EntityType="Self.tbld_SKU_unit" />
           <EntitySet Name="tbld_SKUContainertype" EntityType="Self.tbld_SKUContainertype" />
@@ -1737,7 +1758,6 @@ warning 6002: The table/view 'ODMS.dbo.tbld_db_zone_view' does not have a primar
             <Parameter Name="End_Date" Mode="In" Type="DateTime" />
           </FunctionImport>
           <EntitySet Name="tbld_management_employee" EntityType="ODMSModel.tbld_management_employee" />
-          <EntitySet Name="tblr_Psrlogin" EntityType="ODMSModel.tblr_Psrlogin" />
           <FunctionImport Name="RPT_Order_OutletWiseSKUWiseOrder" ReturnType="Collection(ODMSModel.RPT_Order_OutletWiseSKUWiseOrder_Result)">
             <Parameter Name="Start_Date" Mode="In" Type="DateTime" />
             <Parameter Name="End_Date" Mode="In" Type="DateTime" />
@@ -1758,6 +1778,10 @@ warning 6002: The table/view 'ODMS.dbo.tbld_db_zone_view' does not have a primar
           <EntitySet Name="tblm_visit_detail" EntityType="ODMSModel.tblm_visit_detail" />
           <EntitySet Name="tblm_visit_type" EntityType="ODMSModel.tblm_visit_type" />
           <EntitySet Name="tbll_inventory_log" EntityType="ODMSModel.tbll_inventory_log" />
+          <EntitySet Name="tblm_notorder_reason" EntityType="ODMSModel.tblm_notorder_reason" />
+          <EntitySet Name="tbld_SKU_Brand" EntityType="ODMSModel.tbld_SKU_Brand" />
+          <EntitySet Name="tbld_SKU_Brand_category" EntityType="ODMSModel.tbld_SKU_Brand_category" />
+          <EntitySet Name="tbld_Outlet_new" EntityType="ODMSModel.tbld_Outlet_new" />
         </EntityContainer>
         <ComplexType Name="DB_User_check_Result">
           <Property Type="Int32" Name="id" Nullable="false" />
@@ -2356,18 +2380,6 @@ warning 6002: The table/view 'ODMS.dbo.tbld_db_zone_view' does not have a primar
           <Property Name="biz_zone_id" Type="Int32" Nullable="false" />
           <Property Name="email" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
         </EntityType>
-        <EntityType Name="tblr_Psrlogin">
-          <Key>
-            <PropertyRef Name="id" />
-          </Key>
-          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="date" Type="DateTime" Nullable="false" Precision="0" />
-          <Property Name="date_time_stamp" Type="DateTime" Nullable="false" Precision="0" />
-          <Property Name="emp_id" Type="Int32" Nullable="false" />
-          <Property Name="current_lat" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
-          <Property Name="current_lon" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
-          <Property Name="event_name" Type="Int32" Nullable="false" />
-        </EntityType>
         <ComplexType Name="RPT_Order_OutletWiseSKUWiseOrder_Result">
           <Property Type="Int32" Name="DB_Id" Nullable="true" />
           <Property Type="String" Name="DB_Name" Nullable="true" MaxLength="50" />
@@ -2524,6 +2536,62 @@ warning 6002: The table/view 'ODMS.dbo.tbld_db_zone_view' does not have a primar
           <Property Name="tx_System_date" Type="DateTime" Precision="0" />
           <Property Name="tx_date" Type="DateTime" Precision="7" />
           <Property Name="tx_challan" Type="Int32" />
+        </EntityType>
+        <EntityType Name="tblm_notorder_reason">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="exception_name" Type="String" Nullable="false" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="exception_code" Type="String" Nullable="false" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="exception_description" Type="String" Nullable="false" MaxLength="30" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="tbld_SKU_Brand">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="element_name" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="element_code" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="element_description" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="element_category_id" Type="Int32" Nullable="false" />
+          <Property Name="parent_element_id" Type="Int32" Nullable="false" />
+        </EntityType>
+        <EntityType Name="tbld_SKU_Brand_category">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="brand_category" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="tbld_Outlet_new">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="OutletCode" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="OutletName" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="OutletName_b" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="Location" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="Address" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="GpsLocation" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="OwnerName" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="ContactNo" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Distributorid" Type="Int32" Nullable="false" />
+          <Property Name="HaveVisicooler" Type="Int32" Nullable="false" />
+          <Property Name="parentid" Type="Int32" Nullable="false" />
+          <Property Name="outlet_category_id" Type="Int32" Nullable="false" />
+          <Property Name="grading" Type="Int32" Nullable="false" />
+          <Property Name="channel" Type="Int32" Nullable="false" />
+          <Property Name="Latitude" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Longitude" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="picture" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="IsActive" Type="Int32" Nullable="false" />
+          <Property Name="verify_status" Type="Int32" Nullable="false" />
+          <Property Name="verifydate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="verify_by" Type="Int32" Nullable="false" />
+          <Property Name="psr_id" Type="Int32" Nullable="false" />
+          <Property Name="createdate" Type="DateTime" Nullable="false" Precision="3" />
         </EntityType>
       </Schema>
     </edmx:ConceptualModels>
@@ -2775,19 +2843,6 @@ warning 6002: The table/view 'ODMS.dbo.tbld_db_zone_view' does not have a primar
                 <ScalarProperty Name="SKUContainertypeid" ColumnName="SKUContainertypeid" />
                 <ScalarProperty Name="SKUlpc" ColumnName="SKUlpc" />
                 <ScalarProperty Name="SKUUnit" ColumnName="SKUUnit" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="tbld_SKU_Brand">
-            <EntityTypeMapping TypeName="ODMSModel.tbld_SKU_Brand">
-              <MappingFragment StoreEntitySet="tbld_SKU_Brand">
-                <ScalarProperty Name="id" ColumnName="id" />
-                <ScalarProperty Name="element_name" ColumnName="element_name" />
-                <ScalarProperty Name="element_code" ColumnName="element_code" />
-                <ScalarProperty Name="element_description" ColumnName="element_description" />
-                <ScalarProperty Name="element_category_id" ColumnName="element_category_id" />
-                <ScalarProperty Name="parent_element_id" ColumnName="parent_element_id" />
-                <ScalarProperty Name="image" ColumnName="image" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -3498,19 +3553,6 @@ warning 6002: The table/view 'ODMS.dbo.tbld_db_zone_view' does not have a primar
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="tblr_Psrlogin">
-            <EntityTypeMapping TypeName="ODMSModel.tblr_Psrlogin">
-              <MappingFragment StoreEntitySet="tblr_Psrlogin">
-                <ScalarProperty Name="event_name" ColumnName="event_name" />
-                <ScalarProperty Name="current_lon" ColumnName="current_lon" />
-                <ScalarProperty Name="current_lat" ColumnName="current_lat" />
-                <ScalarProperty Name="emp_id" ColumnName="emp_id" />
-                <ScalarProperty Name="date_time_stamp" ColumnName="date_time_stamp" />
-                <ScalarProperty Name="date" ColumnName="date" />
-                <ScalarProperty Name="id" ColumnName="id" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
           <FunctionImportMapping FunctionImportName="RPT_Order_OutletWiseSKUWiseOrder" FunctionName="ODMSModel.Store.RPT_Order_OutletWiseSKUWiseOrder">
             <ResultMapping>
               <ComplexTypeMapping TypeName="ODMSModel.RPT_Order_OutletWiseSKUWiseOrder_Result">
@@ -3666,6 +3708,66 @@ warning 6002: The table/view 'ODMS.dbo.tbld_db_zone_view' does not have a primar
                 <ScalarProperty Name="sku_id" ColumnName="sku_id" />
                 <ScalarProperty Name="db_id" ColumnName="db_id" />
                 <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblm_notorder_reason">
+            <EntityTypeMapping TypeName="ODMSModel.tblm_notorder_reason">
+              <MappingFragment StoreEntitySet="tblm_notorder_reason">
+                <ScalarProperty Name="exception_description" ColumnName="exception_description" />
+                <ScalarProperty Name="exception_code" ColumnName="exception_code" />
+                <ScalarProperty Name="exception_name" ColumnName="exception_name" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tbld_SKU_Brand">
+            <EntityTypeMapping TypeName="ODMSModel.tbld_SKU_Brand">
+              <MappingFragment StoreEntitySet="tbld_SKU_Brand">
+                <ScalarProperty Name="parent_element_id" ColumnName="parent_element_id" />
+                <ScalarProperty Name="element_category_id" ColumnName="element_category_id" />
+                <ScalarProperty Name="element_description" ColumnName="element_description" />
+                <ScalarProperty Name="element_code" ColumnName="element_code" />
+                <ScalarProperty Name="element_name" ColumnName="element_name" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tbld_SKU_Brand_category">
+            <EntityTypeMapping TypeName="ODMSModel.tbld_SKU_Brand_category">
+              <MappingFragment StoreEntitySet="tbld_SKU_Brand_category">
+                <ScalarProperty Name="brand_category" ColumnName="brand_category" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tbld_Outlet_new">
+            <EntityTypeMapping TypeName="ODMSModel.tbld_Outlet_new">
+              <MappingFragment StoreEntitySet="tbld_Outlet_new">
+                <ScalarProperty Name="createdate" ColumnName="createdate" />
+                <ScalarProperty Name="psr_id" ColumnName="psr_id" />
+                <ScalarProperty Name="verify_by" ColumnName="verify_by" />
+                <ScalarProperty Name="verifydate" ColumnName="verifydate" />
+                <ScalarProperty Name="verify_status" ColumnName="verify_status" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="picture" ColumnName="picture" />
+                <ScalarProperty Name="Longitude" ColumnName="Longitude" />
+                <ScalarProperty Name="Latitude" ColumnName="Latitude" />
+                <ScalarProperty Name="channel" ColumnName="channel" />
+                <ScalarProperty Name="grading" ColumnName="grading" />
+                <ScalarProperty Name="outlet_category_id" ColumnName="outlet_category_id" />
+                <ScalarProperty Name="parentid" ColumnName="parentid" />
+                <ScalarProperty Name="HaveVisicooler" ColumnName="HaveVisicooler" />
+                <ScalarProperty Name="Distributorid" ColumnName="Distributorid" />
+                <ScalarProperty Name="ContactNo" ColumnName="ContactNo" />
+                <ScalarProperty Name="OwnerName" ColumnName="OwnerName" />
+                <ScalarProperty Name="GpsLocation" ColumnName="GpsLocation" />
+                <ScalarProperty Name="Address" ColumnName="Address" />
+                <ScalarProperty Name="Location" ColumnName="Location" />
+                <ScalarProperty Name="OutletName_b" ColumnName="OutletName_b" />
+                <ScalarProperty Name="OutletName" ColumnName="OutletName" />
+                <ScalarProperty Name="OutletCode" ColumnName="OutletCode" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

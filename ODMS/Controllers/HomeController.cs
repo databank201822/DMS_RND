@@ -197,7 +197,7 @@ namespace ODMS.Controllers
                 List<int> psrids = Db.tbld_db_psr_zone_view.Where(x => x.Status == 1).Select(x => x.DB_Id).ToList();
                 homeVm.NoOfDb = Db.tbld_db_zone_view.Count(x => x.Status == 1);
                 homeVm.NoOfPSr = psrids.Count();
-                homeVm.NoOfLogin = Db.tblr_Psrlogin.Count(x => psrids.Contains(x.emp_id) &&x.date==systemDate);
+                homeVm.NoOfLogin = Db.tblm_UserLogin.Count(x => psrids.Contains(x.PSR_id) && x.Date == systemDate);
                homeVm.Kpi = kpi;
 
             }
@@ -288,7 +288,7 @@ namespace ODMS.Controllers
                 List<int> psrids = Db.tbld_db_psr_zone_view.Where(x => x.Status == 1 && x.REGION_id == bizZoneId).Select(x => x.DB_Id).ToList();
                 homeVm.NoOfDb = Db.tbld_db_zone_view.Count(x => x.Status == 1 && x.REGION_id == bizZoneId);
                 homeVm.NoOfPSr = psrids.Count();
-                homeVm.NoOfLogin = Db.tblr_Psrlogin.Count(x => psrids.Contains(x.emp_id) && x.date == systemDate);
+                homeVm.NoOfLogin = Db.tblm_UserLogin.Count(x => psrids.Contains(x.PSR_id) && x.Date == systemDate);
                 homeVm.Kpi = kpi;
             }
             else if (userBizRoleId == 3) //ASM
@@ -379,7 +379,7 @@ namespace ODMS.Controllers
                 List<int> psrids = Db.tbld_db_psr_zone_view.Where(x => x.Status == 1 && x.AREA_id == bizZoneId).Select(x => x.DB_Id).ToList();
                 homeVm.NoOfDb = Db.tbld_db_zone_view.Count(x => x.Status == 1 && x.AREA_id == bizZoneId);
                 homeVm.NoOfPSr = psrids.Count();
-                homeVm.NoOfLogin = Db.tblr_Psrlogin.Count(x => psrids.Contains(x.emp_id) && x.date == systemDate);
+                homeVm.NoOfLogin = Db.tblm_UserLogin.Count(x => psrids.Contains(x.PSR_id) && x.Date == systemDate);
                 kpi.Add(kpitotal);
                 homeVm.Kpi = kpi;
             }
@@ -467,7 +467,7 @@ namespace ODMS.Controllers
                 List<int> psrids = Db.tbld_db_psr_zone_view.Where(x => x.Status == 1 && x.CEAREA_id == bizZoneId).Select(x => x.DB_Id).ToList();
                 homeVm.NoOfDb = Db.tbld_db_zone_view.Count(x => x.Status == 1 && x.CEAREA_id == bizZoneId);
                 homeVm.NoOfPSr = psrids.Count();
-                homeVm.NoOfLogin = Db.tblr_Psrlogin.Count(x => psrids.Contains(x.emp_id) && x.date == systemDate);
+                homeVm.NoOfLogin = Db.tblm_UserLogin.Count(x => psrids.Contains(x.PSR_id) && x.Date == systemDate);
                 kpi.Add(kpitotal);
              
                 homeVm.Kpi = kpi;

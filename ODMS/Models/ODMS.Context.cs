@@ -45,7 +45,6 @@ namespace ODMS.Models
         public virtual DbSet<tbld_Outlet_channel> tbld_Outlet_channel { get; set; }
         public virtual DbSet<tbld_Outlet_grade> tbld_Outlet_grade { get; set; }
         public virtual DbSet<tbld_SKU> tbld_SKU { get; set; }
-        public virtual DbSet<tbld_SKU_Brand> tbld_SKU_Brand { get; set; }
         public virtual DbSet<tbld_sku_category> tbld_sku_category { get; set; }
         public virtual DbSet<tbld_SKU_unit> tbld_SKU_unit { get; set; }
         public virtual DbSet<tbld_SKUContainertype> tbld_SKUContainertype { get; set; }
@@ -81,7 +80,6 @@ namespace ODMS.Models
         public virtual DbSet<tbld_bundle_price_details> tbld_bundle_price_details { get; set; }
         public virtual DbSet<tbld_db_psr_zone_view> tbld_db_psr_zone_view { get; set; }
         public virtual DbSet<tbld_management_employee> tbld_management_employee { get; set; }
-        public virtual DbSet<tblr_Psrlogin> tblr_Psrlogin { get; set; }
         public virtual DbSet<tbld_AdjustmentStock> tbld_AdjustmentStock { get; set; }
         public virtual DbSet<tbld_AdjustmentStockItem> tbld_AdjustmentStockItem { get; set; }
         public virtual DbSet<tblm_UserLogin> tblm_UserLogin { get; set; }
@@ -89,6 +87,10 @@ namespace ODMS.Models
         public virtual DbSet<tblm_visit_detail> tblm_visit_detail { get; set; }
         public virtual DbSet<tblm_visit_type> tblm_visit_type { get; set; }
         public virtual DbSet<tbll_inventory_log> tbll_inventory_log { get; set; }
+        public virtual DbSet<tblm_notorder_reason> tblm_notorder_reason { get; set; }
+        public virtual DbSet<tbld_SKU_Brand> tbld_SKU_Brand { get; set; }
+        public virtual DbSet<tbld_SKU_Brand_category> tbld_SKU_Brand_category { get; set; }
+        public virtual DbSet<tbld_Outlet_new> tbld_Outlet_new { get; set; }
     
         public virtual ObjectResult<DB_User_check_Result> DB_User_check(string userName, string password)
         {

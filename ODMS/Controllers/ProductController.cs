@@ -222,12 +222,12 @@ namespace ODMS.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            tbld_SKU tbld_SKU = Db.tbld_SKU.Find(id);
-            if (tbld_SKU == null)
+            tbld_SKU tbldSku = Db.tbld_SKU.Find(id);
+            if (tbldSku == null)
             {
                 return HttpNotFound();
             }
-            return View(tbld_SKU);
+            return View(tbldSku);
         }
 
        
@@ -235,12 +235,15 @@ namespace ODMS.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
-            tbld_SKU tbld_SKU = Db.tbld_SKU.Find(id);
-            Db.tbld_SKU.Remove(tbld_SKU);
-            Db.SaveChanges();
+            tbld_SKU tbldSku = Db.tbld_SKU.Find(id);
+            if (tbldSku != null)
+            {
+                Db.tbld_SKU.Remove(tbldSku);
+                Db.SaveChanges();
 
-            TempData["alertbox"] = "success";
-            TempData["alertboxMsg"] = tbld_SKU.SKUName + "  Delete Successfully";
+                TempData["alertbox"] = "success";
+                TempData["alertboxMsg"] = tbldSku.SKUName + "  Delete Successfully";
+            }
             return RedirectToAction("Index");
         }
 

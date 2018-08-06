@@ -281,6 +281,35 @@ warning 6002: The table/view 'ODMS.dbo.tbld_distribution_employee' does not have
     <Property Name="code" Type="varchar" MaxLength="50" />
     <Property Name="description" Type="varchar" MaxLength="50" />
   </EntityType>
+  <EntityType Name="tbld_Outlet_new">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="OutletCode" Type="varchar" MaxLength="50" />
+    <Property Name="OutletName" Type="varchar" MaxLength="200" />
+    <Property Name="OutletName_b" Type="varchar" MaxLength="200" />
+    <Property Name="Location" Type="varchar" MaxLength="200" />
+    <Property Name="Address" Type="varchar" MaxLength="200" />
+    <Property Name="GpsLocation" Type="varchar(max)" />
+    <Property Name="OwnerName" Type="varchar" MaxLength="100" />
+    <Property Name="ContactNo" Type="varchar" MaxLength="50" />
+    <Property Name="Distributorid" Type="int" Nullable="false" />
+    <Property Name="HaveVisicooler" Type="int" Nullable="false" />
+    <Property Name="parentid" Type="int" Nullable="false" />
+    <Property Name="outlet_category_id" Type="int" Nullable="false" />
+    <Property Name="grading" Type="int" Nullable="false" />
+    <Property Name="channel" Type="int" Nullable="false" />
+    <Property Name="Latitude" Type="varchar" MaxLength="50" />
+    <Property Name="Longitude" Type="varchar" MaxLength="50" />
+    <Property Name="picture" Type="varchar" MaxLength="200" />
+    <Property Name="IsActive" Type="int" Nullable="false" />
+    <Property Name="verify_status" Type="int" Nullable="false" />
+    <Property Name="verifydate" Type="datetime" Nullable="false" />
+    <Property Name="verify_by" Type="int" Nullable="false" />
+    <Property Name="psr_id" Type="int" Nullable="false" />
+    <Property Name="createdate" Type="datetime" Nullable="false" />
+  </EntityType>
   <EntityType Name="tbld_ReportList">
     <Key>
       <PropertyRef Name="id" />
@@ -366,7 +395,13 @@ warning 6002: The table/view 'ODMS.dbo.tbld_distribution_employee' does not have
     <Property Name="element_description" Type="varchar" MaxLength="50" Nullable="false" />
     <Property Name="element_category_id" Type="int" Nullable="false" />
     <Property Name="parent_element_id" Type="int" Nullable="false" />
-    <Property Name="image" Type="varchar" MaxLength="255" Nullable="false" />
+  </EntityType>
+  <EntityType Name="tbld_SKU_Brand_category">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="brand_category" Type="varchar" MaxLength="50" />
   </EntityType>
   <EntityType Name="tbld_sku_category">
     <Key>
@@ -457,6 +492,15 @@ warning 6002: The table/view 'ODMS.dbo.tbld_distribution_employee' does not have
     <Property Name="tx_date" Type="datetime2" Precision="7" />
     <Property Name="tx_challan" Type="int" />
   </EntityType>
+  <EntityType Name="tblm_notorder_reason">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="exception_name" Type="varchar" MaxLength="30" Nullable="false" />
+    <Property Name="exception_code" Type="varchar" MaxLength="30" Nullable="false" />
+    <Property Name="exception_description" Type="varchar" MaxLength="30" Nullable="false" />
+  </EntityType>
   <EntityType Name="tblm_UserLogin">
     <Key>
       <PropertyRef Name="id" />
@@ -505,18 +549,6 @@ warning 6002: The table/view 'ODMS.dbo.tbld_distribution_employee' does not have
     </Key>
     <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="visittype" Type="varchar" MaxLength="50" Nullable="false" />
-  </EntityType>
-  <EntityType Name="tblr_Psrlogin">
-    <Key>
-      <PropertyRef Name="id" />
-    </Key>
-    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-    <Property Name="date" Type="date" Nullable="false" />
-    <Property Name="date_time_stamp" Type="datetime2" Precision="0" Nullable="false" />
-    <Property Name="emp_id" Type="int" Nullable="false" />
-    <Property Name="current_lat" Type="varchar" MaxLength="100" Nullable="false" />
-    <Property Name="current_lon" Type="varchar" MaxLength="100" Nullable="false" />
-    <Property Name="event_name" Type="int" Nullable="false" />
   </EntityType>
   <EntityType Name="tblt_Challan">
     <Key>
@@ -1024,12 +1056,14 @@ warning 6002: The table/view 'ODMS.dbo.tbld_db_zone_view' does not have a primar
     <EntitySet Name="tbld_Outlet_category" EntityType="Self.tbld_Outlet_category" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="tbld_Outlet_channel" EntityType="Self.tbld_Outlet_channel" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="tbld_Outlet_grade" EntityType="Self.tbld_Outlet_grade" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tbld_Outlet_new" EntityType="Self.tbld_Outlet_new" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="tbld_ReportList" EntityType="Self.tbld_ReportList" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="tbld_Route_Plan" EntityType="Self.tbld_Route_Plan" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="tbld_Route_Plan_Detail" EntityType="Self.tbld_Route_Plan_Detail" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="tbld_Route_Plan_Mapping" EntityType="Self.tbld_Route_Plan_Mapping" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="tbld_SKU" EntityType="Self.tbld_SKU" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="tbld_SKU_Brand" EntityType="Self.tbld_SKU_Brand" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tbld_SKU_Brand_category" EntityType="Self.tbld_SKU_Brand_category" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="tbld_sku_category" EntityType="Self.tbld_sku_category" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="tbld_SKU_unit" EntityType="Self.tbld_SKU_unit" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="tbld_SKUContainertype" EntityType="Self.tbld_SKUContainertype" Schema="dbo" store:Type="Tables" />
@@ -1038,11 +1072,11 @@ warning 6002: The table/view 'ODMS.dbo.tbld_db_zone_view' does not have a primar
     <EntitySet Name="tbld_Target_Details" EntityType="Self.tbld_Target_Details" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="tbld_Target_PSR_Details" EntityType="Self.tbld_Target_PSR_Details" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="tbll_inventory_log" EntityType="Self.tbll_inventory_log" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tblm_notorder_reason" EntityType="Self.tblm_notorder_reason" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="tblm_UserLogin" EntityType="Self.tblm_UserLogin" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="tblm_visicooler_info" EntityType="Self.tblm_visicooler_info" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="tblm_visit_detail" EntityType="Self.tblm_visit_detail" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="tblm_visit_type" EntityType="Self.tblm_visit_type" Schema="dbo" store:Type="Tables" />
-    <EntitySet Name="tblr_Psrlogin" EntityType="Self.tblr_Psrlogin" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="tblt_Challan" EntityType="Self.tblt_Challan" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="tblt_Challan_line" EntityType="Self.tblt_Challan_line" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="tblt_inventory" EntityType="Self.tblt_inventory" Schema="dbo" store:Type="Tables" />

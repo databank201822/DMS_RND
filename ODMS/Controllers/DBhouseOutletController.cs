@@ -4,9 +4,6 @@ using System.Data.Entity;
 using System.Linq;
 using System.Net;
 using System.Web.Mvc;
-using System.Web.UI.WebControls;
-using Microsoft.Reporting.WebForms;
-using ODMS.HtmlHelpers;
 using ODMS.Models;
 using ODMS.Models.ViewModel;
 
@@ -231,8 +228,10 @@ namespace ODMS.Controllers
             return Json(getSubroutebydbid, JsonRequestBehavior.AllowGet);
 
         }
-        // GET: DBhouseOutlet/Edit/5
 
+
+
+        // GET: DBhouseOutlet/Edit/5
         [EditAccess]
         public ActionResult Edit(int? id)
         {
@@ -357,55 +356,205 @@ namespace ODMS.Controllers
         }
 
 
-
-        public ActionResult QrExport(int? id)
+        // GET: DBhouseOutlet
+        public ActionResult ApproveIndex()
         {
-           
-            ReportViewer reportViewer = new ReportViewer
-            {
-                ProcessingMode = ProcessingMode.Local,
-                SizeToReportContent = true,
-                Width = Unit.Percentage(100),
-                Height = Unit.Percentage(100)
-
-            };
-
-            string distributorname = "";
-            List<DBhouseoutletQrVm> qrList = new List<DBhouseoutletQrVm>();
-
-            var otuletData = Db.tbld_Outlet.Where(x => x.Distributorid == 1);
-
-            var tbldDistributionHouse = Db.tbld_distribution_house.FirstOrDefault(x => x.DB_Id == id);
-            if (tbldDistributionHouse != null)
-            {
-                distributorname = tbldDistributionHouse.DBName;
-            }
-            foreach (var otuletDataitem in otuletData)
-            {
-               
-                qrList.Add(new DBhouseoutletQrVm
-                {
-                    OutletId = otuletDataitem.OutletId,
-                    OutletCode = otuletDataitem.OutletCode,
-                    OutletName = otuletDataitem.OutletName,
-                    OutletMobile = otuletDataitem.ContactNo,
-                    Distributor = distributorname,
-                    QrImage = QrHelper.GenerateQrCodeByteImage(otuletDataitem.OutletId.ToString())
-
-                });
-            }
-
-            reportViewer.LocalReport.ReportPath = Request.MapPath(Request.ApplicationPath) + @"Reports\OutletQR.rdlc";
-
-            ReportDataSource rdc = new ReportDataSource("QRDS", qrList);
-            reportViewer.LocalReport.DataSources.Add(rdc);
-
-            reportViewer.LocalReport.Refresh();
-            reportViewer.Visible = true;
-
-            ViewBag.ReportViewer = reportViewer;
             return View();
         }
+
+
+        [HttpPost]
+        public ActionResult ApproveOutletShowAllbydbid(int[] rsMid, int[] asMid, int[] cEid, int[] id)
+        {
+            Supporting sp = new Supporting();
+
+            HashSet<int> dbids = sp.Alldbids(rsMid, asMid, cEid, id);
+
+            var data = from a in Db.tbld_Outlet_new
+                join b in Db.tbld_distribution_house on a.Distributorid equals b.DB_Id into dbHouse
+                from dBhouse in dbHouse.DefaultIfEmpty()
+                join c in Db.tbld_distributor_Route on a.parentid equals c.RouteID into dbRoute
+                from route in dbRoute.DefaultIfEmpty()
+                join e in Db.tbld_Outlet_category on a.outlet_category_id equals e.id into dboutletCategory
+                from outletCategory in dboutletCategory.DefaultIfEmpty()
+                join f in Db.tbld_Outlet_grade on a.grading equals f.id into outletGrading
+                from grading in outletGrading.DefaultIfEmpty()
+                join g in Db.tbld_Outlet_channel on a.channel equals g.id into outletChannel
+                from channel in outletChannel.DefaultIfEmpty()
+                where dbids.Contains(a.Distributorid) && a.verify_status==0
+                orderby a.Id, a.parentid
+                select new DBhouseoutletiVm
+                {
+                    OutletId = a.Id,
+                    OutletCode = a.OutletCode,
+                    OutletName = a.OutletName,
+                    OutletNameB = a.OutletName_b,
+                    Location = a.Location,
+                    Address = a.Address,
+                    GpsLocation = a.GpsLocation,
+                    OwnerName = a.OwnerName,
+                    ContactNo = a.ContactNo,
+                    Distributor = dBhouse.DBName,
+                    HaveVisicooler = a.HaveVisicooler == 1 ? "YES" : "NO",
+                    Parentid = route.RouteName,
+                    Category = outletCategory.outlet_category_name,
+                    Grading = grading.name,
+                    Channel = channel.name,
+                    Latitude = a.Latitude,
+                    Longitude = a.Longitude,
+                    Picture = a.picture,
+                    IsActive = a.IsActive == 1 ? "Active" : "Inactive",
+                    Createdate = a.createdate
+                };
+
+
+            return PartialView(data.ToList());
+
+        }
+
+    
+        public ActionResult ApproveOutlet(int? id)
+        {
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            tbld_Outlet_new tbldOutlet = Db.tbld_Outlet_new.Find(id);
+            if (tbldOutlet == null)
+            {
+                return HttpNotFound();
+            }
+
+            DBhouseoutletVm dBhouseoutletVm = new DBhouseoutletVm
+            {
+                OutletId = tbldOutlet.Id,
+                OutletCode = tbldOutlet.OutletCode,
+                OutletName = tbldOutlet.OutletName,
+                OutletNameB = tbldOutlet.OutletName_b,
+                Location = tbldOutlet.Location,
+                Address = tbldOutlet.Address,
+                GpsLocation = tbldOutlet.GpsLocation,
+                OwnerName = tbldOutlet.OwnerName,
+                ContactNo = tbldOutlet.ContactNo,
+                Distributorid = tbldOutlet.Distributorid,
+                HaveVisicooler = tbldOutlet.HaveVisicooler,
+                Parentid = tbldOutlet.parentid,
+                OutletCategoryId = tbldOutlet.outlet_category_id,
+                Grading = tbldOutlet.grading,
+                Channel = tbldOutlet.channel,
+                Latitude = tbldOutlet.Latitude,
+                Longitude = tbldOutlet.Longitude,
+                Picture = tbldOutlet.picture,
+                IsActive = tbldOutlet.IsActive,
+                Createdate = tbldOutlet.createdate
+            };
+
+
+
+            ViewBag.Distributor = new SelectList(Db.tbld_distribution_house.Where(x => x.Status == 1 && x.DB_Id == tbldOutlet.Distributorid), "DB_Id", "DBName");
+            ViewBag.parent = new SelectList(Db.tbld_distributor_Route.Where(x => x.DistributorID == dBhouseoutletVm.Distributorid && x.IsActive == 1 && x.RouteType == 2), "RouteID", "RouteName");
+            ViewBag.outlet_category = new SelectList(Db.tbld_Outlet_category, "id", "outlet_category_name");
+            ViewBag.gradinglist = new SelectList(Db.tbld_Outlet_grade, "id", "name");
+            ViewBag.channellist = new SelectList(Db.tbld_Outlet_channel, "id", "name");
+            ViewBag.IsActivelist = new SelectList(Db.status, "status_Id", "status_code");
+
+            return View(dBhouseoutletVm);
+        }
+
+
+
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult ApproveOutlet(DBhouseoutletVm dBhouseoutletVm)
+        {
+            if (ModelState.IsValid)
+            {
+                tbld_Outlet tbldOutlet = new tbld_Outlet
+                {
+                    OutletId = dBhouseoutletVm.OutletId,
+                    OutletCode = dBhouseoutletVm.OutletCode,
+                    OutletName = dBhouseoutletVm.OutletName,
+                    OutletName_b = dBhouseoutletVm.OutletNameB,
+                    Location = dBhouseoutletVm.Location,
+                    Address = dBhouseoutletVm.Address,
+                    GpsLocation = dBhouseoutletVm.GpsLocation,
+                    OwnerName = dBhouseoutletVm.OwnerName,
+                    ContactNo = dBhouseoutletVm.ContactNo,
+                    Distributorid = dBhouseoutletVm.Distributorid,
+                    HaveVisicooler = dBhouseoutletVm.HaveVisicooler,
+                    parentid = dBhouseoutletVm.Parentid,
+                    outlet_category_id = dBhouseoutletVm.OutletCategoryId,
+                    grading = dBhouseoutletVm.Grading,
+                    channel = dBhouseoutletVm.Channel,
+                    Latitude = dBhouseoutletVm.Latitude,
+                    Longitude = dBhouseoutletVm.Longitude,
+                    picture = dBhouseoutletVm.Picture,
+                    IsActive = dBhouseoutletVm.IsActive,
+                    createdate = DateTime.Now
+                };
+                Db.tbld_Outlet.Add(tbldOutlet);
+
+                Db.tbld_Outlet_new.Where(x => x.Id == tbldOutlet.OutletId).ToList().ForEach(x =>
+                {
+                    x.verify_status = 1;
+                    x.verifydate = DateTime.Now;
+                    x.verify_by = (int) Session["User_Id"];
+                }); 
+
+
+                Db.SaveChanges();
+
+                TempData["alertbox"] = "success";
+                TempData["alertboxMsg"] = dBhouseoutletVm.OutletName + "  Approve Successfully";
+
+                return RedirectToAction("ApproveIndex");
+            }
+            ViewBag.Distributor = new SelectList(Db.tbld_distribution_house.Where(x => x.Status == 1), "DB_Id", "DBName");
+            ViewBag.parent = new SelectList(Db.tbld_distributor_Route.Where(x => x.DistributorID == dBhouseoutletVm.Distributorid && x.IsActive == 1), "RouteID", "RouteName");
+            ViewBag.outlet_category = new SelectList(Db.tbld_Outlet_category, "id", "outlet_category_name");
+            ViewBag.gradinglist = new SelectList(Db.tbld_Outlet_grade, "id", "name");
+            ViewBag.channellist = new SelectList(Db.tbld_Outlet_channel, "id", "name");
+            ViewBag.IsActivelist = new SelectList(Db.status, "status_Id", "status_code");
+            return View(dBhouseoutletVm);
+        }
+
+
+        public ActionResult ApproveCancleOutlet(int? id)
+        {
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+
+           
+            tbld_Outlet_new tbldOutlet = Db.tbld_Outlet_new.Find(id);
+            if (tbldOutlet == null)
+            {
+                TempData["alertbox"] = "error";
+                TempData["alertboxMsg"] = "Sorry Not Found";
+
+                return RedirectToAction("ApproveIndex");
+            }
+
+            Db.tbld_Outlet_new.Where(x => x.Id == tbldOutlet.Id).ToList().ForEach(x =>
+            {
+                x.verify_status = 3;
+                x.verifydate = DateTime.Now;
+                x.verify_by = (int)Session["User_Id"];
+            });
+
+
+            Db.SaveChanges();
+
+            TempData["alertbox"] = "success";
+            TempData["alertboxMsg"] = tbldOutlet.OutletName + "  Approve Cancle Successfully";
+
+            return RedirectToAction("ApproveIndex");
+          
+        }
+
+
         protected override void Dispose(bool disposing)
         {
             if (disposing)

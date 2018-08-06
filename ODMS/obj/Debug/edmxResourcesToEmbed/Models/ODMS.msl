@@ -248,19 +248,6 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
-    <EntitySetMapping Name="tbld_SKU_Brand">
-      <EntityTypeMapping TypeName="ODMSModel.tbld_SKU_Brand">
-        <MappingFragment StoreEntitySet="tbld_SKU_Brand">
-          <ScalarProperty Name="id" ColumnName="id" />
-          <ScalarProperty Name="element_name" ColumnName="element_name" />
-          <ScalarProperty Name="element_code" ColumnName="element_code" />
-          <ScalarProperty Name="element_description" ColumnName="element_description" />
-          <ScalarProperty Name="element_category_id" ColumnName="element_category_id" />
-          <ScalarProperty Name="parent_element_id" ColumnName="parent_element_id" />
-          <ScalarProperty Name="image" ColumnName="image" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
     <EntitySetMapping Name="tbld_sku_category">
       <EntityTypeMapping TypeName="ODMSModel.tbld_sku_category">
         <MappingFragment StoreEntitySet="tbld_sku_category">
@@ -968,19 +955,6 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
-    <EntitySetMapping Name="tblr_Psrlogin">
-      <EntityTypeMapping TypeName="ODMSModel.tblr_Psrlogin">
-        <MappingFragment StoreEntitySet="tblr_Psrlogin">
-          <ScalarProperty Name="event_name" ColumnName="event_name" />
-          <ScalarProperty Name="current_lon" ColumnName="current_lon" />
-          <ScalarProperty Name="current_lat" ColumnName="current_lat" />
-          <ScalarProperty Name="emp_id" ColumnName="emp_id" />
-          <ScalarProperty Name="date_time_stamp" ColumnName="date_time_stamp" />
-          <ScalarProperty Name="date" ColumnName="date" />
-          <ScalarProperty Name="id" ColumnName="id" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
     <FunctionImportMapping FunctionImportName="RPT_Order_OutletWiseSKUWiseOrder" FunctionName="ODMSModel.Store.RPT_Order_OutletWiseSKUWiseOrder">
       <ResultMapping>
         <ComplexTypeMapping TypeName="ODMSModel.RPT_Order_OutletWiseSKUWiseOrder_Result">
@@ -1136,6 +1110,66 @@
           <ScalarProperty Name="sku_id" ColumnName="sku_id" />
           <ScalarProperty Name="db_id" ColumnName="db_id" />
           <ScalarProperty Name="id" ColumnName="id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tblm_notorder_reason">
+      <EntityTypeMapping TypeName="ODMSModel.tblm_notorder_reason">
+        <MappingFragment StoreEntitySet="tblm_notorder_reason">
+          <ScalarProperty Name="exception_description" ColumnName="exception_description" />
+          <ScalarProperty Name="exception_code" ColumnName="exception_code" />
+          <ScalarProperty Name="exception_name" ColumnName="exception_name" />
+          <ScalarProperty Name="id" ColumnName="id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tbld_SKU_Brand">
+      <EntityTypeMapping TypeName="ODMSModel.tbld_SKU_Brand">
+        <MappingFragment StoreEntitySet="tbld_SKU_Brand">
+          <ScalarProperty Name="parent_element_id" ColumnName="parent_element_id" />
+          <ScalarProperty Name="element_category_id" ColumnName="element_category_id" />
+          <ScalarProperty Name="element_description" ColumnName="element_description" />
+          <ScalarProperty Name="element_code" ColumnName="element_code" />
+          <ScalarProperty Name="element_name" ColumnName="element_name" />
+          <ScalarProperty Name="id" ColumnName="id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tbld_SKU_Brand_category">
+      <EntityTypeMapping TypeName="ODMSModel.tbld_SKU_Brand_category">
+        <MappingFragment StoreEntitySet="tbld_SKU_Brand_category">
+          <ScalarProperty Name="brand_category" ColumnName="brand_category" />
+          <ScalarProperty Name="id" ColumnName="id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tbld_Outlet_new">
+      <EntityTypeMapping TypeName="ODMSModel.tbld_Outlet_new">
+        <MappingFragment StoreEntitySet="tbld_Outlet_new">
+          <ScalarProperty Name="createdate" ColumnName="createdate" />
+          <ScalarProperty Name="psr_id" ColumnName="psr_id" />
+          <ScalarProperty Name="verify_by" ColumnName="verify_by" />
+          <ScalarProperty Name="verifydate" ColumnName="verifydate" />
+          <ScalarProperty Name="verify_status" ColumnName="verify_status" />
+          <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+          <ScalarProperty Name="picture" ColumnName="picture" />
+          <ScalarProperty Name="Longitude" ColumnName="Longitude" />
+          <ScalarProperty Name="Latitude" ColumnName="Latitude" />
+          <ScalarProperty Name="channel" ColumnName="channel" />
+          <ScalarProperty Name="grading" ColumnName="grading" />
+          <ScalarProperty Name="outlet_category_id" ColumnName="outlet_category_id" />
+          <ScalarProperty Name="parentid" ColumnName="parentid" />
+          <ScalarProperty Name="HaveVisicooler" ColumnName="HaveVisicooler" />
+          <ScalarProperty Name="Distributorid" ColumnName="Distributorid" />
+          <ScalarProperty Name="ContactNo" ColumnName="ContactNo" />
+          <ScalarProperty Name="OwnerName" ColumnName="OwnerName" />
+          <ScalarProperty Name="GpsLocation" ColumnName="GpsLocation" />
+          <ScalarProperty Name="Address" ColumnName="Address" />
+          <ScalarProperty Name="Location" ColumnName="Location" />
+          <ScalarProperty Name="OutletName_b" ColumnName="OutletName_b" />
+          <ScalarProperty Name="OutletName" ColumnName="OutletName" />
+          <ScalarProperty Name="OutletCode" ColumnName="OutletCode" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>

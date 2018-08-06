@@ -194,14 +194,6 @@
       <HintPath>..\packages\YUICompressor.NET.1.5.0.0\lib\NET35\Yahoo.Yui.Compressor.dll</HintPath>
       <Private>True</Private>
     </Reference>
-    <Reference Include="zxing, Version=0.16.4.0, Culture=neutral, PublicKeyToken=4e88037ac681fe60, processorArchitecture=MSIL">
-      <HintPath>..\packages\ZXing.Net.0.16.4\lib\net45\zxing.dll</HintPath>
-      <Private>True</Private>
-    </Reference>
-    <Reference Include="zxing.presentation, Version=0.16.4.0, Culture=neutral, PublicKeyToken=4e88037ac681fe60, processorArchitecture=MSIL">
-      <HintPath>..\packages\ZXing.Net.0.16.4\lib\net45\zxing.presentation.dll</HintPath>
-      <Private>True</Private>
-    </Reference>
   </ItemGroup>
   <ItemGroup>
     <Reference Include="Newtonsoft.Json">
@@ -228,6 +220,7 @@
     <Compile Include="Controllers\DBhouseClusterController.cs" />
     <Compile Include="Controllers\DBhouseController.cs" />
     <Compile Include="Controllers\DBhouseemployeeController.cs" />
+    <Compile Include="Controllers\DBhouseOrderExceptionReasonController.cs" />
     <Compile Include="Controllers\DBhouseOutletCategoryController.cs" />
     <Compile Include="Controllers\DBhouseOutletChannelController.cs" />
     <Compile Include="Controllers\DBhouseOutletController.cs" />
@@ -255,9 +248,11 @@
     <Compile Include="Controllers\PurchaseController.cs" />
     <Compile Include="Controllers\ReportListController.cs" />
     <Compile Include="Controllers\RouteplanController.cs" />
+    <Compile Include="Controllers\SkuBrandController.cs" />
     <Compile Include="Controllers\SKUcategoryController.cs" />
     <Compile Include="Controllers\SKUContainerController.cs" />
     <Compile Include="Controllers\SKUtypeController.cs" />
+    <Compile Include="Controllers\SkuUnitController.cs" />
     <Compile Include="Controllers\Supporting.cs" />
     <Compile Include="Controllers\TargetController.cs" />
     <Compile Include="Controllers\TradePromotionController.cs" />
@@ -270,7 +265,6 @@
     </Compile>
     <Compile Include="Handlers\RazorScriptManager.cs" />
     <Compile Include="HtmlHelpers\HtmlHelpers.cs" />
-    <Compile Include="HtmlHelpers\QrHelper.cs" />
     <Compile Include="Models\ApiGetOutlet_Result.cs">
       <DependentUpon>ODMAPI.tt</DependentUpon>
     </Compile>
@@ -426,6 +420,9 @@
     <Compile Include="Models\tbld_Outlet_grade.cs">
       <DependentUpon>ODMS.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\tbld_Outlet_new.cs">
+      <DependentUpon>ODMS.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\tbld_ReportList.cs">
       <DependentUpon>ODMS.tt</DependentUpon>
     </Compile>
@@ -450,6 +447,9 @@
     <Compile Include="Models\tbld_SKU_Brand.cs">
       <DependentUpon>ODMS.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\tbld_SKU_Brand_category.cs">
+      <DependentUpon>ODMS.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\tbld_sku_category.cs">
       <DependentUpon>ODMS.tt</DependentUpon>
     </Compile>
@@ -468,6 +468,9 @@
     <Compile Include="Models\tbll_inventory_log.cs">
       <DependentUpon>ODMS.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\tblm_notorder_reason.cs">
+      <DependentUpon>ODMS.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\tblm_UserLogin.cs">
       <DependentUpon>ODMS.tt</DependentUpon>
     </Compile>
@@ -478,9 +481,6 @@
       <DependentUpon>ODMS.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\tblm_visit_type.cs">
-      <DependentUpon>ODMS.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\tblr_Psrlogin.cs">
       <DependentUpon>ODMS.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\tblt_Challan.cs">
@@ -2881,7 +2881,6 @@
     <Content Include="Views\DBhouseOutlet\Edit.cshtml" />
     <Content Include="Views\DBhouseOutlet\Index.cshtml" />
     <Content Include="Views\DBhouseOutlet\ShowAllbydbid.cshtml" />
-    <Content Include="Views\DBhouseOutlet\test.cshtml" />
     <Content Include="Views\DBhouseRoute\Create.cshtml" />
     <Content Include="Views\DBhouseRoute\Delete.cshtml" />
     <Content Include="Views\DBhouseRoute\Details.cshtml" />
@@ -3024,7 +3023,6 @@
     <Content Include="Views\TradePromotion\AddSlabRow.cshtml" />
     <Content Include="Views\TradePromotion\OrderConditionPart_Value.cshtml" />
     <Content Include="Views\TradePromotion\Details.cshtml" />
-    <Content Include="Views\DBhouseOutlet\QRExport.cshtml" />
     <Content Include="Views\DayEnd\Index.cshtml" />
     <Content Include="Views\Target\TargetBreakDownIndex.cshtml" />
     <Content Include="Views\Target\PSRTargetBreakDownIndex.cshtml" />
@@ -3062,16 +3060,6 @@
     <Content Include="Views\DBhouseCluster\Details.cshtml" />
     <Content Include="Views\DBhouseCluster\Edit.cshtml" />
     <Content Include="Views\DBhouseCluster\Index.cshtml" />
-    <Content Include="Views\OutletCategory\Create.cshtml" />
-    <Content Include="Views\OutletCategory\Delete.cshtml" />
-    <Content Include="Views\OutletCategory\Details.cshtml" />
-    <Content Include="Views\OutletCategory\Edit.cshtml" />
-    <Content Include="Views\OutletCategory\Index.cshtml" />
-    <Content Include="Views\DBHouseOutletCategory\Create.cshtml" />
-    <Content Include="Views\DBHouseOutletCategory\Delete.cshtml" />
-    <Content Include="Views\DBHouseOutletCategory\Details.cshtml" />
-    <Content Include="Views\DBHouseOutletCategory\Edit.cshtml" />
-    <Content Include="Views\DBHouseOutletCategory\Index.cshtml" />
     <Content Include="Views\DBhouseOutletChannel\Create.cshtml" />
     <Content Include="Views\DBhouseOutletChannel\Delete.cshtml" />
     <Content Include="Views\DBhouseOutletChannel\Details.cshtml" />
@@ -3082,6 +3070,29 @@
     <Content Include="Views\DBhouseOutletGrade\Details.cshtml" />
     <Content Include="Views\DBhouseOutletGrade\Edit.cshtml" />
     <Content Include="Views\DBhouseOutletGrade\Index.cshtml" />
+    <Content Include="Views\DBhouseOutletCategory\Create.cshtml" />
+    <Content Include="Views\DBhouseOutletCategory\Delete.cshtml" />
+    <Content Include="Views\DBhouseOutletCategory\Details.cshtml" />
+    <Content Include="Views\DBhouseOutletCategory\Edit.cshtml" />
+    <Content Include="Views\DBhouseOutletCategory\Index.cshtml" />
+    <Content Include="Views\DBhouseOrderExceptionReason\Create.cshtml" />
+    <Content Include="Views\DBhouseOrderExceptionReason\Delete.cshtml" />
+    <Content Include="Views\DBhouseOrderExceptionReason\Details.cshtml" />
+    <Content Include="Views\DBhouseOrderExceptionReason\Edit.cshtml" />
+    <Content Include="Views\DBhouseOrderExceptionReason\Index.cshtml" />
+    <Content Include="Views\SkuUnit\Create.cshtml" />
+    <Content Include="Views\SkuUnit\Delete.cshtml" />
+    <Content Include="Views\SkuUnit\Details.cshtml" />
+    <Content Include="Views\SkuUnit\Edit.cshtml" />
+    <Content Include="Views\SkuUnit\Index.cshtml" />
+    <Content Include="Views\SkuBrand\Create.cshtml" />
+    <Content Include="Views\SkuBrand\Delete.cshtml" />
+    <Content Include="Views\SkuBrand\Edit.cshtml" />
+    <Content Include="Views\SkuBrand\Index.cshtml" />
+    <Content Include="Views\SkuBrand\Details.cshtml" />
+    <Content Include="Views\DBhouseOutlet\ApproveIndex.cshtml" />
+    <Content Include="Views\DBhouseOutlet\ApproveOutletShowAllbydbid.cshtml" />
+    <Content Include="Views\DBhouseOutlet\ApproveOutlet.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

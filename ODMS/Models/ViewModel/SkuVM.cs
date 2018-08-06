@@ -116,4 +116,16 @@ namespace ODMS.Models.ViewModel
         [Required(ErrorMessage = "Enter SKU Unit")]
         public int SkuUnit { get; set; }
     }
+
+
+
+    public class SkuBrand
+    {
+        public int Id { get; set; }
+        public string BrandName { get; set; }
+        public string BrandCode { get; set; }
+        public string BrandDescription { get; set; }
+        public string Category { get; set; }
+        public string Parent { get; set; }
+    }
 }

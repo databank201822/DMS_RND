@@ -235,18 +235,6 @@
     <Property Name="SKUlpc" Type="Int32" Nullable="false" />
     <Property Name="SKUUnit" Type="Int32" Nullable="false" />
   </EntityType>
-  <EntityType Name="tbld_SKU_Brand">
-    <Key>
-      <PropertyRef Name="id" />
-    </Key>
-    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-    <Property Name="element_name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
-    <Property Name="element_code" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
-    <Property Name="element_description" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
-    <Property Name="element_category_id" Type="Int32" Nullable="false" />
-    <Property Name="parent_element_id" Type="Int32" Nullable="false" />
-    <Property Name="image" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
-  </EntityType>
   <EntityType Name="tbld_sku_category">
     <Key>
       <PropertyRef Name="Id" />
@@ -453,7 +441,6 @@
     <EntitySet Name="tbld_Outlet_channel" EntityType="Self.tbld_Outlet_channel" />
     <EntitySet Name="tbld_Outlet_grade" EntityType="Self.tbld_Outlet_grade" />
     <EntitySet Name="tbld_SKU" EntityType="Self.tbld_SKU" />
-    <EntitySet Name="tbld_SKU_Brand" EntityType="Self.tbld_SKU_Brand" />
     <EntitySet Name="tbld_sku_category" EntityType="Self.tbld_sku_category" />
     <EntitySet Name="tbld_SKU_unit" EntityType="Self.tbld_SKU_unit" />
     <EntitySet Name="tbld_SKUContainertype" EntityType="Self.tbld_SKUContainertype" />
@@ -564,7 +551,6 @@
       <Parameter Name="End_Date" Mode="In" Type="DateTime" />
     </FunctionImport>
     <EntitySet Name="tbld_management_employee" EntityType="ODMSModel.tbld_management_employee" />
-    <EntitySet Name="tblr_Psrlogin" EntityType="ODMSModel.tblr_Psrlogin" />
     <FunctionImport Name="RPT_Order_OutletWiseSKUWiseOrder" ReturnType="Collection(ODMSModel.RPT_Order_OutletWiseSKUWiseOrder_Result)">
       <Parameter Name="Start_Date" Mode="In" Type="DateTime" />
       <Parameter Name="End_Date" Mode="In" Type="DateTime" />
@@ -585,6 +571,10 @@
     <EntitySet Name="tblm_visit_detail" EntityType="ODMSModel.tblm_visit_detail" />
     <EntitySet Name="tblm_visit_type" EntityType="ODMSModel.tblm_visit_type" />
     <EntitySet Name="tbll_inventory_log" EntityType="ODMSModel.tbll_inventory_log" />
+    <EntitySet Name="tblm_notorder_reason" EntityType="ODMSModel.tblm_notorder_reason" />
+    <EntitySet Name="tbld_SKU_Brand" EntityType="ODMSModel.tbld_SKU_Brand" />
+    <EntitySet Name="tbld_SKU_Brand_category" EntityType="ODMSModel.tbld_SKU_Brand_category" />
+    <EntitySet Name="tbld_Outlet_new" EntityType="ODMSModel.tbld_Outlet_new" />
   </EntityContainer>
   <ComplexType Name="DB_User_check_Result">
     <Property Type="Int32" Name="id" Nullable="false" />
@@ -1183,18 +1173,6 @@
     <Property Name="biz_zone_id" Type="Int32" Nullable="false" />
     <Property Name="email" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
   </EntityType>
-  <EntityType Name="tblr_Psrlogin">
-    <Key>
-      <PropertyRef Name="id" />
-    </Key>
-    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-    <Property Name="date" Type="DateTime" Nullable="false" Precision="0" />
-    <Property Name="date_time_stamp" Type="DateTime" Nullable="false" Precision="0" />
-    <Property Name="emp_id" Type="Int32" Nullable="false" />
-    <Property Name="current_lat" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
-    <Property Name="current_lon" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
-    <Property Name="event_name" Type="Int32" Nullable="false" />
-  </EntityType>
   <ComplexType Name="RPT_Order_OutletWiseSKUWiseOrder_Result">
     <Property Type="Int32" Name="DB_Id" Nullable="true" />
     <Property Type="String" Name="DB_Name" Nullable="true" MaxLength="50" />
@@ -1351,5 +1329,61 @@
     <Property Name="tx_System_date" Type="DateTime" Precision="0" />
     <Property Name="tx_date" Type="DateTime" Precision="7" />
     <Property Name="tx_challan" Type="Int32" />
+  </EntityType>
+  <EntityType Name="tblm_notorder_reason">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="exception_name" Type="String" Nullable="false" MaxLength="30" FixedLength="false" Unicode="false" />
+    <Property Name="exception_code" Type="String" Nullable="false" MaxLength="30" FixedLength="false" Unicode="false" />
+    <Property Name="exception_description" Type="String" Nullable="false" MaxLength="30" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="tbld_SKU_Brand">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="element_name" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="element_code" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="element_description" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="element_category_id" Type="Int32" Nullable="false" />
+    <Property Name="parent_element_id" Type="Int32" Nullable="false" />
+  </EntityType>
+  <EntityType Name="tbld_SKU_Brand_category">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="brand_category" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="tbld_Outlet_new">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="OutletCode" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="OutletName" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="OutletName_b" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="Location" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="Address" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="GpsLocation" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="OwnerName" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="ContactNo" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Distributorid" Type="Int32" Nullable="false" />
+    <Property Name="HaveVisicooler" Type="Int32" Nullable="false" />
+    <Property Name="parentid" Type="Int32" Nullable="false" />
+    <Property Name="outlet_category_id" Type="Int32" Nullable="false" />
+    <Property Name="grading" Type="Int32" Nullable="false" />
+    <Property Name="channel" Type="Int32" Nullable="false" />
+    <Property Name="Latitude" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Longitude" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="picture" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="IsActive" Type="Int32" Nullable="false" />
+    <Property Name="verify_status" Type="Int32" Nullable="false" />
+    <Property Name="verifydate" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="verify_by" Type="Int32" Nullable="false" />
+    <Property Name="psr_id" Type="Int32" Nullable="false" />
+    <Property Name="createdate" Type="DateTime" Nullable="false" Precision="3" />
   </EntityType>
 </Schema>

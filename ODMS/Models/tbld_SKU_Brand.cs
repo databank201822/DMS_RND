@@ -20,6 +20,5 @@ namespace ODMS.Models
         public string element_description { get; set; }
         public int element_category_id { get; set; }
         public int parent_element_id { get; set; }
-        public string image { get; set; }
     }
 }
