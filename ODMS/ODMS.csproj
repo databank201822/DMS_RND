@@ -339,6 +339,9 @@
     <Compile Include="Models\RPT_CurrentStock_Result.cs">
       <DependentUpon>ODMS.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\RPT_Delivery_OutletWiseSKUWiseDelivery_Result.cs">
+      <DependentUpon>ODMS.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\RPT_Delivery_PSRPerformanceKPISummary_Result.cs">
       <DependentUpon>ODMS.tt</DependentUpon>
     </Compile>
@@ -588,6 +591,7 @@
     <Content Include="App_res\gif-load.gif" />
     <Content Include="App_res\lock.png" />
     <Content Include="App_res\login.png" />
+    <Content Include="App_res\logo_pepsi.png" />
     <Content Include="App_res\notfound.png" />
     <Content Include="App_res\pepsi.png" />
     <Content Include="App_res\reload.gif" />
@@ -3093,6 +3097,8 @@
     <Content Include="Views\DBhouseOutlet\ApproveIndex.cshtml" />
     <Content Include="Views\DBhouseOutlet\ApproveOutletShowAllbydbid.cshtml" />
     <Content Include="Views\DBhouseOutlet\ApproveOutlet.cshtml" />
+    <Content Include="Views\ReportDelivery\OutletWiseDelivery\RptOutletWiseDelivery.cshtml" />
+    <Content Include="Views\ReportDelivery\OutletWiseDelivery\RptOutletWiseDeliveryFilter.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -3113,12 +3119,13 @@
   <ItemGroup>
     <EmbeddedResource Include="Reports\Delivery\RPT_Delivery_PsrWiseSkuWiseDeliverySummary.rdlc" />
     <EmbeddedResource Include="Reports\Delivery\RPT_Delivery_PsrWiseSkuWiseDeliveryDetails.rdlc" />
+    <EmbeddedResource Include="Reports\Delivery\RPT_Delivery_OutletWiseDeliverySymmary.rdlc" />
+    <EmbeddedResource Include="Reports\Delivery\RPT_Delivery_OutletWiseDeliveryDetails.rdlc" />
     <EmbeddedResource Include="Reports\Delivery\RPT_PSRKPISummary.rdlc" />
     <EmbeddedResource Include="Reports\Order\RPT_Order_PsrWiseSkuWiseOrderDetails.rdlc" />
     <EmbeddedResource Include="Reports\Order\RPT_Order_PsrWiseSkuWiseOrderSummary.rdlc" />
     <EmbeddedResource Include="Reports\Order\RPT_OutletWiseOrder_Details.rdlc" />
     <EmbeddedResource Include="Reports\Order\RPT_OutletWiseOrder_Symmary.rdlc" />
-    <EmbeddedResource Include="Reports\OutletQR.rdlc" />
     <EmbeddedResource Include="Reports\RPT_ChallanVsDelivery.rdlc" />
     <EmbeddedResource Include="Reports\RPT_OrderVsStock.rdlc" />
     <EmbeddedResource Include="Reports\RPT_StockMovement.rdlc" />

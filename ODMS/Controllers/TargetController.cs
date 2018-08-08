@@ -21,7 +21,7 @@ namespace ODMS.Controllers
         // GET: Target
         public ActionResult Index()
         {
-            var tgt = Db.tbld_Target.OrderByDescending(x=>new {x.MonthNo,x.Year}).ToList();
+            var tgt = Db.tbld_Target.OrderByDescending(x=>x.id).ToList();
             return View(tgt);
         }
 

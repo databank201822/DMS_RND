@@ -30,7 +30,17 @@ namespace ODMS.Controllers
 
             HashSet<int> orederLineeligiblesku = new HashSet<int>(_db.tblt_TradePromotionDefinition.Where(x => dbtpList.Contains(x.promo_id) && x.promo_line_type != 2).Select(x => x.condition_sku_id));
 
+
+            _db.tblt_Order_line.Where(x => x.Orderid == orderid && x.sku_order_type_id == 1).ToList().ForEach(x =>
+            {
+                x.promotion_id = 0;
+            });
+            _db.SaveChanges();
+
             var orederLine = _db.tblt_Order_line.Where(x => x.Orderid == orderid && orederLineeligiblesku.Contains(x.sku_id) && x.sku_order_type_id == 1).ToList();
+
+         
+           
 
             if (orederLine.Count != 0)
             {

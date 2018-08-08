@@ -4,23 +4,23 @@
         <div class="panel-heading ">
             <div class="clearfix ">
                 Date Range :
-
             </div>
         </div>
         <div class="panel-body">
-         
+
             <div class="form-group">
-                <label class="control-label">Date Range</label>
-                <div class="input-group">
-                    <div class="input-group">
-                        <input type="text" class="form-control" name="startDate" id="startDate" value="@Session[" systemdate"]" />
-                        <span class="input-group-addon">
-                            TO
-                        </span>
+                <div class="row">
+
+                    <label class="col-md-3 control-label">Date Range</label>
+                    <div class="col-md-3"><input type="text" class="form-control" name="startDate" id="startDate" value="@Session[" systemdate"]" /></div>
+                    <label class="col-md-1 control-label">TO</label>
+
+                    <div class="col-md-3">
                         <input type="text" class="form-control" name="endDate" id="endDate" value="@Session[" systemdate"]">
                     </div>
                 </div>
-                       
+
+
             </div>
         </div>
     </div>

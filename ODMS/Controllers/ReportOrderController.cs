@@ -13,7 +13,58 @@ namespace ODMS.Controllers
     public class ReportOrderController : Controller
     {
         public ODMSEntities Db = new ODMSEntities();
+
         Supporting sp = new Supporting();
+
+
+
+
+        public ActionResult RptOutletWiseOrder()
+        {
+            return View("OutletWiseOrder/RptOutletWiseOrder");
+        }
+
+        [HttpPost]
+        public ActionResult RptOutletWiseOrderFilter(int[] rsMid, int[] asMid, int[] cEid, int[] id, int[] skuIds, DateTime startDate, DateTime endDate, int reportType)
+        {
+            HashSet<int> dbids = sp.Alldbids(rsMid, asMid, cEid, id);
+            ArrayList skulist = new ArrayList();
+            if (skuIds != null)
+            {
+                skulist = new ArrayList(skuIds);
+            }
+            ReportViewer reportViewer = new ReportViewer
+            {
+                ProcessingMode = ProcessingMode.Local,
+                SizeToReportContent = true,
+                Width = Unit.Percentage(100),
+                Height = Unit.Pixel(600)
+
+            };
+
+            List<RPT_Order_OutletWiseSKUWiseOrder_Result> outletOrder = Db
+                .RPT_Order_OutletWiseSKUWiseOrder(startDate, endDate).Where(x => x.DB_Id != null && dbids.Contains((int)x.DB_Id) && skulist.Contains(x.SKUId))
+                .ToList();
+
+            if (reportType == 1)  //Summery
+            {
+                reportViewer.LocalReport.ReportPath = Server.MapPath(@"~\Reports\Order\RPT_OutletWiseOrder_Symmary.rdlc");
+            }
+            else if (reportType == 2) //Details
+            {
+                reportViewer.LocalReport.ReportPath = Server.MapPath(@"~\Reports\Order\RPT_OutletWiseOrder_Details.rdlc");
+            }
+
+            ReportDataSource rdc = new ReportDataSource("OutletOrder", outletOrder);
+
+            reportViewer.LocalReport.DataSources.Add(rdc);
+            reportViewer.LocalReport.Refresh();
+            reportViewer.Visible = true;
+
+            ViewBag.ReportViewer = reportViewer;
+
+            return PartialView("OutletWiseOrder/RptOutletWiseOrderFilter");
+        }
 
         public ActionResult RptPsrWiseSkuWiseOrder()
         {
@@ -80,52 +131,5 @@ namespace ODMS.Controllers
 
 
 
-
-        public ActionResult RptOutletWiseOrder()
-        {
-            return View("OutletWiseOrder/RptOutletWiseOrder");
-        }
-
-        [HttpPost]
-        public ActionResult RptOutletWiseOrderFilter(int[] rsMid, int[] asMid, int[] cEid, int[] id, int[] skuIds, DateTime startDate, DateTime endDate, int reportType)
-        {
-            HashSet<int> dbids = sp.Alldbids(rsMid, asMid, cEid, id);
-            ArrayList skulist = new ArrayList();
-            if (skuIds != null)
-            {
-                skulist = new ArrayList(skuIds);
-            }
-            ReportViewer reportViewer = new ReportViewer
-            {
-                ProcessingMode = ProcessingMode.Local,
-                SizeToReportContent = true,
-                Width = Unit.Percentage(100),
-                Height = Unit.Pixel(600)
-
-            };
-
-            List<RPT_Order_OutletWiseSKUWiseOrder_Result> outletOrder = Db
-                .RPT_Order_OutletWiseSKUWiseOrder(startDate, endDate).Where(x => x.DB_Id != null && dbids.Contains((int)x.DB_Id) && skulist.Contains(x.SKUId))
-                .ToList();
-
-            if (reportType == 1)  //Summery
-            {
-                reportViewer.LocalReport.ReportPath = Server.MapPath(@"~\Reports\Order\RPT_OutletWiseOrder_Symmary.rdlc");
-            }
-            else if (reportType == 2) //Details
-            {
-                reportViewer.LocalReport.ReportPath = Server.MapPath(@"~\Reports\Order\RPT_OutletWiseOrder_Details.rdlc");
-            }
-
-            ReportDataSource rdc = new ReportDataSource("OutletOrder", outletOrder);
-
-            reportViewer.LocalReport.DataSources.Add(rdc);
-            reportViewer.LocalReport.Refresh();
-            reportViewer.Visible = true;
-
-            ViewBag.ReportViewer = reportViewer;
-
-            return PartialView("OutletWiseOrder/RptOutletWiseOrderFilter");
-        }
     }
 }

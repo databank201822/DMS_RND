@@ -22,5 +22,7 @@ namespace ODMS.Models
         public string Month { get; set; }
         public Nullable<int> MonthNo { get; set; }
         public Nullable<int> Year { get; set; }
+        public Nullable<int> isHolyday { get; set; }
+        public string Remark { get; set; }
     }
 }

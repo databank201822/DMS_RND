@@ -19,6 +19,8 @@
     <Property Name="Month" Type="varchar" MaxLength="20" />
     <Property Name="MonthNo" Type="int" />
     <Property Name="Year" Type="int" />
+    <Property Name="isHolyday" Type="int" />
+    <Property Name="Remark" Type="varchar" MaxLength="50" />
   </EntityType>
   <EntityType Name="tbl_MainMenu">
     <Key>
@@ -1004,6 +1006,10 @@ warning 6002: The table/view 'ODMS.dbo.tbld_db_zone_view' does not have a primar
   </Function>
   <Function Name="RPT_CurrentStock" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
     <Parameter Name="DBId" Type="int" Mode="In" />
+  </Function>
+  <Function Name="RPT_Delivery_OutletWiseSKUWiseDelivery" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="Start_Date" Type="datetime" Mode="In" />
+    <Parameter Name="End_Date" Type="datetime" Mode="In" />
   </Function>
   <Function Name="RPT_Delivery_PSRPerformanceKPISummary" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
     <Parameter Name="Start_Date" Type="datetime" Mode="In" />

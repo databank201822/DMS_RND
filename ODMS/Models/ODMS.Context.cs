@@ -256,5 +256,18 @@ namespace ODMS.Models
     
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<RPT_StockMovement_Result>("RPT_StockMovement", start_DateParameter, end_DateParameter, dbidParameter);
         }
+    
+        public virtual ObjectResult<RPT_Delivery_OutletWiseSKUWiseDelivery_Result> RPT_Delivery_OutletWiseSKUWiseDelivery(Nullable<System.DateTime> start_Date, Nullable<System.DateTime> end_Date)
+        {
+            var start_DateParameter = start_Date.HasValue ?
+                new ObjectParameter("Start_Date", start_Date) :
+                new ObjectParameter("Start_Date", typeof(System.DateTime));
+    
+            var end_DateParameter = end_Date.HasValue ?
+                new ObjectParameter("End_Date", end_Date) :
+                new ObjectParameter("End_Date", typeof(System.DateTime));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<RPT_Delivery_OutletWiseSKUWiseDelivery_Result>("RPT_Delivery_OutletWiseSKUWiseDelivery", start_DateParameter, end_DateParameter);
+        }
     }
 }

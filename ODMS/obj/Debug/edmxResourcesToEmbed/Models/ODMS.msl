@@ -806,6 +806,8 @@
     <EntitySetMapping Name="tbl_calendar">
       <EntityTypeMapping TypeName="ODMSModel.tbl_calendar">
         <MappingFragment StoreEntitySet="tbl_calendar">
+          <ScalarProperty Name="Remark" ColumnName="Remark" />
+          <ScalarProperty Name="isHolyday" ColumnName="isHolyday" />
           <ScalarProperty Name="Year" ColumnName="Year" />
           <ScalarProperty Name="MonthNo" ColumnName="MonthNo" />
           <ScalarProperty Name="Month" ColumnName="Month" />
@@ -1173,5 +1175,49 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
+    <FunctionImportMapping FunctionImportName="RPT_Delivery_OutletWiseSKUWiseDelivery" FunctionName="ODMSModel.Store.RPT_Delivery_OutletWiseSKUWiseDelivery">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="ODMSModel.RPT_Delivery_OutletWiseSKUWiseDelivery_Result">
+          <ScalarProperty Name="DB_Id" ColumnName="DB_Id" />
+          <ScalarProperty Name="DB_Name" ColumnName="DB_Name" />
+          <ScalarProperty Name="CEAREA_id" ColumnName="CEAREA_id" />
+          <ScalarProperty Name="CEAREA_Name" ColumnName="CEAREA_Name" />
+          <ScalarProperty Name="AREA_id" ColumnName="AREA_id" />
+          <ScalarProperty Name="AREA_Name" ColumnName="AREA_Name" />
+          <ScalarProperty Name="REGION_id" ColumnName="REGION_id" />
+          <ScalarProperty Name="REGION_Name" ColumnName="REGION_Name" />
+          <ScalarProperty Name="National_id" ColumnName="National_id" />
+          <ScalarProperty Name="National" ColumnName="National" />
+          <ScalarProperty Name="Status" ColumnName="Status" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="PSR_id" ColumnName="PSR_id" />
+          <ScalarProperty Name="PSR_Code" ColumnName="PSR_Code" />
+          <ScalarProperty Name="DBCode" ColumnName="DBCode" />
+          <ScalarProperty Name="OfficeAddress" ColumnName="OfficeAddress" />
+          <ScalarProperty Name="cluster" ColumnName="cluster" />
+          <ScalarProperty Name="RouteName" ColumnName="RouteName" />
+          <ScalarProperty Name="RouteID" ColumnName="RouteID" />
+          <ScalarProperty Name="OutletId" ColumnName="OutletId" />
+          <ScalarProperty Name="OutletCode" ColumnName="OutletCode" />
+          <ScalarProperty Name="OutletName" ColumnName="OutletName" />
+          <ScalarProperty Name="OutletName_b" ColumnName="OutletName_b" />
+          <ScalarProperty Name="Address" ColumnName="Address" />
+          <ScalarProperty Name="OwnerName" ColumnName="OwnerName" />
+          <ScalarProperty Name="ContactNo" ColumnName="ContactNo" />
+          <ScalarProperty Name="HaveVisicooler" ColumnName="HaveVisicooler" />
+          <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+          <ScalarProperty Name="channel_name" ColumnName="channel_name" />
+          <ScalarProperty Name="outlet_category_name" ColumnName="outlet_category_name" />
+          <ScalarProperty Name="Outlet_grade" ColumnName="Outlet_grade" />
+          <ScalarProperty Name="Distributorid" ColumnName="Distributorid" />
+          <ScalarProperty Name="SKUId" ColumnName="SKUId" />
+          <ScalarProperty Name="SKUName" ColumnName="SKUName" />
+          <ScalarProperty Name="PackSize" ColumnName="PackSize" />
+          <ScalarProperty Name="Delivered_Quentity" ColumnName="Delivered_Quentity" />
+          <ScalarProperty Name="Value" ColumnName="Value" />
+          <ScalarProperty Name="FreeDelivered_Quentity" ColumnName="FreeDelivered_Quentity" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
   </EntityContainerMapping>
 </Mapping>

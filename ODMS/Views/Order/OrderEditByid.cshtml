@@ -11,8 +11,9 @@
     <div class="panel-heading ">
         <div class="clearfix">
             @ViewBag.Title
-            <button class="btn btn-warning pull-right" onclick="window.history.go(-1);return false;"> Back</button>
-            @*<button class="btn btn-danger pull-right" onclick="window.close();return false;"> Close</button>*@
+            @Html.ActionLink("Back","Index",null,new{@class="btn btn-warning pull-right"})
+            @*<button class="btn btn-warning pull-right" onclick="window.history.go(-1);return false;"> Back</button>
+            <button class="btn btn-danger pull-right" onclick="window.close();return false;"> Close</button>*@
 
         </div>
     </div>
@@ -151,10 +152,11 @@
                                     <tr>
                                         <td>
                                             <div>
-
-                                                <input name="SkuName" readonly="readonly" id="SkuName_@count" class="form-control" , value="@item.SkuName" placeholder="SkuName" />
-                                                <input name="bundelitem" readonly="readonly" id="bundelitem_@count" type="hidden" class="form-control" , value="@item.Bundelitemid" placeholder="SkuName" />
-                                                <input type="hidden" name="SkuId" id="SkuId_@count" class="form-control" value="@item.SkuId" placeholder="SkuId" />
+                                            
+                                                @Html.DropDownList("Bundelitemid", new SelectList(ViewBag.SKUList, "bundleid", "SKUName", @item.Bundelitemid), "Select a SKU", new { @class = "form-control", @id = "bundelitem" + count, PlaceHolder = "SkuId", @style = "", onChange = " get_unit_price(id) " })
+                                                
+                                                
+                                                <input type="hidden" name="SkuId" id="SkuId_@count" class="form-control" value="@item.SkuId" placeholder="SkuId"/>
                                             </div>
                                         </td>
 
@@ -321,6 +323,7 @@
 
     <script>
         $(document).ready(function() {
+                $("select").select2();
                 grand_total_amount();
             }
         );
@@ -389,6 +392,7 @@
             });
 
         function get_unit_price(id) {
+            debugger;
             var index = id.slice(10);
             var itemid = $("#bundelitem" + index).val();
             $("#SkuId_" + index).val("");

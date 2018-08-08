@@ -24,6 +24,8 @@
           <Property Name="Month" Type="varchar" MaxLength="20" />
           <Property Name="MonthNo" Type="int" />
           <Property Name="Year" Type="int" />
+          <Property Name="isHolyday" Type="int" />
+          <Property Name="Remark" Type="varchar" MaxLength="50" />
         </EntityType>
         <EntityType Name="tbl_MainMenu">
           <Key>
@@ -1010,6 +1012,10 @@ warning 6002: The table/view 'ODMS.dbo.tbld_db_zone_view' does not have a primar
         <Function Name="RPT_CurrentStock" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="DBId" Type="int" Mode="In" />
         </Function>
+        <Function Name="RPT_Delivery_OutletWiseSKUWiseDelivery" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="Start_Date" Type="datetime" Mode="In" />
+          <Parameter Name="End_Date" Type="datetime" Mode="In" />
+        </Function>
         <Function Name="RPT_Delivery_PSRPerformanceKPISummary" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="Start_Date" Type="datetime" Mode="In" />
           <Parameter Name="End_Date" Type="datetime" Mode="In" />
@@ -1782,6 +1788,10 @@ warning 6002: The table/view 'ODMS.dbo.tbld_db_zone_view' does not have a primar
           <EntitySet Name="tbld_SKU_Brand" EntityType="ODMSModel.tbld_SKU_Brand" />
           <EntitySet Name="tbld_SKU_Brand_category" EntityType="ODMSModel.tbld_SKU_Brand_category" />
           <EntitySet Name="tbld_Outlet_new" EntityType="ODMSModel.tbld_Outlet_new" />
+          <FunctionImport Name="RPT_Delivery_OutletWiseSKUWiseDelivery" ReturnType="Collection(ODMSModel.RPT_Delivery_OutletWiseSKUWiseDelivery_Result)">
+            <Parameter Name="Start_Date" Mode="In" Type="DateTime" />
+            <Parameter Name="End_Date" Mode="In" Type="DateTime" />
+          </FunctionImport>
         </EntityContainer>
         <ComplexType Name="DB_User_check_Result">
           <Property Type="Int32" Name="id" Nullable="false" />
@@ -2231,6 +2241,8 @@ warning 6002: The table/view 'ODMS.dbo.tbld_db_zone_view' does not have a primar
           <Property Name="Month" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
           <Property Name="MonthNo" Type="Int32" />
           <Property Name="Year" Type="Int32" />
+          <Property Name="isHolyday" Type="Int32" />
+          <Property Name="Remark" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
         </EntityType>
         <ComplexType Name="RPT_Delivery_PSRWiseSKUWiseDelivery_Result">
           <Property Type="Int32" Name="DB_Id" Nullable="false" />
@@ -2593,6 +2605,46 @@ warning 6002: The table/view 'ODMS.dbo.tbld_db_zone_view' does not have a primar
           <Property Name="psr_id" Type="Int32" Nullable="false" />
           <Property Name="createdate" Type="DateTime" Nullable="false" Precision="3" />
         </EntityType>
+        <ComplexType Name="RPT_Delivery_OutletWiseSKUWiseDelivery_Result">
+          <Property Type="Int32" Name="DB_Id" Nullable="true" />
+          <Property Type="String" Name="DB_Name" Nullable="true" MaxLength="50" />
+          <Property Type="Int32" Name="CEAREA_id" Nullable="true" />
+          <Property Type="String" Name="CEAREA_Name" Nullable="true" MaxLength="30" />
+          <Property Type="Int32" Name="AREA_id" Nullable="true" />
+          <Property Type="String" Name="AREA_Name" Nullable="true" MaxLength="30" />
+          <Property Type="Int32" Name="REGION_id" Nullable="true" />
+          <Property Type="String" Name="REGION_Name" Nullable="true" MaxLength="30" />
+          <Property Type="Int32" Name="National_id" Nullable="true" />
+          <Property Type="String" Name="National" Nullable="true" MaxLength="30" />
+          <Property Type="Int32" Name="Status" Nullable="true" />
+          <Property Type="String" Name="Name" Nullable="true" MaxLength="256" />
+          <Property Type="Int32" Name="PSR_id" Nullable="true" />
+          <Property Type="String" Name="PSR_Code" Nullable="true" MaxLength="30" />
+          <Property Type="String" Name="DBCode" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="OfficeAddress" Nullable="true" />
+          <Property Type="String" Name="cluster" Nullable="true" MaxLength="100" />
+          <Property Type="String" Name="RouteName" Nullable="false" MaxLength="200" />
+          <Property Type="Int32" Name="RouteID" Nullable="false" />
+          <Property Type="Int32" Name="OutletId" Nullable="false" />
+          <Property Type="String" Name="OutletCode" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="OutletName" Nullable="true" MaxLength="200" />
+          <Property Type="String" Name="OutletName_b" Nullable="true" MaxLength="200" />
+          <Property Type="String" Name="Address" Nullable="true" MaxLength="200" />
+          <Property Type="String" Name="OwnerName" Nullable="true" MaxLength="100" />
+          <Property Type="String" Name="ContactNo" Nullable="true" MaxLength="50" />
+          <Property Type="Int32" Name="HaveVisicooler" Nullable="false" />
+          <Property Type="Int32" Name="IsActive" Nullable="false" />
+          <Property Type="String" Name="channel_name" Nullable="true" MaxLength="100" />
+          <Property Type="String" Name="outlet_category_name" Nullable="true" MaxLength="30" />
+          <Property Type="String" Name="Outlet_grade" Nullable="true" MaxLength="50" />
+          <Property Type="Int32" Name="Distributorid" Nullable="true" />
+          <Property Type="Int32" Name="SKUId" Nullable="true" />
+          <Property Type="String" Name="SKUName" Nullable="true" MaxLength="50" />
+          <Property Type="Int32" Name="PackSize" Nullable="true" />
+          <Property Type="Decimal" Name="Delivered_Quentity" Nullable="true" Precision="19" />
+          <Property Type="Double" Name="Value" Nullable="true" />
+          <Property Type="Decimal" Name="FreeDelivered_Quentity" Nullable="true" Precision="19" />
+        </ComplexType>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -3404,6 +3456,8 @@ warning 6002: The table/view 'ODMS.dbo.tbld_db_zone_view' does not have a primar
           <EntitySetMapping Name="tbl_calendar">
             <EntityTypeMapping TypeName="ODMSModel.tbl_calendar">
               <MappingFragment StoreEntitySet="tbl_calendar">
+                <ScalarProperty Name="Remark" ColumnName="Remark" />
+                <ScalarProperty Name="isHolyday" ColumnName="isHolyday" />
                 <ScalarProperty Name="Year" ColumnName="Year" />
                 <ScalarProperty Name="MonthNo" ColumnName="MonthNo" />
                 <ScalarProperty Name="Month" ColumnName="Month" />
@@ -3771,6 +3825,50 @@ warning 6002: The table/view 'ODMS.dbo.tbld_db_zone_view' does not have a primar
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
+          <FunctionImportMapping FunctionImportName="RPT_Delivery_OutletWiseSKUWiseDelivery" FunctionName="ODMSModel.Store.RPT_Delivery_OutletWiseSKUWiseDelivery">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="ODMSModel.RPT_Delivery_OutletWiseSKUWiseDelivery_Result">
+                <ScalarProperty Name="DB_Id" ColumnName="DB_Id" />
+                <ScalarProperty Name="DB_Name" ColumnName="DB_Name" />
+                <ScalarProperty Name="CEAREA_id" ColumnName="CEAREA_id" />
+                <ScalarProperty Name="CEAREA_Name" ColumnName="CEAREA_Name" />
+                <ScalarProperty Name="AREA_id" ColumnName="AREA_id" />
+                <ScalarProperty Name="AREA_Name" ColumnName="AREA_Name" />
+                <ScalarProperty Name="REGION_id" ColumnName="REGION_id" />
+                <ScalarProperty Name="REGION_Name" ColumnName="REGION_Name" />
+                <ScalarProperty Name="National_id" ColumnName="National_id" />
+                <ScalarProperty Name="National" ColumnName="National" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="PSR_id" ColumnName="PSR_id" />
+                <ScalarProperty Name="PSR_Code" ColumnName="PSR_Code" />
+                <ScalarProperty Name="DBCode" ColumnName="DBCode" />
+                <ScalarProperty Name="OfficeAddress" ColumnName="OfficeAddress" />
+                <ScalarProperty Name="cluster" ColumnName="cluster" />
+                <ScalarProperty Name="RouteName" ColumnName="RouteName" />
+                <ScalarProperty Name="RouteID" ColumnName="RouteID" />
+                <ScalarProperty Name="OutletId" ColumnName="OutletId" />
+                <ScalarProperty Name="OutletCode" ColumnName="OutletCode" />
+                <ScalarProperty Name="OutletName" ColumnName="OutletName" />
+                <ScalarProperty Name="OutletName_b" ColumnName="OutletName_b" />
+                <ScalarProperty Name="Address" ColumnName="Address" />
+                <ScalarProperty Name="OwnerName" ColumnName="OwnerName" />
+                <ScalarProperty Name="ContactNo" ColumnName="ContactNo" />
+                <ScalarProperty Name="HaveVisicooler" ColumnName="HaveVisicooler" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="channel_name" ColumnName="channel_name" />
+                <ScalarProperty Name="outlet_category_name" ColumnName="outlet_category_name" />
+                <ScalarProperty Name="Outlet_grade" ColumnName="Outlet_grade" />
+                <ScalarProperty Name="Distributorid" ColumnName="Distributorid" />
+                <ScalarProperty Name="SKUId" ColumnName="SKUId" />
+                <ScalarProperty Name="SKUName" ColumnName="SKUName" />
+                <ScalarProperty Name="PackSize" ColumnName="PackSize" />
+                <ScalarProperty Name="Delivered_Quentity" ColumnName="Delivered_Quentity" />
+                <ScalarProperty Name="Value" ColumnName="Value" />
+                <ScalarProperty Name="FreeDelivered_Quentity" ColumnName="FreeDelivered_Quentity" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
           </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>

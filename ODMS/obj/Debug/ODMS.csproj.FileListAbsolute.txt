@@ -27,6 +27,8 @@ D:\All Excercies\ASP.Net\ODMS\ODMS\bin\Antlr3.Runtime.pdb
 D:\All Excercies\ASP.Net\ODMS\ODMS\bin\Newtonsoft.Json.xml
 D:\All Excercies\ASP.Net\ODMS\ODMS\obj\Debug\ODMS.dll
 D:\All Excercies\ASP.Net\ODMS\ODMS\obj\Debug\ODMS.pdb
+D:\Dropbox\ODMS\ODMS\obj\Debug\RdlCompile.cache
+D:\Dropbox\ODMS\ODMS\obj\Debug\RdlCompile.compiled
 D:\Dropbox\ODMS\ODMS\bin\SqlServerTypes\x64\msvcr120.dll
 D:\Dropbox\ODMS\ODMS\bin\SqlServerTypes\x64\SqlServerSpatial140.dll
 D:\Dropbox\ODMS\ODMS\bin\SqlServerTypes\x86\msvcr120.dll
@@ -141,8 +143,6 @@ D:\Dropbox\ODMS\ODMS\bin\pt\Microsoft.ReportViewer.WinForms.resources.dll
 D:\Dropbox\ODMS\ODMS\bin\ru\Microsoft.ReportViewer.WinForms.resources.dll
 D:\Dropbox\ODMS\ODMS\bin\zh-CHS\Microsoft.ReportViewer.WinForms.resources.dll
 D:\Dropbox\ODMS\ODMS\bin\zh-CHT\Microsoft.ReportViewer.WinForms.resources.dll
-D:\Dropbox\ODMS\ODMS\obj\Debug\RdlCompile.cache
-D:\Dropbox\ODMS\ODMS\obj\Debug\RdlCompile.compiled
 D:\Dropbox\ODMS\ODMS\obj\Debug\ODMS.dll
 D:\Dropbox\ODMS\ODMS\obj\Debug\ODMS.pdb
 D:\Dropbox\ODMS\ODMS\obj\Debug\ODMS.csprojResolveAssemblyReference.cache
