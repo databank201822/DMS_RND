@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Data.Entity;
+using System.Data.Entity.Validation;
 using System.Linq;
 using System.Web.Mvc;
 using ODMS.Models;
@@ -58,7 +59,7 @@ namespace ODMS.Controllers
             {
                 DateTime startDate = routePlanMVm.StartDate;
 
-                //DateTime startDate = Convert.ToDateTime("2018-07-14");
+               // DateTime startDate = Convert.ToDateTime("2018-07-14");
                 DateTime endDate = routePlanMVm.EndDate;
                 var dateDaff = (endDate - startDate).TotalDays;
 
@@ -72,13 +73,13 @@ namespace ODMS.Controllers
                     creation_date = DateTime.Today,
                     start_date = routePlanMVm.StartDate,
                     end_date = routePlanMVm.EndDate,
-                    Modify_date = DateTime.Today
-
+                    Modify_date = DateTime.Today,
+                    created_by = (string) Session["User_Name"]
                 };
-
+               
                 DB.tbld_Route_Plan.Add(tbldRoutePlan);
                 DB.SaveChanges();
-
+           
                 int routePlanid = tbldRoutePlan.id;
 
                 //add datils routeplan mapping

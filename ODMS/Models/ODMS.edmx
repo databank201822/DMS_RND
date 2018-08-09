@@ -147,8 +147,6 @@
           <Property Name="code" Type="varchar" MaxLength="100" Nullable="false" />
           <Property Name="description" Type="varchar" MaxLength="100" Nullable="false" />
         </EntityType>
-        <!--Errors Found During Generation:
-warning 6002: The table/view 'ODMS.dbo.tbld_distribution_employee' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
         <EntityType Name="tbld_distribution_employee">
           <Key>
             <PropertyRef Name="id" />
@@ -333,9 +331,9 @@ warning 6002: The table/view 'ODMS.dbo.tbld_distribution_employee' does not have
             <PropertyRef Name="id" />
           </Key>
           <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="route_plan_name" Type="varchar" MaxLength="30" Nullable="false" />
-          <Property Name="route_plan_code" Type="varchar" MaxLength="30" Nullable="false" />
-          <Property Name="route_plan_description" Type="varchar" MaxLength="30" Nullable="false" />
+          <Property Name="route_plan_name" Type="varchar" MaxLength="250" />
+          <Property Name="route_plan_code" Type="varchar" MaxLength="250" />
+          <Property Name="route_plan_description" Type="varchar" MaxLength="250" />
           <Property Name="db_id" Type="int" Nullable="false" />
           <Property Name="db_emp_id" Type="int" Nullable="false" />
           <Property Name="creation_date" Type="date" Nullable="false" />
@@ -343,6 +341,16 @@ warning 6002: The table/view 'ODMS.dbo.tbld_distribution_employee' does not have
           <Property Name="end_date" Type="date" Nullable="false" />
           <Property Name="Modify_date" Type="date" Nullable="false" />
           <Property Name="created_by" Type="varchar" MaxLength="30" />
+        </EntityType>
+        <EntityType Name="tbld_Route_plan_Current_Route">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="db_id" Type="int" Nullable="false" />
+          <Property Name="db_emp_id" Type="int" Nullable="false" />
+          <Property Name="route_plan_id" Type="int" Nullable="false" />
+          <Property Name="route_id" Type="int" Nullable="false" />
         </EntityType>
         <EntityType Name="tbld_Route_Plan_Detail">
           <Key>
@@ -1067,6 +1075,7 @@ warning 6002: The table/view 'ODMS.dbo.tbld_db_zone_view' does not have a primar
           <EntitySet Name="tbld_business_zone" EntityType="Self.tbld_business_zone" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="tbld_business_zone_hierarchy" EntityType="Self.tbld_business_zone_hierarchy" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="tbld_cluster" EntityType="Self.tbld_cluster" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tbld_distribution_employee" EntityType="Self.tbld_distribution_employee" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="tbld_distribution_employee_Type" EntityType="Self.tbld_distribution_employee_Type" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="tbld_distribution_house" EntityType="Self.tbld_distribution_house" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="tbld_distributor_Route" EntityType="Self.tbld_distributor_Route" Schema="dbo" store:Type="Tables" />
@@ -1079,6 +1088,7 @@ warning 6002: The table/view 'ODMS.dbo.tbld_db_zone_view' does not have a primar
           <EntitySet Name="tbld_Outlet_new" EntityType="Self.tbld_Outlet_new" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="tbld_ReportList" EntityType="Self.tbld_ReportList" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="tbld_Route_Plan" EntityType="Self.tbld_Route_Plan" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tbld_Route_plan_Current_Route" EntityType="Self.tbld_Route_plan_Current_Route" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="tbld_Route_Plan_Detail" EntityType="Self.tbld_Route_Plan_Detail" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="tbld_Route_Plan_Mapping" EntityType="Self.tbld_Route_Plan_Mapping" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="tbld_SKU" EntityType="Self.tbld_SKU" Schema="dbo" store:Type="Tables" />
@@ -1115,29 +1125,6 @@ warning 6002: The table/view 'ODMS.dbo.tbld_db_zone_view' does not have a primar
           <EntitySet Name="tblt_TradePromotionType" EntityType="Self.tblt_TradePromotionType" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="user_info" EntityType="Self.user_info" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="user_role" EntityType="Self.user_role" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="tbld_distribution_employee" EntityType="Self.tbld_distribution_employee" store:Type="Tables" store:Schema="dbo">
-            <DefiningQuery>SELECT 
-    [tbld_distribution_employee].[id] AS [id], 
-    [tbld_distribution_employee].[Emp_code] AS [Emp_code], 
-    [tbld_distribution_employee].[Name] AS [Name], 
-    [tbld_distribution_employee].[Emp_address] AS [Emp_address], 
-    [tbld_distribution_employee].[User_role_id] AS [User_role_id], 
-    [tbld_distribution_employee].[DistributionId] AS [DistributionId], 
-    [tbld_distribution_employee].[login_user_id] AS [login_user_id], 
-    [tbld_distribution_employee].[login_user_password] AS [login_user_password], 
-    [tbld_distribution_employee].[contact_no] AS [contact_no], 
-    [tbld_distribution_employee].[joining_date] AS [joining_date], 
-    [tbld_distribution_employee].[designation] AS [designation], 
-    [tbld_distribution_employee].[Emp_Type] AS [Emp_Type], 
-    [tbld_distribution_employee].[d_o_b] AS [d_o_b], 
-    [tbld_distribution_employee].[email] AS [email], 
-    [tbld_distribution_employee].[emergency_contact_person] AS [emergency_contact_person], 
-    [tbld_distribution_employee].[emergency_contact_number] AS [emergency_contact_number], 
-    [tbld_distribution_employee].[educational_qualification] AS [educational_qualification], 
-    [tbld_distribution_employee].[image] AS [image], 
-    [tbld_distribution_employee].[active] AS [active]
-    FROM [dbo].[tbld_distribution_employee] AS [tbld_distribution_employee]</DefiningQuery>
-          </EntitySet>
           <EntitySet Name="tbld_db_psr_zone_view" EntityType="Self.tbld_db_psr_zone_view" store:Type="Views" store:Schema="dbo">
             <DefiningQuery>SELECT 
     [tbld_db_psr_zone_view].[DB_Id] AS [DB_Id], 
@@ -1709,13 +1696,6 @@ warning 6002: The table/view 'ODMS.dbo.tbld_db_zone_view' does not have a primar
             <End Role="tblt_PurchaseOrder" EntitySet="tblt_PurchaseOrder" />
             <End Role="tblt_PurchaseOrderLine" EntitySet="tblt_PurchaseOrderLine" />
           </AssociationSet>
-          <EntitySet Name="tbld_Route_Plan" EntityType="ODMSModel.tbld_Route_Plan" />
-          <EntitySet Name="tbld_Route_Plan_Mapping" EntityType="ODMSModel.tbld_Route_Plan_Mapping" />
-          <EntitySet Name="tbld_Route_Plan_Detail" EntityType="ODMSModel.tbld_Route_Plan_Detail" />
-          <AssociationSet Name="FK_tbld_Route_Plan_Detail_tbld_Route_Plan" Association="ODMSModel.FK_tbld_Route_Plan_Detail_tbld_Route_Plan">
-            <End Role="tbld_Route_Plan" EntitySet="tbld_Route_Plan" />
-            <End Role="tbld_Route_Plan_Detail" EntitySet="tbld_Route_Plan_Detail" />
-          </AssociationSet>
           <EntitySet Name="tblt_TradePromotion" EntityType="ODMSModel.tblt_TradePromotion" />
           <EntitySet Name="tblt_TradePromotionDBhouseMapping" EntityType="ODMSModel.tblt_TradePromotionDBhouseMapping" />
           <EntitySet Name="tblt_TradePromotionRule" EntityType="ODMSModel.tblt_TradePromotionRule" />
@@ -1810,6 +1790,14 @@ warning 6002: The table/view 'ODMS.dbo.tbld_db_zone_view' does not have a primar
             <Parameter Name="dbids" Mode="In" Type="String" />
             <Parameter Name="skuids" Mode="In" Type="String" />
           </FunctionImport>
+          <EntitySet Name="tbld_Route_plan_Current_Route" EntityType="ODMSModel.tbld_Route_plan_Current_Route" />
+          <EntitySet Name="tbld_Route_Plan_Detail" EntityType="ODMSModel.tbld_Route_Plan_Detail" />
+          <EntitySet Name="tbld_Route_Plan_Mapping" EntityType="ODMSModel.tbld_Route_Plan_Mapping" />
+          <EntitySet Name="tbld_Route_Plan" EntityType="ODMSModel.tbld_Route_Plan" />
+          <AssociationSet Name="FK_tbld_Route_Plan_Detail_tbld_Route_Plan" Association="ODMSModel.FK_tbld_Route_Plan_Detail_tbld_Route_Plan">
+            <End Role="tbld_Route_Plan" EntitySet="tbld_Route_Plan" />
+            <End Role="tbld_Route_Plan_Detail" EntitySet="tbld_Route_Plan_Detail" />
+          </AssociationSet>
         </EntityContainer>
         <ComplexType Name="DB_User_check_Result">
           <Property Type="Int32" Name="id" Nullable="false" />
@@ -1900,60 +1888,6 @@ warning 6002: The table/view 'ODMS.dbo.tbld_db_zone_view' does not have a primar
             </Principal>
             <Dependent Role="tblt_PurchaseOrderLine">
               <PropertyRef Name="POId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <EntityType Name="tbld_Route_Plan">
-          <Key>
-            <PropertyRef Name="id" />
-          </Key>
-          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="route_plan_name" Type="String" Nullable="false" MaxLength="30" FixedLength="false" Unicode="false" />
-          <Property Name="route_plan_code" Type="String" Nullable="false" MaxLength="30" FixedLength="false" Unicode="false" />
-          <Property Name="route_plan_description" Type="String" Nullable="false" MaxLength="30" FixedLength="false" Unicode="false" />
-          <Property Name="db_id" Type="Int32" Nullable="false" />
-          <Property Name="db_emp_id" Type="Int32" Nullable="false" />
-          <Property Name="creation_date" Type="DateTime" Nullable="false" Precision="0" />
-          <Property Name="start_date" Type="DateTime" Nullable="false" Precision="0" />
-          <Property Name="end_date" Type="DateTime" Nullable="false" Precision="0" />
-          <Property Name="Modify_date" Type="DateTime" Nullable="false" Precision="0" />
-          <Property Name="created_by" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
-          <NavigationProperty Name="tbld_Route_Plan_Detail" Relationship="ODMSModel.FK_tbld_Route_Plan_Detail_tbld_Route_Plan" FromRole="tbld_Route_Plan" ToRole="tbld_Route_Plan_Detail" />
-        </EntityType>
-        <EntityType Name="tbld_Route_Plan_Mapping">
-          <Key>
-            <PropertyRef Name="id" />
-          </Key>
-          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="db_id" Type="Int32" Nullable="false" />
-          <Property Name="db_emp_id" Type="Int32" Nullable="false" />
-          <Property Name="route_plan_id" Type="Int32" Nullable="false" />
-          <Property Name="route_id" Type="Int32" Nullable="false" />
-          <Property Name="day" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="false" />
-        </EntityType>
-        <EntityType Name="tbld_Route_Plan_Detail">
-          <Key>
-            <PropertyRef Name="id" />
-          </Key>
-          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="route_plan_id" Type="Int32" />
-          <Property Name="route_id" Type="Int32" />
-          <Property Name="dbid" Type="Int32" />
-          <Property Name="db_emp_id" Type="Int32" />
-          <Property Name="planned_visit_date" Type="DateTime" Precision="0" />
-          <Property Name="delivery_date" Type="DateTime" Precision="0" />
-          <Property Name="no_of_outlet" Type="Int32" />
-          <NavigationProperty Name="tbld_Route_Plan" Relationship="ODMSModel.FK_tbld_Route_Plan_Detail_tbld_Route_Plan" FromRole="tbld_Route_Plan_Detail" ToRole="tbld_Route_Plan" />
-        </EntityType>
-        <Association Name="FK_tbld_Route_Plan_Detail_tbld_Route_Plan">
-          <End Type="ODMSModel.tbld_Route_Plan" Role="tbld_Route_Plan" Multiplicity="0..1" />
-          <End Type="ODMSModel.tbld_Route_Plan_Detail" Role="tbld_Route_Plan_Detail" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="tbld_Route_Plan">
-              <PropertyRef Name="id" />
-            </Principal>
-            <Dependent Role="tbld_Route_Plan_Detail">
-              <PropertyRef Name="route_plan_id" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -2663,6 +2597,70 @@ warning 6002: The table/view 'ODMS.dbo.tbld_db_zone_view' does not have a primar
           <Property Type="Decimal" Name="FreeOrder_Quentity" Nullable="true" Precision="19" />
           <Property Type="Decimal" Name="FreeConfirmed_Quantity" Nullable="true" Precision="19" />
         </ComplexType>
+        <EntityType Name="tbld_Route_plan_Current_Route">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="db_id" Type="Int32" Nullable="false" />
+          <Property Name="db_emp_id" Type="Int32" Nullable="false" />
+          <Property Name="route_plan_id" Type="Int32" Nullable="false" />
+          <Property Name="route_id" Type="Int32" Nullable="false" />
+        </EntityType>
+        <EntityType Name="tbld_Route_Plan_Detail">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="route_plan_id" Type="Int32" />
+          <Property Name="route_id" Type="Int32" />
+          <Property Name="dbid" Type="Int32" />
+          <Property Name="db_emp_id" Type="Int32" />
+          <Property Name="planned_visit_date" Type="DateTime" Precision="0" />
+          <Property Name="delivery_date" Type="DateTime" Precision="0" />
+          <Property Name="no_of_outlet" Type="Int32" />
+          <NavigationProperty Name="tbld_Route_Plan" Relationship="ODMSModel.FK_tbld_Route_Plan_Detail_tbld_Route_Plan" FromRole="tbld_Route_Plan_Detail" ToRole="tbld_Route_Plan" />
+        </EntityType>
+        <EntityType Name="tbld_Route_Plan_Mapping">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="db_id" Type="Int32" Nullable="false" />
+          <Property Name="db_emp_id" Type="Int32" Nullable="false" />
+          <Property Name="route_plan_id" Type="Int32" Nullable="false" />
+          <Property Name="route_id" Type="Int32" Nullable="false" />
+          <Property Name="day" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="tbld_Route_Plan">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="route_plan_name" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+          <Property Name="route_plan_code" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+          <Property Name="route_plan_description" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+          <Property Name="db_id" Type="Int32" Nullable="false" />
+          <Property Name="db_emp_id" Type="Int32" Nullable="false" />
+          <Property Name="creation_date" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="start_date" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="end_date" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="Modify_date" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="created_by" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="tbld_Route_Plan_Detail" Relationship="ODMSModel.FK_tbld_Route_Plan_Detail_tbld_Route_Plan" FromRole="tbld_Route_Plan" ToRole="tbld_Route_Plan_Detail" />
+        </EntityType>
+        <Association Name="FK_tbld_Route_Plan_Detail_tbld_Route_Plan">
+          <End Type="ODMSModel.tbld_Route_Plan" Role="tbld_Route_Plan" Multiplicity="0..1" />
+          <End Type="ODMSModel.tbld_Route_Plan_Detail" Role="tbld_Route_Plan_Detail" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbld_Route_Plan">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="tbld_Route_Plan_Detail">
+              <PropertyRef Name="route_plan_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -3143,49 +3141,6 @@ warning 6002: The table/view 'ODMS.dbo.tbld_db_zone_view' does not have a primar
                 <ScalarProperty Name="DbId" ColumnName="DbId" />
                 <ScalarProperty Name="ChallanNo" ColumnName="ChallanNo" />
                 <ScalarProperty Name="Id" ColumnName="Id" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="tbld_Route_Plan">
-            <EntityTypeMapping TypeName="ODMSModel.tbld_Route_Plan">
-              <MappingFragment StoreEntitySet="tbld_Route_Plan">
-                <ScalarProperty Name="created_by" ColumnName="created_by" />
-                <ScalarProperty Name="Modify_date" ColumnName="Modify_date" />
-                <ScalarProperty Name="end_date" ColumnName="end_date" />
-                <ScalarProperty Name="start_date" ColumnName="start_date" />
-                <ScalarProperty Name="creation_date" ColumnName="creation_date" />
-                <ScalarProperty Name="db_emp_id" ColumnName="db_emp_id" />
-                <ScalarProperty Name="db_id" ColumnName="db_id" />
-                <ScalarProperty Name="route_plan_description" ColumnName="route_plan_description" />
-                <ScalarProperty Name="route_plan_code" ColumnName="route_plan_code" />
-                <ScalarProperty Name="route_plan_name" ColumnName="route_plan_name" />
-                <ScalarProperty Name="id" ColumnName="id" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="tbld_Route_Plan_Mapping">
-            <EntityTypeMapping TypeName="ODMSModel.tbld_Route_Plan_Mapping">
-              <MappingFragment StoreEntitySet="tbld_Route_Plan_Mapping">
-                <ScalarProperty Name="day" ColumnName="day" />
-                <ScalarProperty Name="route_id" ColumnName="route_id" />
-                <ScalarProperty Name="route_plan_id" ColumnName="route_plan_id" />
-                <ScalarProperty Name="db_emp_id" ColumnName="db_emp_id" />
-                <ScalarProperty Name="db_id" ColumnName="db_id" />
-                <ScalarProperty Name="id" ColumnName="id" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="tbld_Route_Plan_Detail">
-            <EntityTypeMapping TypeName="ODMSModel.tbld_Route_Plan_Detail">
-              <MappingFragment StoreEntitySet="tbld_Route_Plan_Detail">
-                <ScalarProperty Name="no_of_outlet" ColumnName="no_of_outlet" />
-                <ScalarProperty Name="delivery_date" ColumnName="delivery_date" />
-                <ScalarProperty Name="planned_visit_date" ColumnName="planned_visit_date" />
-                <ScalarProperty Name="db_emp_id" ColumnName="db_emp_id" />
-                <ScalarProperty Name="dbid" ColumnName="dbid" />
-                <ScalarProperty Name="route_id" ColumnName="route_id" />
-                <ScalarProperty Name="route_plan_id" ColumnName="route_plan_id" />
-                <ScalarProperty Name="id" ColumnName="id" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -3887,6 +3842,60 @@ warning 6002: The table/view 'ODMS.dbo.tbld_db_zone_view' does not have a primar
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>
+          <EntitySetMapping Name="tbld_Route_plan_Current_Route">
+            <EntityTypeMapping TypeName="ODMSModel.tbld_Route_plan_Current_Route">
+              <MappingFragment StoreEntitySet="tbld_Route_plan_Current_Route">
+                <ScalarProperty Name="route_id" ColumnName="route_id" />
+                <ScalarProperty Name="route_plan_id" ColumnName="route_plan_id" />
+                <ScalarProperty Name="db_emp_id" ColumnName="db_emp_id" />
+                <ScalarProperty Name="db_id" ColumnName="db_id" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tbld_Route_Plan_Detail">
+            <EntityTypeMapping TypeName="ODMSModel.tbld_Route_Plan_Detail">
+              <MappingFragment StoreEntitySet="tbld_Route_Plan_Detail">
+                <ScalarProperty Name="no_of_outlet" ColumnName="no_of_outlet" />
+                <ScalarProperty Name="delivery_date" ColumnName="delivery_date" />
+                <ScalarProperty Name="planned_visit_date" ColumnName="planned_visit_date" />
+                <ScalarProperty Name="db_emp_id" ColumnName="db_emp_id" />
+                <ScalarProperty Name="dbid" ColumnName="dbid" />
+                <ScalarProperty Name="route_id" ColumnName="route_id" />
+                <ScalarProperty Name="route_plan_id" ColumnName="route_plan_id" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tbld_Route_Plan_Mapping">
+            <EntityTypeMapping TypeName="ODMSModel.tbld_Route_Plan_Mapping">
+              <MappingFragment StoreEntitySet="tbld_Route_Plan_Mapping">
+                <ScalarProperty Name="day" ColumnName="day" />
+                <ScalarProperty Name="route_id" ColumnName="route_id" />
+                <ScalarProperty Name="route_plan_id" ColumnName="route_plan_id" />
+                <ScalarProperty Name="db_emp_id" ColumnName="db_emp_id" />
+                <ScalarProperty Name="db_id" ColumnName="db_id" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tbld_Route_Plan">
+            <EntityTypeMapping TypeName="ODMSModel.tbld_Route_Plan">
+              <MappingFragment StoreEntitySet="tbld_Route_Plan">
+                <ScalarProperty Name="created_by" ColumnName="created_by" />
+                <ScalarProperty Name="Modify_date" ColumnName="Modify_date" />
+                <ScalarProperty Name="end_date" ColumnName="end_date" />
+                <ScalarProperty Name="start_date" ColumnName="start_date" />
+                <ScalarProperty Name="creation_date" ColumnName="creation_date" />
+                <ScalarProperty Name="db_emp_id" ColumnName="db_emp_id" />
+                <ScalarProperty Name="db_id" ColumnName="db_id" />
+                <ScalarProperty Name="route_plan_description" ColumnName="route_plan_description" />
+                <ScalarProperty Name="route_plan_code" ColumnName="route_plan_code" />
+                <ScalarProperty Name="route_plan_name" ColumnName="route_plan_name" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
           </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>

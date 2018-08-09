@@ -58,9 +58,6 @@ namespace ODMS.Models
         public virtual DbSet<user_role> user_role { get; set; }
         public virtual DbSet<tblt_PurchaseOrderLine> tblt_PurchaseOrderLine { get; set; }
         public virtual DbSet<tblt_PurchaseOrder> tblt_PurchaseOrder { get; set; }
-        public virtual DbSet<tbld_Route_Plan> tbld_Route_Plan { get; set; }
-        public virtual DbSet<tbld_Route_Plan_Mapping> tbld_Route_Plan_Mapping { get; set; }
-        public virtual DbSet<tbld_Route_Plan_Detail> tbld_Route_Plan_Detail { get; set; }
         public virtual DbSet<tblt_TradePromotion> tblt_TradePromotion { get; set; }
         public virtual DbSet<tblt_TradePromotionDBhouseMapping> tblt_TradePromotionDBhouseMapping { get; set; }
         public virtual DbSet<tblt_TradePromotionRule> tblt_TradePromotionRule { get; set; }
@@ -91,6 +88,10 @@ namespace ODMS.Models
         public virtual DbSet<tbld_SKU_Brand> tbld_SKU_Brand { get; set; }
         public virtual DbSet<tbld_SKU_Brand_category> tbld_SKU_Brand_category { get; set; }
         public virtual DbSet<tbld_Outlet_new> tbld_Outlet_new { get; set; }
+        public virtual DbSet<tbld_Route_plan_Current_Route> tbld_Route_plan_Current_Route { get; set; }
+        public virtual DbSet<tbld_Route_Plan_Detail> tbld_Route_Plan_Detail { get; set; }
+        public virtual DbSet<tbld_Route_Plan_Mapping> tbld_Route_Plan_Mapping { get; set; }
+        public virtual DbSet<tbld_Route_Plan> tbld_Route_Plan { get; set; }
     
         public virtual ObjectResult<DB_User_check_Result> DB_User_check(string userName, string password)
         {

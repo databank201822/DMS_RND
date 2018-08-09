@@ -31,6 +31,9 @@
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <FilesToIncludeForPublish>OnlyFilesToRunTheApp</FilesToIncludeForPublish>
+    <DeployEncryptKey>Encryption password is used only if any deployment setting is marked as secure</DeployEncryptKey>
+    <PublishDatabases>true</PublishDatabases>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>pdbonly</DebugType>
@@ -49,11 +52,11 @@
       <Private>True</Private>
     </Reference>
     <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
-      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.dll</HintPath>
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
-      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="LinqToExcel, Version=1.11.0.0, Culture=neutral, PublicKeyToken=9c8ea65a58f03f1f, processorArchitecture=MSIL">
@@ -93,6 +96,10 @@
       <HintPath>..\packages\Microsoft.SqlServer.Types.14.0.314.76\lib\net40\Microsoft.SqlServer.Types.dll</HintPath>
       <Private>True</Private>
     </Reference>
+    <Reference Include="Newtonsoft.Json, Version=11.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.11.0.2\lib\net45\Newtonsoft.Json.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="Remotion, Version=1.13.52.2, Culture=neutral, PublicKeyToken=0669cf0452175907, processorArchitecture=MSIL">
       <HintPath>..\packages\LinqToExcel.1.11.0\lib\Remotion.dll</HintPath>
       <Private>True</Private>
@@ -124,12 +131,36 @@
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
     <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Web.Helpers, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.6\lib\net45\System.Web.Helpers.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="System.Web.Http, Version=5.2.6.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.AspNet.WebApi.Core.5.2.6\lib\net45\System.Web.Http.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="System.Web.Http.WebHost, Version=5.2.6.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.AspNet.WebApi.WebHost.5.2.6\lib\net45\System.Web.Http.WebHost.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Web.Mvc, Version=5.2.6.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.Mvc.5.2.6\lib\net45\System.Web.Mvc.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Web.Razor, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.Razor.3.2.6\lib\net45\System.Web.Razor.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Web.WebPages, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.6\lib\net45\System.Web.WebPages.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Web.WebPages.Deployment, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.6\lib\net45\System.Web.WebPages.Deployment.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Web.WebPages.Razor, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.6\lib\net45\System.Web.WebPages.Razor.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="System.Windows.Forms" />
@@ -151,32 +182,8 @@
     </Reference>
     <Reference Include="System.Net.Http.WebRequest">
     </Reference>
-    <Reference Include="System.Web.Helpers, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <Private>True</Private>
-      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.3\lib\net45\System.Web.Helpers.dll</HintPath>
-    </Reference>
-    <Reference Include="System.Web.Mvc, Version=5.2.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <Private>True</Private>
-      <HintPath>..\packages\Microsoft.AspNet.Mvc.5.2.3\lib\net45\System.Web.Mvc.dll</HintPath>
-    </Reference>
     <Reference Include="System.Web.Optimization">
       <HintPath>..\packages\Microsoft.AspNet.Web.Optimization.1.1.3\lib\net40\System.Web.Optimization.dll</HintPath>
-    </Reference>
-    <Reference Include="System.Web.Razor, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <Private>True</Private>
-      <HintPath>..\packages\Microsoft.AspNet.Razor.3.2.3\lib\net45\System.Web.Razor.dll</HintPath>
-    </Reference>
-    <Reference Include="System.Web.WebPages, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <Private>True</Private>
-      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.3\lib\net45\System.Web.WebPages.dll</HintPath>
-    </Reference>
-    <Reference Include="System.Web.WebPages.Deployment, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <Private>True</Private>
-      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.3\lib\net45\System.Web.WebPages.Deployment.dll</HintPath>
-    </Reference>
-    <Reference Include="System.Web.WebPages.Razor, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <Private>True</Private>
-      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.3\lib\net45\System.Web.WebPages.Razor.dll</HintPath>
     </Reference>
     <Reference Include="WebActivatorEx, Version=2.0.0.0, Culture=neutral, PublicKeyToken=7b26dc2a43f6a0d4, processorArchitecture=MSIL">
       <HintPath>..\packages\WebActivatorEx.2.2.0\lib\net40\WebActivatorEx.dll</HintPath>
@@ -193,11 +200,6 @@
     <Reference Include="Yahoo.Yui.Compressor, Version=1.5.0.0, Culture=neutral, PublicKeyToken=f8b4b81ec75097e2, processorArchitecture=MSIL">
       <HintPath>..\packages\YUICompressor.NET.1.5.0.0\lib\NET35\Yahoo.Yui.Compressor.dll</HintPath>
       <Private>True</Private>
-    </Reference>
-  </ItemGroup>
-  <ItemGroup>
-    <Reference Include="Newtonsoft.Json">
-      <HintPath>..\packages\Newtonsoft.Json.6.0.4\lib\net45\Newtonsoft.Json.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>
@@ -425,6 +427,9 @@
       <DependentUpon>ODMS.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\tbld_Route_Plan.cs">
+      <DependentUpon>ODMS.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\tbld_Route_plan_Current_Route.cs">
       <DependentUpon>ODMS.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\tbld_Route_Plan_Detail.cs">
@@ -711,42 +716,6 @@
     <Content Include="Content\tamplate\bower_components\bootstrap-datepicker\dist\locales\bootstrap-datepicker.vi.min.js" />
     <Content Include="Content\tamplate\bower_components\bootstrap-datepicker\dist\locales\bootstrap-datepicker.zh-CN.min.js" />
     <Content Include="Content\tamplate\bower_components\bootstrap-datepicker\dist\locales\bootstrap-datepicker.zh-TW.min.js" />
-    <Content Include="Content\tamplate\bower_components\bootstrap-datepicker\docs\requirements.txt" />
-    <Content Include="Content\tamplate\bower_components\bootstrap-datepicker\docs\_screenshots\demo_head.html" />
-    <Content Include="Content\tamplate\bower_components\bootstrap-datepicker\docs\_screenshots\markup_component.html" />
-    <Content Include="Content\tamplate\bower_components\bootstrap-datepicker\docs\_screenshots\markup_daterange.html" />
-    <Content Include="Content\tamplate\bower_components\bootstrap-datepicker\docs\_screenshots\markup_inline.html" />
-    <Content Include="Content\tamplate\bower_components\bootstrap-datepicker\docs\_screenshots\markup_input.html" />
-    <Content Include="Content\tamplate\bower_components\bootstrap-datepicker\docs\_screenshots\option_calendarweeks.html" />
-    <Content Include="Content\tamplate\bower_components\bootstrap-datepicker\docs\_screenshots\option_clearbtn.html" />
-    <Content Include="Content\tamplate\bower_components\bootstrap-datepicker\docs\_screenshots\option_daysofweekdisabled.html" />
-    <Content Include="Content\tamplate\bower_components\bootstrap-datepicker\docs\_screenshots\option_enddate.html" />
-    <Content Include="Content\tamplate\bower_components\bootstrap-datepicker\docs\_screenshots\option_language.html" />
-    <Content Include="Content\tamplate\bower_components\bootstrap-datepicker\docs\_screenshots\option_multidate.html" />
-    <Content Include="Content\tamplate\bower_components\bootstrap-datepicker\docs\_screenshots\option_startdate.html" />
-    <Content Include="Content\tamplate\bower_components\bootstrap-datepicker\docs\_screenshots\option_todaybtn.html" />
-    <Content Include="Content\tamplate\bower_components\bootstrap-datepicker\docs\_screenshots\option_todayhighlight.html" />
-    <Content Include="Content\tamplate\bower_components\bootstrap-datepicker\docs\_screenshots\option_weekstart.html" />
-    <Content Include="Content\tamplate\bower_components\bootstrap-datepicker\docs\_screenshots\script\common.css" />
-    <Content Include="Content\tamplate\bower_components\bootstrap-datepicker\docs\_screenshots\script\common.js" />
-    <Content Include="Content\tamplate\bower_components\bootstrap-datepicker\docs\_screenshots\script\debug.js" />
-    <Content Include="Content\tamplate\bower_components\bootstrap-datepicker\docs\_screenshots\script\html-imports.min.js" />
-    <Content Include="Content\tamplate\bower_components\bootstrap-datepicker\docs\_screenshots\script\screenshot.js" />
-    <Content Include="Content\tamplate\bower_components\bootstrap-datepicker\docs\_static\screenshots\demo_head.png" />
-    <Content Include="Content\tamplate\bower_components\bootstrap-datepicker\docs\_static\screenshots\markup_component.png" />
-    <Content Include="Content\tamplate\bower_components\bootstrap-datepicker\docs\_static\screenshots\markup_daterange.png" />
-    <Content Include="Content\tamplate\bower_components\bootstrap-datepicker\docs\_static\screenshots\markup_inline.png" />
-    <Content Include="Content\tamplate\bower_components\bootstrap-datepicker\docs\_static\screenshots\markup_input.png" />
-    <Content Include="Content\tamplate\bower_components\bootstrap-datepicker\docs\_static\screenshots\option_calendarweeks.png" />
-    <Content Include="Content\tamplate\bower_components\bootstrap-datepicker\docs\_static\screenshots\option_clearbtn.png" />
-    <Content Include="Content\tamplate\bower_components\bootstrap-datepicker\docs\_static\screenshots\option_daysofweekdisabled.png" />
-    <Content Include="Content\tamplate\bower_components\bootstrap-datepicker\docs\_static\screenshots\option_enddate.png" />
-    <Content Include="Content\tamplate\bower_components\bootstrap-datepicker\docs\_static\screenshots\option_language.png" />
-    <Content Include="Content\tamplate\bower_components\bootstrap-datepicker\docs\_static\screenshots\option_multidate.png" />
-    <Content Include="Content\tamplate\bower_components\bootstrap-datepicker\docs\_static\screenshots\option_startdate.png" />
-    <Content Include="Content\tamplate\bower_components\bootstrap-datepicker\docs\_static\screenshots\option_todaybtn.png" />
-    <Content Include="Content\tamplate\bower_components\bootstrap-datepicker\docs\_static\screenshots\option_todayhighlight.png" />
-    <Content Include="Content\tamplate\bower_components\bootstrap-datepicker\docs\_static\screenshots\option_weekstart.png" />
     <Content Include="Content\tamplate\bower_components\bootstrap-datepicker\js\bootstrap-datepicker.js" />
     <Content Include="Content\tamplate\bower_components\bootstrap-datepicker\js\locales\bootstrap-datepicker-en-CA.js" />
     <Content Include="Content\tamplate\bower_components\bootstrap-datepicker\js\locales\bootstrap-datepicker.ar-tn.js" />
@@ -854,18 +823,9 @@
     <Content Include="Content\tamplate\bower_components\bootstrap-datepicker\tests\suites\options.js" />
     <Content Include="Content\tamplate\bower_components\bootstrap-datepicker\tests\suites\timezone.js" />
     <Content Include="Content\tamplate\bower_components\bootstrap-datepicker\tests\suites\touch_navigation\all.js" />
-    <Content Include="Content\tamplate\bower_components\bootstrap-datepicker\tests\tests.html" />
-    <Content Include="Content\tamplate\bower_components\bootstrap-datepicker\tests\timezone.html" />
     <Content Include="Content\tamplate\bower_components\bootstrap-daterangepicker\daterangepicker.css" />
     <Content Include="Content\tamplate\bower_components\bootstrap-daterangepicker\daterangepicker.js" />
-    <Content Include="Content\tamplate\bower_components\bootstrap-daterangepicker\demo.html" />
     <Content Include="Content\tamplate\bower_components\bootstrap-daterangepicker\drp.png" />
-    <Content Include="Content\tamplate\bower_components\bootstrap-daterangepicker\example\amd\index.html" />
-    <Content Include="Content\tamplate\bower_components\bootstrap-daterangepicker\example\amd\main.js" />
-    <Content Include="Content\tamplate\bower_components\bootstrap-daterangepicker\example\amd\require.js" />
-    <Content Include="Content\tamplate\bower_components\bootstrap-daterangepicker\example\browserify\bundle.js" />
-    <Content Include="Content\tamplate\bower_components\bootstrap-daterangepicker\example\browserify\index.html" />
-    <Content Include="Content\tamplate\bower_components\bootstrap-daterangepicker\example\browserify\main.js" />
     <Content Include="Content\tamplate\bower_components\bootstrap-daterangepicker\package.js" />
     <Content Include="Content\tamplate\bower_components\bootstrap-timepicker\js\bootstrap-timepicker.js" />
     <Content Include="Content\tamplate\bower_components\bootstrap\dist\css\bootstrap-theme.css" />
@@ -897,14 +857,6 @@
     <Content Include="Content\tamplate\bower_components\chart.js\Chart.js" />
     <Content Include="Content\tamplate\bower_components\chart.js\Chart.min.js" />
     <Content Include="Content\tamplate\bower_components\chart.js\gulpfile.js" />
-    <Content Include="Content\tamplate\bower_components\chart.js\samples\bar.html" />
-    <Content Include="Content\tamplate\bower_components\chart.js\samples\doughnut.html" />
-    <Content Include="Content\tamplate\bower_components\chart.js\samples\line-customTooltips.html" />
-    <Content Include="Content\tamplate\bower_components\chart.js\samples\line.html" />
-    <Content Include="Content\tamplate\bower_components\chart.js\samples\pie-customTooltips.html" />
-    <Content Include="Content\tamplate\bower_components\chart.js\samples\pie.html" />
-    <Content Include="Content\tamplate\bower_components\chart.js\samples\polar-area.html" />
-    <Content Include="Content\tamplate\bower_components\chart.js\samples\radar.html" />
     <Content Include="Content\tamplate\bower_components\chart.js\src\Chart.Bar.js" />
     <Content Include="Content\tamplate\bower_components\chart.js\src\Chart.Core.js" />
     <Content Include="Content\tamplate\bower_components\chart.js\src\Chart.Doughnut.js" />
@@ -2040,12 +1992,6 @@
     <Content Include="Content\tamplate\bower_components\select2\dist\js\select2.full.min.js" />
     <Content Include="Content\tamplate\bower_components\select2\dist\js\select2.js" />
     <Content Include="Content\tamplate\bower_components\select2\dist\js\select2.min.js" />
-    <Content Include="Content\tamplate\bower_components\select2\docs\announcements-4.0.html" />
-    <Content Include="Content\tamplate\bower_components\select2\docs\community.html" />
-    <Content Include="Content\tamplate\bower_components\select2\docs\examples.html" />
-    <Content Include="Content\tamplate\bower_components\select2\docs\index.html" />
-    <Content Include="Content\tamplate\bower_components\select2\docs\options-old.html" />
-    <Content Include="Content\tamplate\bower_components\select2\docs\options.html" />
     <Content Include="Content\tamplate\bower_components\select2\src\js\jquery.mousewheel.shim.js" />
     <Content Include="Content\tamplate\bower_components\select2\src\js\jquery.select2.js" />
     <Content Include="Content\tamplate\bower_components\select2\src\js\jquery.shim.js" />
@@ -2146,45 +2092,6 @@
     <Content Include="Content\tamplate\bower_components\select2\src\js\select2\selection\stopPropagation.js" />
     <Content Include="Content\tamplate\bower_components\select2\src\js\select2\translation.js" />
     <Content Include="Content\tamplate\bower_components\select2\src\js\select2\utils.js" />
-    <Content Include="Content\tamplate\bower_components\select2\tests\a11y\search-tests.js" />
-    <Content Include="Content\tamplate\bower_components\select2\tests\a11y\selection-tests.js" />
-    <Content Include="Content\tamplate\bower_components\select2\tests\data\array-tests.js" />
-    <Content Include="Content\tamplate\bower_components\select2\tests\data\base-tests.js" />
-    <Content Include="Content\tamplate\bower_components\select2\tests\data\inputData-tests.js" />
-    <Content Include="Content\tamplate\bower_components\select2\tests\data\maximumInputLength-tests.js" />
-    <Content Include="Content\tamplate\bower_components\select2\tests\data\maximumSelectionLength-tests.js" />
-    <Content Include="Content\tamplate\bower_components\select2\tests\data\minimumInputLength-tests.js" />
-    <Content Include="Content\tamplate\bower_components\select2\tests\data\select-tests.js" />
-    <Content Include="Content\tamplate\bower_components\select2\tests\data\tags-tests.js" />
-    <Content Include="Content\tamplate\bower_components\select2\tests\data\tokenizer-tests.js" />
-    <Content Include="Content\tamplate\bower_components\select2\tests\dropdown\dropdownCss-tests.js" />
-    <Content Include="Content\tamplate\bower_components\select2\tests\dropdown\positioning-tests.js" />
-    <Content Include="Content\tamplate\bower_components\select2\tests\dropdown\selectOnClose-tests.js" />
-    <Content Include="Content\tamplate\bower_components\select2\tests\dropdown\stopPropagation-tests.js" />
-    <Content Include="Content\tamplate\bower_components\select2\tests\helpers.js" />
-    <Content Include="Content\tamplate\bower_components\select2\tests\integration.html" />
-    <Content Include="Content\tamplate\bower_components\select2\tests\integration\dom-changes.js" />
-    <Content Include="Content\tamplate\bower_components\select2\tests\integration\jquery-calls.js" />
-    <Content Include="Content\tamplate\bower_components\select2\tests\integration\select2-methods.js" />
-    <Content Include="Content\tamplate\bower_components\select2\tests\options\ajax-tests.js" />
-    <Content Include="Content\tamplate\bower_components\select2\tests\options\data-tests.js" />
-    <Content Include="Content\tamplate\bower_components\select2\tests\options\deprecated-tests.js" />
-    <Content Include="Content\tamplate\bower_components\select2\tests\options\translation-tests.js" />
-    <Content Include="Content\tamplate\bower_components\select2\tests\options\width-tests.js" />
-    <Content Include="Content\tamplate\bower_components\select2\tests\results\focusing-tests.js" />
-    <Content Include="Content\tamplate\bower_components\select2\tests\selection\allowClear-tests.js" />
-    <Content Include="Content\tamplate\bower_components\select2\tests\selection\containerCss-tests.js" />
-    <Content Include="Content\tamplate\bower_components\select2\tests\selection\multiple-tests.js" />
-    <Content Include="Content\tamplate\bower_components\select2\tests\selection\placeholder-tests.js" />
-    <Content Include="Content\tamplate\bower_components\select2\tests\selection\search-tests.js" />
-    <Content Include="Content\tamplate\bower_components\select2\tests\selection\single-tests.js" />
-    <Content Include="Content\tamplate\bower_components\select2\tests\selection\stopPropagation-tests.js" />
-    <Content Include="Content\tamplate\bower_components\select2\tests\unit.html" />
-    <Content Include="Content\tamplate\bower_components\select2\tests\utils\decorator-tests.js" />
-    <Content Include="Content\tamplate\bower_components\select2\tests\utils\escapeMarkup-tests.js" />
-    <Content Include="Content\tamplate\bower_components\select2\tests\vendor\jquery-1.7.2.js" />
-    <Content Include="Content\tamplate\bower_components\select2\tests\vendor\qunit-1.23.1.css" />
-    <Content Include="Content\tamplate\bower_components\select2\tests\vendor\qunit-1.23.1.js" />
     <Content Include="Content\tamplate\bower_components\select2\vendor\jquery-2.1.0.js" />
     <Content Include="Content\tamplate\bower_components\slimScroll\jquery.slimscroll.js" />
     <Content Include="Content\tamplate\bower_components\slimScroll\jquery.slimscroll.min.js" />
@@ -2441,17 +2348,6 @@
     <Content Include="Content\tamplate\bower_components\bootstrap-datepicker\dist\css\bootstrap-datepicker.standalone.css.map" />
     <Content Include="Content\tamplate\bower_components\bootstrap-datepicker\dist\css\bootstrap-datepicker3.css.map" />
     <Content Include="Content\tamplate\bower_components\bootstrap-datepicker\dist\css\bootstrap-datepicker3.standalone.css.map" />
-    <Content Include="Content\tamplate\bower_components\bootstrap-datepicker\docs\conf.py" />
-    <Content Include="Content\tamplate\bower_components\bootstrap-datepicker\docs\events.rst" />
-    <Content Include="Content\tamplate\bower_components\bootstrap-datepicker\docs\i18n.rst" />
-    <Content Include="Content\tamplate\bower_components\bootstrap-datepicker\docs\index.rst" />
-    <Content Include="Content\tamplate\bower_components\bootstrap-datepicker\docs\keyboard.rst" />
-    <Content Include="Content\tamplate\bower_components\bootstrap-datepicker\docs\make.bat" />
-    <Content Include="Content\tamplate\bower_components\bootstrap-datepicker\docs\Makefile" />
-    <Content Include="Content\tamplate\bower_components\bootstrap-datepicker\docs\markup.rst" />
-    <Content Include="Content\tamplate\bower_components\bootstrap-datepicker\docs\methods.rst" />
-    <Content Include="Content\tamplate\bower_components\bootstrap-datepicker\docs\options.rst" />
-    <Content Include="Content\tamplate\bower_components\bootstrap-datepicker\docs\README.md" />
     <Content Include="Content\tamplate\bower_components\bootstrap-datepicker\grunt\.jshintrc" />
     <Content Include="Content\tamplate\bower_components\bootstrap-datepicker\js\.jscsrc" />
     <Content Include="Content\tamplate\bower_components\bootstrap-datepicker\js\.jshintrc" />
@@ -2462,7 +2358,6 @@
     <Content Include="Content\tamplate\bower_components\bootstrap-daterangepicker\.bower.json" />
     <Content Include="Content\tamplate\bower_components\bootstrap-daterangepicker\bower.json" />
     <Content Include="Content\tamplate\bower_components\bootstrap-daterangepicker\daterangepicker.scss" />
-    <Content Include="Content\tamplate\bower_components\bootstrap-daterangepicker\example\browserify\README.md" />
     <Content Include="Content\tamplate\bower_components\bootstrap-daterangepicker\package.json" />
     <Content Include="Content\tamplate\bower_components\bootstrap-daterangepicker\README.md" />
     <Content Include="Content\tamplate\bower_components\bootstrap-timepicker\.bower.json" />
@@ -2494,14 +2389,6 @@
     <Content Include="Content\tamplate\bower_components\chart.js\.travis.yml" />
     <Content Include="Content\tamplate\bower_components\chart.js\bower.json" />
     <Content Include="Content\tamplate\bower_components\chart.js\CONTRIBUTING.md" />
-    <Content Include="Content\tamplate\bower_components\chart.js\docs\00-Getting-Started.md" />
-    <Content Include="Content\tamplate\bower_components\chart.js\docs\01-Line-Chart.md" />
-    <Content Include="Content\tamplate\bower_components\chart.js\docs\02-Bar-Chart.md" />
-    <Content Include="Content\tamplate\bower_components\chart.js\docs\03-Radar-Chart.md" />
-    <Content Include="Content\tamplate\bower_components\chart.js\docs\04-Polar-Area-Chart.md" />
-    <Content Include="Content\tamplate\bower_components\chart.js\docs\05-Pie-Doughnut-Chart.md" />
-    <Content Include="Content\tamplate\bower_components\chart.js\docs\06-Advanced.md" />
-    <Content Include="Content\tamplate\bower_components\chart.js\docs\07-Notes.md" />
     <Content Include="Content\tamplate\bower_components\chart.js\LICENSE.md" />
     <Content Include="Content\tamplate\bower_components\chart.js\package.json" />
     <Content Include="Content\tamplate\bower_components\chart.js\README.md" />
@@ -2574,7 +2461,6 @@
     <Content Include="Content\tamplate\bower_components\select2\.github\CONTRIBUTING.md" />
     <Content Include="Content\tamplate\bower_components\select2\.github\ISSUE_TEMPLATE.md" />
     <Content Include="Content\tamplate\bower_components\select2\.github\PULL_REQUEST_TEMPLATE.md" />
-    <Content Include="Content\tamplate\bower_components\select2\docs\README.md" />
     <Content Include="Content\tamplate\bower_components\select2\src\scss\core.scss" />
     <Content Include="Content\tamplate\bower_components\select2\src\scss\mixins\_gradients.scss" />
     <Content Include="Content\tamplate\bower_components\select2\src\scss\theme\classic\layout.scss" />
@@ -2739,6 +2625,7 @@
       <DependentUpon>ODMAPI.edmx</DependentUpon>
       <LastGenOutput>ODMAPI.cs</LastGenOutput>
     </Content>
+    <None Include="Properties\PublishProfiles\DMS.pubxml" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />
@@ -3019,11 +2906,11 @@
     <Content Include="Views\DBhouseOutlet\ApproveOutlet.cshtml" />
     <Content Include="Views\ReportDelivery\OutletWiseDelivery\RptOutletWiseDelivery.cshtml" />
     <Content Include="Views\ReportDelivery\OutletWiseDelivery\RptOutletWiseDeliveryFilter.cshtml" />
+    <Content Include="Upload\August-2018.xlsx" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="App_res\empImage\" />
-    <Folder Include="Upload\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
@@ -3036,18 +2923,42 @@
     <Service Include="{C0C07587-41A7-46C8-8FBD-3F9C8EBE2DDC}" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Reports\Delivery\RPT_Delivery_OutletWiseDeliveryDetails.rdlc" />
-    <EmbeddedResource Include="Reports\Delivery\RPT_Delivery_OutletWiseDeliverySummery.rdlc" />
-    <EmbeddedResource Include="Reports\Delivery\RPT_Delivery_PsrWiseSkuWiseDeliverySummary.rdlc" />
-    <EmbeddedResource Include="Reports\Delivery\RPT_Delivery_PsrWiseSkuWiseDeliveryDetails.rdlc" />
-    <EmbeddedResource Include="Reports\Delivery\RPT_PSRKPISummary.rdlc" />
-    <EmbeddedResource Include="Reports\Order\RPT_Order_PsrWiseSkuWiseOrderDetails.rdlc" />
-    <EmbeddedResource Include="Reports\Order\RPT_Order_PsrWiseSkuWiseOrderSummary.rdlc" />
-    <EmbeddedResource Include="Reports\Order\RPT_OutletWiseOrder_Details.rdlc" />
-    <EmbeddedResource Include="Reports\Order\RPT_OutletWiseOrder_Symmary.rdlc" />
-    <EmbeddedResource Include="Reports\RPT_ChallanVsDelivery.rdlc" />
-    <EmbeddedResource Include="Reports\RPT_OrderVsStock.rdlc" />
-    <EmbeddedResource Include="Reports\RPT_StockMovement.rdlc" />
+    <Content Include="Reports\Delivery\RPT_Delivery_OutletWiseDeliveryDetails.rdlc">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Reports\Delivery\RPT_Delivery_OutletWiseDeliverySummery.rdlc">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Reports\Delivery\RPT_Delivery_PsrWiseSkuWiseDeliverySummary.rdlc">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Reports\Delivery\RPT_Delivery_PsrWiseSkuWiseDeliveryDetails.rdlc">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Reports\Delivery\RPT_PSRKPISummary.rdlc">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Reports\Order\RPT_Order_PsrWiseSkuWiseOrderDetails.rdlc">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Reports\Order\RPT_Order_PsrWiseSkuWiseOrderSummary.rdlc">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Reports\Order\RPT_OutletWiseOrder_Details.rdlc">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Reports\Order\RPT_OutletWiseOrder_Symmary.rdlc">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Reports\RPT_ChallanVsDelivery.rdlc">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Reports\RPT_OrderVsStock.rdlc">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Reports\RPT_StockMovement.rdlc">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
