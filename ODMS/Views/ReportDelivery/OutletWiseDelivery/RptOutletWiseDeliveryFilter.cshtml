@@ -1,4 +1,12 @@
 ﻿@using ReportViewerForMvc
+
+
+
+<script>
+  
+    $("#ajax_load").show();
+
+</script>
 <div class="row">
 <div class="col-md-12">
  
@@ -12,7 +20,7 @@
                 <div class="panel-body" style="overflow-x: scroll; min-height: 600px;">
                     
                             @Html.ReportViewer(ViewBag.ReportViewer as Microsoft.Reporting.WebForms.ReportViewer, new { scrolling = "yes", height = "100%", width = "100%" })
-                   
+                  
                         
                 </div>
             </div>
@@ -22,11 +30,11 @@
 
 <style>
    
-     iframe {
-         border: none;
-         min-height: 600px;
-        }
+    iframe {
+        border: none;
+        min-height: 600px;
+    }
 </style>
-<script>
-   
-</script>
+
+
+

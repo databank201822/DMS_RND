@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web.Mvc;
@@ -25,14 +24,17 @@ namespace ODMS.Controllers
         [HttpPost]
         public ActionResult RptOutletWiseDeliveryFilter(int[] rsMid, int[] asMid, int[] cEid, int[] id, int[] skuIds, DateTime startDate, DateTime endDate, int reportType)
         {
-            HashSet<int> dbids = sp.Alldbids(rsMid, asMid, cEid, id);
-            ArrayList skulist = new ArrayList();
+            string dbids = sp.Dbids(rsMid, asMid, cEid, id);
+            string skulist = null;
             if (skuIds != null)
             {
-                skulist = new ArrayList(skuIds);
+
+                skulist = string.Join(",", skuIds);
             }
             ReportViewer reportViewer = new ReportViewer
             {
+                Visible = true,
+                
                 ProcessingMode = ProcessingMode.Local,
                 SizeToReportContent = true,
                 Width = Unit.Percentage(100),
@@ -40,15 +42,14 @@ namespace ODMS.Controllers
 
             };
 
-            List<RPT_Delivery_OutletWiseSKUWiseDelivery_Result> outletDelivery = Db
-                .RPT_Delivery_OutletWiseSKUWiseDelivery(startDate, endDate).Where(x =>x.DB_Id != null && (dbids.Contains((int) x.DB_Id) && skulist.Contains(x.SKUId))
-                    )
-                .ToList();
+            List<RPT_Delivery_OutletWiseSKUWiseDelivery_Result> delivery = Db
+                .RPT_Delivery_OutletWiseSKUWiseDelivery(startDate, endDate,dbids,skulist).ToList();
+
             ReportParameter rp2 = null;
 
             if (reportType == 1)  //Summery
             {
-                reportViewer.LocalReport.ReportPath = Server.MapPath(@"~\Reports\Delivery\RPT_Delivery_OutletWiseDeliverySymmary.rdlc");
+                reportViewer.LocalReport.ReportPath = Server.MapPath(@"~\Reports\Delivery\RPT_Delivery_OutletWiseDeliverySummery.rdlc");
                 rp2 = new ReportParameter("ReportNameParameter", "Outlet Wise Delivery [102] Summary");
             }
             else if (reportType == 2) //Details
@@ -57,9 +58,13 @@ namespace ODMS.Controllers
                 rp2 = new ReportParameter("ReportNameParameter", "Outlet SKU Wise Delivery [102]");
             }
             ReportParameter rp1 = new ReportParameter("DateParameter", startDate.ToString("dd-MMM-yyy") + " TO " + endDate.ToString("dd-MMM-yyy"));
-            ReportDataSource rdc = new ReportDataSource("OutletDelivery", outletDelivery);
+            ReportDataSource rdc = new ReportDataSource("OutletDelivery", delivery);
+
+
+            reportViewer.LocalReport.SetParameters(new[] { rp1, rp2 });
 
             reportViewer.LocalReport.DataSources.Add(rdc);
+
             reportViewer.LocalReport.Refresh();
             reportViewer.Visible = true;
 
@@ -79,11 +84,12 @@ namespace ODMS.Controllers
         public ActionResult RptPsrWiseSkuWiseDeliveryFilter(int[] rsMid, int[] asMid, int[] cEid, int[] id, int[] skuIds, DateTime startDate, DateTime endDate, int reportType)
         {
 
-            HashSet<int> dbids = sp.Alldbids(rsMid, asMid, cEid, id);
-            ArrayList skulist = new ArrayList();
+            string dbids = sp.Dbids(rsMid, asMid, cEid, id);
+            string skulist = null;
             if (skuIds != null)
             {
-                skulist = new ArrayList(skuIds);
+
+                skulist = string.Join(",", skuIds);
             }
             ReportViewer reportViewer = new ReportViewer
             {
@@ -94,7 +100,7 @@ namespace ODMS.Controllers
 
             };
             ReportParameter rp2 = null;
-            List<RPT_Delivery_PSRWiseSKUWiseDelivery_Result> psrskudelivery = Db.RPT_Delivery_PSRWiseSKUWiseDelivery(startDate, endDate).Where(x => dbids.Contains(x.DB_Id) && skulist.Contains(x.SKUId)).ToList();
+            List<RPT_Delivery_PSRWiseSKUWiseDelivery_Result> psrskudelivery = Db.RPT_Delivery_PSRWiseSKUWiseDelivery(startDate, endDate,dbids,skulist).ToList();
           
                 if (reportType == 1)  //Summery
                 {
@@ -135,8 +141,7 @@ namespace ODMS.Controllers
 
         public ActionResult RptDeliveryKpiFilter(int[] rsMid, int[] asMid, int[] cEid, int[] id, DateTime startDate, DateTime endDate)
         {
-            HashSet<int> dbids = sp.Alldbids(rsMid, asMid, cEid, id);
-
+            string dbids = sp.Dbids(rsMid, asMid, cEid, id);
             ReportViewer reportViewer = new ReportViewer
             {
                 ProcessingMode = ProcessingMode.Local,
@@ -147,7 +152,7 @@ namespace ODMS.Controllers
             };
 
 
-            List<RPT_Delivery_PSRPerformanceKPISummary_Result> psrkpisummary = Db.RPT_Delivery_PSRPerformanceKPISummary(startDate, endDate).Where(x => dbids.Contains(x.DB_Id)).ToList();
+            List<RPT_Delivery_PSRPerformanceKPISummary_Result> psrkpisummary = Db.RPT_Delivery_PSRPerformanceKPISummary(startDate, endDate,dbids).ToList();
 
             reportViewer.LocalReport.ReportPath = Request.MapPath(Request.ApplicationPath) + @"Reports\Delivery\RPT_PSRKPISummary.rdlc";
 

@@ -27,12 +27,14 @@ namespace ODMS.Controllers
         [HttpPost]
         public ActionResult RptOutletWiseOrderFilter(int[] rsMid, int[] asMid, int[] cEid, int[] id, int[] skuIds, DateTime startDate, DateTime endDate, int reportType)
         {
-            HashSet<int> dbids = sp.Alldbids(rsMid, asMid, cEid, id);
-            ArrayList skulist = new ArrayList();
+            string dbids = sp.Dbids(rsMid, asMid, cEid, id);
+            string skulist = null;
             if (skuIds != null)
             {
-                skulist = new ArrayList(skuIds);
+              
+                skulist =string.Join(",", skuIds); 
             }
+
             ReportViewer reportViewer = new ReportViewer
             {
                 ProcessingMode = ProcessingMode.Local,
@@ -43,7 +45,7 @@ namespace ODMS.Controllers
             };
 
             List<RPT_Order_OutletWiseSKUWiseOrder_Result> outletOrder = Db
-                .RPT_Order_OutletWiseSKUWiseOrder(startDate, endDate).Where(x => x.DB_Id != null && dbids.Contains((int)x.DB_Id) && skulist.Contains(x.SKUId))
+                .RPT_Order_OutletWiseSKUWiseOrder(startDate, endDate, dbids, skulist)
                 .ToList();
 
             if (reportType == 1)  //Summery
@@ -76,12 +78,14 @@ namespace ODMS.Controllers
         public ActionResult RptOrderPsrWiseSkuWiseOrderFilter(int[] rsMid, int[] asMid, int[] cEid, int[] id, int[] skuIds, DateTime startDate, DateTime endDate, int reportType)
         {
 
-            HashSet<int> dbids = sp.Alldbids(rsMid, asMid, cEid, id);
-            ArrayList skulist = new ArrayList();
+            string dbids = sp.Dbids(rsMid, asMid, cEid, id);
+            string skulist = null;
             if (skuIds != null)
             {
-                skulist = new ArrayList(skuIds);
+
+                skulist = string.Join(",", skuIds);
             }
+
             ReportViewer reportViewer = new ReportViewer
             {
                 ProcessingMode = ProcessingMode.Local,
@@ -90,30 +94,24 @@ namespace ODMS.Controllers
                 Height = Unit.Pixel(600)
 
             };
-            ReportDataSource rdc = null;
-            ReportParameter rp2 = null;
+          
+            ReportParameter rp2 = null; 
+            List<RPT_Order_PSRWiseSKUWiseOrder_Result> psrskuorder = Db.RPT_Order_PSRWiseSKUWiseOrder(startDate,endDate,dbids,skulist).ToList();
             if (reportType == 1)  //Summery
             {
-
-                List<RPT_Order_PSRWiseSKUWiseOrder_Result> psrskuorder = Db.RPT_Order_PSRWiseSKUWiseOrder(startDate, endDate).Where(x => dbids.Contains(x.DB_Id) && skulist.Contains(x.SKUId)).ToList();
-
                 reportViewer.LocalReport.ReportPath = Server.MapPath(@"~\Reports\Order\RPT_Order_PsrWiseSkuWiseOrderSummary.rdlc");
 
-                rdc = new ReportDataSource("PSRSKUORDER", psrskuorder);
+             
 
                 rp2 = new ReportParameter("ReportNameParameter", "PSR SKU Wise Order [102] Summary");
             }
             else if (reportType == 2) //Details
             {
-                List<RPT_Order_PSRWiseSKUWiseOrder_Result> psrskuorder = Db.RPT_Order_PSRWiseSKUWiseOrder(startDate, endDate).Where(x => dbids.Contains(x.DB_Id) && skulist.Contains(x.SKUId)).ToList();
 
                 reportViewer.LocalReport.ReportPath = Server.MapPath(@"~\Reports\Order\RPT_Order_PsrWiseSkuWiseOrderDetails.rdlc");
-
-                rdc = new ReportDataSource("PSRSKUORDER", psrskuorder);
-
-
                 rp2 = new ReportParameter("ReportNameParameter", "PSR SKU Wise Order [102] Details");
-            }
+            } 
+              ReportDataSource rdc = new ReportDataSource("PSRSKUORDER", psrskuorder);
 
             ReportParameter rp1 = new ReportParameter("DateParameter", startDate.ToString("dd-MMM-yyy") + " TO" + endDate.ToString("dd-MMM-yyy"));
 

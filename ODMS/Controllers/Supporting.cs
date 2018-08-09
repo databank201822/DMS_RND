@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using ODMS.Models;
@@ -79,6 +80,47 @@ namespace ODMS.Controllers
        
        }
 
+
+        public string Dbids(int[] rsMid, int[] asMid, int[] cEid, int[] id)
+        {
+            HashSet<int> dbids;
+
+
+            Supporting sp = new Supporting();
+
+            if (id != null)
+            {
+
+                dbids = new HashSet<int>(id);
+
+            }
+            else if (cEid != null)
+            {
+
+
+                dbids = sp.GetdbidsbyCe(cEid);
+
+            }
+            else if (asMid != null)
+            {
+
+                dbids = sp.GetdbidsbyTdm(asMid);
+
+            }
+            else if (rsMid != null)
+            {
+
+                dbids = sp.GetdbidsbyRsm(rsMid);
+
+            }
+            else
+            {
+
+                dbids = sp.GetdbidsbyNsm();
+            }
+            return string.Join(",", dbids); 
+
+        }
 
         public string Remove_Special_Characters(string str)
         {

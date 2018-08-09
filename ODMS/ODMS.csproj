@@ -328,11 +328,6 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>ODMS.edmx</DependentUpon>
     </Compile>
-    <Compile Include="Models\ODMSDataSet.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>ODMSDataSet.xsd</DependentUpon>
-    </Compile>
     <Compile Include="Models\RPT_ChallanVsDelivery_Result.cs">
       <DependentUpon>ODMS.tt</DependentUpon>
     </Compile>
@@ -920,43 +915,6 @@
     <Content Include="Content\tamplate\bower_components\datatables.net\js\jquery.dataTables.min.js" />
     <Content Include="Content\tamplate\bower_components\datatables.net\License.txt" />
     <Content Include="Content\tamplate\bower_components\fastclick\lib\fastclick.js" />
-    <Content Include="Content\tamplate\bower_components\Flot\examples\ajax\index.html" />
-    <Content Include="Content\tamplate\bower_components\Flot\examples\annotating\index.html" />
-    <Content Include="Content\tamplate\bower_components\Flot\examples\axes-interacting\index.html" />
-    <Content Include="Content\tamplate\bower_components\Flot\examples\axes-multiple\index.html" />
-    <Content Include="Content\tamplate\bower_components\Flot\examples\axes-time-zones\date.js" />
-    <Content Include="Content\tamplate\bower_components\Flot\examples\axes-time-zones\index.html" />
-    <Content Include="Content\tamplate\bower_components\Flot\examples\axes-time\index.html" />
-    <Content Include="Content\tamplate\bower_components\Flot\examples\background.png" />
-    <Content Include="Content\tamplate\bower_components\Flot\examples\basic-options\index.html" />
-    <Content Include="Content\tamplate\bower_components\Flot\examples\basic-usage\index.html" />
-    <Content Include="Content\tamplate\bower_components\Flot\examples\canvas\index.html" />
-    <Content Include="Content\tamplate\bower_components\Flot\examples\categories\index.html" />
-    <Content Include="Content\tamplate\bower_components\Flot\examples\examples.css" />
-    <Content Include="Content\tamplate\bower_components\Flot\examples\image\hs-2004-27-a-large-web.jpg" />
-    <Content Include="Content\tamplate\bower_components\Flot\examples\image\index.html" />
-    <Content Include="Content\tamplate\bower_components\Flot\examples\index.html" />
-    <Content Include="Content\tamplate\bower_components\Flot\examples\interacting\index.html" />
-    <Content Include="Content\tamplate\bower_components\Flot\examples\navigate\arrow-down.gif" />
-    <Content Include="Content\tamplate\bower_components\Flot\examples\navigate\arrow-left.gif" />
-    <Content Include="Content\tamplate\bower_components\Flot\examples\navigate\arrow-right.gif" />
-    <Content Include="Content\tamplate\bower_components\Flot\examples\navigate\arrow-up.gif" />
-    <Content Include="Content\tamplate\bower_components\Flot\examples\navigate\index.html" />
-    <Content Include="Content\tamplate\bower_components\Flot\examples\percentiles\index.html" />
-    <Content Include="Content\tamplate\bower_components\Flot\examples\realtime\index.html" />
-    <Content Include="Content\tamplate\bower_components\Flot\examples\resize\index.html" />
-    <Content Include="Content\tamplate\bower_components\Flot\examples\selection\index.html" />
-    <Content Include="Content\tamplate\bower_components\Flot\examples\series-errorbars\index.html" />
-    <Content Include="Content\tamplate\bower_components\Flot\examples\series-pie\index.html" />
-    <Content Include="Content\tamplate\bower_components\Flot\examples\series-toggle\index.html" />
-    <Content Include="Content\tamplate\bower_components\Flot\examples\series-types\index.html" />
-    <Content Include="Content\tamplate\bower_components\Flot\examples\shared\jquery-ui\jquery-ui.min.css" />
-    <Content Include="Content\tamplate\bower_components\Flot\examples\stacking\index.html" />
-    <Content Include="Content\tamplate\bower_components\Flot\examples\symbols\index.html" />
-    <Content Include="Content\tamplate\bower_components\Flot\examples\threshold\index.html" />
-    <Content Include="Content\tamplate\bower_components\Flot\examples\tracking\index.html" />
-    <Content Include="Content\tamplate\bower_components\Flot\examples\visitors\index.html" />
-    <Content Include="Content\tamplate\bower_components\Flot\examples\zooming\index.html" />
     <Content Include="Content\tamplate\bower_components\Flot\excanvas.js" />
     <Content Include="Content\tamplate\bower_components\Flot\excanvas.min.js" />
     <Content Include="Content\tamplate\bower_components\Flot\jquery.colorhelpers.js" />
@@ -2554,33 +2512,6 @@
     <Content Include="Content\tamplate\bower_components\fastclick\bower.json" />
     <Content Include="Content\tamplate\bower_components\fastclick\LICENSE" />
     <Content Include="Content\tamplate\bower_components\fastclick\README.md" />
-    <Content Include="Content\tamplate\bower_components\Flot\examples\ajax\data-eu-gdp-growth-1.json" />
-    <Content Include="Content\tamplate\bower_components\Flot\examples\ajax\data-eu-gdp-growth-2.json" />
-    <Content Include="Content\tamplate\bower_components\Flot\examples\ajax\data-eu-gdp-growth-3.json" />
-    <Content Include="Content\tamplate\bower_components\Flot\examples\ajax\data-eu-gdp-growth-4.json" />
-    <Content Include="Content\tamplate\bower_components\Flot\examples\ajax\data-eu-gdp-growth-5.json" />
-    <Content Include="Content\tamplate\bower_components\Flot\examples\ajax\data-eu-gdp-growth.json" />
-    <Content Include="Content\tamplate\bower_components\Flot\examples\ajax\data-japan-gdp-growth.json" />
-    <Content Include="Content\tamplate\bower_components\Flot\examples\ajax\data-usa-gdp-growth.json" />
-    <Content Include="Content\tamplate\bower_components\Flot\examples\axes-time-zones\tz\africa" />
-    <Content Include="Content\tamplate\bower_components\Flot\examples\axes-time-zones\tz\antarctica" />
-    <Content Include="Content\tamplate\bower_components\Flot\examples\axes-time-zones\tz\asia" />
-    <Content Include="Content\tamplate\bower_components\Flot\examples\axes-time-zones\tz\australasia" />
-    <Content Include="Content\tamplate\bower_components\Flot\examples\axes-time-zones\tz\backward" />
-    <Content Include="Content\tamplate\bower_components\Flot\examples\axes-time-zones\tz\etcetera" />
-    <Content Include="Content\tamplate\bower_components\Flot\examples\axes-time-zones\tz\europe" />
-    <Content Include="Content\tamplate\bower_components\Flot\examples\axes-time-zones\tz\factory" />
-    <Content Include="Content\tamplate\bower_components\Flot\examples\axes-time-zones\tz\iso3166.tab" />
-    <Content Include="Content\tamplate\bower_components\Flot\examples\axes-time-zones\tz\leapseconds" />
-    <Content Include="Content\tamplate\bower_components\Flot\examples\axes-time-zones\tz\northamerica" />
-    <Content Include="Content\tamplate\bower_components\Flot\examples\axes-time-zones\tz\pacificnew" />
-    <Content Include="Content\tamplate\bower_components\Flot\examples\axes-time-zones\tz\solar87" />
-    <Content Include="Content\tamplate\bower_components\Flot\examples\axes-time-zones\tz\solar88" />
-    <Content Include="Content\tamplate\bower_components\Flot\examples\axes-time-zones\tz\solar89" />
-    <Content Include="Content\tamplate\bower_components\Flot\examples\axes-time-zones\tz\southamerica" />
-    <Content Include="Content\tamplate\bower_components\Flot\examples\axes-time-zones\tz\systemv" />
-    <Content Include="Content\tamplate\bower_components\Flot\examples\axes-time-zones\tz\yearistype.sh" />
-    <Content Include="Content\tamplate\bower_components\Flot\examples\axes-time-zones\tz\zone.tab" />
     <Content Include="Content\tamplate\bower_components\font-awesome\.bower.json" />
     <Content Include="Content\tamplate\bower_components\font-awesome\.gitignore" />
     <Content Include="Content\tamplate\bower_components\font-awesome\.npmignore" />
@@ -2791,9 +2722,6 @@
     <Content Include="Content\tamplate\dist\css\adminlte.min.css.map" />
     <Content Include="Content\tamplate\plugins\input-mask\phone-codes\phone-be.json" />
     <Content Include="Content\tamplate\plugins\input-mask\phone-codes\phone-codes.json" />
-    <Content Include="Models\ODMSDataSet.xsc">
-      <DependentUpon>ODMSDataSet.xsd</DependentUpon>
-    </Content>
     <EntityDeploy Include="Models\ODMAPI.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
       <LastGenOutput>ODMAPI.Designer.cs</LastGenOutput>
@@ -2810,14 +2738,6 @@
       <Generator>TextTemplatingFileGenerator</Generator>
       <DependentUpon>ODMAPI.edmx</DependentUpon>
       <LastGenOutput>ODMAPI.cs</LastGenOutput>
-    </Content>
-    <None Include="Models\ODMSDataSet.xsd">
-      <SubType>Designer</SubType>
-      <Generator>MSDataSetGenerator</Generator>
-      <LastGenOutput>ODMSDataSet.Designer.cs</LastGenOutput>
-    </None>
-    <Content Include="Models\ODMSDataSet.xss">
-      <DependentUpon>ODMSDataSet.xsd</DependentUpon>
     </Content>
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
@@ -3110,17 +3030,16 @@
     <Content Include="fonts\glyphicons-halflings-regular.ttf" />
     <Content Include="fonts\glyphicons-halflings-regular.eot" />
     <Content Include="packages.config" />
-    <None Include="Project_Readme.html" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
     <Service Include="{C0C07587-41A7-46C8-8FBD-3F9C8EBE2DDC}" />
   </ItemGroup>
   <ItemGroup>
+    <EmbeddedResource Include="Reports\Delivery\RPT_Delivery_OutletWiseDeliveryDetails.rdlc" />
+    <EmbeddedResource Include="Reports\Delivery\RPT_Delivery_OutletWiseDeliverySummery.rdlc" />
     <EmbeddedResource Include="Reports\Delivery\RPT_Delivery_PsrWiseSkuWiseDeliverySummary.rdlc" />
     <EmbeddedResource Include="Reports\Delivery\RPT_Delivery_PsrWiseSkuWiseDeliveryDetails.rdlc" />
-    <EmbeddedResource Include="Reports\Delivery\RPT_Delivery_OutletWiseDeliverySymmary.rdlc" />
-    <EmbeddedResource Include="Reports\Delivery\RPT_Delivery_OutletWiseDeliveryDetails.rdlc" />
     <EmbeddedResource Include="Reports\Delivery\RPT_PSRKPISummary.rdlc" />
     <EmbeddedResource Include="Reports\Order\RPT_Order_PsrWiseSkuWiseOrderDetails.rdlc" />
     <EmbeddedResource Include="Reports\Order\RPT_Order_PsrWiseSkuWiseOrderSummary.rdlc" />

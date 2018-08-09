@@ -584,7 +584,7 @@ namespace ODMS.Controllers
 
                 });
 
-                
+
                 List<int> orderskus = orderinserVm.OrderLine.Select(x => x.SkuId).ToList();
 
                 Db.tblt_Order_line.Where(x => x.Orderid == orderid && !orderskus.Contains(x.sku_id) && x.sku_order_type_id == 1).ToList().ForEach(x =>
@@ -603,8 +603,7 @@ namespace ODMS.Controllers
                 foreach (var item in orderinserVm.OrderLine)
                 {
 
-                    var soline = Db.tblt_Order_line.Count(x => x.Orderid == orderid && x.sku_id == item.SkuId &&
-                                                               x.Betch_id == item.BetchId && x.sku_order_type_id == 1);
+                    var soline = Db.tblt_Order_line.Count(x => x.Orderid == orderid && x.sku_id == item.SkuId  && x.sku_order_type_id == 1);
 
                     if (soline > 0)
                     {

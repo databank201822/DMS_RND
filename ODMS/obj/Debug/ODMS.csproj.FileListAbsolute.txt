@@ -145,4 +145,3 @@ D:\Dropbox\ODMS\ODMS\bin\zh-CHS\Microsoft.ReportViewer.WinForms.resources.dll
 D:\Dropbox\ODMS\ODMS\bin\zh-CHT\Microsoft.ReportViewer.WinForms.resources.dll
 D:\Dropbox\ODMS\ODMS\obj\Debug\ODMS.dll
 D:\Dropbox\ODMS\ODMS\obj\Debug\ODMS.pdb
-D:\Dropbox\ODMS\ODMS\obj\Debug\ODMS.csprojResolveAssemblyReference.cache
