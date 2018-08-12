@@ -21,9 +21,9 @@ namespace ODMS.Controllers
         public ActionResult ShowAllChallan(int challanStatus, DateTime dateFrom)
         {
             var status = challanStatus == 0 ? new List<int> { 1, 2, 3 } : new List<int> { challanStatus };
-
+            int dbid = (int)Session["DBId"];
             var data = from a in Db.tblt_Challan
-                       where a.order_date == dateFrom.Date && status.Contains(a.challan_status)
+                       where a.order_date == dateFrom.Date && status.Contains(a.challan_status) && a.db_id == dbid
                        select new ChallanVm
                        {
                            Id = a.id,

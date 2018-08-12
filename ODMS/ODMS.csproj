@@ -2702,9 +2702,6 @@
     <Content Include="Views\DBhouse\Delete.cshtml" />
     <Content Include="Views\DBhouse\Edit.cshtml" />
     <Content Include="Views\DBhouse\Index.cshtml" />
-    <Content Include="Views\DynamicFilter\ASM_Zone_filter.cshtml" />
-    <Content Include="Views\DynamicFilter\CE_Zone_filter.cshtml" />
-    <Content Include="Views\DynamicFilter\RSM_Zone_filter.cshtml" />
     <Content Include="Views\DynamicFilter\Sku_filter.cshtml" />
     <Content Include="Views\DynamicFilter\Zone_filter.cshtml" />
     <Content Include="Views\ErrorReporting\DeletePermission.cshtml" />
@@ -2907,6 +2904,11 @@
     <Content Include="Views\ReportDelivery\OutletWiseDelivery\RptOutletWiseDelivery.cshtml" />
     <Content Include="Views\ReportDelivery\OutletWiseDelivery\RptOutletWiseDeliveryFilter.cshtml" />
     <Content Include="Upload\August-2018.xlsx" />
+    <Content Include="Views\DynamicFilter\PSR_filter.cshtml" />
+    <Content Include="Views\GeneralReport\CurrentStock\CurrentStock.cshtml" />
+    <Content Include="Views\GeneralReport\CurrentStock\CurrentStockFilter.cshtml" />
+    <Content Include="Views\ReportDelivery\RptBuyer\RptBuyer.cshtml" />
+    <Content Include="Views\ReportDelivery\RptBuyer\RptBuyerFilter.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

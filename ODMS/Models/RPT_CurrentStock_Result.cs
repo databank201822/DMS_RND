@@ -17,7 +17,7 @@ namespace ODMS.Models
         public string AREA_Name { get; set; }
         public string CEAREA_Name { get; set; }
         public string DB_Name { get; set; }
-        public Nullable<int> Status { get; set; }
+        public int Status { get; set; }
         public int dbId { get; set; }
         public string SKUName { get; set; }
         public int sku_id { get; set; }

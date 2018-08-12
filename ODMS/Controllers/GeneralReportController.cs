@@ -142,7 +142,6 @@ namespace ODMS.Controllers
             return View("StockMovement/StockMovement");
         }
 
-
         [HttpPost]
         public ActionResult StockMovementFilter(int id, DateTime startDate, DateTime endDate)
         {
@@ -165,6 +164,7 @@ namespace ODMS.Controllers
             reportViewer.LocalReport.DataSources.Add(rdc);
             reportViewer.LocalReport.Refresh();
             reportViewer.Visible = true;
+            
 
             ViewBag.ReportViewer = reportViewer;
 
@@ -172,6 +172,40 @@ namespace ODMS.Controllers
 
             return PartialView("StockMovement/StockMovementFilter");
 
+        }
+
+
+        public ActionResult CurrentStock()
+        {
+            return View("CurrentStock/CurrentStock");
+        }
+
+        [HttpPost]
+        public ActionResult CurrentStockFilter(int[] rsMid, int[] asMid, int[] cEid, int[] id)
+        {
+            ////HashSet<int> dbids = sp.Alldbids(rsMid, asMid, cEid, id);
+  
+            //ReportViewer reportViewer = new ReportViewer
+            //{
+            //    ProcessingMode = ProcessingMode.Local,
+            //    SizeToReportContent = true,
+            //    Width = Unit.Percentage(100),
+            //    Height = Unit.Percentage(100)
+
+            //};
+            //List<RPT_OrderVsStock_Result> rptOrderVsStockResult = Db.RPT_OrderVsStock(dbid).ToList();
+
+            //reportViewer.LocalReport.ReportPath = Request.MapPath(Request.ApplicationPath) +@"Reports\RPT_OrderVsStock.rdlc";
+
+            //ReportDataSource rdc = new ReportDataSource("ODDataSet", rptOrderVsStockResult);
+            //reportViewer.LocalReport.DataSources.Add(rdc);
+
+            //reportViewer.LocalReport.Refresh();
+            //reportViewer.Visible = true;
+
+            //ViewBag.ReportViewer = reportViewer;
+
+            return PartialView("CurrentStock/CurrentStockFilter");
         }
 
         public ActionResult OrderVsStock()
@@ -194,11 +228,10 @@ namespace ODMS.Controllers
             };
             List<RPT_OrderVsStock_Result> rptOrderVsStockResult = Db.RPT_OrderVsStock(dbid).ToList();
 
-            // rptOrderVsStockResult = Db.RPT_OrderVsStock(1).Where(x => skuList.Contains(x.sku_id)).ToList();
+        
 
 
-            reportViewer.LocalReport.ReportPath = Request.MapPath(Request.ApplicationPath) +
-                                                  @"Reports\RPT_OrderVsStock.rdlc";
+            reportViewer.LocalReport.ReportPath = Server.MapPath(@"~\Reports\RPT_OrderVsStock.rdlc");
 
             ReportDataSource rdc = new ReportDataSource("ODDataSet", rptOrderVsStockResult);
             reportViewer.LocalReport.DataSources.Add(rdc);
@@ -228,8 +261,7 @@ namespace ODMS.Controllers
 
             rptOrderVsStockResult.RemoveAll(x => x.Delivery == 0 && x.FreeDelivery == 0);
 
-            reportViewer.LocalReport.ReportPath = Request.MapPath(Request.ApplicationPath) +
-                                                  @"Reports\RPT_ChallanVsDelivery.rdlc";
+            reportViewer.LocalReport.ReportPath = reportViewer.LocalReport.ReportPath = Server.MapPath(@"~\Reports\RPT_ChallanVsDelivery.rdlc");
 
             ReportDataSource rdc = new ReportDataSource("CDDataSet", rptOrderVsStockResult);
             reportViewer.LocalReport.DataSources.Add(rdc);

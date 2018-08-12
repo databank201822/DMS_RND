@@ -690,6 +690,7 @@
     <EntitySetMapping Name="tbld_db_zone_view">
       <EntityTypeMapping TypeName="ODMSModel.tbld_db_zone_view">
         <MappingFragment StoreEntitySet="tbld_db_zone_view">
+          <ScalarProperty Name="PriceBuandle_id" ColumnName="PriceBuandle_id" />
           <ScalarProperty Name="OfficeAddress" ColumnName="OfficeAddress" />
           <ScalarProperty Name="DBCode" ColumnName="DBCode" />
           <ScalarProperty Name="name" ColumnName="name" />
@@ -778,28 +779,6 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
-    <FunctionImportMapping FunctionImportName="RPT_CurrentStock" FunctionName="ODMSModel.Store.RPT_CurrentStock">
-      <ResultMapping>
-        <ComplexTypeMapping TypeName="ODMSModel.RPT_CurrentStock_Result">
-          <ScalarProperty Name="REGION_Name" ColumnName="REGION_Name" />
-          <ScalarProperty Name="AREA_Name" ColumnName="AREA_Name" />
-          <ScalarProperty Name="CEAREA_Name" ColumnName="CEAREA_Name" />
-          <ScalarProperty Name="DB_Name" ColumnName="DB_Name" />
-          <ScalarProperty Name="Status" ColumnName="Status" />
-          <ScalarProperty Name="dbId" ColumnName="dbId" />
-          <ScalarProperty Name="SKUName" ColumnName="SKUName" />
-          <ScalarProperty Name="sku_id" ColumnName="sku_id" />
-          <ScalarProperty Name="batch_id" ColumnName="batch_id" />
-          <ScalarProperty Name="db_lifting_price" ColumnName="db_lifting_price" />
-          <ScalarProperty Name="outlet_lifting_price" ColumnName="outlet_lifting_price" />
-          <ScalarProperty Name="mrp" ColumnName="mrp" />
-          <ScalarProperty Name="packSize" ColumnName="packSize" />
-          <ScalarProperty Name="qtyPs" ColumnName="qtyPs" />
-          <ScalarProperty Name="bookedqty" ColumnName="bookedqty" />
-          <ScalarProperty Name="totalqty" ColumnName="totalqty" />
-        </ComplexTypeMapping>
-      </ResultMapping>
-    </FunctionImportMapping>
     <EntitySetMapping Name="tbld_db_psr_zone_view">
       <EntityTypeMapping TypeName="ODMSModel.tbld_db_psr_zone_view">
         <MappingFragment StoreEntitySet="tbld_db_psr_zone_view">
@@ -1230,5 +1209,27 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
+    <FunctionImportMapping FunctionImportName="RPT_CurrentStock" FunctionName="ODMSModel.Store.RPT_CurrentStock">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="ODMSModel.RPT_CurrentStock_Result">
+          <ScalarProperty Name="REGION_Name" ColumnName="REGION_Name" />
+          <ScalarProperty Name="AREA_Name" ColumnName="AREA_Name" />
+          <ScalarProperty Name="CEAREA_Name" ColumnName="CEAREA_Name" />
+          <ScalarProperty Name="DB_Name" ColumnName="DB_Name" />
+          <ScalarProperty Name="Status" ColumnName="Status" />
+          <ScalarProperty Name="dbId" ColumnName="dbId" />
+          <ScalarProperty Name="SKUName" ColumnName="SKUName" />
+          <ScalarProperty Name="sku_id" ColumnName="sku_id" />
+          <ScalarProperty Name="batch_id" ColumnName="batch_id" />
+          <ScalarProperty Name="db_lifting_price" ColumnName="db_lifting_price" />
+          <ScalarProperty Name="outlet_lifting_price" ColumnName="outlet_lifting_price" />
+          <ScalarProperty Name="mrp" ColumnName="mrp" />
+          <ScalarProperty Name="packSize" ColumnName="packSize" />
+          <ScalarProperty Name="qtyPs" ColumnName="qtyPs" />
+          <ScalarProperty Name="bookedqty" ColumnName="bookedqty" />
+          <ScalarProperty Name="totalqty" ColumnName="totalqty" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
   </EntityContainerMapping>
 </Mapping>

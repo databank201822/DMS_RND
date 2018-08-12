@@ -865,6 +865,7 @@ warning 6002: The table/view 'ODMS.dbo.tbld_db_zone_view' does not have a primar
             <PropertyRef Name="National" />
             <PropertyRef Name="Status" />
             <PropertyRef Name="name" />
+            <PropertyRef Name="PriceBuandle_id" />
           </Key>
           <Property Name="DB_Id" Type="int" Nullable="false" />
           <Property Name="DB_Name" Type="varchar" MaxLength="50" Nullable="false" />
@@ -879,7 +880,8 @@ warning 6002: The table/view 'ODMS.dbo.tbld_db_zone_view' does not have a primar
           <Property Name="Status" Type="int" Nullable="false" />
           <Property Name="name" Type="varchar" MaxLength="100" Nullable="false" />
           <Property Name="DBCode" Type="varchar" MaxLength="50" />
-          <Property Name="OfficeAddress" Type="text" />
+          <Property Name="OfficeAddress" Type="nvarchar(max)" />
+          <Property Name="PriceBuandle_id" Type="int" Nullable="false" />
         </EntityType>
         <Association Name="FK_tbl_2ndSubMenu_tbl_SubMenu">
           <End Role="tbl_SubMenu" Type="Self.tbl_SubMenu" Multiplicity="0..1" />
@@ -1018,7 +1020,7 @@ warning 6002: The table/view 'ODMS.dbo.tbld_db_zone_view' does not have a primar
           <Parameter Name="Challan_no" Type="int" Mode="In" />
         </Function>
         <Function Name="RPT_CurrentStock" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
-          <Parameter Name="DBId" Type="int" Mode="In" />
+          <Parameter Name="dbids" Type="varchar(max)" Mode="In" />
         </Function>
         <Function Name="RPT_Delivery_OutletWiseSKUWiseDelivery" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="Start_Date" Type="datetime" Mode="In" />
@@ -1161,7 +1163,8 @@ warning 6002: The table/view 'ODMS.dbo.tbld_db_zone_view' does not have a primar
     [tbld_db_zone_view].[Status] AS [Status], 
     [tbld_db_zone_view].[name] AS [name], 
     [tbld_db_zone_view].[DBCode] AS [DBCode], 
-    [tbld_db_zone_view].[OfficeAddress] AS [OfficeAddress]
+    [tbld_db_zone_view].[OfficeAddress] AS [OfficeAddress], 
+    [tbld_db_zone_view].[PriceBuandle_id] AS [PriceBuandle_id]
     FROM [dbo].[tbld_db_zone_view] AS [tbld_db_zone_view]</DefiningQuery>
           </EntitySet>
           <AssociationSet Name="FK_tbl_2ndSubMenu_tbl_SubMenu" Association="Self.FK_tbl_2ndSubMenu_tbl_SubMenu">
@@ -1736,9 +1739,6 @@ warning 6002: The table/view 'ODMS.dbo.tbld_db_zone_view' does not have a primar
             <End Role="tbld_bundle_price" EntitySet="tbld_bundle_price" />
             <End Role="tbld_bundle_price_details" EntitySet="tbld_bundle_price_details" />
           </AssociationSet>
-          <FunctionImport Name="RPT_CurrentStock" ReturnType="Collection(ODMSModel.RPT_CurrentStock_Result)">
-          <Parameter Name="DBId" Mode="In" Type="Int32" />
-          </FunctionImport>
           <EntitySet Name="tbld_db_psr_zone_view" EntityType="ODMSModel.tbld_db_psr_zone_view" />
           <EntitySet Name="tbld_management_employee" EntityType="ODMSModel.tbld_management_employee" />
           <FunctionImport Name="RPT_StockMovement" ReturnType="Collection(ODMSModel.RPT_StockMovement_Result)">
@@ -1798,6 +1798,9 @@ warning 6002: The table/view 'ODMS.dbo.tbld_db_zone_view' does not have a primar
             <End Role="tbld_Route_Plan" EntitySet="tbld_Route_Plan" />
             <End Role="tbld_Route_Plan_Detail" EntitySet="tbld_Route_Plan_Detail" />
           </AssociationSet>
+          <FunctionImport Name="RPT_CurrentStock" ReturnType="Collection(ODMSModel.RPT_CurrentStock_Result)">
+            <Parameter Name="dbids" Mode="In" Type="String" />
+          </FunctionImport>
         </EntityContainer>
         <ComplexType Name="DB_User_check_Result">
           <Property Type="Int32" Name="id" Nullable="false" />
@@ -2119,6 +2122,7 @@ warning 6002: The table/view 'ODMS.dbo.tbld_db_zone_view' does not have a primar
             <PropertyRef Name="National" />
             <PropertyRef Name="Status" />
             <PropertyRef Name="name" />
+            <PropertyRef Name="PriceBuandle_id" />
           </Key>
           <Property Name="DB_Id" Type="Int32" Nullable="false" />
           <Property Name="DB_Name" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
@@ -2133,7 +2137,8 @@ warning 6002: The table/view 'ODMS.dbo.tbld_db_zone_view' does not have a primar
           <Property Name="Status" Type="Int32" Nullable="false" />
           <Property Name="name" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
           <Property Name="DBCode" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="OfficeAddress" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="OfficeAddress" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="PriceBuandle_id" Type="Int32" Nullable="false" />
         </EntityType>
         <EntityType Name="tbld_Target_PSR_Details">
           <Key>
@@ -2214,24 +2219,6 @@ warning 6002: The table/view 'ODMS.dbo.tbld_db_zone_view' does not have a primar
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <ComplexType Name="RPT_CurrentStock_Result">
-          <Property Type="String" Name="REGION_Name" Nullable="true" MaxLength="30" />
-          <Property Type="String" Name="AREA_Name" Nullable="true" MaxLength="30" />
-          <Property Type="String" Name="CEAREA_Name" Nullable="true" MaxLength="30" />
-          <Property Type="String" Name="DB_Name" Nullable="true" MaxLength="50" />
-          <Property Type="Int32" Name="Status" Nullable="true" />
-          <Property Type="Int32" Name="dbId" Nullable="false" />
-          <Property Type="String" Name="SKUName" Nullable="false" MaxLength="200" />
-          <Property Type="Int32" Name="sku_id" Nullable="false" />
-          <Property Type="Int32" Name="batch_id" Nullable="false" />
-          <Property Type="Double" Name="db_lifting_price" Nullable="false" />
-          <Property Type="Double" Name="outlet_lifting_price" Nullable="false" />
-          <Property Type="Double" Name="mrp" Nullable="false" />
-          <Property Type="Int32" Name="packSize" Nullable="false" />
-          <Property Type="Int32" Name="qtyPs" Nullable="false" />
-          <Property Type="Int32" Name="bookedqty" Nullable="false" />
-          <Property Type="Int32" Name="totalqty" Nullable="true" />
-        </ComplexType>
         <EntityType Name="tbld_db_psr_zone_view">
           <Key>
             <PropertyRef Name="DB_Id" />
@@ -2661,6 +2648,24 @@ warning 6002: The table/view 'ODMS.dbo.tbld_db_zone_view' does not have a primar
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <ComplexType Name="RPT_CurrentStock_Result">
+          <Property Type="String" Name="REGION_Name" Nullable="false" MaxLength="30" />
+          <Property Type="String" Name="AREA_Name" Nullable="false" MaxLength="30" />
+          <Property Type="String" Name="CEAREA_Name" Nullable="false" MaxLength="30" />
+          <Property Type="String" Name="DB_Name" Nullable="false" MaxLength="50" />
+          <Property Type="Int32" Name="Status" Nullable="false" />
+          <Property Type="Int32" Name="dbId" Nullable="false" />
+          <Property Type="String" Name="SKUName" Nullable="false" MaxLength="200" />
+          <Property Type="Int32" Name="sku_id" Nullable="false" />
+          <Property Type="Int32" Name="batch_id" Nullable="false" />
+          <Property Type="Double" Name="db_lifting_price" Nullable="false" />
+          <Property Type="Double" Name="outlet_lifting_price" Nullable="false" />
+          <Property Type="Double" Name="mrp" Nullable="false" />
+          <Property Type="Int32" Name="packSize" Nullable="false" />
+          <Property Type="Int32" Name="qtyPs" Nullable="false" />
+          <Property Type="Int32" Name="bookedqty" Nullable="false" />
+          <Property Type="Int32" Name="totalqty" Nullable="true" />
+        </ComplexType>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -3356,6 +3361,7 @@ warning 6002: The table/view 'ODMS.dbo.tbld_db_zone_view' does not have a primar
           <EntitySetMapping Name="tbld_db_zone_view">
             <EntityTypeMapping TypeName="ODMSModel.tbld_db_zone_view">
               <MappingFragment StoreEntitySet="tbld_db_zone_view">
+                <ScalarProperty Name="PriceBuandle_id" ColumnName="PriceBuandle_id" />
                 <ScalarProperty Name="OfficeAddress" ColumnName="OfficeAddress" />
                 <ScalarProperty Name="DBCode" ColumnName="DBCode" />
                 <ScalarProperty Name="name" ColumnName="name" />
@@ -3444,28 +3450,6 @@ warning 6002: The table/view 'ODMS.dbo.tbld_db_zone_view' does not have a primar
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <FunctionImportMapping FunctionImportName="RPT_CurrentStock" FunctionName="ODMSModel.Store.RPT_CurrentStock">
-            <ResultMapping>
-              <ComplexTypeMapping TypeName="ODMSModel.RPT_CurrentStock_Result">
-                <ScalarProperty Name="REGION_Name" ColumnName="REGION_Name" />
-                <ScalarProperty Name="AREA_Name" ColumnName="AREA_Name" />
-                <ScalarProperty Name="CEAREA_Name" ColumnName="CEAREA_Name" />
-                <ScalarProperty Name="DB_Name" ColumnName="DB_Name" />
-                <ScalarProperty Name="Status" ColumnName="Status" />
-                <ScalarProperty Name="dbId" ColumnName="dbId" />
-                <ScalarProperty Name="SKUName" ColumnName="SKUName" />
-                <ScalarProperty Name="sku_id" ColumnName="sku_id" />
-                <ScalarProperty Name="batch_id" ColumnName="batch_id" />
-                <ScalarProperty Name="db_lifting_price" ColumnName="db_lifting_price" />
-                <ScalarProperty Name="outlet_lifting_price" ColumnName="outlet_lifting_price" />
-                <ScalarProperty Name="mrp" ColumnName="mrp" />
-                <ScalarProperty Name="packSize" ColumnName="packSize" />
-                <ScalarProperty Name="qtyPs" ColumnName="qtyPs" />
-                <ScalarProperty Name="bookedqty" ColumnName="bookedqty" />
-                <ScalarProperty Name="totalqty" ColumnName="totalqty" />
-              </ComplexTypeMapping>
-            </ResultMapping>
-          </FunctionImportMapping>
           <EntitySetMapping Name="tbld_db_psr_zone_view">
             <EntityTypeMapping TypeName="ODMSModel.tbld_db_psr_zone_view">
               <MappingFragment StoreEntitySet="tbld_db_psr_zone_view">
@@ -3896,6 +3880,28 @@ warning 6002: The table/view 'ODMS.dbo.tbld_db_zone_view' does not have a primar
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
+          <FunctionImportMapping FunctionImportName="RPT_CurrentStock" FunctionName="ODMSModel.Store.RPT_CurrentStock">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="ODMSModel.RPT_CurrentStock_Result">
+                <ScalarProperty Name="REGION_Name" ColumnName="REGION_Name" />
+                <ScalarProperty Name="AREA_Name" ColumnName="AREA_Name" />
+                <ScalarProperty Name="CEAREA_Name" ColumnName="CEAREA_Name" />
+                <ScalarProperty Name="DB_Name" ColumnName="DB_Name" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+                <ScalarProperty Name="dbId" ColumnName="dbId" />
+                <ScalarProperty Name="SKUName" ColumnName="SKUName" />
+                <ScalarProperty Name="sku_id" ColumnName="sku_id" />
+                <ScalarProperty Name="batch_id" ColumnName="batch_id" />
+                <ScalarProperty Name="db_lifting_price" ColumnName="db_lifting_price" />
+                <ScalarProperty Name="outlet_lifting_price" ColumnName="outlet_lifting_price" />
+                <ScalarProperty Name="mrp" ColumnName="mrp" />
+                <ScalarProperty Name="packSize" ColumnName="packSize" />
+                <ScalarProperty Name="qtyPs" ColumnName="qtyPs" />
+                <ScalarProperty Name="bookedqty" ColumnName="bookedqty" />
+                <ScalarProperty Name="totalqty" ColumnName="totalqty" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
           </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>

@@ -15,7 +15,7 @@ namespace ODMS.Controllers
 
         public ActionResult Index()
         {
-            int dbid = (int)Session["DBId"];
+            string dbid = Session["DBId"].ToString();
 
             var showInventoryByDbResult = (from a in db.RPT_CurrentStock(dbid)
                                            orderby a.sku_id ascending
@@ -67,8 +67,8 @@ namespace ODMS.Controllers
                               d.batch_id
                           };
             List<InventoryAdjustmentVm> inventoryAdjustmentVm = new List<InventoryAdjustmentVm>();
-
-            var showInventoryByDbResult = (from a in db.RPT_CurrentStock(dbid)
+            string dbids = dbid.ToString();
+            var showInventoryByDbResult = (from a in db.RPT_CurrentStock(dbids)
                                            orderby a.sku_id ascending
                                            select new InventoryiVm
                                            {

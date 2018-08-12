@@ -28,5 +28,6 @@ namespace ODMS.Models
         public string name { get; set; }
         public string DBCode { get; set; }
         public string OfficeAddress { get; set; }
+        public int PriceBuandle_id { get; set; }
     }
 }

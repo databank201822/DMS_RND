@@ -112,9 +112,68 @@ namespace ODMS.Controllers
             return Json(tbldDistributionHouse, JsonRequestBehavior.AllowGet);
         }
 
-        
+        [HttpPost]
+        public ActionResult Getpsridsbydbidid(int[] ids)
+        {
+            var dbpsr = _db.tbld_distribution_employee.Where(a => ids.Contains((int)a.DistributionId) && a.active == 1 && a.Emp_Type==2).Select(a => new
+                {
+                    psr_id=a.id,
+                    psr_name=a.Name
+
+                });
+            
+            
+            return Json(dbpsr, JsonRequestBehavior.AllowGet);
+        }
 
 
+
+        public ActionResult PSR_filter()
+        {
+            ViewBag.User_Id = Session["User_Id"];
+            ViewBag.user_role_code = Session["user_role_code"];
+
+            int userRoleId = Convert.ToInt32(Session["User_role_id"]);
+            int bizZoneId = Convert.ToInt32(Session["biz_zone_id"]);
+            int userBizRoleId = Convert.ToInt32(Session["User_biz_role_id"]);
+            int dBid = Convert.ToInt32(Session["DBId"]);
+
+            ViewBag.RSMZone = new SelectList(_db.tbld_business_zone.Where(x => false).ToList(), "id", "biz_zone_name");
+            ViewBag.ASMZone = new SelectList(_db.tbld_business_zone.Where(x => false).ToList(), "id", "biz_zone_name");
+            ViewBag.CEZone = new SelectList(_db.tbld_business_zone.Where(x => false).ToList(), "id", "biz_zone_name");
+            ViewBag.DBhouse = new SelectList(_db.tbld_distribution_house.Where(x => false).ToList(), "DB_Id", "DBName");
+            if (userRoleId < 7)
+            {
+                if (userBizRoleId == 1)
+                {
+                    ViewBag.RSMZone = new SelectList(_db.tbld_business_zone.Where(x => x.parent_biz_zone_id == bizZoneId).ToList(), "id", "biz_zone_name");
+
+                }
+                if (userBizRoleId == 2)
+                {
+                    ViewBag.ASMZone = new SelectList(_db.tbld_business_zone.Where(x => x.parent_biz_zone_id == bizZoneId).ToList(), "id", "biz_zone_name");
+
+                }
+                else if (userBizRoleId == 3)
+                {
+                    ViewBag.CEZone = new SelectList(_db.tbld_business_zone.Where(x => x.parent_biz_zone_id == bizZoneId).ToList(), "id", "biz_zone_name");
+
+                }
+                else if (userBizRoleId == 4)
+                {
+                    ViewBag.DBhouse = new SelectList(_db.tbld_distribution_house.Where(x => x.Zone_id == bizZoneId).ToList(), "DB_Id", "DBName");
+
+                }
+            }
+            else if (userRoleId == 7)
+            {
+                ViewBag.DBhouse = new SelectList(_db.tbld_distribution_house.Where(x => x.DB_Id == dBid).ToList(), "DB_Id", "DBName");
+            }
+            return PartialView();
+
+          
+
+        }
 
         public ActionResult Sku_filter()
         {

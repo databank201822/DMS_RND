@@ -26,7 +26,7 @@ namespace ODMS.Controllers
             int newOrder = Db.tblt_Order.Count(x => x.db_id == dbid && DateTime.Compare(x.planned_order_date, currentDate) == 0 && x.so_status == 1);
 
 
-            ViewBag.PreviousChallanNotConfirmed = previousChallanNotConfirmed == 0 ? "Done" : "Not Done";
+            ViewBag.PreviousChallanNotConfirmed = previousChallanNotConfirmed == 0 ? "Done" : "Not Done [" + previousChallanNotConfirmed + "]";
 
             ViewBag.CurrentChallanNotCreated = currentChallanNotCreated == 0 ? "Done" : "Not Done";
             ViewBag.NewOrder = newOrder == 0 ? "No" : "Yes[" + newOrder + "]";

@@ -180,15 +180,6 @@ namespace ODMS.Models
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("DayEnd_Process", dbidParameter, batchDateParameter);
         }
     
-        public virtual ObjectResult<RPT_CurrentStock_Result> RPT_CurrentStock(Nullable<int> dBId)
-        {
-            var dBIdParameter = dBId.HasValue ?
-                new ObjectParameter("DBId", dBId) :
-                new ObjectParameter("DBId", typeof(int));
-    
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<RPT_CurrentStock_Result>("RPT_CurrentStock", dBIdParameter);
-        }
-    
         public virtual ObjectResult<RPT_StockMovement_Result> RPT_StockMovement(Nullable<System.DateTime> start_Date, Nullable<System.DateTime> end_Date, Nullable<int> dbid)
         {
             var start_DateParameter = start_Date.HasValue ?
@@ -305,6 +296,15 @@ namespace ODMS.Models
                 new ObjectParameter("skuids", typeof(string));
     
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<RPT_Order_PSRWiseSKUWiseOrder_Result>("RPT_Order_PSRWiseSKUWiseOrder", start_DateParameter, end_DateParameter, dbidsParameter, skuidsParameter);
+        }
+    
+        public virtual ObjectResult<RPT_CurrentStock_Result> RPT_CurrentStock(string dbids)
+        {
+            var dbidsParameter = dbids != null ?
+                new ObjectParameter("dbids", dbids) :
+                new ObjectParameter("dbids", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<RPT_CurrentStock_Result>("RPT_CurrentStock", dbidsParameter);
         }
     }
 }

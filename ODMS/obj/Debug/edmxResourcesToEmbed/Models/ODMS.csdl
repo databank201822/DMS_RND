@@ -527,9 +527,6 @@
       <End Role="tbld_bundle_price" EntitySet="tbld_bundle_price" />
       <End Role="tbld_bundle_price_details" EntitySet="tbld_bundle_price_details" />
     </AssociationSet>
-    <FunctionImport Name="RPT_CurrentStock" ReturnType="Collection(ODMSModel.RPT_CurrentStock_Result)">
-      <Parameter Name="DBId" Mode="In" Type="Int32" />
-    </FunctionImport>
     <EntitySet Name="tbld_db_psr_zone_view" EntityType="ODMSModel.tbld_db_psr_zone_view" />
     <EntitySet Name="tbld_management_employee" EntityType="ODMSModel.tbld_management_employee" />
     <FunctionImport Name="RPT_StockMovement" ReturnType="Collection(ODMSModel.RPT_StockMovement_Result)">
@@ -589,6 +586,9 @@
       <End Role="tbld_Route_Plan" EntitySet="tbld_Route_Plan" />
       <End Role="tbld_Route_Plan_Detail" EntitySet="tbld_Route_Plan_Detail" />
     </AssociationSet>
+    <FunctionImport Name="RPT_CurrentStock" ReturnType="Collection(ODMSModel.RPT_CurrentStock_Result)">
+      <Parameter Name="dbids" Mode="In" Type="String" />
+    </FunctionImport>
   </EntityContainer>
   <ComplexType Name="DB_User_check_Result">
     <Property Type="Int32" Name="id" Nullable="false" />
@@ -910,6 +910,7 @@
       <PropertyRef Name="National" />
       <PropertyRef Name="Status" />
       <PropertyRef Name="name" />
+      <PropertyRef Name="PriceBuandle_id" />
     </Key>
     <Property Name="DB_Id" Type="Int32" Nullable="false" />
     <Property Name="DB_Name" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
@@ -924,7 +925,8 @@
     <Property Name="Status" Type="Int32" Nullable="false" />
     <Property Name="name" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
     <Property Name="DBCode" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-    <Property Name="OfficeAddress" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="OfficeAddress" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="PriceBuandle_id" Type="Int32" Nullable="false" />
   </EntityType>
   <EntityType Name="tbld_Target_PSR_Details">
     <Key>
@@ -1005,24 +1007,6 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <ComplexType Name="RPT_CurrentStock_Result">
-    <Property Type="String" Name="REGION_Name" Nullable="true" MaxLength="30" />
-    <Property Type="String" Name="AREA_Name" Nullable="true" MaxLength="30" />
-    <Property Type="String" Name="CEAREA_Name" Nullable="true" MaxLength="30" />
-    <Property Type="String" Name="DB_Name" Nullable="true" MaxLength="50" />
-    <Property Type="Int32" Name="Status" Nullable="true" />
-    <Property Type="Int32" Name="dbId" Nullable="false" />
-    <Property Type="String" Name="SKUName" Nullable="false" MaxLength="200" />
-    <Property Type="Int32" Name="sku_id" Nullable="false" />
-    <Property Type="Int32" Name="batch_id" Nullable="false" />
-    <Property Type="Double" Name="db_lifting_price" Nullable="false" />
-    <Property Type="Double" Name="outlet_lifting_price" Nullable="false" />
-    <Property Type="Double" Name="mrp" Nullable="false" />
-    <Property Type="Int32" Name="packSize" Nullable="false" />
-    <Property Type="Int32" Name="qtyPs" Nullable="false" />
-    <Property Type="Int32" Name="bookedqty" Nullable="false" />
-    <Property Type="Int32" Name="totalqty" Nullable="true" />
-  </ComplexType>
   <EntityType Name="tbld_db_psr_zone_view">
     <Key>
       <PropertyRef Name="DB_Id" />
@@ -1452,4 +1436,22 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
+  <ComplexType Name="RPT_CurrentStock_Result">
+    <Property Type="String" Name="REGION_Name" Nullable="false" MaxLength="30" />
+    <Property Type="String" Name="AREA_Name" Nullable="false" MaxLength="30" />
+    <Property Type="String" Name="CEAREA_Name" Nullable="false" MaxLength="30" />
+    <Property Type="String" Name="DB_Name" Nullable="false" MaxLength="50" />
+    <Property Type="Int32" Name="Status" Nullable="false" />
+    <Property Type="Int32" Name="dbId" Nullable="false" />
+    <Property Type="String" Name="SKUName" Nullable="false" MaxLength="200" />
+    <Property Type="Int32" Name="sku_id" Nullable="false" />
+    <Property Type="Int32" Name="batch_id" Nullable="false" />
+    <Property Type="Double" Name="db_lifting_price" Nullable="false" />
+    <Property Type="Double" Name="outlet_lifting_price" Nullable="false" />
+    <Property Type="Double" Name="mrp" Nullable="false" />
+    <Property Type="Int32" Name="packSize" Nullable="false" />
+    <Property Type="Int32" Name="qtyPs" Nullable="false" />
+    <Property Type="Int32" Name="bookedqty" Nullable="false" />
+    <Property Type="Int32" Name="totalqty" Nullable="true" />
+  </ComplexType>
 </Schema>

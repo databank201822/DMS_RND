@@ -73,7 +73,7 @@ namespace ODMS.Controllers
             return PartialView("OutletWiseDelivery/RptOutletWiseDeliveryFilter");
         }
 
-        //102
+        //202
         public ActionResult RptPsrWiseSkuWiseDelivery()
         {
             return View("PsrWiseSkuWiseDelivery/RptPsrWiseSkuWiseDelivery");
@@ -171,5 +171,64 @@ namespace ODMS.Controllers
             ViewBag.ReportViewer = reportViewer;
             return PartialView("Kpi/RptDeliveryKpiFilter");
         }
+
+        //204
+        public ActionResult RptBuyer()
+        {
+            return View("RptBuyer/RptBuyer");
+        }
+
+        [HttpPost]
+
+        public ActionResult RptBuyerFilter(int[] rsMid, int[] asMid, int[] cEid, int[] id, int[] skuIds, DateTime startDate, DateTime endDate, int reportType)
+        {
+
+            string dbids = sp.Dbids(rsMid, asMid, cEid, id);
+            string skulist = null;
+            if (skuIds != null)
+            {
+
+                skulist = string.Join(",", skuIds);
+            }
+            ReportViewer reportViewer = new ReportViewer
+            {
+                ProcessingMode = ProcessingMode.Local,
+                SizeToReportContent = true,
+                Width = Unit.Percentage(100),
+                Height = Unit.Pixel(600)
+
+            };
+            ReportParameter rp2 = null;
+            List<RPT_Delivery_PSRWiseSKUWiseDelivery_Result> psrskudelivery = Db.RPT_Delivery_PSRWiseSKUWiseDelivery(startDate, endDate, dbids, skulist).ToList();
+
+            if (reportType == 1)  //Summery
+            {
+                reportViewer.LocalReport.ReportPath = Server.MapPath(@"~\Reports\Delivery\RPT_Delivery_PsrWiseSkuWiseDeliverySummary.rdlc");
+                rp2 = new ReportParameter("ReportNameParameter", "PSR SKU Wise Delivery [202] Summary");
+            }
+            else if (reportType == 2) //Details
+            {
+                reportViewer.LocalReport.ReportPath = Server.MapPath(@"~\Reports\Delivery\RPT_Delivery_PsrWiseSkuWiseDeliveryDetails.rdlc");
+                rp2 = new ReportParameter("ReportNameParameter", "PSR SKU Wise Delivery [202] Details");
+            }
+
+
+            var rdc = new ReportDataSource("PSRDELIVERY", psrskudelivery);
+
+
+            ReportParameter rp1 = new ReportParameter("DateParameter", startDate.ToString("dd-MMM-yyy") + " TO " + endDate.ToString("dd-MMM-yyy"));
+
+
+            reportViewer.LocalReport.SetParameters(new[] { rp1, rp2 });
+
+            reportViewer.LocalReport.DataSources.Add(rdc);
+
+            reportViewer.LocalReport.Refresh();
+            reportViewer.Visible = true;
+
+            ViewBag.ReportViewer = reportViewer;
+            return PartialView("RptBuyer/RptBuyerFilter");
+        }
+    
     }
     }
