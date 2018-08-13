@@ -14,6 +14,15 @@ namespace ODMS
                 url: "{controller}/{action}/{id}",
                 defaults: new { controller = "Home", action = "Index", id = UrlParameter.Optional }
             );
+            
+            routes.MapRoute(
+                name: "Buyer",
+                url: "{controller}/{action}/{id}/{startdate}/{enddate}/skuid",
+                defaults: new { controller = "ReportDelivery", action = "Index", id = UrlParameter.Optional, startdate = UrlParameter.Optional, enddate = UrlParameter.Optional, skuid = UrlParameter.Optional }
+            );
+
+
+
         }
     }
 }

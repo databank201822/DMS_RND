@@ -27,6 +27,10 @@
          min-height: 600px;
         }
 </style>
+
 <script>
-   
+
+    $('iframe').on('load', function () {
+        $("#ajax_load").hide();
+    });
 </script>

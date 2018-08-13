@@ -513,7 +513,6 @@
       <End Role="tblt_TradePromotionDefinition" EntitySet="tblt_TradePromotionDefinition" />
     </AssociationSet>
     <FunctionImport Name="DBWisezone" ReturnType="Collection(ODMSModel.DBWisezone_Result)" />
-    <EntitySet Name="tbld_db_zone_view" EntityType="ODMSModel.tbld_db_zone_view" />
     <EntitySet Name="tbld_Target_PSR_Details" EntityType="ODMSModel.tbld_Target_PSR_Details" />
     <FunctionImport Name="DayEnd_Process">
       <Parameter Name="Dbid" Mode="In" Type="Int32" />
@@ -527,7 +526,6 @@
       <End Role="tbld_bundle_price" EntitySet="tbld_bundle_price" />
       <End Role="tbld_bundle_price_details" EntitySet="tbld_bundle_price_details" />
     </AssociationSet>
-    <EntitySet Name="tbld_db_psr_zone_view" EntityType="ODMSModel.tbld_db_psr_zone_view" />
     <EntitySet Name="tbld_management_employee" EntityType="ODMSModel.tbld_management_employee" />
     <FunctionImport Name="RPT_StockMovement" ReturnType="Collection(ODMSModel.RPT_StockMovement_Result)">
       <Parameter Name="Start_Date" Mode="In" Type="DateTime" />
@@ -588,6 +586,20 @@
     </AssociationSet>
     <FunctionImport Name="RPT_CurrentStock" ReturnType="Collection(ODMSModel.RPT_CurrentStock_Result)">
       <Parameter Name="dbids" Mode="In" Type="String" />
+    </FunctionImport>
+    <EntitySet Name="tbld_db_psr_zone_view" EntityType="ODMSModel.tbld_db_psr_zone_view" />
+    <EntitySet Name="tbld_db_zone_view" EntityType="ODMSModel.tbld_db_zone_view" />
+    <FunctionImport Name="RPT_Delivery_BuyerByDBSummary" ReturnType="Collection(ODMSModel.RPT_Delivery_BuyerByDBSummary_Result)">
+      <Parameter Name="Start_Date" Mode="In" Type="DateTime" />
+      <Parameter Name="End_Date" Mode="In" Type="DateTime" />
+      <Parameter Name="dbids" Mode="In" Type="String" />
+      <Parameter Name="skuids" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="RPT_Delivery_BuyerByPSRSummary" ReturnType="Collection(ODMSModel.RPT_Delivery_BuyerByPSRSummary_Result)">
+      <Parameter Name="Start_Date" Mode="In" Type="DateTime" />
+      <Parameter Name="End_Date" Mode="In" Type="DateTime" />
+      <Parameter Name="dbids" Mode="In" Type="String" />
+      <Parameter Name="skuids" Mode="In" Type="String" />
     </FunctionImport>
   </EntityContainer>
   <ComplexType Name="DB_User_check_Result">
@@ -896,38 +908,6 @@
     <Property Type="String" Name="National" Nullable="false" MaxLength="30" />
     <Property Type="Int32" Name="Status" Nullable="false" />
   </ComplexType>
-  <EntityType Name="tbld_db_zone_view">
-    <Key>
-      <PropertyRef Name="DB_Id" />
-      <PropertyRef Name="DB_Name" />
-      <PropertyRef Name="CEAREA_id" />
-      <PropertyRef Name="CEAREA_Name" />
-      <PropertyRef Name="AREA_id" />
-      <PropertyRef Name="AREA_Name" />
-      <PropertyRef Name="REGION_id" />
-      <PropertyRef Name="REGION_Name" />
-      <PropertyRef Name="National_id" />
-      <PropertyRef Name="National" />
-      <PropertyRef Name="Status" />
-      <PropertyRef Name="name" />
-      <PropertyRef Name="PriceBuandle_id" />
-    </Key>
-    <Property Name="DB_Id" Type="Int32" Nullable="false" />
-    <Property Name="DB_Name" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
-    <Property Name="CEAREA_id" Type="Int32" Nullable="false" />
-    <Property Name="CEAREA_Name" Type="String" Nullable="false" MaxLength="30" FixedLength="false" Unicode="false" />
-    <Property Name="AREA_id" Type="Int32" Nullable="false" />
-    <Property Name="AREA_Name" Type="String" Nullable="false" MaxLength="30" FixedLength="false" Unicode="false" />
-    <Property Name="REGION_id" Type="Int32" Nullable="false" />
-    <Property Name="REGION_Name" Type="String" Nullable="false" MaxLength="30" FixedLength="false" Unicode="false" />
-    <Property Name="National_id" Type="Int32" Nullable="false" />
-    <Property Name="National" Type="String" Nullable="false" MaxLength="30" FixedLength="false" Unicode="false" />
-    <Property Name="Status" Type="Int32" Nullable="false" />
-    <Property Name="name" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
-    <Property Name="DBCode" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-    <Property Name="OfficeAddress" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
-    <Property Name="PriceBuandle_id" Type="Int32" Nullable="false" />
-  </EntityType>
   <EntityType Name="tbld_Target_PSR_Details">
     <Key>
       <PropertyRef Name="id" />
@@ -1007,40 +987,6 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <EntityType Name="tbld_db_psr_zone_view">
-    <Key>
-      <PropertyRef Name="DB_Id" />
-      <PropertyRef Name="DB_Name" />
-      <PropertyRef Name="CEAREA_id" />
-      <PropertyRef Name="CEAREA_Name" />
-      <PropertyRef Name="AREA_id" />
-      <PropertyRef Name="AREA_Name" />
-      <PropertyRef Name="REGION_id" />
-      <PropertyRef Name="REGION_Name" />
-      <PropertyRef Name="National_id" />
-      <PropertyRef Name="National" />
-      <PropertyRef Name="Status" />
-      <PropertyRef Name="PSR_id" />
-      <PropertyRef Name="cluster" />
-    </Key>
-    <Property Name="DB_Id" Type="Int32" Nullable="false" />
-    <Property Name="DB_Name" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
-    <Property Name="CEAREA_id" Type="Int32" Nullable="false" />
-    <Property Name="CEAREA_Name" Type="String" Nullable="false" MaxLength="30" FixedLength="false" Unicode="false" />
-    <Property Name="AREA_id" Type="Int32" Nullable="false" />
-    <Property Name="AREA_Name" Type="String" Nullable="false" MaxLength="30" FixedLength="false" Unicode="false" />
-    <Property Name="REGION_id" Type="Int32" Nullable="false" />
-    <Property Name="REGION_Name" Type="String" Nullable="false" MaxLength="30" FixedLength="false" Unicode="false" />
-    <Property Name="National_id" Type="Int32" Nullable="false" />
-    <Property Name="National" Type="String" Nullable="false" MaxLength="30" FixedLength="false" Unicode="false" />
-    <Property Name="Status" Type="Int32" Nullable="false" />
-    <Property Name="Name" Type="String" MaxLength="256" FixedLength="false" Unicode="false" />
-    <Property Name="PSR_id" Type="Int32" Nullable="false" />
-    <Property Name="PSR_Code" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
-    <Property Name="DBCode" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-    <Property Name="OfficeAddress" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
-    <Property Name="cluster" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
-  </EntityType>
   <EntityType Name="tbld_management_employee">
     <Key>
       <PropertyRef Name="id" />
@@ -1453,5 +1399,102 @@
     <Property Type="Int32" Name="qtyPs" Nullable="false" />
     <Property Type="Int32" Name="bookedqty" Nullable="false" />
     <Property Type="Int32" Name="totalqty" Nullable="true" />
+  </ComplexType>
+  <EntityType Name="tbld_db_psr_zone_view">
+    <Key>
+      <PropertyRef Name="DB_Id" />
+      <PropertyRef Name="DB_Name" />
+      <PropertyRef Name="CEAREA_id" />
+      <PropertyRef Name="CEAREA_Name" />
+      <PropertyRef Name="AREA_id" />
+      <PropertyRef Name="AREA_Name" />
+      <PropertyRef Name="REGION_id" />
+      <PropertyRef Name="REGION_Name" />
+      <PropertyRef Name="National_id" />
+      <PropertyRef Name="National" />
+      <PropertyRef Name="Status" />
+      <PropertyRef Name="PriceBuandle_id" />
+      <PropertyRef Name="PSR_id" />
+      <PropertyRef Name="cluster" />
+    </Key>
+    <Property Name="DB_Id" Type="Int32" Nullable="false" />
+    <Property Name="DB_Name" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="CEAREA_id" Type="Int32" Nullable="false" />
+    <Property Name="CEAREA_Name" Type="String" Nullable="false" MaxLength="30" FixedLength="false" Unicode="false" />
+    <Property Name="AREA_id" Type="Int32" Nullable="false" />
+    <Property Name="AREA_Name" Type="String" Nullable="false" MaxLength="30" FixedLength="false" Unicode="false" />
+    <Property Name="REGION_id" Type="Int32" Nullable="false" />
+    <Property Name="REGION_Name" Type="String" Nullable="false" MaxLength="30" FixedLength="false" Unicode="false" />
+    <Property Name="National_id" Type="Int32" Nullable="false" />
+    <Property Name="National" Type="String" Nullable="false" MaxLength="30" FixedLength="false" Unicode="false" />
+    <Property Name="Status" Type="Int32" Nullable="false" />
+    <Property Name="PriceBuandle_id" Type="Int32" Nullable="false" />
+    <Property Name="Name" Type="String" MaxLength="256" FixedLength="false" Unicode="false" />
+    <Property Name="PSR_id" Type="Int32" Nullable="false" />
+    <Property Name="PSR_Code" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+    <Property Name="DBCode" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="OfficeAddress" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="cluster" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="tbld_db_zone_view">
+    <Key>
+      <PropertyRef Name="DB_Id" />
+      <PropertyRef Name="DB_Name" />
+      <PropertyRef Name="CEAREA_id" />
+      <PropertyRef Name="CEAREA_Name" />
+      <PropertyRef Name="AREA_id" />
+      <PropertyRef Name="AREA_Name" />
+      <PropertyRef Name="REGION_id" />
+      <PropertyRef Name="REGION_Name" />
+      <PropertyRef Name="National_id" />
+      <PropertyRef Name="National" />
+      <PropertyRef Name="Status" />
+      <PropertyRef Name="Cluster" />
+      <PropertyRef Name="PriceBuandle_id" />
+    </Key>
+    <Property Name="DB_Id" Type="Int32" Nullable="false" />
+    <Property Name="DB_Name" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="CEAREA_id" Type="Int32" Nullable="false" />
+    <Property Name="CEAREA_Name" Type="String" Nullable="false" MaxLength="30" FixedLength="false" Unicode="false" />
+    <Property Name="AREA_id" Type="Int32" Nullable="false" />
+    <Property Name="AREA_Name" Type="String" Nullable="false" MaxLength="30" FixedLength="false" Unicode="false" />
+    <Property Name="REGION_id" Type="Int32" Nullable="false" />
+    <Property Name="REGION_Name" Type="String" Nullable="false" MaxLength="30" FixedLength="false" Unicode="false" />
+    <Property Name="National_id" Type="Int32" Nullable="false" />
+    <Property Name="National" Type="String" Nullable="false" MaxLength="30" FixedLength="false" Unicode="false" />
+    <Property Name="Status" Type="Int32" Nullable="false" />
+    <Property Name="Cluster" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="DBCode" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="OfficeAddress" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="PriceBuandle_id" Type="Int32" Nullable="false" />
+  </EntityType>
+  <ComplexType Name="RPT_Delivery_BuyerByDBSummary_Result">
+    <Property Type="Int32" Name="DB_Id" Nullable="false" />
+    <Property Type="String" Name="DB_Name" Nullable="false" MaxLength="50" />
+    <Property Type="String" Name="CEAREA_Name" Nullable="false" MaxLength="30" />
+    <Property Type="String" Name="AREA_Name" Nullable="false" MaxLength="30" />
+    <Property Type="String" Name="REGION_Name" Nullable="false" MaxLength="30" />
+    <Property Type="Int32" Name="Status" Nullable="false" />
+    <Property Type="String" Name="cluster" Nullable="false" MaxLength="100" />
+    <Property Type="String" Name="DBCode" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="OfficeAddress" Nullable="true" />
+    <Property Type="Int32" Name="TotalOutlet" Nullable="false" />
+    <Property Type="Int32" Name="BuyerOutlet" Nullable="false" />
+    <Property Type="Int32" Name="NonBuyer" Nullable="true" />
+  </ComplexType>
+  <ComplexType Name="RPT_Delivery_BuyerByPSRSummary_Result">
+    <Property Type="String" Name="DB_Name" Nullable="false" MaxLength="50" />
+    <Property Type="String" Name="CEAREA_Name" Nullable="false" MaxLength="30" />
+    <Property Type="String" Name="AREA_Name" Nullable="false" MaxLength="30" />
+    <Property Type="String" Name="REGION_Name" Nullable="false" MaxLength="30" />
+    <Property Type="Int32" Name="Status" Nullable="false" />
+    <Property Type="String" Name="PSR_Code" Nullable="true" MaxLength="30" />
+    <Property Type="String" Name="PSR_Name" Nullable="true" MaxLength="256" />
+    <Property Type="String" Name="cluster" Nullable="false" MaxLength="100" />
+    <Property Type="String" Name="DBCode" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="OfficeAddress" Nullable="true" />
+    <Property Type="Int32" Name="TotalOutlet" Nullable="false" />
+    <Property Type="Int32" Name="BuyerOutlet" Nullable="false" />
+    <Property Type="Int32" Name="NonBuyer" Nullable="true" />
   </ComplexType>
 </Schema>

@@ -687,27 +687,6 @@
         </ComplexTypeMapping>
       </ResultMapping>
     </FunctionImportMapping>
-    <EntitySetMapping Name="tbld_db_zone_view">
-      <EntityTypeMapping TypeName="ODMSModel.tbld_db_zone_view">
-        <MappingFragment StoreEntitySet="tbld_db_zone_view">
-          <ScalarProperty Name="PriceBuandle_id" ColumnName="PriceBuandle_id" />
-          <ScalarProperty Name="OfficeAddress" ColumnName="OfficeAddress" />
-          <ScalarProperty Name="DBCode" ColumnName="DBCode" />
-          <ScalarProperty Name="name" ColumnName="name" />
-          <ScalarProperty Name="Status" ColumnName="Status" />
-          <ScalarProperty Name="National" ColumnName="National" />
-          <ScalarProperty Name="National_id" ColumnName="National_id" />
-          <ScalarProperty Name="REGION_Name" ColumnName="REGION_Name" />
-          <ScalarProperty Name="REGION_id" ColumnName="REGION_id" />
-          <ScalarProperty Name="AREA_Name" ColumnName="AREA_Name" />
-          <ScalarProperty Name="AREA_id" ColumnName="AREA_id" />
-          <ScalarProperty Name="CEAREA_Name" ColumnName="CEAREA_Name" />
-          <ScalarProperty Name="CEAREA_id" ColumnName="CEAREA_id" />
-          <ScalarProperty Name="DB_Name" ColumnName="DB_Name" />
-          <ScalarProperty Name="DB_Id" ColumnName="DB_Id" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
     <EntitySetMapping Name="tbld_Target_PSR_Details">
       <EntityTypeMapping TypeName="ODMSModel.tbld_Target_PSR_Details">
         <MappingFragment StoreEntitySet="tbld_Target_PSR_Details">
@@ -776,29 +755,6 @@
           <ScalarProperty Name="sku_id" ColumnName="sku_id" />
           <ScalarProperty Name="bundle_price_id" ColumnName="bundle_price_id" />
           <ScalarProperty Name="id" ColumnName="id" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
-    <EntitySetMapping Name="tbld_db_psr_zone_view">
-      <EntityTypeMapping TypeName="ODMSModel.tbld_db_psr_zone_view">
-        <MappingFragment StoreEntitySet="tbld_db_psr_zone_view">
-          <ScalarProperty Name="cluster" ColumnName="cluster" />
-          <ScalarProperty Name="OfficeAddress" ColumnName="OfficeAddress" />
-          <ScalarProperty Name="DBCode" ColumnName="DBCode" />
-          <ScalarProperty Name="PSR_Code" ColumnName="PSR_Code" />
-          <ScalarProperty Name="PSR_id" ColumnName="PSR_id" />
-          <ScalarProperty Name="Name" ColumnName="Name" />
-          <ScalarProperty Name="Status" ColumnName="Status" />
-          <ScalarProperty Name="National" ColumnName="National" />
-          <ScalarProperty Name="National_id" ColumnName="National_id" />
-          <ScalarProperty Name="REGION_Name" ColumnName="REGION_Name" />
-          <ScalarProperty Name="REGION_id" ColumnName="REGION_id" />
-          <ScalarProperty Name="AREA_Name" ColumnName="AREA_Name" />
-          <ScalarProperty Name="AREA_id" ColumnName="AREA_id" />
-          <ScalarProperty Name="CEAREA_Name" ColumnName="CEAREA_Name" />
-          <ScalarProperty Name="CEAREA_id" ColumnName="CEAREA_id" />
-          <ScalarProperty Name="DB_Name" ColumnName="DB_Name" />
-          <ScalarProperty Name="DB_Id" ColumnName="DB_Id" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
@@ -1228,6 +1184,88 @@
           <ScalarProperty Name="qtyPs" ColumnName="qtyPs" />
           <ScalarProperty Name="bookedqty" ColumnName="bookedqty" />
           <ScalarProperty Name="totalqty" ColumnName="totalqty" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <EntitySetMapping Name="tbld_db_psr_zone_view">
+      <EntityTypeMapping TypeName="ODMSModel.tbld_db_psr_zone_view">
+        <MappingFragment StoreEntitySet="tbld_db_psr_zone_view">
+          <ScalarProperty Name="cluster" ColumnName="cluster" />
+          <ScalarProperty Name="OfficeAddress" ColumnName="OfficeAddress" />
+          <ScalarProperty Name="DBCode" ColumnName="DBCode" />
+          <ScalarProperty Name="PSR_Code" ColumnName="PSR_Code" />
+          <ScalarProperty Name="PSR_id" ColumnName="PSR_id" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="PriceBuandle_id" ColumnName="PriceBuandle_id" />
+          <ScalarProperty Name="Status" ColumnName="Status" />
+          <ScalarProperty Name="National" ColumnName="National" />
+          <ScalarProperty Name="National_id" ColumnName="National_id" />
+          <ScalarProperty Name="REGION_Name" ColumnName="REGION_Name" />
+          <ScalarProperty Name="REGION_id" ColumnName="REGION_id" />
+          <ScalarProperty Name="AREA_Name" ColumnName="AREA_Name" />
+          <ScalarProperty Name="AREA_id" ColumnName="AREA_id" />
+          <ScalarProperty Name="CEAREA_Name" ColumnName="CEAREA_Name" />
+          <ScalarProperty Name="CEAREA_id" ColumnName="CEAREA_id" />
+          <ScalarProperty Name="DB_Name" ColumnName="DB_Name" />
+          <ScalarProperty Name="DB_Id" ColumnName="DB_Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tbld_db_zone_view">
+      <EntityTypeMapping TypeName="ODMSModel.tbld_db_zone_view">
+        <MappingFragment StoreEntitySet="tbld_db_zone_view">
+          <ScalarProperty Name="PriceBuandle_id" ColumnName="PriceBuandle_id" />
+          <ScalarProperty Name="OfficeAddress" ColumnName="OfficeAddress" />
+          <ScalarProperty Name="DBCode" ColumnName="DBCode" />
+          <ScalarProperty Name="Cluster" ColumnName="Cluster" />
+          <ScalarProperty Name="Status" ColumnName="Status" />
+          <ScalarProperty Name="National" ColumnName="National" />
+          <ScalarProperty Name="National_id" ColumnName="National_id" />
+          <ScalarProperty Name="REGION_Name" ColumnName="REGION_Name" />
+          <ScalarProperty Name="REGION_id" ColumnName="REGION_id" />
+          <ScalarProperty Name="AREA_Name" ColumnName="AREA_Name" />
+          <ScalarProperty Name="AREA_id" ColumnName="AREA_id" />
+          <ScalarProperty Name="CEAREA_Name" ColumnName="CEAREA_Name" />
+          <ScalarProperty Name="CEAREA_id" ColumnName="CEAREA_id" />
+          <ScalarProperty Name="DB_Name" ColumnName="DB_Name" />
+          <ScalarProperty Name="DB_Id" ColumnName="DB_Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <FunctionImportMapping FunctionImportName="RPT_Delivery_BuyerByDBSummary" FunctionName="ODMSModel.Store.RPT_Delivery_BuyerByDBSummary">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="ODMSModel.RPT_Delivery_BuyerByDBSummary_Result">
+          <ScalarProperty Name="DB_Id" ColumnName="DB_Id" />
+          <ScalarProperty Name="DB_Name" ColumnName="DB_Name" />
+          <ScalarProperty Name="CEAREA_Name" ColumnName="CEAREA_Name" />
+          <ScalarProperty Name="AREA_Name" ColumnName="AREA_Name" />
+          <ScalarProperty Name="REGION_Name" ColumnName="REGION_Name" />
+          <ScalarProperty Name="Status" ColumnName="Status" />
+          <ScalarProperty Name="cluster" ColumnName="cluster" />
+          <ScalarProperty Name="DBCode" ColumnName="DBCode" />
+          <ScalarProperty Name="OfficeAddress" ColumnName="OfficeAddress" />
+          <ScalarProperty Name="TotalOutlet" ColumnName="TotalOutlet" />
+          <ScalarProperty Name="BuyerOutlet" ColumnName="BuyerOutlet" />
+          <ScalarProperty Name="NonBuyer" ColumnName="NonBuyer" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="RPT_Delivery_BuyerByPSRSummary" FunctionName="ODMSModel.Store.RPT_Delivery_BuyerByPSRSummary">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="ODMSModel.RPT_Delivery_BuyerByPSRSummary_Result">
+          <ScalarProperty Name="DB_Name" ColumnName="DB_Name" />
+          <ScalarProperty Name="CEAREA_Name" ColumnName="CEAREA_Name" />
+          <ScalarProperty Name="AREA_Name" ColumnName="AREA_Name" />
+          <ScalarProperty Name="REGION_Name" ColumnName="REGION_Name" />
+          <ScalarProperty Name="Status" ColumnName="Status" />
+          <ScalarProperty Name="PSR_Code" ColumnName="PSR_Code" />
+          <ScalarProperty Name="PSR_Name" ColumnName="PSR_Name" />
+          <ScalarProperty Name="cluster" ColumnName="cluster" />
+          <ScalarProperty Name="DBCode" ColumnName="DBCode" />
+          <ScalarProperty Name="OfficeAddress" ColumnName="OfficeAddress" />
+          <ScalarProperty Name="TotalOutlet" ColumnName="TotalOutlet" />
+          <ScalarProperty Name="BuyerOutlet" ColumnName="BuyerOutlet" />
+          <ScalarProperty Name="NonBuyer" ColumnName="NonBuyer" />
         </ComplexTypeMapping>
       </ResultMapping>
     </FunctionImportMapping>

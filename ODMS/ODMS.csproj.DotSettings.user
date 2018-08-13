@@ -1,3 +1,5 @@
 ﻿<wpf:ResourceDictionary xml:space="preserve" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:s="clr-namespace:System;assembly=mscorlib" xmlns:ss="urn:shemas-jetbrains-com:settings-storage-xaml" xmlns:wpf="http://schemas.microsoft.com/winfx/2006/xaml/presentation">
+	<s:String x:Key="/Default/CodeInspection/WebPathMapping/IgnoredPaths/=APP_005FRES_005CAJAX_002DLOADER_002EGIF/@EntryIndexedValue">App_res\ajax-loader.gif</s:String>
 	<s:String x:Key="/Default/CodeInspection/WebPathMapping/IgnoredPaths/=ORDER/@EntryIndexedValue">Order</s:String>
+	<s:String x:Key="/Default/CodeInspection/WebPathMapping/PathsInCorrectCasing/=APP_005FRES_005CAJAX_002DLOADER_002EGIF/@EntryIndexedValue">App_res\ajax-loader.gif</s:String>
 	<s:String x:Key="/Default/CodeInspection/WebPathMapping/PathsInCorrectCasing/=ORDER/@EntryIndexedValue">Order</s:String></wpf:ResourceDictionary>

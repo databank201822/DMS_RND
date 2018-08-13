@@ -43,16 +43,16 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>03/25/2018 15:18:44</publishTime>
     </File>
     <File Include="bin/App_Code.compiled">
-      <publishTime>08/09/2018 17:31:05</publishTime>
+      <publishTime>08/13/2018 12:55:26</publishTime>
     </File>
     <File Include="bin/App_Code.dll">
-      <publishTime>08/09/2018 17:31:05</publishTime>
+      <publishTime>08/13/2018 12:55:26</publishTime>
     </File>
     <File Include="bin/App_global.asax.compiled">
-      <publishTime>08/09/2018 17:31:06</publishTime>
+      <publishTime>08/13/2018 12:55:28</publishTime>
     </File>
     <File Include="bin/App_global.asax.dll">
-      <publishTime>08/09/2018 17:31:06</publishTime>
+      <publishTime>08/13/2018 12:55:28</publishTime>
     </File>
     <File Include="bin/de/Microsoft.ReportViewer.Common.resources.dll">
       <publishTime>05/16/2018 15:00:42</publishTime>
@@ -205,7 +205,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>08/09/2018 10:17:04</publishTime>
     </File>
     <File Include="bin/ODMS.dll">
-      <publishTime>08/09/2018 17:30:27</publishTime>
+      <publishTime>08/13/2018 12:53:32</publishTime>
     </File>
     <File Include="bin/pt/Microsoft.ReportViewer.Common.resources.dll">
       <publishTime>05/16/2018 15:00:45</publishTime>
@@ -6352,13 +6352,13 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>07/31/2018 17:44:53</publishTime>
     </File>
     <File Include="Models/ODMS.edmx.diagram">
-      <publishTime>08/09/2018 16:33:42</publishTime>
+      <publishTime>08/13/2018 11:09:50</publishTime>
     </File>
     <File Include="packages.config">
       <publishTime>08/09/2018 10:18:54</publishTime>
     </File>
     <File Include="PrecompiledApp.config">
-      <publishTime>08/09/2018 17:30:50</publishTime>
+      <publishTime>08/13/2018 12:54:51</publishTime>
     </File>
     <File Include="Reports/Delivery/RPT_Delivery_OutletWiseDeliveryDetails.rdlc">
       <publishTime>08/09/2018 10:08:17</publishTime>
@@ -6397,7 +6397,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>08/07/2018 14:52:56</publishTime>
     </File>
     <File Include="ReportViewerWebForm.aspx">
-      <publishTime>08/08/2018 18:07:56</publishTime>
+      <publishTime>08/12/2018 15:36:46</publishTime>
     </File>
     <File Include="Scripts/bootstrap-datepicker.js">
       <publishTime>05/15/2018 17:41:44</publishTime>
@@ -6412,7 +6412,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>05/15/2018 17:41:44</publishTime>
     </File>
     <File Include="Scripts/DynamicFilter.js">
-      <publishTime>07/27/2018 10:45:29</publishTime>
+      <publishTime>08/11/2018 12:26:11</publishTime>
     </File>
     <File Include="Scripts/jquery-1.10.2.js">
       <publishTime>05/15/2018 17:41:44</publishTime>
@@ -6463,7 +6463,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>05/15/2018 17:41:44</publishTime>
     </File>
     <File Include="Scripts/site.js">
-      <publishTime>07/28/2018 12:43:02</publishTime>
+      <publishTime>08/13/2018 11:24:27</publishTime>
     </File>
     <File Include="Scripts/sweetalert.js">
       <publishTime>05/15/2018 17:41:44</publishTime>
@@ -6729,6 +6729,9 @@ by editing this MSBuild file. In order to learn more about this please visit htt
     <File Include="Views/DynamicFilter/DateRange_filter.cshtml">
       <publishTime>08/07/2018 18:09:26</publishTime>
     </File>
+    <File Include="Views/DynamicFilter/PSR_filter.cshtml">
+      <publishTime>08/11/2018 12:25:00</publishTime>
+    </File>
     <File Include="Views/DynamicFilter/RSM_Zone_filter.cshtml">
       <publishTime>03/25/2018 15:19:59</publishTime>
     </File>
@@ -6736,7 +6739,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>07/27/2018 11:41:51</publishTime>
     </File>
     <File Include="Views/DynamicFilter/Zone_filter.cshtml">
-      <publishTime>07/27/2018 10:35:02</publishTime>
+      <publishTime>08/11/2018 11:31:27</publishTime>
     </File>
     <File Include="Views/Error/InternalServer.cshtml">
       <publishTime>07/25/2018 18:27:19</publishTime>
@@ -6758,6 +6761,12 @@ by editing this MSBuild file. In order to learn more about this please visit htt
     </File>
     <File Include="Views/GeneralReport/CurrentRouteplan/CurrentRouteplanFilter.cshtml">
       <publishTime>05/06/2018 10:12:40</publishTime>
+    </File>
+    <File Include="Views/GeneralReport/CurrentStock/CurrentStock.cshtml">
+      <publishTime>08/11/2018 17:30:09</publishTime>
+    </File>
+    <File Include="Views/GeneralReport/CurrentStock/CurrentStockFilter.cshtml">
+      <publishTime>08/11/2018 17:30:09</publishTime>
     </File>
     <File Include="Views/GeneralReport/DbZone.cshtml">
       <publishTime>05/18/2018 20:19:38</publishTime>
@@ -6793,7 +6802,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>08/01/2018 15:20:56</publishTime>
     </File>
     <File Include="Views/Inventory/Index.cshtml">
-      <publishTime>07/26/2018 09:52:42</publishTime>
+      <publishTime>08/11/2018 16:18:04</publishTime>
     </File>
     <File Include="Views/Inventory/StockAdjustment.cshtml">
       <publishTime>07/30/2018 11:01:10</publishTime>
@@ -6940,22 +6949,34 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>07/26/2018 14:38:18</publishTime>
     </File>
     <File Include="Views/ReportDelivery/Kpi/RptDeliveryKpi.cshtml">
-      <publishTime>08/05/2018 18:40:16</publishTime>
+      <publishTime>08/11/2018 12:26:28</publishTime>
     </File>
     <File Include="Views/ReportDelivery/Kpi/RptDeliveryKpiFilter.cshtml">
       <publishTime>07/24/2018 16:59:29</publishTime>
     </File>
     <File Include="Views/ReportDelivery/OutletWiseDelivery/RptOutletWiseDelivery.cshtml">
-      <publishTime>08/08/2018 18:06:38</publishTime>
+      <publishTime>08/12/2018 14:32:23</publishTime>
     </File>
     <File Include="Views/ReportDelivery/OutletWiseDelivery/RptOutletWiseDeliveryFilter.cshtml">
-      <publishTime>08/08/2018 18:06:57</publishTime>
+      <publishTime>08/12/2018 14:35:14</publishTime>
     </File>
     <File Include="Views/ReportDelivery/PsrWiseSkuWiseDelivery/RptPsrWiseSkuWiseDelivery.cshtml">
-      <publishTime>08/05/2018 18:40:00</publishTime>
+      <publishTime>08/12/2018 14:35:34</publishTime>
     </File>
     <File Include="Views/ReportDelivery/PsrWiseSkuWiseDelivery/RptPsrWiseSkuWiseDeliveryFilter.cshtml">
-      <publishTime>07/14/2018 14:45:28</publishTime>
+      <publishTime>08/12/2018 14:35:32</publishTime>
+    </File>
+    <File Include="Views/ReportDelivery/RptBuyer/RptBuyer.cshtml">
+      <publishTime>08/13/2018 10:37:37</publishTime>
+    </File>
+    <File Include="Views/ReportDelivery/RptBuyer/RPTBuyerByDbSummary.cshtml">
+      <publishTime>08/13/2018 11:26:00</publishTime>
+    </File>
+    <File Include="Views/ReportDelivery/RptBuyer/RPTBuyerBypsrSummary.cshtml">
+      <publishTime>08/13/2018 12:25:12</publishTime>
+    </File>
+    <File Include="Views/ReportDelivery/RptBuyer/RptBuyerFilter.cshtml">
+      <publishTime>08/12/2018 14:35:50</publishTime>
     </File>
     <File Include="Views/ReportList/Create.cshtml">
       <publishTime>07/12/2018 15:57:02</publishTime>
@@ -6976,19 +6997,19 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>05/18/2018 21:28:23</publishTime>
     </File>
     <File Include="Views/ReportOrder/OutletWiseOrder/RptOutletWiseOrder.cshtml">
-      <publishTime>08/07/2018 16:44:35</publishTime>
+      <publishTime>08/12/2018 14:36:46</publishTime>
     </File>
     <File Include="Views/ReportOrder/OutletWiseOrder/RptOutletWiseOrderFilter.cshtml">
-      <publishTime>07/29/2018 19:49:53</publishTime>
+      <publishTime>08/12/2018 14:36:11</publishTime>
     </File>
     <File Include="Views/ReportOrder/OutletwiseOrderFilter.cshtml">
       <publishTime>05/18/2018 20:22:00</publishTime>
     </File>
     <File Include="Views/ReportOrder/PsrWiseSkuWiseOrder/RptPsrWiseSkuWiseOrder.cshtml">
-      <publishTime>08/05/2018 18:42:37</publishTime>
+      <publishTime>08/12/2018 14:36:22</publishTime>
     </File>
     <File Include="Views/ReportOrder/PsrWiseSkuWiseOrder/RptPsrWiseSkuWiseOrderFilter.cshtml">
-      <publishTime>07/13/2018 17:36:14</publishTime>
+      <publishTime>08/12/2018 14:36:27</publishTime>
     </File>
     <File Include="Views/Routeplan/EditRoutePlan.cshtml">
       <publishTime>05/05/2018 11:53:09</publishTime>
@@ -7003,7 +7024,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>07/25/2018 18:06:59</publishTime>
     </File>
     <File Include="Views/Shared/_Layout.cshtml">
-      <publishTime>08/08/2018 18:07:03</publishTime>
+      <publishTime>08/13/2018 10:39:53</publishTime>
     </File>
     <File Include="Views/SkuBrand/Create.cshtml">
       <publishTime>08/06/2018 11:37:05</publishTime>
@@ -7198,7 +7219,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>05/25/2018 15:43:27</publishTime>
     </File>
     <File Include="Web.config">
-      <publishTime>08/09/2018 17:30:30</publishTime>
+      <publishTime>08/13/2018 12:54:01</publishTime>
     </File>
   </ItemGroup>
 </Project>

@@ -25,7 +25,7 @@ namespace ODMS.Models
         public int National_id { get; set; }
         public string National { get; set; }
         public int Status { get; set; }
-        public string name { get; set; }
+        public string Cluster { get; set; }
         public string DBCode { get; set; }
         public string OfficeAddress { get; set; }
         public int PriceBuandle_id { get; set; }

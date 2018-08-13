@@ -823,6 +823,7 @@ warning 6002: The table/view 'ODMS.dbo.tbld_db_psr_zone_view' does not have a pr
       <PropertyRef Name="National_id" />
       <PropertyRef Name="National" />
       <PropertyRef Name="Status" />
+      <PropertyRef Name="PriceBuandle_id" />
       <PropertyRef Name="PSR_id" />
       <PropertyRef Name="cluster" />
     </Key>
@@ -837,6 +838,7 @@ warning 6002: The table/view 'ODMS.dbo.tbld_db_psr_zone_view' does not have a pr
     <Property Name="National_id" Type="int" Nullable="false" />
     <Property Name="National" Type="varchar" MaxLength="30" Nullable="false" />
     <Property Name="Status" Type="int" Nullable="false" />
+    <Property Name="PriceBuandle_id" Type="int" Nullable="false" />
     <Property Name="Name" Type="varchar" MaxLength="256" />
     <Property Name="PSR_id" Type="int" Nullable="false" />
     <Property Name="PSR_Code" Type="varchar" MaxLength="30" />
@@ -859,7 +861,7 @@ warning 6002: The table/view 'ODMS.dbo.tbld_db_zone_view' does not have a primar
       <PropertyRef Name="National_id" />
       <PropertyRef Name="National" />
       <PropertyRef Name="Status" />
-      <PropertyRef Name="name" />
+      <PropertyRef Name="Cluster" />
       <PropertyRef Name="PriceBuandle_id" />
     </Key>
     <Property Name="DB_Id" Type="int" Nullable="false" />
@@ -873,7 +875,7 @@ warning 6002: The table/view 'ODMS.dbo.tbld_db_zone_view' does not have a primar
     <Property Name="National_id" Type="int" Nullable="false" />
     <Property Name="National" Type="varchar" MaxLength="30" Nullable="false" />
     <Property Name="Status" Type="int" Nullable="false" />
-    <Property Name="name" Type="varchar" MaxLength="100" Nullable="false" />
+    <Property Name="Cluster" Type="varchar" MaxLength="100" Nullable="false" />
     <Property Name="DBCode" Type="varchar" MaxLength="50" />
     <Property Name="OfficeAddress" Type="nvarchar(max)" />
     <Property Name="PriceBuandle_id" Type="int" Nullable="false" />
@@ -1017,6 +1019,18 @@ warning 6002: The table/view 'ODMS.dbo.tbld_db_zone_view' does not have a primar
   <Function Name="RPT_CurrentStock" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
     <Parameter Name="dbids" Type="varchar(max)" Mode="In" />
   </Function>
+  <Function Name="RPT_Delivery_BuyerByDBSummary" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="Start_Date" Type="datetime" Mode="In" />
+    <Parameter Name="End_Date" Type="datetime" Mode="In" />
+    <Parameter Name="dbids" Type="varchar(max)" Mode="In" />
+    <Parameter Name="skuids" Type="varchar(max)" Mode="In" />
+  </Function>
+  <Function Name="RPT_Delivery_BuyerByPSRSummary" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="Start_Date" Type="datetime" Mode="In" />
+    <Parameter Name="End_Date" Type="datetime" Mode="In" />
+    <Parameter Name="dbids" Type="varchar(max)" Mode="In" />
+    <Parameter Name="skuids" Type="varchar(max)" Mode="In" />
+  </Function>
   <Function Name="RPT_Delivery_OutletWiseSKUWiseDelivery" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
     <Parameter Name="Start_Date" Type="datetime" Mode="In" />
     <Parameter Name="End_Date" Type="datetime" Mode="In" />
@@ -1135,6 +1149,7 @@ warning 6002: The table/view 'ODMS.dbo.tbld_db_zone_view' does not have a primar
     [tbld_db_psr_zone_view].[National_id] AS [National_id], 
     [tbld_db_psr_zone_view].[National] AS [National], 
     [tbld_db_psr_zone_view].[Status] AS [Status], 
+    [tbld_db_psr_zone_view].[PriceBuandle_id] AS [PriceBuandle_id], 
     [tbld_db_psr_zone_view].[Name] AS [Name], 
     [tbld_db_psr_zone_view].[PSR_id] AS [PSR_id], 
     [tbld_db_psr_zone_view].[PSR_Code] AS [PSR_Code], 
@@ -1156,7 +1171,7 @@ warning 6002: The table/view 'ODMS.dbo.tbld_db_zone_view' does not have a primar
     [tbld_db_zone_view].[National_id] AS [National_id], 
     [tbld_db_zone_view].[National] AS [National], 
     [tbld_db_zone_view].[Status] AS [Status], 
-    [tbld_db_zone_view].[name] AS [name], 
+    [tbld_db_zone_view].[Cluster] AS [Cluster], 
     [tbld_db_zone_view].[DBCode] AS [DBCode], 
     [tbld_db_zone_view].[OfficeAddress] AS [OfficeAddress], 
     [tbld_db_zone_view].[PriceBuandle_id] AS [PriceBuandle_id]

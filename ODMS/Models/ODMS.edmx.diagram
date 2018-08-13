@@ -54,14 +54,12 @@
         <EntityTypeShape EntityType="ODMSModel.tbld_Target_Details" Width="1.5" PointX="13.375" PointY="20.75" />
         <EntityTypeShape EntityType="ODMSModel.tblt_TradePromotionDefinition" Width="1.5" PointX="3" PointY="22.5" />
         <AssociationConnector Association="ODMSModel.FK_tblt_TradePromotionDefinition_tblt_TradePromotion" />
-        <EntityTypeShape EntityType="ODMSModel.tbld_db_zone_view" Width="1.5" PointX="14.125" PointY="25.125" />
         <EntityTypeShape EntityType="ODMSModel.tbld_Target_PSR_Details" Width="1.5" PointX="21.375" PointY="4.75" />
         <EntityTypeShape EntityType="ODMSModel.tbld_ReportList" Width="1.5" PointX="9.375" PointY="21.75" />
         <EntityTypeShape EntityType="ODMSModel.tbl_calendar" Width="1.5" PointX="17.375" PointY="21.75" />
         <EntityTypeShape EntityType="ODMSModel.tbld_bundle_price" Width="1.5" PointX="21.375" PointY="19.625" />
         <EntityTypeShape EntityType="ODMSModel.tbld_bundle_price_details" Width="1.5" PointX="23.625" PointY="19" />
         <AssociationConnector Association="ODMSModel.FK_tbld_bundle_price_details_tbld_bundle_price" />
-        <EntityTypeShape EntityType="ODMSModel.tbld_db_psr_zone_view" Width="1.5" PointX="15.75" PointY="25.125" />
         <EntityTypeShape EntityType="ODMSModel.tbld_management_employee" Width="1.5" PointX="5.375" PointY="6.75" />
         <EntityTypeShape EntityType="ODMSModel.tbld_AdjustmentStock" Width="1.5" PointX="22.375" PointY="15.25" />
         <EntityTypeShape EntityType="ODMSModel.tbld_AdjustmentStockItem" Width="1.5" PointX="24.625" PointY="15" />
@@ -80,6 +78,8 @@
         <EntityTypeShape EntityType="ODMSModel.tbld_Route_Plan_Mapping" Width="1.5" PointX="14.375" PointY="17.75" />
         <EntityTypeShape EntityType="ODMSModel.tbld_Route_Plan" Width="1.5" PointX="25.375" PointY="27" />
         <AssociationConnector Association="ODMSModel.FK_tbld_Route_Plan_Detail_tbld_Route_Plan" />
+        <EntityTypeShape EntityType="ODMSModel.tbld_db_psr_zone_view" Width="1.5" PointX="18.375" PointY="0.75" />
+        <EntityTypeShape EntityType="ODMSModel.tbld_db_zone_view" Width="1.5" PointX="11.375" PointY="24.75" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

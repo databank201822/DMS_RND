@@ -828,6 +828,7 @@ warning 6002: The table/view 'ODMS.dbo.tbld_db_psr_zone_view' does not have a pr
             <PropertyRef Name="National_id" />
             <PropertyRef Name="National" />
             <PropertyRef Name="Status" />
+            <PropertyRef Name="PriceBuandle_id" />
             <PropertyRef Name="PSR_id" />
             <PropertyRef Name="cluster" />
           </Key>
@@ -842,6 +843,7 @@ warning 6002: The table/view 'ODMS.dbo.tbld_db_psr_zone_view' does not have a pr
           <Property Name="National_id" Type="int" Nullable="false" />
           <Property Name="National" Type="varchar" MaxLength="30" Nullable="false" />
           <Property Name="Status" Type="int" Nullable="false" />
+          <Property Name="PriceBuandle_id" Type="int" Nullable="false" />
           <Property Name="Name" Type="varchar" MaxLength="256" />
           <Property Name="PSR_id" Type="int" Nullable="false" />
           <Property Name="PSR_Code" Type="varchar" MaxLength="30" />
@@ -864,7 +866,7 @@ warning 6002: The table/view 'ODMS.dbo.tbld_db_zone_view' does not have a primar
             <PropertyRef Name="National_id" />
             <PropertyRef Name="National" />
             <PropertyRef Name="Status" />
-            <PropertyRef Name="name" />
+            <PropertyRef Name="Cluster" />
             <PropertyRef Name="PriceBuandle_id" />
           </Key>
           <Property Name="DB_Id" Type="int" Nullable="false" />
@@ -878,7 +880,7 @@ warning 6002: The table/view 'ODMS.dbo.tbld_db_zone_view' does not have a primar
           <Property Name="National_id" Type="int" Nullable="false" />
           <Property Name="National" Type="varchar" MaxLength="30" Nullable="false" />
           <Property Name="Status" Type="int" Nullable="false" />
-          <Property Name="name" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="Cluster" Type="varchar" MaxLength="100" Nullable="false" />
           <Property Name="DBCode" Type="varchar" MaxLength="50" />
           <Property Name="OfficeAddress" Type="nvarchar(max)" />
           <Property Name="PriceBuandle_id" Type="int" Nullable="false" />
@@ -1022,6 +1024,18 @@ warning 6002: The table/view 'ODMS.dbo.tbld_db_zone_view' does not have a primar
         <Function Name="RPT_CurrentStock" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="dbids" Type="varchar(max)" Mode="In" />
         </Function>
+        <Function Name="RPT_Delivery_BuyerByDBSummary" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="Start_Date" Type="datetime" Mode="In" />
+          <Parameter Name="End_Date" Type="datetime" Mode="In" />
+          <Parameter Name="dbids" Type="varchar(max)" Mode="In" />
+          <Parameter Name="skuids" Type="varchar(max)" Mode="In" />
+        </Function>
+        <Function Name="RPT_Delivery_BuyerByPSRSummary" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="Start_Date" Type="datetime" Mode="In" />
+          <Parameter Name="End_Date" Type="datetime" Mode="In" />
+          <Parameter Name="dbids" Type="varchar(max)" Mode="In" />
+          <Parameter Name="skuids" Type="varchar(max)" Mode="In" />
+        </Function>
         <Function Name="RPT_Delivery_OutletWiseSKUWiseDelivery" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="Start_Date" Type="datetime" Mode="In" />
           <Parameter Name="End_Date" Type="datetime" Mode="In" />
@@ -1140,6 +1154,7 @@ warning 6002: The table/view 'ODMS.dbo.tbld_db_zone_view' does not have a primar
     [tbld_db_psr_zone_view].[National_id] AS [National_id], 
     [tbld_db_psr_zone_view].[National] AS [National], 
     [tbld_db_psr_zone_view].[Status] AS [Status], 
+    [tbld_db_psr_zone_view].[PriceBuandle_id] AS [PriceBuandle_id], 
     [tbld_db_psr_zone_view].[Name] AS [Name], 
     [tbld_db_psr_zone_view].[PSR_id] AS [PSR_id], 
     [tbld_db_psr_zone_view].[PSR_Code] AS [PSR_Code], 
@@ -1161,7 +1176,7 @@ warning 6002: The table/view 'ODMS.dbo.tbld_db_zone_view' does not have a primar
     [tbld_db_zone_view].[National_id] AS [National_id], 
     [tbld_db_zone_view].[National] AS [National], 
     [tbld_db_zone_view].[Status] AS [Status], 
-    [tbld_db_zone_view].[name] AS [name], 
+    [tbld_db_zone_view].[Cluster] AS [Cluster], 
     [tbld_db_zone_view].[DBCode] AS [DBCode], 
     [tbld_db_zone_view].[OfficeAddress] AS [OfficeAddress], 
     [tbld_db_zone_view].[PriceBuandle_id] AS [PriceBuandle_id]
@@ -1725,7 +1740,6 @@ warning 6002: The table/view 'ODMS.dbo.tbld_db_zone_view' does not have a primar
             <End Role="tblt_TradePromotionDefinition" EntitySet="tblt_TradePromotionDefinition" />
           </AssociationSet>
           <FunctionImport Name="DBWisezone" ReturnType="Collection(ODMSModel.DBWisezone_Result)" />
-          <EntitySet Name="tbld_db_zone_view" EntityType="ODMSModel.tbld_db_zone_view" />
           <EntitySet Name="tbld_Target_PSR_Details" EntityType="ODMSModel.tbld_Target_PSR_Details" />
           <FunctionImport Name="DayEnd_Process">
             <Parameter Name="Dbid" Mode="In" Type="Int32" />
@@ -1739,7 +1753,6 @@ warning 6002: The table/view 'ODMS.dbo.tbld_db_zone_view' does not have a primar
             <End Role="tbld_bundle_price" EntitySet="tbld_bundle_price" />
             <End Role="tbld_bundle_price_details" EntitySet="tbld_bundle_price_details" />
           </AssociationSet>
-          <EntitySet Name="tbld_db_psr_zone_view" EntityType="ODMSModel.tbld_db_psr_zone_view" />
           <EntitySet Name="tbld_management_employee" EntityType="ODMSModel.tbld_management_employee" />
           <FunctionImport Name="RPT_StockMovement" ReturnType="Collection(ODMSModel.RPT_StockMovement_Result)">
             <Parameter Name="Start_Date" Mode="In" Type="DateTime" />
@@ -1799,7 +1812,21 @@ warning 6002: The table/view 'ODMS.dbo.tbld_db_zone_view' does not have a primar
             <End Role="tbld_Route_Plan_Detail" EntitySet="tbld_Route_Plan_Detail" />
           </AssociationSet>
           <FunctionImport Name="RPT_CurrentStock" ReturnType="Collection(ODMSModel.RPT_CurrentStock_Result)">
+          <Parameter Name="dbids" Mode="In" Type="String" />
+          </FunctionImport>
+          <EntitySet Name="tbld_db_psr_zone_view" EntityType="ODMSModel.tbld_db_psr_zone_view" />
+          <EntitySet Name="tbld_db_zone_view" EntityType="ODMSModel.tbld_db_zone_view" />
+          <FunctionImport Name="RPT_Delivery_BuyerByDBSummary" ReturnType="Collection(ODMSModel.RPT_Delivery_BuyerByDBSummary_Result)">
+            <Parameter Name="Start_Date" Mode="In" Type="DateTime" />
+            <Parameter Name="End_Date" Mode="In" Type="DateTime" />
             <Parameter Name="dbids" Mode="In" Type="String" />
+            <Parameter Name="skuids" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="RPT_Delivery_BuyerByPSRSummary" ReturnType="Collection(ODMSModel.RPT_Delivery_BuyerByPSRSummary_Result)">
+            <Parameter Name="Start_Date" Mode="In" Type="DateTime" />
+            <Parameter Name="End_Date" Mode="In" Type="DateTime" />
+            <Parameter Name="dbids" Mode="In" Type="String" />
+            <Parameter Name="skuids" Mode="In" Type="String" />
           </FunctionImport>
         </EntityContainer>
         <ComplexType Name="DB_User_check_Result">
@@ -2108,38 +2135,6 @@ warning 6002: The table/view 'ODMS.dbo.tbld_db_zone_view' does not have a primar
           <Property Type="String" Name="National" Nullable="false" MaxLength="30" />
           <Property Type="Int32" Name="Status" Nullable="false" />
         </ComplexType>
-        <EntityType Name="tbld_db_zone_view">
-          <Key>
-            <PropertyRef Name="DB_Id" />
-            <PropertyRef Name="DB_Name" />
-            <PropertyRef Name="CEAREA_id" />
-            <PropertyRef Name="CEAREA_Name" />
-            <PropertyRef Name="AREA_id" />
-            <PropertyRef Name="AREA_Name" />
-            <PropertyRef Name="REGION_id" />
-            <PropertyRef Name="REGION_Name" />
-            <PropertyRef Name="National_id" />
-            <PropertyRef Name="National" />
-            <PropertyRef Name="Status" />
-            <PropertyRef Name="name" />
-            <PropertyRef Name="PriceBuandle_id" />
-          </Key>
-          <Property Name="DB_Id" Type="Int32" Nullable="false" />
-          <Property Name="DB_Name" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="CEAREA_id" Type="Int32" Nullable="false" />
-          <Property Name="CEAREA_Name" Type="String" Nullable="false" MaxLength="30" FixedLength="false" Unicode="false" />
-          <Property Name="AREA_id" Type="Int32" Nullable="false" />
-          <Property Name="AREA_Name" Type="String" Nullable="false" MaxLength="30" FixedLength="false" Unicode="false" />
-          <Property Name="REGION_id" Type="Int32" Nullable="false" />
-          <Property Name="REGION_Name" Type="String" Nullable="false" MaxLength="30" FixedLength="false" Unicode="false" />
-          <Property Name="National_id" Type="Int32" Nullable="false" />
-          <Property Name="National" Type="String" Nullable="false" MaxLength="30" FixedLength="false" Unicode="false" />
-          <Property Name="Status" Type="Int32" Nullable="false" />
-          <Property Name="name" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
-          <Property Name="DBCode" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="OfficeAddress" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
-          <Property Name="PriceBuandle_id" Type="Int32" Nullable="false" />
-        </EntityType>
         <EntityType Name="tbld_Target_PSR_Details">
           <Key>
             <PropertyRef Name="id" />
@@ -2219,40 +2214,6 @@ warning 6002: The table/view 'ODMS.dbo.tbld_db_zone_view' does not have a primar
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <EntityType Name="tbld_db_psr_zone_view">
-          <Key>
-            <PropertyRef Name="DB_Id" />
-            <PropertyRef Name="DB_Name" />
-            <PropertyRef Name="CEAREA_id" />
-            <PropertyRef Name="CEAREA_Name" />
-            <PropertyRef Name="AREA_id" />
-            <PropertyRef Name="AREA_Name" />
-            <PropertyRef Name="REGION_id" />
-            <PropertyRef Name="REGION_Name" />
-            <PropertyRef Name="National_id" />
-            <PropertyRef Name="National" />
-            <PropertyRef Name="Status" />
-            <PropertyRef Name="PSR_id" />
-            <PropertyRef Name="cluster" />
-          </Key>
-          <Property Name="DB_Id" Type="Int32" Nullable="false" />
-          <Property Name="DB_Name" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="CEAREA_id" Type="Int32" Nullable="false" />
-          <Property Name="CEAREA_Name" Type="String" Nullable="false" MaxLength="30" FixedLength="false" Unicode="false" />
-          <Property Name="AREA_id" Type="Int32" Nullable="false" />
-          <Property Name="AREA_Name" Type="String" Nullable="false" MaxLength="30" FixedLength="false" Unicode="false" />
-          <Property Name="REGION_id" Type="Int32" Nullable="false" />
-          <Property Name="REGION_Name" Type="String" Nullable="false" MaxLength="30" FixedLength="false" Unicode="false" />
-          <Property Name="National_id" Type="Int32" Nullable="false" />
-          <Property Name="National" Type="String" Nullable="false" MaxLength="30" FixedLength="false" Unicode="false" />
-          <Property Name="Status" Type="Int32" Nullable="false" />
-          <Property Name="Name" Type="String" MaxLength="256" FixedLength="false" Unicode="false" />
-          <Property Name="PSR_id" Type="Int32" Nullable="false" />
-          <Property Name="PSR_Code" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
-          <Property Name="DBCode" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="OfficeAddress" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
-          <Property Name="cluster" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
-        </EntityType>
         <EntityType Name="tbld_management_employee">
           <Key>
             <PropertyRef Name="id" />
@@ -2665,6 +2626,103 @@ warning 6002: The table/view 'ODMS.dbo.tbld_db_zone_view' does not have a primar
           <Property Type="Int32" Name="qtyPs" Nullable="false" />
           <Property Type="Int32" Name="bookedqty" Nullable="false" />
           <Property Type="Int32" Name="totalqty" Nullable="true" />
+        </ComplexType>
+        <EntityType Name="tbld_db_psr_zone_view">
+          <Key>
+            <PropertyRef Name="DB_Id" />
+            <PropertyRef Name="DB_Name" />
+            <PropertyRef Name="CEAREA_id" />
+            <PropertyRef Name="CEAREA_Name" />
+            <PropertyRef Name="AREA_id" />
+            <PropertyRef Name="AREA_Name" />
+            <PropertyRef Name="REGION_id" />
+            <PropertyRef Name="REGION_Name" />
+            <PropertyRef Name="National_id" />
+            <PropertyRef Name="National" />
+            <PropertyRef Name="Status" />
+            <PropertyRef Name="PriceBuandle_id" />
+            <PropertyRef Name="PSR_id" />
+            <PropertyRef Name="cluster" />
+          </Key>
+          <Property Name="DB_Id" Type="Int32" Nullable="false" />
+          <Property Name="DB_Name" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="CEAREA_id" Type="Int32" Nullable="false" />
+          <Property Name="CEAREA_Name" Type="String" Nullable="false" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="AREA_id" Type="Int32" Nullable="false" />
+          <Property Name="AREA_Name" Type="String" Nullable="false" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="REGION_id" Type="Int32" Nullable="false" />
+          <Property Name="REGION_Name" Type="String" Nullable="false" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="National_id" Type="Int32" Nullable="false" />
+          <Property Name="National" Type="String" Nullable="false" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="Status" Type="Int32" Nullable="false" />
+          <Property Name="PriceBuandle_id" Type="Int32" Nullable="false" />
+          <Property Name="Name" Type="String" MaxLength="256" FixedLength="false" Unicode="false" />
+          <Property Name="PSR_id" Type="Int32" Nullable="false" />
+          <Property Name="PSR_Code" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="DBCode" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="OfficeAddress" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="cluster" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="tbld_db_zone_view">
+          <Key>
+            <PropertyRef Name="DB_Id" />
+            <PropertyRef Name="DB_Name" />
+            <PropertyRef Name="CEAREA_id" />
+            <PropertyRef Name="CEAREA_Name" />
+            <PropertyRef Name="AREA_id" />
+            <PropertyRef Name="AREA_Name" />
+            <PropertyRef Name="REGION_id" />
+            <PropertyRef Name="REGION_Name" />
+            <PropertyRef Name="National_id" />
+            <PropertyRef Name="National" />
+            <PropertyRef Name="Status" />
+            <PropertyRef Name="Cluster" />
+            <PropertyRef Name="PriceBuandle_id" />
+          </Key>
+          <Property Name="DB_Id" Type="Int32" Nullable="false" />
+          <Property Name="DB_Name" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="CEAREA_id" Type="Int32" Nullable="false" />
+          <Property Name="CEAREA_Name" Type="String" Nullable="false" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="AREA_id" Type="Int32" Nullable="false" />
+          <Property Name="AREA_Name" Type="String" Nullable="false" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="REGION_id" Type="Int32" Nullable="false" />
+          <Property Name="REGION_Name" Type="String" Nullable="false" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="National_id" Type="Int32" Nullable="false" />
+          <Property Name="National" Type="String" Nullable="false" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="Status" Type="Int32" Nullable="false" />
+          <Property Name="Cluster" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="DBCode" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="OfficeAddress" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="PriceBuandle_id" Type="Int32" Nullable="false" />
+        </EntityType>
+        <ComplexType Name="RPT_Delivery_BuyerByDBSummary_Result">
+          <Property Type="Int32" Name="DB_Id" Nullable="false" />
+          <Property Type="String" Name="DB_Name" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="CEAREA_Name" Nullable="false" MaxLength="30" />
+          <Property Type="String" Name="AREA_Name" Nullable="false" MaxLength="30" />
+          <Property Type="String" Name="REGION_Name" Nullable="false" MaxLength="30" />
+          <Property Type="Int32" Name="Status" Nullable="false" />
+          <Property Type="String" Name="cluster" Nullable="false" MaxLength="100" />
+          <Property Type="String" Name="DBCode" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="OfficeAddress" Nullable="true" />
+          <Property Type="Int32" Name="TotalOutlet" Nullable="false" />
+          <Property Type="Int32" Name="BuyerOutlet" Nullable="false" />
+          <Property Type="Int32" Name="NonBuyer" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="RPT_Delivery_BuyerByPSRSummary_Result">
+          <Property Type="String" Name="DB_Name" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="CEAREA_Name" Nullable="false" MaxLength="30" />
+          <Property Type="String" Name="AREA_Name" Nullable="false" MaxLength="30" />
+          <Property Type="String" Name="REGION_Name" Nullable="false" MaxLength="30" />
+          <Property Type="Int32" Name="Status" Nullable="false" />
+          <Property Type="String" Name="PSR_Code" Nullable="true" MaxLength="30" />
+          <Property Type="String" Name="PSR_Name" Nullable="true" MaxLength="256" />
+          <Property Type="String" Name="cluster" Nullable="false" MaxLength="100" />
+          <Property Type="String" Name="DBCode" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="OfficeAddress" Nullable="true" />
+          <Property Type="Int32" Name="TotalOutlet" Nullable="false" />
+          <Property Type="Int32" Name="BuyerOutlet" Nullable="false" />
+          <Property Type="Int32" Name="NonBuyer" Nullable="true" />
         </ComplexType>
       </Schema>
     </edmx:ConceptualModels>
@@ -3358,27 +3416,6 @@ warning 6002: The table/view 'ODMS.dbo.tbld_db_zone_view' does not have a primar
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>
-          <EntitySetMapping Name="tbld_db_zone_view">
-            <EntityTypeMapping TypeName="ODMSModel.tbld_db_zone_view">
-              <MappingFragment StoreEntitySet="tbld_db_zone_view">
-                <ScalarProperty Name="PriceBuandle_id" ColumnName="PriceBuandle_id" />
-                <ScalarProperty Name="OfficeAddress" ColumnName="OfficeAddress" />
-                <ScalarProperty Name="DBCode" ColumnName="DBCode" />
-                <ScalarProperty Name="name" ColumnName="name" />
-                <ScalarProperty Name="Status" ColumnName="Status" />
-                <ScalarProperty Name="National" ColumnName="National" />
-                <ScalarProperty Name="National_id" ColumnName="National_id" />
-                <ScalarProperty Name="REGION_Name" ColumnName="REGION_Name" />
-                <ScalarProperty Name="REGION_id" ColumnName="REGION_id" />
-                <ScalarProperty Name="AREA_Name" ColumnName="AREA_Name" />
-                <ScalarProperty Name="AREA_id" ColumnName="AREA_id" />
-                <ScalarProperty Name="CEAREA_Name" ColumnName="CEAREA_Name" />
-                <ScalarProperty Name="CEAREA_id" ColumnName="CEAREA_id" />
-                <ScalarProperty Name="DB_Name" ColumnName="DB_Name" />
-                <ScalarProperty Name="DB_Id" ColumnName="DB_Id" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
           <EntitySetMapping Name="tbld_Target_PSR_Details">
             <EntityTypeMapping TypeName="ODMSModel.tbld_Target_PSR_Details">
               <MappingFragment StoreEntitySet="tbld_Target_PSR_Details">
@@ -3447,29 +3484,6 @@ warning 6002: The table/view 'ODMS.dbo.tbld_db_zone_view' does not have a primar
                 <ScalarProperty Name="sku_id" ColumnName="sku_id" />
                 <ScalarProperty Name="bundle_price_id" ColumnName="bundle_price_id" />
                 <ScalarProperty Name="id" ColumnName="id" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="tbld_db_psr_zone_view">
-            <EntityTypeMapping TypeName="ODMSModel.tbld_db_psr_zone_view">
-              <MappingFragment StoreEntitySet="tbld_db_psr_zone_view">
-                <ScalarProperty Name="cluster" ColumnName="cluster" />
-                <ScalarProperty Name="OfficeAddress" ColumnName="OfficeAddress" />
-                <ScalarProperty Name="DBCode" ColumnName="DBCode" />
-                <ScalarProperty Name="PSR_Code" ColumnName="PSR_Code" />
-                <ScalarProperty Name="PSR_id" ColumnName="PSR_id" />
-                <ScalarProperty Name="Name" ColumnName="Name" />
-                <ScalarProperty Name="Status" ColumnName="Status" />
-                <ScalarProperty Name="National" ColumnName="National" />
-                <ScalarProperty Name="National_id" ColumnName="National_id" />
-                <ScalarProperty Name="REGION_Name" ColumnName="REGION_Name" />
-                <ScalarProperty Name="REGION_id" ColumnName="REGION_id" />
-                <ScalarProperty Name="AREA_Name" ColumnName="AREA_Name" />
-                <ScalarProperty Name="AREA_id" ColumnName="AREA_id" />
-                <ScalarProperty Name="CEAREA_Name" ColumnName="CEAREA_Name" />
-                <ScalarProperty Name="CEAREA_id" ColumnName="CEAREA_id" />
-                <ScalarProperty Name="DB_Name" ColumnName="DB_Name" />
-                <ScalarProperty Name="DB_Id" ColumnName="DB_Id" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -3899,6 +3913,88 @@ warning 6002: The table/view 'ODMS.dbo.tbld_db_zone_view' does not have a primar
                 <ScalarProperty Name="qtyPs" ColumnName="qtyPs" />
                 <ScalarProperty Name="bookedqty" ColumnName="bookedqty" />
                 <ScalarProperty Name="totalqty" ColumnName="totalqty" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <EntitySetMapping Name="tbld_db_psr_zone_view">
+            <EntityTypeMapping TypeName="ODMSModel.tbld_db_psr_zone_view">
+              <MappingFragment StoreEntitySet="tbld_db_psr_zone_view">
+                <ScalarProperty Name="cluster" ColumnName="cluster" />
+                <ScalarProperty Name="OfficeAddress" ColumnName="OfficeAddress" />
+                <ScalarProperty Name="DBCode" ColumnName="DBCode" />
+                <ScalarProperty Name="PSR_Code" ColumnName="PSR_Code" />
+                <ScalarProperty Name="PSR_id" ColumnName="PSR_id" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="PriceBuandle_id" ColumnName="PriceBuandle_id" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+                <ScalarProperty Name="National" ColumnName="National" />
+                <ScalarProperty Name="National_id" ColumnName="National_id" />
+                <ScalarProperty Name="REGION_Name" ColumnName="REGION_Name" />
+                <ScalarProperty Name="REGION_id" ColumnName="REGION_id" />
+                <ScalarProperty Name="AREA_Name" ColumnName="AREA_Name" />
+                <ScalarProperty Name="AREA_id" ColumnName="AREA_id" />
+                <ScalarProperty Name="CEAREA_Name" ColumnName="CEAREA_Name" />
+                <ScalarProperty Name="CEAREA_id" ColumnName="CEAREA_id" />
+                <ScalarProperty Name="DB_Name" ColumnName="DB_Name" />
+                <ScalarProperty Name="DB_Id" ColumnName="DB_Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tbld_db_zone_view">
+            <EntityTypeMapping TypeName="ODMSModel.tbld_db_zone_view">
+              <MappingFragment StoreEntitySet="tbld_db_zone_view">
+                <ScalarProperty Name="PriceBuandle_id" ColumnName="PriceBuandle_id" />
+                <ScalarProperty Name="OfficeAddress" ColumnName="OfficeAddress" />
+                <ScalarProperty Name="DBCode" ColumnName="DBCode" />
+                <ScalarProperty Name="Cluster" ColumnName="Cluster" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+                <ScalarProperty Name="National" ColumnName="National" />
+                <ScalarProperty Name="National_id" ColumnName="National_id" />
+                <ScalarProperty Name="REGION_Name" ColumnName="REGION_Name" />
+                <ScalarProperty Name="REGION_id" ColumnName="REGION_id" />
+                <ScalarProperty Name="AREA_Name" ColumnName="AREA_Name" />
+                <ScalarProperty Name="AREA_id" ColumnName="AREA_id" />
+                <ScalarProperty Name="CEAREA_Name" ColumnName="CEAREA_Name" />
+                <ScalarProperty Name="CEAREA_id" ColumnName="CEAREA_id" />
+                <ScalarProperty Name="DB_Name" ColumnName="DB_Name" />
+                <ScalarProperty Name="DB_Id" ColumnName="DB_Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <FunctionImportMapping FunctionImportName="RPT_Delivery_BuyerByDBSummary" FunctionName="ODMSModel.Store.RPT_Delivery_BuyerByDBSummary">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="ODMSModel.RPT_Delivery_BuyerByDBSummary_Result">
+                <ScalarProperty Name="DB_Id" ColumnName="DB_Id" />
+                <ScalarProperty Name="DB_Name" ColumnName="DB_Name" />
+                <ScalarProperty Name="CEAREA_Name" ColumnName="CEAREA_Name" />
+                <ScalarProperty Name="AREA_Name" ColumnName="AREA_Name" />
+                <ScalarProperty Name="REGION_Name" ColumnName="REGION_Name" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+                <ScalarProperty Name="cluster" ColumnName="cluster" />
+                <ScalarProperty Name="DBCode" ColumnName="DBCode" />
+                <ScalarProperty Name="OfficeAddress" ColumnName="OfficeAddress" />
+                <ScalarProperty Name="TotalOutlet" ColumnName="TotalOutlet" />
+                <ScalarProperty Name="BuyerOutlet" ColumnName="BuyerOutlet" />
+                <ScalarProperty Name="NonBuyer" ColumnName="NonBuyer" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="RPT_Delivery_BuyerByPSRSummary" FunctionName="ODMSModel.Store.RPT_Delivery_BuyerByPSRSummary">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="ODMSModel.RPT_Delivery_BuyerByPSRSummary_Result">
+                <ScalarProperty Name="DB_Name" ColumnName="DB_Name" />
+                <ScalarProperty Name="CEAREA_Name" ColumnName="CEAREA_Name" />
+                <ScalarProperty Name="AREA_Name" ColumnName="AREA_Name" />
+                <ScalarProperty Name="REGION_Name" ColumnName="REGION_Name" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+                <ScalarProperty Name="PSR_Code" ColumnName="PSR_Code" />
+                <ScalarProperty Name="PSR_Name" ColumnName="PSR_Name" />
+                <ScalarProperty Name="cluster" ColumnName="cluster" />
+                <ScalarProperty Name="DBCode" ColumnName="DBCode" />
+                <ScalarProperty Name="OfficeAddress" ColumnName="OfficeAddress" />
+                <ScalarProperty Name="TotalOutlet" ColumnName="TotalOutlet" />
+                <ScalarProperty Name="BuyerOutlet" ColumnName="BuyerOutlet" />
+                <ScalarProperty Name="NonBuyer" ColumnName="NonBuyer" />
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>

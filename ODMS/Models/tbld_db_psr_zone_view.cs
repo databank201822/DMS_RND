@@ -25,6 +25,7 @@ namespace ODMS.Models
         public int National_id { get; set; }
         public string National { get; set; }
         public int Status { get; set; }
+        public int PriceBuandle_id { get; set; }
         public string Name { get; set; }
         public int PSR_id { get; set; }
         public string PSR_Code { get; set; }

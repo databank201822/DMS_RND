@@ -336,6 +336,12 @@
     <Compile Include="Models\RPT_CurrentStock_Result.cs">
       <DependentUpon>ODMS.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\RPT_Delivery_BuyerByDBSummary_Result.cs">
+      <DependentUpon>ODMS.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\RPT_Delivery_BuyerByPSRSummary_Result.cs">
+      <DependentUpon>ODMS.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\RPT_Delivery_OutletWiseSKUWiseDelivery_Result.cs">
       <DependentUpon>ODMS.tt</DependentUpon>
     </Compile>
@@ -576,6 +582,7 @@
     <Compile Include="Models\ViewModel\OrderVM.cs" />
     <Compile Include="Models\ViewModel\PrimaryReceiveVm.cs" />
     <Compile Include="Models\ViewModel\PurchaseVM.cs" />
+    <Compile Include="Models\ViewModel\ReportDeliveryVm.cs" />
     <Compile Include="Models\ViewModel\RoutePlanVM.cs" />
     <Compile Include="Models\ViewModel\SkuVM.cs" />
     <Compile Include="Models\ViewModel\TargetVm.cs" />
@@ -583,6 +590,10 @@
     <Compile Include="Models\ViewModel\UserinfoVM.cs" />
     <Compile Include="Models\ViewModel\UserVM.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ReportViewerWebForm.aspx.cs">
+      <DependentUpon>ReportViewerWebForm.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
     <Compile Include="SqlServerTypes\Loader.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -2791,8 +2802,6 @@
     <Content Include="Scripts\jquery-1.10.2.min.map" />
     <Content Include="Views\GeneralReport\DbZoneFilter.cshtml" />
     <Content Include="Views\GeneralReport\DbZone.cshtml" />
-    <Content Include="Views\ReportOrder\OutletwiseOrder.cshtml" />
-    <Content Include="Views\ReportOrder\OutletwiseOrderFilter.cshtml" />
     <Content Include="Views\Challan\Index.cshtml" />
     <Content Include="Views\Challan\Createchallan.cshtml" />
     <Content Include="Views\Challan\ShowAllForCreateChallan.cshtml" />
@@ -2909,6 +2918,8 @@
     <Content Include="Views\GeneralReport\CurrentStock\CurrentStockFilter.cshtml" />
     <Content Include="Views\ReportDelivery\RptBuyer\RptBuyer.cshtml" />
     <Content Include="Views\ReportDelivery\RptBuyer\RptBuyerFilter.cshtml" />
+    <Content Include="Views\ReportDelivery\RptBuyer\RPTBuyerByDbSummary.cshtml" />
+    <Content Include="Views\ReportDelivery\RptBuyer\RPTBuyerBypsrSummary.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -2961,6 +2972,9 @@
     <Content Include="Reports\RPT_StockMovement.rdlc">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Reports\Delivery\RPT_Delivery_BuyerByDBSummary.rdlc" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

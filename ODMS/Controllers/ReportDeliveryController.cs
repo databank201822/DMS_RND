@@ -180,7 +180,7 @@ namespace ODMS.Controllers
 
         [HttpPost]
 
-        public ActionResult RptBuyerFilter(int[] rsMid, int[] asMid, int[] cEid, int[] id, int[] skuIds, DateTime startDate, DateTime endDate, int reportType)
+        public ActionResult RptBuyerFilter(int[] rsMid, int[] asMid, int[] cEid, int[] id, int[] skuIds, DateTime startDate, DateTime endDate, int reportType, int parformerType)
         {
 
             string dbids = sp.Dbids(rsMid, asMid, cEid, id);
@@ -190,45 +190,88 @@ namespace ODMS.Controllers
 
                 skulist = string.Join(",", skuIds);
             }
-            ReportViewer reportViewer = new ReportViewer
-            {
-                ProcessingMode = ProcessingMode.Local,
-                SizeToReportContent = true,
-                Width = Unit.Percentage(100),
-                Height = Unit.Pixel(600)
+       
+          
 
-            };
-            ReportParameter rp2 = null;
-            List<RPT_Delivery_PSRWiseSKUWiseDelivery_Result> psrskudelivery = Db.RPT_Delivery_PSRWiseSKUWiseDelivery(startDate, endDate, dbids, skulist).ToList();
+          
 
-            if (reportType == 1)  //Summery
+            if (parformerType == 1) // by DB
             {
-                reportViewer.LocalReport.ReportPath = Server.MapPath(@"~\Reports\Delivery\RPT_Delivery_PsrWiseSkuWiseDeliverySummary.rdlc");
-                rp2 = new ReportParameter("ReportNameParameter", "PSR SKU Wise Delivery [202] Summary");
+                if (reportType == 1) //Summery
+                {
+                    List<RPT_Delivery_BuyerByDBSummary_Result> dbBuyer = Db.RPT_Delivery_BuyerByDBSummary(startDate, endDate, dbids, skulist).ToList();
+                    ViewBag.startDate = startDate;
+                    ViewBag.endDate = endDate;
+                    ViewBag.skulist = skulist;
+
+                    return PartialView("RptBuyer/RPTBuyerByDbSummary", dbBuyer);
+                }
+                else if (reportType == 2) //Details
+                {
+
+                 
+                }
             }
-            else if (reportType == 2) //Details
+            else if (parformerType == 2)
             {
-                reportViewer.LocalReport.ReportPath = Server.MapPath(@"~\Reports\Delivery\RPT_Delivery_PsrWiseSkuWiseDeliveryDetails.rdlc");
-                rp2 = new ReportParameter("ReportNameParameter", "PSR SKU Wise Delivery [202] Details");
+                if (reportType == 1) //Summery
+                {
+                    List<RPT_Delivery_BuyerByPSRSummary_Result> psrbuyerSummary = Db.RPT_Delivery_BuyerByPSRSummary(startDate, endDate, dbids, skulist).ToList();
+
+                    ViewBag.startDate = startDate;
+                    ViewBag.endDate = endDate;
+                    ViewBag.skulist = skulist;
+
+                    return PartialView("RptBuyer/RPTBuyerBypsrSummary", psrbuyerSummary);
+                }
+                else if (reportType == 2) //Details
+                {
+
+
+                }
             }
 
-
-            var rdc = new ReportDataSource("PSRDELIVERY", psrskudelivery);
-
-
-            ReportParameter rp1 = new ReportParameter("DateParameter", startDate.ToString("dd-MMM-yyy") + " TO " + endDate.ToString("dd-MMM-yyy"));
-
-
-            reportViewer.LocalReport.SetParameters(new[] { rp1, rp2 });
-
-            reportViewer.LocalReport.DataSources.Add(rdc);
-
-            reportViewer.LocalReport.Refresh();
-            reportViewer.Visible = true;
-
-            ViewBag.ReportViewer = reportViewer;
+           
             return PartialView("RptBuyer/RptBuyerFilter");
         }
-    
+
+        public string DbwiseBuyerdetails(int id, DateTime startdate, DateTime endDate, String skuid)
+        {
+           
+
+
+
+            //var gv = new GridView { DataSource = tgtdetails.ToList() };
+
+            //gv.DataBind();
+            //Response.ClearContent();
+            //Response.Buffer = true;
+            //Response.AddHeader("content-disposition", "attachment; filename=" + "DBBuyer" + ".xlsx");
+            //Response.ContentType = "application/ms-excel";
+            //Response.Charset = "";
+            //StringWriter objStringWriter = new StringWriter();
+            //HtmlTextWriter objHtmlTextWriter = new HtmlTextWriter(objStringWriter);
+            //gv.RenderControl(objHtmlTextWriter);
+            //Response.Output.Write(objStringWriter.ToString());
+
+            //Response.Flush();
+            //Response.End();
+
+
+            return id + "<br/>" + startdate + "<br/>" + endDate + "<br/>" + skuid;
+        }
+        public string DbwiseNonBuyerdetails(int id, DateTime startdate, DateTime endDate, String skuid)
+        {
+            return id + "<br/>" + startdate + "<br/>" + endDate + "<br/>" + skuid;
+        }
+
+        public string PsrWiseBuyerDetails(int id, DateTime startdate, DateTime endDate, String skuid)
+        {
+            return id + "<br/>" + startdate + "<br/>" + endDate + "<br/>" + skuid;
+        }
+        public string PsrWiseNonBuyerdetails(int id, DateTime startdate, DateTime endDate, String skuid)
+        {
+            return id + "<br/>" + startdate + "<br/>" + endDate + "<br/>" + skuid;
+        }
     }
     }
