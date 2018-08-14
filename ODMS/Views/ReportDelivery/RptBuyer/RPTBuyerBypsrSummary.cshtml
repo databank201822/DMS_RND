@@ -90,10 +90,14 @@
                             @Html.DisplayFor(modelItem => item.TotalOutlet)
                         </td>
                         <td>
-                            @Html.DisplayFor(modelItem => item.BuyerOutlet)
+                            @Html.ActionLink(item.BuyerOutlet.ToString(), "PsrWiseBuyerDetails", new { id = item.PSR_id, startdate = @ViewBag.startDate, endDate = @ViewBag.endDate, skuid = @ViewBag.skulist }, new { })
+
+
                         </td>
                         <td>
-                            @Html.DisplayFor(modelItem => item.NonBuyer)
+                            @Html.ActionLink(item.NonBuyer.ToString(), "PsrWiseNonBuyerdetails", new { id = item.PSR_id, startdate = @ViewBag.startDate, endDate = @ViewBag.endDate, skuid = @ViewBag.skulist }, new { })
+
+
                         </td>
 
                     </tr>
@@ -102,3 +106,8 @@
         </table>
     </div>
 </div>
+<script>
+    $(document).ready(function () {
+        $("#ajax_load").hide();
+    });
+</script>

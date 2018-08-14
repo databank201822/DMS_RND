@@ -249,6 +249,7 @@
     <Compile Include="Controllers\ProductController.cs" />
     <Compile Include="Controllers\PurchaseController.cs" />
     <Compile Include="Controllers\ReportListController.cs" />
+    <Compile Include="Controllers\ReportRealtimeController.cs" />
     <Compile Include="Controllers\RouteplanController.cs" />
     <Compile Include="Controllers\SkuBrandController.cs" />
     <Compile Include="Controllers\SKUcategoryController.cs" />
@@ -336,10 +337,31 @@
     <Compile Include="Models\RPT_CurrentStock_Result.cs">
       <DependentUpon>ODMS.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\RPT_Delivery_BuyerByDBDetails_Result.cs">
+      <DependentUpon>ODMS.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\RPT_Delivery_BuyerByDBsOutletList_Result.cs">
+      <DependentUpon>ODMS.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\RPT_Delivery_BuyerByDBSummary_Result.cs">
       <DependentUpon>ODMS.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\RPT_Delivery_BuyerByPSRDetails_Result.cs">
+      <DependentUpon>ODMS.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\RPT_Delivery_BuyerByPSRsOutletList_Result.cs">
+      <DependentUpon>ODMS.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\RPT_Delivery_BuyerByPSRSummary_Result.cs">
+      <DependentUpon>ODMS.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\RPT_Delivery_DBPerformanceKPISummary_Result.cs">
+      <DependentUpon>ODMS.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\RPT_Delivery_NonBuyerByDBsOutletList_Result.cs">
+      <DependentUpon>ODMS.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\RPT_Delivery_NonBuyerByPSRsOutletList_Result.cs">
       <DependentUpon>ODMS.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\RPT_Delivery_OutletWiseSKUWiseDelivery_Result.cs">
@@ -358,6 +380,18 @@
       <DependentUpon>ODMS.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\RPT_Order_PSRWiseSKUWiseOrder_Result.cs">
+      <DependentUpon>ODMS.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\RPT_Realtime_OrderVsdeliveredDBDetails_Result.cs">
+      <DependentUpon>ODMS.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\RPT_Realtime_OrderVsdeliveredDBSummary_Result.cs">
+      <DependentUpon>ODMS.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\RPT_Realtime_OrderVsdeliveredDetails_Result.cs">
+      <DependentUpon>ODMS.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\RPT_Realtime_OrderVsdeliveredSummary_Result.cs">
       <DependentUpon>ODMS.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\RPT_StockMovement_Result.cs">
@@ -2920,6 +2954,13 @@
     <Content Include="Views\ReportDelivery\RptBuyer\RptBuyerFilter.cshtml" />
     <Content Include="Views\ReportDelivery\RptBuyer\RPTBuyerByDbSummary.cshtml" />
     <Content Include="Views\ReportDelivery\RptBuyer\RPTBuyerBypsrSummary.cshtml" />
+    <Content Include="Views\ReportDelivery\RptBuyer\RPTBuyerByDbDetails.cshtml" />
+    <Content Include="Views\ReportDelivery\RptBuyer\RPTBuyerBypsrDetails.cshtml" />
+    <Content Include="Views\ReportRealtime\ROrderVsDelivery\ROrderVsDelivery.cshtml" />
+    <Content Include="Views\ReportRealtime\ROrderVsDelivery\RPSRROrderVsDeliveryFilter.cshtml" />
+    <Content Include="Views\ReportRealtime\ROrderVsDelivery\OrderVsdeliveredDBSummary.cshtml" />
+    <Content Include="Views\ReportRealtime\ROrderVsDelivery\OrderVsdeliveredDBDetails.cshtml" />
+    <Content Include="Views\ReportRealtime\ROrderVsDelivery\OrderVsdeliveredDetails.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -2948,7 +2989,7 @@
     <Content Include="Reports\Delivery\RPT_Delivery_PsrWiseSkuWiseDeliveryDetails.rdlc">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Include="Reports\Delivery\RPT_PSRKPISummary.rdlc">
+    <Content Include="Reports\Delivery\RPT_KPIPSRSummary.rdlc">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="Reports\Order\RPT_Order_PsrWiseSkuWiseOrderDetails.rdlc">
@@ -2974,7 +3015,9 @@
     </Content>
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Reports\Delivery\RPT_Delivery_BuyerByDBSummary.rdlc" />
+    <EmbeddedResource Include="Reports\Delivery\RPT_Delivery_BuyerByDBDetails.rdlc" />
+    <EmbeddedResource Include="Reports\Delivery\RPT_Delivery_BuyerByPSRDetails.rdlc" />
+    <EmbeddedResource Include="Reports\Delivery\RPT_KPIDBSummary.rdlc" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

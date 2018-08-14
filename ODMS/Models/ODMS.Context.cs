@@ -328,6 +328,90 @@ namespace ODMS.Models
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<RPT_Delivery_BuyerByDBSummary_Result>("RPT_Delivery_BuyerByDBSummary", start_DateParameter, end_DateParameter, dbidsParameter, skuidsParameter);
         }
     
+        public virtual ObjectResult<RPT_Delivery_BuyerByDBsOutletList_Result> RPT_Delivery_BuyerByDBsOutletList(Nullable<System.DateTime> start_Date, Nullable<System.DateTime> end_Date, string dbids, string skuids)
+        {
+            var start_DateParameter = start_Date.HasValue ?
+                new ObjectParameter("Start_Date", start_Date) :
+                new ObjectParameter("Start_Date", typeof(System.DateTime));
+    
+            var end_DateParameter = end_Date.HasValue ?
+                new ObjectParameter("End_Date", end_Date) :
+                new ObjectParameter("End_Date", typeof(System.DateTime));
+    
+            var dbidsParameter = dbids != null ?
+                new ObjectParameter("dbids", dbids) :
+                new ObjectParameter("dbids", typeof(string));
+    
+            var skuidsParameter = skuids != null ?
+                new ObjectParameter("skuids", skuids) :
+                new ObjectParameter("skuids", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<RPT_Delivery_BuyerByDBsOutletList_Result>("RPT_Delivery_BuyerByDBsOutletList", start_DateParameter, end_DateParameter, dbidsParameter, skuidsParameter);
+        }
+    
+        public virtual ObjectResult<RPT_Delivery_NonBuyerByDBsOutletList_Result> RPT_Delivery_NonBuyerByDBsOutletList(Nullable<System.DateTime> start_Date, Nullable<System.DateTime> end_Date, string dbids, string skuids)
+        {
+            var start_DateParameter = start_Date.HasValue ?
+                new ObjectParameter("Start_Date", start_Date) :
+                new ObjectParameter("Start_Date", typeof(System.DateTime));
+    
+            var end_DateParameter = end_Date.HasValue ?
+                new ObjectParameter("End_Date", end_Date) :
+                new ObjectParameter("End_Date", typeof(System.DateTime));
+    
+            var dbidsParameter = dbids != null ?
+                new ObjectParameter("dbids", dbids) :
+                new ObjectParameter("dbids", typeof(string));
+    
+            var skuidsParameter = skuids != null ?
+                new ObjectParameter("skuids", skuids) :
+                new ObjectParameter("skuids", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<RPT_Delivery_NonBuyerByDBsOutletList_Result>("RPT_Delivery_NonBuyerByDBsOutletList", start_DateParameter, end_DateParameter, dbidsParameter, skuidsParameter);
+        }
+    
+        public virtual ObjectResult<RPT_Delivery_BuyerByPSRsOutletList_Result> RPT_Delivery_BuyerByPSRsOutletList(Nullable<System.DateTime> start_Date, Nullable<System.DateTime> end_Date, string psrids, string skuids)
+        {
+            var start_DateParameter = start_Date.HasValue ?
+                new ObjectParameter("Start_Date", start_Date) :
+                new ObjectParameter("Start_Date", typeof(System.DateTime));
+    
+            var end_DateParameter = end_Date.HasValue ?
+                new ObjectParameter("End_Date", end_Date) :
+                new ObjectParameter("End_Date", typeof(System.DateTime));
+    
+            var psridsParameter = psrids != null ?
+                new ObjectParameter("Psrids", psrids) :
+                new ObjectParameter("Psrids", typeof(string));
+    
+            var skuidsParameter = skuids != null ?
+                new ObjectParameter("skuids", skuids) :
+                new ObjectParameter("skuids", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<RPT_Delivery_BuyerByPSRsOutletList_Result>("RPT_Delivery_BuyerByPSRsOutletList", start_DateParameter, end_DateParameter, psridsParameter, skuidsParameter);
+        }
+    
+        public virtual ObjectResult<RPT_Delivery_NonBuyerByPSRsOutletList_Result> RPT_Delivery_NonBuyerByPSRsOutletList(Nullable<System.DateTime> start_Date, Nullable<System.DateTime> end_Date, string psrids, string skuids)
+        {
+            var start_DateParameter = start_Date.HasValue ?
+                new ObjectParameter("Start_Date", start_Date) :
+                new ObjectParameter("Start_Date", typeof(System.DateTime));
+    
+            var end_DateParameter = end_Date.HasValue ?
+                new ObjectParameter("End_Date", end_Date) :
+                new ObjectParameter("End_Date", typeof(System.DateTime));
+    
+            var psridsParameter = psrids != null ?
+                new ObjectParameter("Psrids", psrids) :
+                new ObjectParameter("Psrids", typeof(string));
+    
+            var skuidsParameter = skuids != null ?
+                new ObjectParameter("skuids", skuids) :
+                new ObjectParameter("skuids", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<RPT_Delivery_NonBuyerByPSRsOutletList_Result>("RPT_Delivery_NonBuyerByPSRsOutletList", start_DateParameter, end_DateParameter, psridsParameter, skuidsParameter);
+        }
+    
         public virtual ObjectResult<RPT_Delivery_BuyerByPSRSummary_Result> RPT_Delivery_BuyerByPSRSummary(Nullable<System.DateTime> start_Date, Nullable<System.DateTime> end_Date, string dbids, string skuids)
         {
             var start_DateParameter = start_Date.HasValue ?
@@ -347,6 +431,149 @@ namespace ODMS.Models
                 new ObjectParameter("skuids", typeof(string));
     
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<RPT_Delivery_BuyerByPSRSummary_Result>("RPT_Delivery_BuyerByPSRSummary", start_DateParameter, end_DateParameter, dbidsParameter, skuidsParameter);
+        }
+    
+        public virtual ObjectResult<RPT_Delivery_BuyerByDBDetails_Result> RPT_Delivery_BuyerByDBDetails(Nullable<System.DateTime> start_Date, Nullable<System.DateTime> end_Date, string dbids, string skuids)
+        {
+            var start_DateParameter = start_Date.HasValue ?
+                new ObjectParameter("Start_Date", start_Date) :
+                new ObjectParameter("Start_Date", typeof(System.DateTime));
+    
+            var end_DateParameter = end_Date.HasValue ?
+                new ObjectParameter("End_Date", end_Date) :
+                new ObjectParameter("End_Date", typeof(System.DateTime));
+    
+            var dbidsParameter = dbids != null ?
+                new ObjectParameter("dbids", dbids) :
+                new ObjectParameter("dbids", typeof(string));
+    
+            var skuidsParameter = skuids != null ?
+                new ObjectParameter("skuids", skuids) :
+                new ObjectParameter("skuids", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<RPT_Delivery_BuyerByDBDetails_Result>("RPT_Delivery_BuyerByDBDetails", start_DateParameter, end_DateParameter, dbidsParameter, skuidsParameter);
+        }
+    
+        public virtual ObjectResult<RPT_Delivery_BuyerByPSRDetails_Result> RPT_Delivery_BuyerByPSRDetails(Nullable<System.DateTime> start_Date, Nullable<System.DateTime> end_Date, string dbids, string skuids)
+        {
+            var start_DateParameter = start_Date.HasValue ?
+                new ObjectParameter("Start_Date", start_Date) :
+                new ObjectParameter("Start_Date", typeof(System.DateTime));
+    
+            var end_DateParameter = end_Date.HasValue ?
+                new ObjectParameter("End_Date", end_Date) :
+                new ObjectParameter("End_Date", typeof(System.DateTime));
+    
+            var dbidsParameter = dbids != null ?
+                new ObjectParameter("dbids", dbids) :
+                new ObjectParameter("dbids", typeof(string));
+    
+            var skuidsParameter = skuids != null ?
+                new ObjectParameter("skuids", skuids) :
+                new ObjectParameter("skuids", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<RPT_Delivery_BuyerByPSRDetails_Result>("RPT_Delivery_BuyerByPSRDetails", start_DateParameter, end_DateParameter, dbidsParameter, skuidsParameter);
+        }
+    
+        public virtual ObjectResult<RPT_Delivery_DBPerformanceKPISummary_Result> RPT_Delivery_DBPerformanceKPISummary(Nullable<System.DateTime> start_Date, Nullable<System.DateTime> end_Date, string dbids)
+        {
+            var start_DateParameter = start_Date.HasValue ?
+                new ObjectParameter("Start_Date", start_Date) :
+                new ObjectParameter("Start_Date", typeof(System.DateTime));
+    
+            var end_DateParameter = end_Date.HasValue ?
+                new ObjectParameter("End_Date", end_Date) :
+                new ObjectParameter("End_Date", typeof(System.DateTime));
+    
+            var dbidsParameter = dbids != null ?
+                new ObjectParameter("dbids", dbids) :
+                new ObjectParameter("dbids", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<RPT_Delivery_DBPerformanceKPISummary_Result>("RPT_Delivery_DBPerformanceKPISummary", start_DateParameter, end_DateParameter, dbidsParameter);
+        }
+    
+        public virtual ObjectResult<RPT_Realtime_OrderVsdeliveredSummary_Result> RPT_Realtime_OrderVsdeliveredSummary(Nullable<System.DateTime> start_Date, Nullable<System.DateTime> end_Date, string dbids, string skuids)
+        {
+            var start_DateParameter = start_Date.HasValue ?
+                new ObjectParameter("Start_Date", start_Date) :
+                new ObjectParameter("Start_Date", typeof(System.DateTime));
+    
+            var end_DateParameter = end_Date.HasValue ?
+                new ObjectParameter("End_Date", end_Date) :
+                new ObjectParameter("End_Date", typeof(System.DateTime));
+    
+            var dbidsParameter = dbids != null ?
+                new ObjectParameter("dbids", dbids) :
+                new ObjectParameter("dbids", typeof(string));
+    
+            var skuidsParameter = skuids != null ?
+                new ObjectParameter("skuids", skuids) :
+                new ObjectParameter("skuids", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<RPT_Realtime_OrderVsdeliveredSummary_Result>("RPT_Realtime_OrderVsdeliveredSummary", start_DateParameter, end_DateParameter, dbidsParameter, skuidsParameter);
+        }
+    
+        public virtual ObjectResult<RPT_Realtime_OrderVsdeliveredDBDetails_Result> RPT_Realtime_OrderVsdeliveredDBDetails(Nullable<System.DateTime> start_Date, Nullable<System.DateTime> end_Date, string dbids, string skuids)
+        {
+            var start_DateParameter = start_Date.HasValue ?
+                new ObjectParameter("Start_Date", start_Date) :
+                new ObjectParameter("Start_Date", typeof(System.DateTime));
+    
+            var end_DateParameter = end_Date.HasValue ?
+                new ObjectParameter("End_Date", end_Date) :
+                new ObjectParameter("End_Date", typeof(System.DateTime));
+    
+            var dbidsParameter = dbids != null ?
+                new ObjectParameter("dbids", dbids) :
+                new ObjectParameter("dbids", typeof(string));
+    
+            var skuidsParameter = skuids != null ?
+                new ObjectParameter("skuids", skuids) :
+                new ObjectParameter("skuids", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<RPT_Realtime_OrderVsdeliveredDBDetails_Result>("RPT_Realtime_OrderVsdeliveredDBDetails", start_DateParameter, end_DateParameter, dbidsParameter, skuidsParameter);
+        }
+    
+        public virtual ObjectResult<RPT_Realtime_OrderVsdeliveredDBSummary_Result> RPT_Realtime_OrderVsdeliveredDBSummary(Nullable<System.DateTime> start_Date, Nullable<System.DateTime> end_Date, string dbids, string skuids)
+        {
+            var start_DateParameter = start_Date.HasValue ?
+                new ObjectParameter("Start_Date", start_Date) :
+                new ObjectParameter("Start_Date", typeof(System.DateTime));
+    
+            var end_DateParameter = end_Date.HasValue ?
+                new ObjectParameter("End_Date", end_Date) :
+                new ObjectParameter("End_Date", typeof(System.DateTime));
+    
+            var dbidsParameter = dbids != null ?
+                new ObjectParameter("dbids", dbids) :
+                new ObjectParameter("dbids", typeof(string));
+    
+            var skuidsParameter = skuids != null ?
+                new ObjectParameter("skuids", skuids) :
+                new ObjectParameter("skuids", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<RPT_Realtime_OrderVsdeliveredDBSummary_Result>("RPT_Realtime_OrderVsdeliveredDBSummary", start_DateParameter, end_DateParameter, dbidsParameter, skuidsParameter);
+        }
+    
+        public virtual ObjectResult<RPT_Realtime_OrderVsdeliveredDetails_Result> RPT_Realtime_OrderVsdeliveredDetails(Nullable<System.DateTime> start_Date, Nullable<System.DateTime> end_Date, string dbids, string skuids)
+        {
+            var start_DateParameter = start_Date.HasValue ?
+                new ObjectParameter("Start_Date", start_Date) :
+                new ObjectParameter("Start_Date", typeof(System.DateTime));
+    
+            var end_DateParameter = end_Date.HasValue ?
+                new ObjectParameter("End_Date", end_Date) :
+                new ObjectParameter("End_Date", typeof(System.DateTime));
+    
+            var dbidsParameter = dbids != null ?
+                new ObjectParameter("dbids", dbids) :
+                new ObjectParameter("dbids", typeof(string));
+    
+            var skuidsParameter = skuids != null ?
+                new ObjectParameter("skuids", skuids) :
+                new ObjectParameter("skuids", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<RPT_Realtime_OrderVsdeliveredDetails_Result>("RPT_Realtime_OrderVsdeliveredDetails", start_DateParameter, end_DateParameter, dbidsParameter, skuidsParameter);
         }
     }
 }

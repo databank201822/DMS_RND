@@ -41,7 +41,7 @@
                         @Html.DisplayFor(modelItem => item.Date)
                     </td>
                     <td>
-                        @Html.ActionLink("Process Order", "ProcessOrder", new { Date = item.Date, psrid = item.Psrid, }, new { @class = "btn btn-sm btn-primary", target = "_blank" })
+                        @Html.ActionLink("Process Order", "ProcessOrder", new { Date = item.Date, psrid = item.Psrid, }, new { @class = "btn btn-sm btn-primary" })
                        
                     </td>
                 </tr>

@@ -11,7 +11,7 @@ namespace ODMS.Models
 {
     using System;
     
-    public partial class RPT_Delivery_BuyerByPSRSummary_Result
+    public partial class RPT_Delivery_BuyerByPSRDetails_Result
     {
         public string DB_Name { get; set; }
         public string CEAREA_Name { get; set; }
@@ -23,6 +23,8 @@ namespace ODMS.Models
         public string cluster { get; set; }
         public string DBCode { get; set; }
         public string OfficeAddress { get; set; }
+        public int SKU_id { get; set; }
+        public string SKUName { get; set; }
         public int TotalOutlet { get; set; }
         public int BuyerOutlet { get; set; }
         public Nullable<int> NonBuyer { get; set; }

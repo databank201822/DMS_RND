@@ -11,20 +11,28 @@ namespace ODMS.Models
 {
     using System;
     
-    public partial class RPT_Delivery_BuyerByPSRSummary_Result
+    public partial class RPT_Realtime_OrderVsdeliveredDetails_Result
     {
+        public int DB_Id { get; set; }
         public string DB_Name { get; set; }
         public string CEAREA_Name { get; set; }
         public string AREA_Name { get; set; }
         public string REGION_Name { get; set; }
+        public string Name { get; set; }
         public int PSR_id { get; set; }
         public string PSR_Code { get; set; }
-        public string PSR_Name { get; set; }
-        public string cluster { get; set; }
         public string DBCode { get; set; }
-        public string OfficeAddress { get; set; }
-        public int TotalOutlet { get; set; }
-        public int BuyerOutlet { get; set; }
-        public Nullable<int> NonBuyer { get; set; }
+        public string cluster { get; set; }
+        public int SKU_id { get; set; }
+        public string SKUName { get; set; }
+        public int quantity_ordered { get; set; }
+        public int quantity_confirmed { get; set; }
+        public double quantity_ordered_value { get; set; }
+        public double quantity_confirmed_value { get; set; }
+        public int Freequantity_ordered { get; set; }
+        public int Freequantity_confirmed { get; set; }
+        public int quantity_delivered { get; set; }
+        public double quantity_delivered_value { get; set; }
+        public int Freequantity_delivered { get; set; }
     }
 }
