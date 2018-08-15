@@ -129,7 +129,7 @@ namespace ODMS.Controllers
 
                     int scheduleCall = (from a in Db.tbld_Route_Plan_Detail
                                         join b in Db.tbld_Outlet on a.route_id equals b.parentid
-                                        where b.IsActive == 1 && dbList.Contains(b.Distributorid) && a.planned_visit_date == DateTime.Today
+                                        where b.IsActive == 1 && dbList.Contains((int) b.Distributorid) && a.planned_visit_date == DateTime.Today
                                         select b.OutletId).Count();
 
                     totalscheduleCall = totalscheduleCall + scheduleCall;
@@ -221,7 +221,7 @@ namespace ODMS.Controllers
 
                     int scheduleCall = (from a in Db.tbld_Route_Plan_Detail
                                         join b in Db.tbld_Outlet on a.route_id equals b.parentid
-                                        where b.IsActive == 1 && dbList.Contains(b.Distributorid) && a.planned_visit_date == DateTime.Today
+                                        where b.IsActive == 1 && dbList.Contains((int) b.Distributorid) && a.planned_visit_date == DateTime.Today
                                         select b.OutletId).Count();
 
                     totalscheduleCall = totalscheduleCall + scheduleCall;
@@ -312,7 +312,7 @@ namespace ODMS.Controllers
 
                     int scheduleCall = (from a in Db.tbld_Route_Plan_Detail
                                         join b in Db.tbld_Outlet on a.route_id equals b.parentid
-                                        where b.IsActive == 1 && dbList.Contains(b.Distributorid) && a.planned_visit_date == DateTime.Today
+                                        where b.IsActive == 1 && dbList.Contains((int) b.Distributorid) && a.planned_visit_date == DateTime.Today
                                         select b.OutletId).Count();
 
                     totalscheduleCall = totalscheduleCall + scheduleCall;
@@ -403,7 +403,7 @@ namespace ODMS.Controllers
 
                     int scheduleCall = (from a in Db.tbld_Route_Plan_Detail
                                         join b in Db.tbld_Outlet on a.route_id equals b.parentid
-                                        where b.IsActive == 1 && dbList.Contains(b.Distributorid) && a.planned_visit_date == DateTime.Today
+                                        where b.IsActive == 1 && dbList.Contains((int) b.Distributorid) && a.planned_visit_date == DateTime.Today
                                         select b.OutletId).Count();
 
                     totalscheduleCall = totalscheduleCall + scheduleCall;

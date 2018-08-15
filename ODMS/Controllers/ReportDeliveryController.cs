@@ -13,7 +13,7 @@ namespace ODMS.Controllers
     [SessionExpire]
     public class ReportDeliveryController : Controller
     {
-    public ODMSEntities Db = new ODMSEntities();
+        public ODMSBIEntities Dbbi = new ODMSBIEntities();
      Supporting sp = new Supporting();
 
 
@@ -44,7 +44,7 @@ namespace ODMS.Controllers
 
             };
 
-            List<RPT_Delivery_OutletWiseSKUWiseDelivery_Result> delivery = Db
+            List<RPT_Delivery_OutletWiseSKUWiseDelivery_Result> delivery = Dbbi
                 .RPT_Delivery_OutletWiseSKUWiseDelivery(startDate, endDate,dbids,skulist).ToList();
 
             ReportParameter rp2 = null;
@@ -102,30 +102,30 @@ namespace ODMS.Controllers
 
             };
             ReportParameter rp2 = null;
-            List<RPT_Delivery_PSRWiseSKUWiseDelivery_Result> psrskudelivery = Db.RPT_Delivery_PSRWiseSKUWiseDelivery(startDate, endDate,dbids,skulist).ToList();
-          
-                if (reportType == 1)  //Summery
-                {
-                    reportViewer.LocalReport.ReportPath = Server.MapPath(@"~\Reports\Delivery\RPT_Delivery_PsrWiseSkuWiseDeliverySummary.rdlc");
-                    rp2 = new ReportParameter("ReportNameParameter", "PSR SKU Wise Delivery [202] Summary");
-                }
-                else if (reportType == 2) //Details
-                {
-                    reportViewer.LocalReport.ReportPath = Server.MapPath(@"~\Reports\Delivery\RPT_Delivery_PsrWiseSkuWiseDeliveryDetails.rdlc");
-                   rp2 = new ReportParameter("ReportNameParameter", "PSR SKU Wise Delivery [202] Details");
-                }
+            List<RPT_Delivery_PSRWiseSKUWiseDelivery_Result> psrskudelivery = Dbbi.RPT_Delivery_PSRWiseSKUWiseDelivery(startDate, endDate, dbids, skulist).ToList();
+
+            if (reportType == 1)  //Summery
+            {
+                reportViewer.LocalReport.ReportPath = Server.MapPath(@"~\Reports\Delivery\RPT_Delivery_PsrWiseSkuWiseDeliverySummary.rdlc");
+                rp2 = new ReportParameter("ReportNameParameter", "PSR SKU Wise Delivery [202] Summary");
+            }
+            else if (reportType == 2) //Details
+            {
+                reportViewer.LocalReport.ReportPath = Server.MapPath(@"~\Reports\Delivery\RPT_Delivery_PsrWiseSkuWiseDeliveryDetails.rdlc");
+                rp2 = new ReportParameter("ReportNameParameter", "PSR SKU Wise Delivery [202] Details");
+            }
 
 
-                var rdc = new ReportDataSource("PSRDELIVERY", psrskudelivery);
-          
+            var rdc = new ReportDataSource("PSRDELIVERY", psrskudelivery);
+
 
             ReportParameter rp1 = new ReportParameter("DateParameter", startDate.ToString("dd-MMM-yyy") + " TO " + endDate.ToString("dd-MMM-yyy"));
-          
+
 
             reportViewer.LocalReport.SetParameters(new[] { rp1, rp2 });
 
             reportViewer.LocalReport.DataSources.Add(rdc);
-            
+
             reportViewer.LocalReport.Refresh();
             reportViewer.Visible = true;
 
@@ -157,7 +157,7 @@ namespace ODMS.Controllers
             {
                 if (reportType == 1) //DB Summery
                 {
-                    List<RPT_Delivery_DBPerformanceKPISummary_Result> dbkpi = Db
+                    List<RPT_Delivery_DBPerformanceKPISummary_Result> dbkpi = Dbbi
                         .RPT_Delivery_DBPerformanceKPISummary(startDate, endDate, dbids).ToList();
 
                     reportViewer.LocalReport.ReportPath = Server.MapPath(@"~\Reports\Delivery\RPT_KPIDBSummary.rdlc");
@@ -174,7 +174,7 @@ namespace ODMS.Controllers
             {
                 if (reportType == 1) //PSR Summery
                 {
-                    List<RPT_Delivery_PSRPerformanceKPISummary_Result> psrkpisummary = Db
+                    List<RPT_Delivery_PSRPerformanceKPISummary_Result> psrkpisummary = Dbbi
                         .RPT_Delivery_PSRPerformanceKPISummary(startDate, endDate, dbids).ToList();
 
                     reportViewer.LocalReport.ReportPath = Server.MapPath(@"~\Reports\Delivery\RPT_KPIPSRSummary.rdlc");
@@ -231,7 +231,7 @@ namespace ODMS.Controllers
             {
                 if (reportType == 1) //DB Summery
                 {
-                    List<RPT_Delivery_BuyerByDBSummary_Result> dbBuyer = Db
+                    List<RPT_Delivery_BuyerByDBSummary_Result> dbBuyer = Dbbi
                         .RPT_Delivery_BuyerByDBSummary(startDate, endDate, dbids, skulist).ToList();
                     ViewBag.startDate = startDate;
                     ViewBag.endDate = endDate;
@@ -250,7 +250,7 @@ namespace ODMS.Controllers
 
                     };
                  
-                    List<RPT_Delivery_BuyerByDBDetails_Result> psrskudelivery = Db
+                    List<RPT_Delivery_BuyerByDBDetails_Result> psrskudelivery = Dbbi
                         .RPT_Delivery_BuyerByDBDetails(startDate, endDate, dbids, skulist).ToList();
 
 
@@ -282,7 +282,7 @@ namespace ODMS.Controllers
             {
                 if (reportType == 1) //PSR Summery
                 {
-                    List<RPT_Delivery_BuyerByPSRSummary_Result> psrbuyerSummary = Db
+                    List<RPT_Delivery_BuyerByPSRSummary_Result> psrbuyerSummary = Dbbi
                         .RPT_Delivery_BuyerByPSRSummary(startDate, endDate, dbids, skulist).ToList();
 
                     ViewBag.startDate = startDate;
@@ -302,7 +302,7 @@ namespace ODMS.Controllers
 
                     };
 
-                    List<RPT_Delivery_BuyerByPSRDetails_Result> psrskudelivery = Db
+                    List<RPT_Delivery_BuyerByPSRDetails_Result> psrskudelivery = Dbbi
                         .RPT_Delivery_BuyerByPSRDetails(startDate, endDate, dbids, skulist).ToList();
 
 
@@ -338,7 +338,7 @@ namespace ODMS.Controllers
         {
 
 
-            var outletList = Db.RPT_Delivery_BuyerByDBsOutletList(startdate, endDate, id.ToString(), skuid);
+            var outletList = Dbbi.RPT_Delivery_BuyerByDBsOutletList(startdate, endDate, id.ToString(), skuid);
          
                 var gv = new GridView {DataSource = outletList.ToList()};
 
@@ -361,7 +361,7 @@ namespace ODMS.Controllers
         }
         public string DbwiseNonBuyerdetails(int id, DateTime startdate, DateTime endDate, String skuid)
         {
-            var outletList = Db.RPT_Delivery_NonBuyerByDBsOutletList(startdate, endDate, id.ToString(), skuid);
+            var outletList = Dbbi.RPT_Delivery_NonBuyerByDBsOutletList(startdate, endDate, id.ToString(), skuid);
 
             var gv = new GridView { DataSource = outletList.ToList() };
 
@@ -384,7 +384,7 @@ namespace ODMS.Controllers
 
         public string PsrWiseBuyerDetails(int id, DateTime startdate, DateTime endDate, String skuid)
         {
-            var outletList = Db.RPT_Delivery_BuyerByPSRsOutletList(startdate, endDate, id.ToString(), skuid);
+            var outletList = Dbbi.RPT_Delivery_BuyerByPSRsOutletList(startdate, endDate, id.ToString(), skuid);
 
             var gv = new GridView { DataSource = outletList.ToList() };
 
@@ -406,7 +406,7 @@ namespace ODMS.Controllers
         }
         public string PsrWiseNonBuyerdetails(int id, DateTime startdate, DateTime endDate, String skuid)
         {
-            var outletList = Db.RPT_Delivery_NonBuyerByPSRsOutletList(startdate, endDate, id.ToString(), skuid);
+            var outletList = Dbbi.RPT_Delivery_NonBuyerByPSRsOutletList(startdate, endDate, id.ToString(), skuid);
 
             var gv = new GridView { DataSource = outletList.ToList() };
 

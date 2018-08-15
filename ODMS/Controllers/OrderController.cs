@@ -690,11 +690,27 @@ namespace ODMS.Controllers
 
             return Json(neworderid, JsonRequestBehavior.AllowGet);
 
-
-
         }
 
+       public ActionResult CancleOrder(int id)
+        {
+            Db.tblt_Order.Where(x => x.Orderid == id).ToList().ForEach(x =>
+            {
+                x.so_status = 9;
 
+            });
+
+            Db.SaveChanges();
+
+            var orderInfo = Db.tblt_Order.SingleOrDefault(x => x.Orderid == id);
+            var neworderid = Db.tblt_Order
+                .Where(x => x.psr_id == orderInfo.psr_id && x.Orderid > id &&
+                            x.planned_order_date == orderInfo.planned_order_date && x.so_status == orderInfo.so_status)
+                .Select(x => x.Orderid).FirstOrDefault();
+
+            return Json(neworderid, JsonRequestBehavior.AllowGet);
+
+        }
         [HttpPost]
         public ActionResult Invoice(string ids)
         {

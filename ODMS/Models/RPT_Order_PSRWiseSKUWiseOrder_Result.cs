@@ -13,13 +13,13 @@ namespace ODMS.Models
     
     public partial class RPT_Order_PSRWiseSKUWiseOrder_Result
     {
-        public int DB_Id { get; set; }
+        public Nullable<int> DB_Id { get; set; }
         public string DB_Name { get; set; }
-        public int CEAREA_id { get; set; }
+        public Nullable<int> CEAREA_id { get; set; }
         public string CEAREA_Name { get; set; }
-        public int AREA_id { get; set; }
+        public Nullable<int> AREA_id { get; set; }
         public string AREA_Name { get; set; }
-        public int REGION_id { get; set; }
+        public Nullable<int> REGION_id { get; set; }
         public string REGION_Name { get; set; }
         public Nullable<int> PSRId { get; set; }
         public string PSRName { get; set; }

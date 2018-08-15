@@ -13,7 +13,7 @@ namespace ODMS.Controllers
     public class ReportOrderController : Controller
     {
         public ODMSEntities Db = new ODMSEntities();
-
+        public ODMSBIEntities Dbbi = new ODMSBIEntities();
         Supporting sp = new Supporting();
 
 
@@ -44,7 +44,7 @@ namespace ODMS.Controllers
 
             };
 
-            List<RPT_Order_OutletWiseSKUWiseOrder_Result> outletOrder = Db
+            List<RPT_Order_OutletWiseSKUWiseOrder_Result> outletOrder = Dbbi
                 .RPT_Order_OutletWiseSKUWiseOrder(startDate, endDate, dbids, skulist)
                 .ToList();
 
@@ -95,8 +95,8 @@ namespace ODMS.Controllers
 
             };
           
-            ReportParameter rp2 = null; 
-            List<RPT_Order_PSRWiseSKUWiseOrder_Result> psrskuorder = Db.RPT_Order_PSRWiseSKUWiseOrder(startDate,endDate,dbids,skulist).ToList();
+            ReportParameter rp2 = null;
+            List<RPT_Order_PSRWiseSKUWiseOrder_Result> psrskuorder = Dbbi.RPT_Order_PSRWiseSKUWiseOrder(startDate, endDate, dbids, skulist).ToList();
             if (reportType == 1)  //Summery
             {
                 reportViewer.LocalReport.ReportPath = Server.MapPath(@"~\Reports\Order\RPT_Order_PsrWiseSkuWiseOrderSummary.rdlc");

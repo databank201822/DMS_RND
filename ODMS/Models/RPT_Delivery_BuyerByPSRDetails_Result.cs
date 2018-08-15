@@ -17,13 +17,13 @@ namespace ODMS.Models
         public string CEAREA_Name { get; set; }
         public string AREA_Name { get; set; }
         public string REGION_Name { get; set; }
-        public int PSR_id { get; set; }
+        public Nullable<int> PSR_id { get; set; }
         public string PSR_Code { get; set; }
         public string PSR_Name { get; set; }
         public string cluster { get; set; }
-        public string DBCode { get; set; }
+        public Nullable<int> DBCode { get; set; }
         public string OfficeAddress { get; set; }
-        public int SKU_id { get; set; }
+        public Nullable<int> SKU_id { get; set; }
         public string SKUName { get; set; }
         public int TotalOutlet { get; set; }
         public int BuyerOutlet { get; set; }

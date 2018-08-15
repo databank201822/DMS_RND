@@ -39,7 +39,7 @@ namespace ODMS.Controllers
                        from grading in outletGrading.DefaultIfEmpty()
                        join g in Db.tbld_Outlet_channel on a.channel equals g.id into outletChannel
                        from channel in outletChannel.DefaultIfEmpty()
-                       where dbids.Contains(a.Distributorid)
+                       where dbids.Contains((int) a.Distributorid)
                        orderby a.OutletId, a.parentid
                 select new DBhouseoutletiVm
                        {
@@ -62,7 +62,7 @@ namespace ODMS.Controllers
                            Longitude = a.Longitude,
                            Picture = a.picture,
                            IsActive = a.IsActive == 1 ? "Active" : "Inactive",
-                           Createdate = a.createdate
+                           Createdate = (DateTime) a.createdate
                        };
 
 
@@ -138,7 +138,7 @@ namespace ODMS.Controllers
                     Longitude = a.Longitude,
                     Picture = a.picture,
                     IsActive = a.IsActive,
-                    Createdate = a.createdate
+                    Createdate = (DateTime) a.createdate
                 };
             }
             return View(dBhouseoutletiVm);
@@ -255,17 +255,17 @@ namespace ODMS.Controllers
                 GpsLocation = tbldOutlet.GpsLocation,
                 OwnerName = tbldOutlet.OwnerName,
                 ContactNo = tbldOutlet.ContactNo,
-                Distributorid = tbldOutlet.Distributorid,
-                HaveVisicooler = tbldOutlet.HaveVisicooler,
-                Parentid = tbldOutlet.parentid,
-                OutletCategoryId = tbldOutlet.outlet_category_id,
-                Grading = tbldOutlet.grading,
-                Channel = tbldOutlet.channel,
+                Distributorid = (int) tbldOutlet.Distributorid,
+                HaveVisicooler = (int) tbldOutlet.HaveVisicooler,
+                Parentid = (int) tbldOutlet.parentid,
+                OutletCategoryId = (int) tbldOutlet.outlet_category_id,
+                Grading = (int) tbldOutlet.grading,
+                Channel = (int) tbldOutlet.channel,
                 Latitude = tbldOutlet.Latitude,
                 Longitude = tbldOutlet.Longitude,
                 Picture = tbldOutlet.picture,
-                IsActive = tbldOutlet.IsActive,
-                Createdate = tbldOutlet.createdate
+                IsActive = (int) tbldOutlet.IsActive,
+                Createdate = (DateTime) tbldOutlet.createdate
             };
 
 

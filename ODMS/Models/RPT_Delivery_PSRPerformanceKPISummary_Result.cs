@@ -13,12 +13,12 @@ namespace ODMS.Models
     
     public partial class RPT_Delivery_PSRPerformanceKPISummary_Result
     {
-        public int DB_Id { get; set; }
+        public Nullable<int> DB_Id { get; set; }
         public string DB_Name { get; set; }
         public string CEAREA_Name { get; set; }
         public string AREA_Name { get; set; }
         public string REGION_Name { get; set; }
-        public string DBCode { get; set; }
+        public Nullable<int> DBCode { get; set; }
         public string OfficeAddress { get; set; }
         public string cluster { get; set; }
         public string PSR_Code { get; set; }

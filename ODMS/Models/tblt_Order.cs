@@ -39,6 +39,7 @@ namespace ODMS.Models
         public Nullable<int> sales_order_type_id { get; set; }
         public Nullable<double> manual_discount { get; set; }
         public int isProcess { get; set; }
+        public Nullable<System.DateTime> delivery_Process_Date { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<tblt_Order_line> tblt_Order_line { get; set; }

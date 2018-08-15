@@ -13,7 +13,7 @@ namespace ODMS.Models
     
     public partial class RPT_StockMovement_Result
     {
-        public int db_id { get; set; }
+        public Nullable<int> db_id { get; set; }
         public int sku_id { get; set; }
         public string skuname { get; set; }
         public Nullable<int> PackSize { get; set; }

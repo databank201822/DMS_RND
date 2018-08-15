@@ -17,12 +17,12 @@ namespace ODMS.Models
         public string AREA_Name { get; set; }
         public string CEAREA_Name { get; set; }
         public string DB_Name { get; set; }
-        public string DBCode { get; set; }
+        public Nullable<int> DBCode { get; set; }
         public string cluster { get; set; }
         public string PSR_Name { get; set; }
-        public string PSR_Code { get; set; }
+        public Nullable<int> PSR_Code { get; set; }
         public string RouteName { get; set; }
-        public string OutletCode { get; set; }
+        public Nullable<int> OutletCode { get; set; }
         public string OutletName { get; set; }
         public string Address { get; set; }
         public string OwnerName { get; set; }

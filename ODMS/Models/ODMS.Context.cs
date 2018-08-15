@@ -28,10 +28,16 @@ namespace ODMS.Models
         }
     
         public virtual DbSet<status> status { get; set; }
+        public virtual DbSet<sysdiagram> sysdiagrams { get; set; }
+        public virtual DbSet<tbl_calendar> tbl_calendar { get; set; }
         public virtual DbSet<tbl_MainMenu> tbl_MainMenu { get; set; }
         public virtual DbSet<tbl_Manu_Role_mapping> tbl_Manu_Role_mapping { get; set; }
         public virtual DbSet<tbl_SubMenu> tbl_SubMenu { get; set; }
         public virtual DbSet<tbl_SubMenuSecond> tbl_SubMenuSecond { get; set; }
+        public virtual DbSet<tbld_AdjustmentStock> tbld_AdjustmentStock { get; set; }
+        public virtual DbSet<tbld_AdjustmentStockItem> tbld_AdjustmentStockItem { get; set; }
+        public virtual DbSet<tbld_bundle_price> tbld_bundle_price { get; set; }
+        public virtual DbSet<tbld_bundle_price_details> tbld_bundle_price_details { get; set; }
         public virtual DbSet<tbld_business_zone> tbld_business_zone { get; set; }
         public virtual DbSet<tbld_business_zone_hierarchy> tbld_business_zone_hierarchy { get; set; }
         public virtual DbSet<tbld_cluster> tbld_cluster { get; set; }
@@ -40,58 +46,53 @@ namespace ODMS.Models
         public virtual DbSet<tbld_distribution_house> tbld_distribution_house { get; set; }
         public virtual DbSet<tbld_distributor_Route> tbld_distributor_Route { get; set; }
         public virtual DbSet<tbld_distributor_RouteType> tbld_distributor_RouteType { get; set; }
+        public virtual DbSet<tbld_management_employee> tbld_management_employee { get; set; }
         public virtual DbSet<tbld_Outlet> tbld_Outlet { get; set; }
         public virtual DbSet<tbld_Outlet_category> tbld_Outlet_category { get; set; }
         public virtual DbSet<tbld_Outlet_channel> tbld_Outlet_channel { get; set; }
         public virtual DbSet<tbld_Outlet_grade> tbld_Outlet_grade { get; set; }
+        public virtual DbSet<tbld_Outlet_new> tbld_Outlet_new { get; set; }
+        public virtual DbSet<tbld_ReportList> tbld_ReportList { get; set; }
+        public virtual DbSet<tbld_Route_Plan> tbld_Route_Plan { get; set; }
+        public virtual DbSet<tbld_Route_plan_Current_Route> tbld_Route_plan_Current_Route { get; set; }
+        public virtual DbSet<tbld_Route_Plan_Detail> tbld_Route_Plan_Detail { get; set; }
+        public virtual DbSet<tbld_Route_Plan_Mapping> tbld_Route_Plan_Mapping { get; set; }
         public virtual DbSet<tbld_SKU> tbld_SKU { get; set; }
+        public virtual DbSet<tbld_SKU_Brand> tbld_SKU_Brand { get; set; }
+        public virtual DbSet<tbld_SKU_Brand_category> tbld_SKU_Brand_category { get; set; }
         public virtual DbSet<tbld_sku_category> tbld_sku_category { get; set; }
         public virtual DbSet<tbld_SKU_unit> tbld_SKU_unit { get; set; }
         public virtual DbSet<tbld_SKUContainertype> tbld_SKUContainertype { get; set; }
         public virtual DbSet<tbld_SKUtype> tbld_SKUtype { get; set; }
+        public virtual DbSet<tbld_Target> tbld_Target { get; set; }
+        public virtual DbSet<tbld_Target_Details> tbld_Target_Details { get; set; }
+        public virtual DbSet<tbld_Target_PSR_Details> tbld_Target_PSR_Details { get; set; }
+        public virtual DbSet<tbll_inventory_log> tbll_inventory_log { get; set; }
+        public virtual DbSet<tblt_Challan> tblt_Challan { get; set; }
+        public virtual DbSet<tblt_Challan_line> tblt_Challan_line { get; set; }
         public virtual DbSet<tblt_inventory> tblt_inventory { get; set; }
         public virtual DbSet<tblt_Order> tblt_Order { get; set; }
         public virtual DbSet<tblt_Order_line> tblt_Order_line { get; set; }
+        public virtual DbSet<tblt_Order_Line_type> tblt_Order_Line_type { get; set; }
         public virtual DbSet<tblt_OrderType> tblt_OrderType { get; set; }
-        public virtual DbSet<tblt_System> tblt_System { get; set; }
-        public virtual DbSet<user_info> user_info { get; set; }
-        public virtual DbSet<user_role> user_role { get; set; }
-        public virtual DbSet<tblt_PurchaseOrderLine> tblt_PurchaseOrderLine { get; set; }
         public virtual DbSet<tblt_PurchaseOrder> tblt_PurchaseOrder { get; set; }
+        public virtual DbSet<tblt_PurchaseOrderLine> tblt_PurchaseOrderLine { get; set; }
+        public virtual DbSet<tblt_System> tblt_System { get; set; }
         public virtual DbSet<tblt_TradePromotion> tblt_TradePromotion { get; set; }
+        public virtual DbSet<tblt_TradePromotionConditionType> tblt_TradePromotionConditionType { get; set; }
         public virtual DbSet<tblt_TradePromotionDBhouseMapping> tblt_TradePromotionDBhouseMapping { get; set; }
+        public virtual DbSet<tblt_TradePromotionDefinition> tblt_TradePromotionDefinition { get; set; }
+        public virtual DbSet<tblt_TradePromotionOfferType> tblt_TradePromotionOfferType { get; set; }
         public virtual DbSet<tblt_TradePromotionRule> tblt_TradePromotionRule { get; set; }
         public virtual DbSet<tblt_TradePromotionType> tblt_TradePromotionType { get; set; }
-        public virtual DbSet<tblt_TradePromotionConditionType> tblt_TradePromotionConditionType { get; set; }
-        public virtual DbSet<tblt_TradePromotionOfferType> tblt_TradePromotionOfferType { get; set; }
-        public virtual DbSet<tblt_Challan> tblt_Challan { get; set; }
-        public virtual DbSet<tblt_Challan_line> tblt_Challan_line { get; set; }
-        public virtual DbSet<tbld_Target> tbld_Target { get; set; }
-        public virtual DbSet<tbld_Target_Details> tbld_Target_Details { get; set; }
-        public virtual DbSet<tblt_TradePromotionDefinition> tblt_TradePromotionDefinition { get; set; }
-        public virtual DbSet<tbld_Target_PSR_Details> tbld_Target_PSR_Details { get; set; }
-        public virtual DbSet<tbld_ReportList> tbld_ReportList { get; set; }
-        public virtual DbSet<tbl_calendar> tbl_calendar { get; set; }
-        public virtual DbSet<tbld_bundle_price> tbld_bundle_price { get; set; }
-        public virtual DbSet<tbld_bundle_price_details> tbld_bundle_price_details { get; set; }
-        public virtual DbSet<tbld_management_employee> tbld_management_employee { get; set; }
-        public virtual DbSet<tbld_AdjustmentStock> tbld_AdjustmentStock { get; set; }
-        public virtual DbSet<tbld_AdjustmentStockItem> tbld_AdjustmentStockItem { get; set; }
-        public virtual DbSet<tblm_UserLogin> tblm_UserLogin { get; set; }
-        public virtual DbSet<tblm_visicooler_info> tblm_visicooler_info { get; set; }
-        public virtual DbSet<tblm_visit_detail> tblm_visit_detail { get; set; }
-        public virtual DbSet<tblm_visit_type> tblm_visit_type { get; set; }
-        public virtual DbSet<tbll_inventory_log> tbll_inventory_log { get; set; }
+        public virtual DbSet<user_info> user_info { get; set; }
+        public virtual DbSet<user_role> user_role { get; set; }
         public virtual DbSet<tblm_notorder_reason> tblm_notorder_reason { get; set; }
-        public virtual DbSet<tbld_SKU_Brand> tbld_SKU_Brand { get; set; }
-        public virtual DbSet<tbld_SKU_Brand_category> tbld_SKU_Brand_category { get; set; }
-        public virtual DbSet<tbld_Outlet_new> tbld_Outlet_new { get; set; }
-        public virtual DbSet<tbld_Route_plan_Current_Route> tbld_Route_plan_Current_Route { get; set; }
-        public virtual DbSet<tbld_Route_Plan_Detail> tbld_Route_Plan_Detail { get; set; }
-        public virtual DbSet<tbld_Route_Plan_Mapping> tbld_Route_Plan_Mapping { get; set; }
-        public virtual DbSet<tbld_Route_Plan> tbld_Route_Plan { get; set; }
+        public virtual DbSet<tbld_db_psr_outlet_zone_view> tbld_db_psr_outlet_zone_view { get; set; }
         public virtual DbSet<tbld_db_psr_zone_view> tbld_db_psr_zone_view { get; set; }
         public virtual DbSet<tbld_db_zone_view> tbld_db_zone_view { get; set; }
+        public virtual DbSet<tblm_visit_detail> tblm_visit_detail { get; set; }
+        public virtual DbSet<tblm_UserLogin> tblm_UserLogin { get; set; }
     
         public virtual ObjectResult<DB_User_check_Result> DB_User_check(string userName, string password)
         {
@@ -180,124 +181,6 @@ namespace ODMS.Models
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("DayEnd_Process", dbidParameter, batchDateParameter);
         }
     
-        public virtual ObjectResult<RPT_StockMovement_Result> RPT_StockMovement(Nullable<System.DateTime> start_Date, Nullable<System.DateTime> end_Date, Nullable<int> dbid)
-        {
-            var start_DateParameter = start_Date.HasValue ?
-                new ObjectParameter("Start_Date", start_Date) :
-                new ObjectParameter("Start_Date", typeof(System.DateTime));
-    
-            var end_DateParameter = end_Date.HasValue ?
-                new ObjectParameter("End_Date", end_Date) :
-                new ObjectParameter("End_Date", typeof(System.DateTime));
-    
-            var dbidParameter = dbid.HasValue ?
-                new ObjectParameter("dbid", dbid) :
-                new ObjectParameter("dbid", typeof(int));
-    
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<RPT_StockMovement_Result>("RPT_StockMovement", start_DateParameter, end_DateParameter, dbidParameter);
-        }
-    
-        public virtual ObjectResult<RPT_Delivery_OutletWiseSKUWiseDelivery_Result> RPT_Delivery_OutletWiseSKUWiseDelivery(Nullable<System.DateTime> start_Date, Nullable<System.DateTime> end_Date, string dbids, string skuids)
-        {
-            var start_DateParameter = start_Date.HasValue ?
-                new ObjectParameter("Start_Date", start_Date) :
-                new ObjectParameter("Start_Date", typeof(System.DateTime));
-    
-            var end_DateParameter = end_Date.HasValue ?
-                new ObjectParameter("End_Date", end_Date) :
-                new ObjectParameter("End_Date", typeof(System.DateTime));
-    
-            var dbidsParameter = dbids != null ?
-                new ObjectParameter("dbids", dbids) :
-                new ObjectParameter("dbids", typeof(string));
-    
-            var skuidsParameter = skuids != null ?
-                new ObjectParameter("skuids", skuids) :
-                new ObjectParameter("skuids", typeof(string));
-    
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<RPT_Delivery_OutletWiseSKUWiseDelivery_Result>("RPT_Delivery_OutletWiseSKUWiseDelivery", start_DateParameter, end_DateParameter, dbidsParameter, skuidsParameter);
-        }
-    
-        public virtual ObjectResult<RPT_Delivery_PSRPerformanceKPISummary_Result> RPT_Delivery_PSRPerformanceKPISummary(Nullable<System.DateTime> start_Date, Nullable<System.DateTime> end_Date, string dbids)
-        {
-            var start_DateParameter = start_Date.HasValue ?
-                new ObjectParameter("Start_Date", start_Date) :
-                new ObjectParameter("Start_Date", typeof(System.DateTime));
-    
-            var end_DateParameter = end_Date.HasValue ?
-                new ObjectParameter("End_Date", end_Date) :
-                new ObjectParameter("End_Date", typeof(System.DateTime));
-    
-            var dbidsParameter = dbids != null ?
-                new ObjectParameter("dbids", dbids) :
-                new ObjectParameter("dbids", typeof(string));
-    
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<RPT_Delivery_PSRPerformanceKPISummary_Result>("RPT_Delivery_PSRPerformanceKPISummary", start_DateParameter, end_DateParameter, dbidsParameter);
-        }
-    
-        public virtual ObjectResult<RPT_Delivery_PSRWiseSKUWiseDelivery_Result> RPT_Delivery_PSRWiseSKUWiseDelivery(Nullable<System.DateTime> start_Date, Nullable<System.DateTime> end_Date, string dbids, string skuids)
-        {
-            var start_DateParameter = start_Date.HasValue ?
-                new ObjectParameter("Start_Date", start_Date) :
-                new ObjectParameter("Start_Date", typeof(System.DateTime));
-    
-            var end_DateParameter = end_Date.HasValue ?
-                new ObjectParameter("End_Date", end_Date) :
-                new ObjectParameter("End_Date", typeof(System.DateTime));
-    
-            var dbidsParameter = dbids != null ?
-                new ObjectParameter("dbids", dbids) :
-                new ObjectParameter("dbids", typeof(string));
-    
-            var skuidsParameter = skuids != null ?
-                new ObjectParameter("skuids", skuids) :
-                new ObjectParameter("skuids", typeof(string));
-    
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<RPT_Delivery_PSRWiseSKUWiseDelivery_Result>("RPT_Delivery_PSRWiseSKUWiseDelivery", start_DateParameter, end_DateParameter, dbidsParameter, skuidsParameter);
-        }
-    
-        public virtual ObjectResult<RPT_Order_OutletWiseSKUWiseOrder_Result> RPT_Order_OutletWiseSKUWiseOrder(Nullable<System.DateTime> start_Date, Nullable<System.DateTime> end_Date, string dbids, string skuids)
-        {
-            var start_DateParameter = start_Date.HasValue ?
-                new ObjectParameter("Start_Date", start_Date) :
-                new ObjectParameter("Start_Date", typeof(System.DateTime));
-    
-            var end_DateParameter = end_Date.HasValue ?
-                new ObjectParameter("End_Date", end_Date) :
-                new ObjectParameter("End_Date", typeof(System.DateTime));
-    
-            var dbidsParameter = dbids != null ?
-                new ObjectParameter("dbids", dbids) :
-                new ObjectParameter("dbids", typeof(string));
-    
-            var skuidsParameter = skuids != null ?
-                new ObjectParameter("skuids", skuids) :
-                new ObjectParameter("skuids", typeof(string));
-    
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<RPT_Order_OutletWiseSKUWiseOrder_Result>("RPT_Order_OutletWiseSKUWiseOrder", start_DateParameter, end_DateParameter, dbidsParameter, skuidsParameter);
-        }
-    
-        public virtual ObjectResult<RPT_Order_PSRWiseSKUWiseOrder_Result> RPT_Order_PSRWiseSKUWiseOrder(Nullable<System.DateTime> start_Date, Nullable<System.DateTime> end_Date, string dbids, string skuids)
-        {
-            var start_DateParameter = start_Date.HasValue ?
-                new ObjectParameter("Start_Date", start_Date) :
-                new ObjectParameter("Start_Date", typeof(System.DateTime));
-    
-            var end_DateParameter = end_Date.HasValue ?
-                new ObjectParameter("End_Date", end_Date) :
-                new ObjectParameter("End_Date", typeof(System.DateTime));
-    
-            var dbidsParameter = dbids != null ?
-                new ObjectParameter("dbids", dbids) :
-                new ObjectParameter("dbids", typeof(string));
-    
-            var skuidsParameter = skuids != null ?
-                new ObjectParameter("skuids", skuids) :
-                new ObjectParameter("skuids", typeof(string));
-    
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<RPT_Order_PSRWiseSKUWiseOrder_Result>("RPT_Order_PSRWiseSKUWiseOrder", start_DateParameter, end_DateParameter, dbidsParameter, skuidsParameter);
-        }
-    
         public virtual ObjectResult<RPT_CurrentStock_Result> RPT_CurrentStock(string dbids)
         {
             var dbidsParameter = dbids != null ?
@@ -305,191 +188,6 @@ namespace ODMS.Models
                 new ObjectParameter("dbids", typeof(string));
     
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<RPT_CurrentStock_Result>("RPT_CurrentStock", dbidsParameter);
-        }
-    
-        public virtual ObjectResult<RPT_Delivery_BuyerByDBSummary_Result> RPT_Delivery_BuyerByDBSummary(Nullable<System.DateTime> start_Date, Nullable<System.DateTime> end_Date, string dbids, string skuids)
-        {
-            var start_DateParameter = start_Date.HasValue ?
-                new ObjectParameter("Start_Date", start_Date) :
-                new ObjectParameter("Start_Date", typeof(System.DateTime));
-    
-            var end_DateParameter = end_Date.HasValue ?
-                new ObjectParameter("End_Date", end_Date) :
-                new ObjectParameter("End_Date", typeof(System.DateTime));
-    
-            var dbidsParameter = dbids != null ?
-                new ObjectParameter("dbids", dbids) :
-                new ObjectParameter("dbids", typeof(string));
-    
-            var skuidsParameter = skuids != null ?
-                new ObjectParameter("skuids", skuids) :
-                new ObjectParameter("skuids", typeof(string));
-    
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<RPT_Delivery_BuyerByDBSummary_Result>("RPT_Delivery_BuyerByDBSummary", start_DateParameter, end_DateParameter, dbidsParameter, skuidsParameter);
-        }
-    
-        public virtual ObjectResult<RPT_Delivery_BuyerByDBsOutletList_Result> RPT_Delivery_BuyerByDBsOutletList(Nullable<System.DateTime> start_Date, Nullable<System.DateTime> end_Date, string dbids, string skuids)
-        {
-            var start_DateParameter = start_Date.HasValue ?
-                new ObjectParameter("Start_Date", start_Date) :
-                new ObjectParameter("Start_Date", typeof(System.DateTime));
-    
-            var end_DateParameter = end_Date.HasValue ?
-                new ObjectParameter("End_Date", end_Date) :
-                new ObjectParameter("End_Date", typeof(System.DateTime));
-    
-            var dbidsParameter = dbids != null ?
-                new ObjectParameter("dbids", dbids) :
-                new ObjectParameter("dbids", typeof(string));
-    
-            var skuidsParameter = skuids != null ?
-                new ObjectParameter("skuids", skuids) :
-                new ObjectParameter("skuids", typeof(string));
-    
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<RPT_Delivery_BuyerByDBsOutletList_Result>("RPT_Delivery_BuyerByDBsOutletList", start_DateParameter, end_DateParameter, dbidsParameter, skuidsParameter);
-        }
-    
-        public virtual ObjectResult<RPT_Delivery_NonBuyerByDBsOutletList_Result> RPT_Delivery_NonBuyerByDBsOutletList(Nullable<System.DateTime> start_Date, Nullable<System.DateTime> end_Date, string dbids, string skuids)
-        {
-            var start_DateParameter = start_Date.HasValue ?
-                new ObjectParameter("Start_Date", start_Date) :
-                new ObjectParameter("Start_Date", typeof(System.DateTime));
-    
-            var end_DateParameter = end_Date.HasValue ?
-                new ObjectParameter("End_Date", end_Date) :
-                new ObjectParameter("End_Date", typeof(System.DateTime));
-    
-            var dbidsParameter = dbids != null ?
-                new ObjectParameter("dbids", dbids) :
-                new ObjectParameter("dbids", typeof(string));
-    
-            var skuidsParameter = skuids != null ?
-                new ObjectParameter("skuids", skuids) :
-                new ObjectParameter("skuids", typeof(string));
-    
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<RPT_Delivery_NonBuyerByDBsOutletList_Result>("RPT_Delivery_NonBuyerByDBsOutletList", start_DateParameter, end_DateParameter, dbidsParameter, skuidsParameter);
-        }
-    
-        public virtual ObjectResult<RPT_Delivery_BuyerByPSRsOutletList_Result> RPT_Delivery_BuyerByPSRsOutletList(Nullable<System.DateTime> start_Date, Nullable<System.DateTime> end_Date, string psrids, string skuids)
-        {
-            var start_DateParameter = start_Date.HasValue ?
-                new ObjectParameter("Start_Date", start_Date) :
-                new ObjectParameter("Start_Date", typeof(System.DateTime));
-    
-            var end_DateParameter = end_Date.HasValue ?
-                new ObjectParameter("End_Date", end_Date) :
-                new ObjectParameter("End_Date", typeof(System.DateTime));
-    
-            var psridsParameter = psrids != null ?
-                new ObjectParameter("Psrids", psrids) :
-                new ObjectParameter("Psrids", typeof(string));
-    
-            var skuidsParameter = skuids != null ?
-                new ObjectParameter("skuids", skuids) :
-                new ObjectParameter("skuids", typeof(string));
-    
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<RPT_Delivery_BuyerByPSRsOutletList_Result>("RPT_Delivery_BuyerByPSRsOutletList", start_DateParameter, end_DateParameter, psridsParameter, skuidsParameter);
-        }
-    
-        public virtual ObjectResult<RPT_Delivery_NonBuyerByPSRsOutletList_Result> RPT_Delivery_NonBuyerByPSRsOutletList(Nullable<System.DateTime> start_Date, Nullable<System.DateTime> end_Date, string psrids, string skuids)
-        {
-            var start_DateParameter = start_Date.HasValue ?
-                new ObjectParameter("Start_Date", start_Date) :
-                new ObjectParameter("Start_Date", typeof(System.DateTime));
-    
-            var end_DateParameter = end_Date.HasValue ?
-                new ObjectParameter("End_Date", end_Date) :
-                new ObjectParameter("End_Date", typeof(System.DateTime));
-    
-            var psridsParameter = psrids != null ?
-                new ObjectParameter("Psrids", psrids) :
-                new ObjectParameter("Psrids", typeof(string));
-    
-            var skuidsParameter = skuids != null ?
-                new ObjectParameter("skuids", skuids) :
-                new ObjectParameter("skuids", typeof(string));
-    
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<RPT_Delivery_NonBuyerByPSRsOutletList_Result>("RPT_Delivery_NonBuyerByPSRsOutletList", start_DateParameter, end_DateParameter, psridsParameter, skuidsParameter);
-        }
-    
-        public virtual ObjectResult<RPT_Delivery_BuyerByPSRSummary_Result> RPT_Delivery_BuyerByPSRSummary(Nullable<System.DateTime> start_Date, Nullable<System.DateTime> end_Date, string dbids, string skuids)
-        {
-            var start_DateParameter = start_Date.HasValue ?
-                new ObjectParameter("Start_Date", start_Date) :
-                new ObjectParameter("Start_Date", typeof(System.DateTime));
-    
-            var end_DateParameter = end_Date.HasValue ?
-                new ObjectParameter("End_Date", end_Date) :
-                new ObjectParameter("End_Date", typeof(System.DateTime));
-    
-            var dbidsParameter = dbids != null ?
-                new ObjectParameter("dbids", dbids) :
-                new ObjectParameter("dbids", typeof(string));
-    
-            var skuidsParameter = skuids != null ?
-                new ObjectParameter("skuids", skuids) :
-                new ObjectParameter("skuids", typeof(string));
-    
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<RPT_Delivery_BuyerByPSRSummary_Result>("RPT_Delivery_BuyerByPSRSummary", start_DateParameter, end_DateParameter, dbidsParameter, skuidsParameter);
-        }
-    
-        public virtual ObjectResult<RPT_Delivery_BuyerByDBDetails_Result> RPT_Delivery_BuyerByDBDetails(Nullable<System.DateTime> start_Date, Nullable<System.DateTime> end_Date, string dbids, string skuids)
-        {
-            var start_DateParameter = start_Date.HasValue ?
-                new ObjectParameter("Start_Date", start_Date) :
-                new ObjectParameter("Start_Date", typeof(System.DateTime));
-    
-            var end_DateParameter = end_Date.HasValue ?
-                new ObjectParameter("End_Date", end_Date) :
-                new ObjectParameter("End_Date", typeof(System.DateTime));
-    
-            var dbidsParameter = dbids != null ?
-                new ObjectParameter("dbids", dbids) :
-                new ObjectParameter("dbids", typeof(string));
-    
-            var skuidsParameter = skuids != null ?
-                new ObjectParameter("skuids", skuids) :
-                new ObjectParameter("skuids", typeof(string));
-    
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<RPT_Delivery_BuyerByDBDetails_Result>("RPT_Delivery_BuyerByDBDetails", start_DateParameter, end_DateParameter, dbidsParameter, skuidsParameter);
-        }
-    
-        public virtual ObjectResult<RPT_Delivery_BuyerByPSRDetails_Result> RPT_Delivery_BuyerByPSRDetails(Nullable<System.DateTime> start_Date, Nullable<System.DateTime> end_Date, string dbids, string skuids)
-        {
-            var start_DateParameter = start_Date.HasValue ?
-                new ObjectParameter("Start_Date", start_Date) :
-                new ObjectParameter("Start_Date", typeof(System.DateTime));
-    
-            var end_DateParameter = end_Date.HasValue ?
-                new ObjectParameter("End_Date", end_Date) :
-                new ObjectParameter("End_Date", typeof(System.DateTime));
-    
-            var dbidsParameter = dbids != null ?
-                new ObjectParameter("dbids", dbids) :
-                new ObjectParameter("dbids", typeof(string));
-    
-            var skuidsParameter = skuids != null ?
-                new ObjectParameter("skuids", skuids) :
-                new ObjectParameter("skuids", typeof(string));
-    
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<RPT_Delivery_BuyerByPSRDetails_Result>("RPT_Delivery_BuyerByPSRDetails", start_DateParameter, end_DateParameter, dbidsParameter, skuidsParameter);
-        }
-    
-        public virtual ObjectResult<RPT_Delivery_DBPerformanceKPISummary_Result> RPT_Delivery_DBPerformanceKPISummary(Nullable<System.DateTime> start_Date, Nullable<System.DateTime> end_Date, string dbids)
-        {
-            var start_DateParameter = start_Date.HasValue ?
-                new ObjectParameter("Start_Date", start_Date) :
-                new ObjectParameter("Start_Date", typeof(System.DateTime));
-    
-            var end_DateParameter = end_Date.HasValue ?
-                new ObjectParameter("End_Date", end_Date) :
-                new ObjectParameter("End_Date", typeof(System.DateTime));
-    
-            var dbidsParameter = dbids != null ?
-                new ObjectParameter("dbids", dbids) :
-                new ObjectParameter("dbids", typeof(string));
-    
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<RPT_Delivery_DBPerformanceKPISummary_Result>("RPT_Delivery_DBPerformanceKPISummary", start_DateParameter, end_DateParameter, dbidsParameter);
         }
     
         public virtual ObjectResult<RPT_Realtime_OrderVsdeliveredSummary_Result> RPT_Realtime_OrderVsdeliveredSummary(Nullable<System.DateTime> start_Date, Nullable<System.DateTime> end_Date, string dbids, string skuids)

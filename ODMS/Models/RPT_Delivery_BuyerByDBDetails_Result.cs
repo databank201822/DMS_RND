@@ -13,16 +13,16 @@ namespace ODMS.Models
     
     public partial class RPT_Delivery_BuyerByDBDetails_Result
     {
-        public int DB_Id { get; set; }
+        public Nullable<int> DB_Id { get; set; }
         public string DB_Name { get; set; }
         public string CEAREA_Name { get; set; }
         public string AREA_Name { get; set; }
         public string REGION_Name { get; set; }
-        public int Status { get; set; }
+        public Nullable<int> Status { get; set; }
         public string Cluster { get; set; }
         public string DBCode { get; set; }
         public string OfficeAddress { get; set; }
-        public int SKU_id { get; set; }
+        public Nullable<int> SKU_id { get; set; }
         public string SKUName { get; set; }
         public int TotalOutlet { get; set; }
         public int BuyerOutlet { get; set; }

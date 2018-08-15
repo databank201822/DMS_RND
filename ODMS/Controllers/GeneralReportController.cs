@@ -13,6 +13,7 @@ namespace ODMS.Controllers
     public class GeneralReportController : Controller
     {
         public ODMSEntities Db = new ODMSEntities();
+        public ODMSBIEntities Dbbi = new ODMSBIEntities();
         Supporting sp = new Supporting();
 
 
@@ -156,7 +157,7 @@ namespace ODMS.Controllers
 
             };
 
-            List<RPT_StockMovement_Result> stockMovement = Db.RPT_StockMovement(startDate, endDate, id).ToList();
+            List<RPT_StockMovement_Result> stockMovement = Dbbi.RPT_StockMovement(startDate, endDate, id).ToList();
 
 
             reportViewer.LocalReport.ReportPath = Server.MapPath(@"~\Reports\RPT_StockMovement.rdlc");

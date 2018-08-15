@@ -283,6 +283,7 @@
                                         }
                                         @if (Model.SoStatus != 9 && Model.SoStatus != 3)
                                         {
+                                            <button type="submit" onclick="cancleOrder();" class="btn btn-sm btn-danger">Cancle Order </button>
                                             <button type="submit" onclick="saveClosedata();" class="btn btn-sm btn-primary">Save </button>
                                         }
 
@@ -486,6 +487,23 @@
             $("#discount_total").val(parseFloat(totalAmount).toFixed(2));
         }
 
+        function cancleOrder() {
+            var orderid = $("#Orderid").val();
+            $.ajax({
+                type: "GET",
+                url: "/Order/CancleOrder",
+                data: { id: orderid },
+                dataType: "json",
+                success: function(data) {
+                    $("#ajax_load").hide();
+                    if (data !== 0) {
+                        window.location.href = '/Order/OrderEditByid/' + data;
+                    } else {
+                        window.location.href = '/Order/Index';
+                    }
+                }
+            });
+        }
 
         function saveClosedata() {
             var skuNotselected = 0;

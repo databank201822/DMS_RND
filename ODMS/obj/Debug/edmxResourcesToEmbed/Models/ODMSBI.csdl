@@ -1,0 +1,430 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="ODMSBIModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <ComplexType Name="FunctionStringtoIntlist_Result">
+    <Property Name="Value" Type="Int32" />
+  </ComplexType>
+  <EntityContainer Name="ODMSBIEntities" annotation:LazyLoadingEnabled="true">
+    <FunctionImport Name="FunctionStringtoIntlist" IsComposable="true" ReturnType="Collection(ODMSBIModel.FunctionStringtoIntlist_Result)">
+      <Parameter Name="list" Mode="In" Type="String" />
+      <Parameter Name="delim" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="RPT_Delivery_BuyerByDBDetails" ReturnType="Collection(ODMSBIModel.RPT_Delivery_BuyerByDBDetails_Result)">
+      <Parameter Name="Start_Date" Mode="In" Type="DateTime" />
+      <Parameter Name="End_Date" Mode="In" Type="DateTime" />
+      <Parameter Name="dbids" Mode="In" Type="String" />
+      <Parameter Name="skuids" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="RPT_Delivery_BuyerByDBsOutletList" ReturnType="Collection(ODMSBIModel.RPT_Delivery_BuyerByDBsOutletList_Result)">
+      <Parameter Name="Start_Date" Mode="In" Type="DateTime" />
+      <Parameter Name="End_Date" Mode="In" Type="DateTime" />
+      <Parameter Name="dbids" Mode="In" Type="String" />
+      <Parameter Name="skuids" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="RPT_Delivery_BuyerByDBSummary" ReturnType="Collection(ODMSBIModel.RPT_Delivery_BuyerByDBSummary_Result)">
+      <Parameter Name="Start_Date" Mode="In" Type="DateTime" />
+      <Parameter Name="End_Date" Mode="In" Type="DateTime" />
+      <Parameter Name="dbids" Mode="In" Type="String" />
+      <Parameter Name="skuids" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="RPT_Delivery_BuyerByPSRDetails" ReturnType="Collection(ODMSBIModel.RPT_Delivery_BuyerByPSRDetails_Result)">
+      <Parameter Name="Start_Date" Mode="In" Type="DateTime" />
+      <Parameter Name="End_Date" Mode="In" Type="DateTime" />
+      <Parameter Name="dbids" Mode="In" Type="String" />
+      <Parameter Name="skuids" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="RPT_Delivery_BuyerByPSRsOutletList" ReturnType="Collection(ODMSBIModel.RPT_Delivery_BuyerByPSRsOutletList_Result)">
+      <Parameter Name="Start_Date" Mode="In" Type="DateTime" />
+      <Parameter Name="End_Date" Mode="In" Type="DateTime" />
+      <Parameter Name="Psrids" Mode="In" Type="String" />
+      <Parameter Name="skuids" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="RPT_Delivery_BuyerByPSRSummary" ReturnType="Collection(ODMSBIModel.RPT_Delivery_BuyerByPSRSummary_Result)">
+      <Parameter Name="Start_Date" Mode="In" Type="DateTime" />
+      <Parameter Name="End_Date" Mode="In" Type="DateTime" />
+      <Parameter Name="dbids" Mode="In" Type="String" />
+      <Parameter Name="skuids" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="RPT_Delivery_DBPerformanceKPISummary" ReturnType="Collection(ODMSBIModel.RPT_Delivery_DBPerformanceKPISummary_Result)">
+      <Parameter Name="Start_Date" Mode="In" Type="DateTime" />
+      <Parameter Name="End_Date" Mode="In" Type="DateTime" />
+      <Parameter Name="dbids" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="RPT_Delivery_NonBuyerByDBsOutletList" ReturnType="Collection(ODMSBIModel.RPT_Delivery_NonBuyerByDBsOutletList_Result)">
+      <Parameter Name="Start_Date" Mode="In" Type="DateTime" />
+      <Parameter Name="End_Date" Mode="In" Type="DateTime" />
+      <Parameter Name="dbids" Mode="In" Type="String" />
+      <Parameter Name="skuids" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="RPT_Delivery_NonBuyerByPSRsOutletList" ReturnType="Collection(ODMSBIModel.RPT_Delivery_NonBuyerByPSRsOutletList_Result)">
+      <Parameter Name="Start_Date" Mode="In" Type="DateTime" />
+      <Parameter Name="End_Date" Mode="In" Type="DateTime" />
+      <Parameter Name="Psrids" Mode="In" Type="String" />
+      <Parameter Name="skuids" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="RPT_Delivery_OutletWiseSKUWiseDelivery" ReturnType="Collection(ODMSBIModel.RPT_Delivery_OutletWiseSKUWiseDelivery_Result)">
+      <Parameter Name="Start_Date" Mode="In" Type="DateTime" />
+      <Parameter Name="End_Date" Mode="In" Type="DateTime" />
+      <Parameter Name="dbids" Mode="In" Type="String" />
+      <Parameter Name="skuids" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="RPT_Delivery_OutletWiseSummary">
+      <Parameter Name="Start_Date" Mode="In" Type="DateTime" />
+      <Parameter Name="End_Date" Mode="In" Type="DateTime" />
+      <Parameter Name="dbids" Mode="In" Type="String" />
+      <Parameter Name="skuids" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="RPT_Order_OutletWiseSKUWiseOrder" ReturnType="Collection(ODMSBIModel.RPT_Order_OutletWiseSKUWiseOrder_Result)">
+      <Parameter Name="Start_Date" Mode="In" Type="DateTime" />
+      <Parameter Name="End_Date" Mode="In" Type="DateTime" />
+      <Parameter Name="dbids" Mode="In" Type="String" />
+      <Parameter Name="skuids" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="RPT_Order_PSRWiseSKUWiseOrder" ReturnType="Collection(ODMSBIModel.RPT_Order_PSRWiseSKUWiseOrder_Result)">
+      <Parameter Name="Start_Date" Mode="In" Type="DateTime" />
+      <Parameter Name="End_Date" Mode="In" Type="DateTime" />
+      <Parameter Name="dbids" Mode="In" Type="String" />
+      <Parameter Name="skuids" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="RPT_StockMovement" ReturnType="Collection(ODMSBIModel.RPT_StockMovement_Result)">
+      <Parameter Name="Start_Date" Mode="In" Type="DateTime" />
+      <Parameter Name="End_Date" Mode="In" Type="DateTime" />
+      <Parameter Name="dbid" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="RPT_Delivery_PSRPerformanceKPISummary" ReturnType="Collection(ODMSBIModel.RPT_Delivery_PSRPerformanceKPISummary_Result)">
+      <Parameter Name="Start_Date" Mode="In" Type="DateTime" />
+      <Parameter Name="End_Date" Mode="In" Type="DateTime" />
+      <Parameter Name="dbids" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="RPT_Delivery_PSRWiseSKUWiseDelivery" ReturnType="Collection(ODMSBIModel.RPT_Delivery_PSRWiseSKUWiseDelivery_Result)">
+      <Parameter Name="Start_Date" Mode="In" Type="DateTime" />
+      <Parameter Name="End_Date" Mode="In" Type="DateTime" />
+      <Parameter Name="dbids" Mode="In" Type="String" />
+      <Parameter Name="skuids" Mode="In" Type="String" />
+    </FunctionImport>
+  </EntityContainer>
+  <ComplexType Name="RPT_Delivery_BuyerByDBDetails_Result">
+    <Property Type="Int32" Name="DB_Id" Nullable="true" />
+    <Property Type="String" Name="DB_Name" Nullable="true" MaxLength="200" />
+    <Property Type="String" Name="CEAREA_Name" Nullable="true" MaxLength="200" />
+    <Property Type="String" Name="AREA_Name" Nullable="true" MaxLength="200" />
+    <Property Type="String" Name="REGION_Name" Nullable="true" MaxLength="200" />
+    <Property Type="Int32" Name="Status" Nullable="true" />
+    <Property Type="String" Name="Cluster" Nullable="true" MaxLength="200" />
+    <Property Type="String" Name="DBCode" Nullable="true" MaxLength="200" />
+    <Property Type="String" Name="OfficeAddress" Nullable="true" MaxLength="200" />
+    <Property Type="Int32" Name="SKU_id" Nullable="true" />
+    <Property Type="String" Name="SKUName" Nullable="true" MaxLength="200" />
+    <Property Type="Int32" Name="TotalOutlet" Nullable="false" />
+    <Property Type="Int32" Name="BuyerOutlet" Nullable="false" />
+    <Property Type="Int32" Name="NonBuyer" Nullable="true" />
+  </ComplexType>
+  <ComplexType Name="RPT_Delivery_BuyerByDBsOutletList_Result">
+    <Property Type="String" Name="REGION_Name" Nullable="true" MaxLength="200" />
+    <Property Type="String" Name="AREA_Name" Nullable="true" MaxLength="200" />
+    <Property Type="String" Name="CEAREA_Name" Nullable="true" MaxLength="200" />
+    <Property Type="String" Name="DB_Name" Nullable="true" MaxLength="200" />
+    <Property Type="Int32" Name="DBCode" Nullable="true" />
+    <Property Type="String" Name="cluster" Nullable="true" MaxLength="200" />
+    <Property Type="String" Name="PSR_Name" Nullable="true" MaxLength="200" />
+    <Property Type="Int32" Name="PSR_Code" Nullable="true" />
+    <Property Type="String" Name="RouteName" Nullable="true" MaxLength="200" />
+    <Property Type="Int32" Name="OutletCode" Nullable="true" />
+    <Property Type="String" Name="OutletName" Nullable="true" MaxLength="200" />
+    <Property Type="String" Name="Address" Nullable="true" MaxLength="200" />
+    <Property Type="String" Name="OwnerName" Nullable="true" MaxLength="200" />
+    <Property Type="String" Name="ContactNo" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="HaveVisicooler" Nullable="false" MaxLength="3" />
+    <Property Type="String" Name="Channel" Nullable="false" MaxLength="50" />
+    <Property Type="String" Name="Category" Nullable="false" MaxLength="50" />
+    <Property Type="String" Name="Grade" Nullable="false" MaxLength="50" />
+  </ComplexType>
+  <ComplexType Name="RPT_Delivery_BuyerByDBSummary_Result">
+    <Property Type="Int32" Name="DB_Id" Nullable="true" />
+    <Property Type="String" Name="DB_Name" Nullable="true" MaxLength="200" />
+    <Property Type="String" Name="CEAREA_Name" Nullable="true" MaxLength="200" />
+    <Property Type="String" Name="AREA_Name" Nullable="true" MaxLength="200" />
+    <Property Type="String" Name="REGION_Name" Nullable="true" MaxLength="200" />
+    <Property Type="Int32" Name="Status" Nullable="true" />
+    <Property Type="String" Name="cluster" Nullable="true" MaxLength="200" />
+    <Property Type="String" Name="DBCode" Nullable="true" MaxLength="200" />
+    <Property Type="String" Name="OfficeAddress" Nullable="true" MaxLength="200" />
+    <Property Type="Int32" Name="TotalOutlet" Nullable="false" />
+    <Property Type="Int32" Name="BuyerOutlet" Nullable="false" />
+    <Property Type="Int32" Name="NonBuyer" Nullable="true" />
+  </ComplexType>
+  <ComplexType Name="RPT_Delivery_BuyerByPSRDetails_Result">
+    <Property Type="String" Name="DB_Name" Nullable="true" MaxLength="200" />
+    <Property Type="String" Name="CEAREA_Name" Nullable="true" MaxLength="200" />
+    <Property Type="String" Name="AREA_Name" Nullable="true" MaxLength="200" />
+    <Property Type="String" Name="REGION_Name" Nullable="true" MaxLength="200" />
+    <Property Type="Int32" Name="PSR_id" Nullable="true" />
+    <Property Type="String" Name="PSR_Code" Nullable="true" MaxLength="200" />
+    <Property Type="String" Name="PSR_Name" Nullable="true" MaxLength="200" />
+    <Property Type="String" Name="cluster" Nullable="true" MaxLength="200" />
+    <Property Type="Int32" Name="DBCode" Nullable="true" />
+    <Property Type="String" Name="OfficeAddress" Nullable="true" MaxLength="200" />
+    <Property Type="Int32" Name="SKU_id" Nullable="true" />
+    <Property Type="String" Name="SKUName" Nullable="true" MaxLength="200" />
+    <Property Type="Int32" Name="TotalOutlet" Nullable="false" />
+    <Property Type="Int32" Name="BuyerOutlet" Nullable="false" />
+    <Property Type="Int32" Name="NonBuyer" Nullable="true" />
+  </ComplexType>
+  <ComplexType Name="RPT_Delivery_BuyerByPSRsOutletList_Result">
+    <Property Type="String" Name="REGION_Name" Nullable="true" MaxLength="200" />
+    <Property Type="String" Name="AREA_Name" Nullable="true" MaxLength="200" />
+    <Property Type="String" Name="CEAREA_Name" Nullable="true" MaxLength="200" />
+    <Property Type="String" Name="DB_Name" Nullable="true" MaxLength="200" />
+    <Property Type="Int32" Name="DBCode" Nullable="true" />
+    <Property Type="String" Name="cluster" Nullable="true" MaxLength="200" />
+    <Property Type="String" Name="PSR_Name" Nullable="true" MaxLength="200" />
+    <Property Type="Int32" Name="PSR_Code" Nullable="true" />
+    <Property Type="String" Name="RouteName" Nullable="true" MaxLength="200" />
+    <Property Type="Int32" Name="OutletCode" Nullable="true" />
+    <Property Type="String" Name="OutletName" Nullable="true" MaxLength="200" />
+    <Property Type="String" Name="Address" Nullable="true" MaxLength="200" />
+    <Property Type="String" Name="OwnerName" Nullable="true" MaxLength="200" />
+    <Property Type="String" Name="ContactNo" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="HaveVisicooler" Nullable="false" MaxLength="3" />
+    <Property Type="String" Name="Channel" Nullable="false" MaxLength="50" />
+    <Property Type="String" Name="Category" Nullable="false" MaxLength="50" />
+    <Property Type="String" Name="Grade" Nullable="false" MaxLength="50" />
+  </ComplexType>
+  <ComplexType Name="RPT_Delivery_BuyerByPSRSummary_Result">
+    <Property Type="String" Name="DB_Name" Nullable="true" MaxLength="200" />
+    <Property Type="String" Name="CEAREA_Name" Nullable="true" MaxLength="200" />
+    <Property Type="String" Name="AREA_Name" Nullable="true" MaxLength="200" />
+    <Property Type="String" Name="REGION_Name" Nullable="true" MaxLength="200" />
+    <Property Type="Int32" Name="PSR_id" Nullable="true" />
+    <Property Type="String" Name="PSR_Code" Nullable="true" MaxLength="200" />
+    <Property Type="String" Name="PSR_Name" Nullable="true" MaxLength="200" />
+    <Property Type="String" Name="cluster" Nullable="true" MaxLength="200" />
+    <Property Type="Int32" Name="DBCode" Nullable="true" />
+    <Property Type="String" Name="OfficeAddress" Nullable="true" MaxLength="200" />
+    <Property Type="Int32" Name="TotalOutlet" Nullable="false" />
+    <Property Type="Int32" Name="BuyerOutlet" Nullable="false" />
+    <Property Type="Int32" Name="NonBuyer" Nullable="true" />
+  </ComplexType>
+  <ComplexType Name="RPT_Delivery_DBPerformanceKPISummary_Result">
+    <Property Type="Int32" Name="DB_Id" Nullable="true" />
+    <Property Type="String" Name="DB_Name" Nullable="true" MaxLength="200" />
+    <Property Type="String" Name="CEAREA_Name" Nullable="true" MaxLength="200" />
+    <Property Type="String" Name="AREA_Name" Nullable="true" MaxLength="200" />
+    <Property Type="String" Name="REGION_Name" Nullable="true" MaxLength="200" />
+    <Property Type="String" Name="DBCode" Nullable="true" MaxLength="200" />
+    <Property Type="String" Name="OfficeAddress" Nullable="true" MaxLength="200" />
+    <Property Type="String" Name="PerformerId" Nullable="false" MaxLength="100" />
+    <Property Type="String" Name="PerformerName" Nullable="true" MaxLength="200" />
+    <Property Type="Decimal" Name="TotalTGTCS" Nullable="true" Precision="19" />
+    <Property Type="Decimal" Name="TotalTGTVolume8oz" Nullable="true" Precision="19" />
+    <Property Type="Decimal" Name="SalesScheduleCall" Nullable="true" Precision="19" />
+    <Property Type="Decimal" Name="SalesMemo" Nullable="true" Precision="19" />
+    <Property Type="Decimal" Name="TotalLineSold" Nullable="true" Precision="19" />
+    <Property Type="Decimal" Name="TotalSoldInVolume8oZ" Nullable="true" Precision="19" />
+    <Property Type="Decimal" Name="TotalSoldInCase" Nullable="true" Precision="19" />
+    <Property Type="Decimal" Name="TotalSoldInValue" Nullable="true" Precision="19" />
+    <Property Type="Decimal" Name="TotalOrderedInVolume8oZ" Nullable="true" Precision="19" />
+    <Property Type="Decimal" Name="TotalOrderedInCase" Nullable="true" Precision="19" />
+    <Property Type="Decimal" Name="TotalOrderedInValue" Nullable="true" Precision="19" />
+  </ComplexType>
+  <ComplexType Name="RPT_Delivery_NonBuyerByDBsOutletList_Result">
+    <Property Type="String" Name="REGION_Name" Nullable="true" MaxLength="200" />
+    <Property Type="String" Name="AREA_Name" Nullable="true" MaxLength="200" />
+    <Property Type="String" Name="CEAREA_Name" Nullable="true" MaxLength="200" />
+    <Property Type="String" Name="DB_Name" Nullable="true" MaxLength="200" />
+    <Property Type="Int32" Name="DBCode" Nullable="true" />
+    <Property Type="String" Name="cluster" Nullable="true" MaxLength="200" />
+    <Property Type="String" Name="PSR_Name" Nullable="true" MaxLength="200" />
+    <Property Type="Int32" Name="PSR_Code" Nullable="true" />
+    <Property Type="String" Name="RouteName" Nullable="true" MaxLength="200" />
+    <Property Type="Int32" Name="OutletCode" Nullable="true" />
+    <Property Type="String" Name="OutletName" Nullable="true" MaxLength="200" />
+    <Property Type="String" Name="Address" Nullable="true" MaxLength="200" />
+    <Property Type="String" Name="OwnerName" Nullable="true" MaxLength="200" />
+    <Property Type="String" Name="ContactNo" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="HaveVisicooler" Nullable="false" MaxLength="3" />
+    <Property Type="String" Name="Channel" Nullable="false" MaxLength="50" />
+    <Property Type="String" Name="Category" Nullable="false" MaxLength="50" />
+    <Property Type="String" Name="Grade" Nullable="false" MaxLength="50" />
+  </ComplexType>
+  <ComplexType Name="RPT_Delivery_NonBuyerByPSRsOutletList_Result">
+    <Property Type="String" Name="REGION_Name" Nullable="true" MaxLength="200" />
+    <Property Type="String" Name="AREA_Name" Nullable="true" MaxLength="200" />
+    <Property Type="String" Name="CEAREA_Name" Nullable="true" MaxLength="200" />
+    <Property Type="String" Name="DB_Name" Nullable="true" MaxLength="200" />
+    <Property Type="Int32" Name="DBCode" Nullable="true" />
+    <Property Type="String" Name="cluster" Nullable="true" MaxLength="200" />
+    <Property Type="String" Name="PSR_Name" Nullable="true" MaxLength="200" />
+    <Property Type="Int32" Name="PSR_Code" Nullable="true" />
+    <Property Type="String" Name="RouteName" Nullable="true" MaxLength="200" />
+    <Property Type="Int32" Name="OutletCode" Nullable="true" />
+    <Property Type="String" Name="OutletName" Nullable="true" MaxLength="200" />
+    <Property Type="String" Name="Address" Nullable="true" MaxLength="200" />
+    <Property Type="String" Name="OwnerName" Nullable="true" MaxLength="200" />
+    <Property Type="String" Name="ContactNo" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="HaveVisicooler" Nullable="false" MaxLength="3" />
+    <Property Type="String" Name="Channel" Nullable="false" MaxLength="50" />
+    <Property Type="String" Name="Category" Nullable="false" MaxLength="50" />
+    <Property Type="String" Name="Grade" Nullable="false" MaxLength="50" />
+  </ComplexType>
+  <ComplexType Name="RPT_Delivery_OutletWiseSKUWiseDelivery_Result">
+    <Property Type="Int32" Name="DB_Id" Nullable="true" />
+    <Property Type="String" Name="DB_Name" Nullable="true" MaxLength="200" />
+    <Property Type="Int32" Name="CEAREA_id" Nullable="true" />
+    <Property Type="String" Name="CEAREA_Name" Nullable="true" MaxLength="200" />
+    <Property Type="Int32" Name="AREA_id" Nullable="true" />
+    <Property Type="String" Name="AREA_Name" Nullable="true" MaxLength="200" />
+    <Property Type="Int32" Name="REGION_id" Nullable="true" />
+    <Property Type="String" Name="REGION_Name" Nullable="true" MaxLength="200" />
+    <Property Type="Int32" Name="National_id" Nullable="true" />
+    <Property Type="String" Name="National" Nullable="true" MaxLength="50" />
+    <Property Type="Int32" Name="Status" Nullable="true" />
+    <Property Type="String" Name="Name" Nullable="true" MaxLength="200" />
+    <Property Type="Int32" Name="PSR_id" Nullable="true" />
+    <Property Type="Int32" Name="PSR_Code" Nullable="true" />
+    <Property Type="Int32" Name="DBCode" Nullable="true" />
+    <Property Type="String" Name="OfficeAddress" Nullable="true" MaxLength="200" />
+    <Property Type="String" Name="cluster" Nullable="true" MaxLength="200" />
+    <Property Type="String" Name="RouteName" Nullable="true" MaxLength="200" />
+    <Property Type="Int32" Name="RouteID" Nullable="true" />
+    <Property Type="Int32" Name="OutletId" Nullable="true" />
+    <Property Type="Int32" Name="OutletCode" Nullable="true" />
+    <Property Type="String" Name="OutletName" Nullable="true" MaxLength="200" />
+    <Property Type="String" Name="OutletName_b" Nullable="true" MaxLength="200" />
+    <Property Type="String" Name="Address" Nullable="true" MaxLength="200" />
+    <Property Type="String" Name="OwnerName" Nullable="true" MaxLength="200" />
+    <Property Type="String" Name="ContactNo" Nullable="true" MaxLength="50" />
+    <Property Type="Int32" Name="HaveVisicooler" Nullable="true" />
+    <Property Type="Int32" Name="IsActive" Nullable="true" />
+    <Property Type="String" Name="channel_name" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="outlet_category_name" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="Outlet_grade" Nullable="true" MaxLength="50" />
+    <Property Type="Int32" Name="Distributorid" Nullable="true" />
+    <Property Type="Int32" Name="SKUId" Nullable="true" />
+    <Property Type="String" Name="SKUName" Nullable="true" MaxLength="50" />
+    <Property Type="Int32" Name="PackSize" Nullable="true" />
+    <Property Type="Decimal" Name="Delivered_Quentity" Nullable="true" Precision="19" />
+    <Property Type="Double" Name="Value" Nullable="true" />
+    <Property Type="Decimal" Name="FreeDelivered_Quentity" Nullable="true" Precision="19" />
+  </ComplexType>
+  <ComplexType Name="RPT_Order_OutletWiseSKUWiseOrder_Result">
+    <Property Type="Int32" Name="DB_Id" Nullable="true" />
+    <Property Type="String" Name="DB_Name" Nullable="true" MaxLength="200" />
+    <Property Type="Int32" Name="CEAREA_id" Nullable="true" />
+    <Property Type="String" Name="CEAREA_Name" Nullable="true" MaxLength="200" />
+    <Property Type="Int32" Name="AREA_id" Nullable="true" />
+    <Property Type="String" Name="AREA_Name" Nullable="true" MaxLength="200" />
+    <Property Type="Int32" Name="REGION_id" Nullable="true" />
+    <Property Type="String" Name="REGION_Name" Nullable="true" MaxLength="200" />
+    <Property Type="Int32" Name="National_id" Nullable="true" />
+    <Property Type="String" Name="National" Nullable="true" MaxLength="50" />
+    <Property Type="Int32" Name="Status" Nullable="true" />
+    <Property Type="String" Name="Name" Nullable="true" MaxLength="200" />
+    <Property Type="Int32" Name="PSR_id" Nullable="true" />
+    <Property Type="Int32" Name="PSR_Code" Nullable="true" />
+    <Property Type="Int32" Name="DBCode" Nullable="true" />
+    <Property Type="String" Name="OfficeAddress" Nullable="true" MaxLength="200" />
+    <Property Type="String" Name="cluster" Nullable="true" MaxLength="200" />
+    <Property Type="String" Name="RouteName" Nullable="true" MaxLength="200" />
+    <Property Type="Int32" Name="RouteID" Nullable="true" />
+    <Property Type="Int32" Name="OutletId" Nullable="true" />
+    <Property Type="Int32" Name="OutletCode" Nullable="true" />
+    <Property Type="String" Name="OutletName" Nullable="true" MaxLength="200" />
+    <Property Type="String" Name="OutletName_b" Nullable="true" MaxLength="200" />
+    <Property Type="String" Name="Address" Nullable="true" MaxLength="200" />
+    <Property Type="String" Name="OwnerName" Nullable="true" MaxLength="200" />
+    <Property Type="String" Name="ContactNo" Nullable="true" MaxLength="50" />
+    <Property Type="Int32" Name="HaveVisicooler" Nullable="true" />
+    <Property Type="Int32" Name="IsActive" Nullable="true" />
+    <Property Type="String" Name="channel_name" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="outlet_category_name" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="Outlet_grade" Nullable="true" MaxLength="50" />
+    <Property Type="Int32" Name="Distributorid" Nullable="true" />
+    <Property Type="Int32" Name="SKUId" Nullable="true" />
+    <Property Type="String" Name="SKUName" Nullable="true" MaxLength="50" />
+    <Property Type="Int32" Name="PackSize" Nullable="true" />
+    <Property Type="Decimal" Name="Order_Quentity" Nullable="true" Precision="19" />
+    <Property Type="Double" Name="Value" Nullable="true" />
+    <Property Type="Decimal" Name="FreeOrder_Quentity" Nullable="true" Precision="19" />
+  </ComplexType>
+  <ComplexType Name="RPT_Order_PSRWiseSKUWiseOrder_Result">
+    <Property Type="Int32" Name="DB_Id" Nullable="true" />
+    <Property Type="String" Name="DB_Name" Nullable="true" MaxLength="200" />
+    <Property Type="Int32" Name="CEAREA_id" Nullable="true" />
+    <Property Type="String" Name="CEAREA_Name" Nullable="true" MaxLength="200" />
+    <Property Type="Int32" Name="AREA_id" Nullable="true" />
+    <Property Type="String" Name="AREA_Name" Nullable="true" MaxLength="200" />
+    <Property Type="Int32" Name="REGION_id" Nullable="true" />
+    <Property Type="String" Name="REGION_Name" Nullable="true" MaxLength="200" />
+    <Property Type="Int32" Name="PSRId" Nullable="true" />
+    <Property Type="String" Name="PSRName" Nullable="true" MaxLength="50" />
+    <Property Type="Int32" Name="SKUId" Nullable="true" />
+    <Property Type="String" Name="SKUName" Nullable="true" MaxLength="50" />
+    <Property Type="Int32" Name="PackSize" Nullable="true" />
+    <Property Type="Decimal" Name="SKUVolume8oz" Nullable="true" Precision="19" />
+    <Property Type="Decimal" Name="UnitPrice" Nullable="true" Precision="19" />
+    <Property Type="Decimal" Name="Order_Quentity" Nullable="true" Precision="19" />
+    <Property Type="Decimal" Name="Confirmed_Quantity" Nullable="true" Precision="19" />
+    <Property Type="Decimal" Name="FreeOrder_Quentity" Nullable="true" Precision="19" />
+    <Property Type="Decimal" Name="FreeConfirmed_Quantity" Nullable="true" Precision="19" />
+  </ComplexType>
+  <ComplexType Name="RPT_StockMovement_Result">
+    <Property Type="Int32" Name="db_id" Nullable="true" />
+    <Property Type="Int32" Name="sku_id" Nullable="false" />
+    <Property Type="String" Name="skuname" Nullable="true" MaxLength="200" />
+    <Property Type="Int32" Name="PackSize" Nullable="true" />
+    <Property Type="Int32" Name="batch_id" Nullable="false" />
+    <Property Type="Double" Name="db_lifting_price" Nullable="false" />
+    <Property Type="Double" Name="outlet_lifting_price" Nullable="false" />
+    <Property Type="Double" Name="mrp" Nullable="false" />
+    <Property Type="Int32" Name="OpeningSoundStockQty" Nullable="false" />
+    <Property Type="Int32" Name="OpeningBookedStockQty" Nullable="false" />
+    <Property Type="Int32" Name="PrimaryChallanQty" Nullable="false" />
+    <Property Type="Int32" Name="PrimaryQty" Nullable="false" />
+    <Property Type="Int32" Name="SalesQty" Nullable="false" />
+    <Property Type="Int32" Name="FreeSalesQty" Nullable="false" />
+    <Property Type="Int32" Name="ClosingStockQty" Nullable="false" />
+  </ComplexType>
+  <ComplexType Name="RPT_Delivery_PSRPerformanceKPISummary_Result">
+    <Property Type="Int32" Name="DB_Id" Nullable="true" />
+    <Property Type="String" Name="DB_Name" Nullable="true" MaxLength="200" />
+    <Property Type="String" Name="CEAREA_Name" Nullable="true" MaxLength="200" />
+    <Property Type="String" Name="AREA_Name" Nullable="true" MaxLength="200" />
+    <Property Type="String" Name="REGION_Name" Nullable="true" MaxLength="200" />
+    <Property Type="Int32" Name="DBCode" Nullable="true" />
+    <Property Type="String" Name="OfficeAddress" Nullable="true" MaxLength="200" />
+    <Property Type="String" Name="cluster" Nullable="true" MaxLength="200" />
+    <Property Type="String" Name="PSR_Code" Nullable="true" MaxLength="200" />
+    <Property Type="String" Name="PerformerId" Nullable="false" MaxLength="100" />
+    <Property Type="String" Name="PerformerName" Nullable="true" MaxLength="200" />
+    <Property Type="Decimal" Name="TotalTGTCS" Nullable="true" Precision="19" />
+    <Property Type="Decimal" Name="TotalTGTVolume8oz" Nullable="true" Precision="19" />
+    <Property Type="Decimal" Name="SalesScheduleCall" Nullable="true" Precision="19" />
+    <Property Type="Decimal" Name="SalesMemo" Nullable="true" Precision="19" />
+    <Property Type="Decimal" Name="TotalLineSold" Nullable="true" Precision="19" />
+    <Property Type="Decimal" Name="TotalSoldInVolume8oZ" Nullable="true" Precision="19" />
+    <Property Type="Decimal" Name="TotalSoldInCase" Nullable="true" Precision="19" />
+    <Property Type="Decimal" Name="TotalSoldInValue" Nullable="true" Precision="19" />
+    <Property Type="Decimal" Name="TotalOrderedInVolume8oZ" Nullable="true" Precision="19" />
+    <Property Type="Decimal" Name="TotalOrderedInCase" Nullable="true" Precision="19" />
+    <Property Type="Decimal" Name="TotalOrderedInValue" Nullable="true" Precision="19" />
+  </ComplexType>
+  <ComplexType Name="RPT_Delivery_PSRWiseSKUWiseDelivery_Result">
+    <Property Type="Int32" Name="DB_Id" Nullable="true" />
+    <Property Type="String" Name="DB_Name" Nullable="true" MaxLength="200" />
+    <Property Type="Int32" Name="CEAREA_id" Nullable="true" />
+    <Property Type="String" Name="CEAREA_Name" Nullable="true" MaxLength="200" />
+    <Property Type="Int32" Name="AREA_id" Nullable="true" />
+    <Property Type="String" Name="AREA_Name" Nullable="true" MaxLength="200" />
+    <Property Type="Int32" Name="REGION_id" Nullable="true" />
+    <Property Type="String" Name="REGION_Name" Nullable="true" MaxLength="200" />
+    <Property Type="Int32" Name="PSRId" Nullable="true" />
+    <Property Type="String" Name="PSRName" Nullable="true" MaxLength="50" />
+    <Property Type="Int32" Name="SKUId" Nullable="true" />
+    <Property Type="String" Name="SKUName" Nullable="true" MaxLength="50" />
+    <Property Type="Int32" Name="PackSize" Nullable="true" />
+    <Property Type="Decimal" Name="SKUVolume8oz" Nullable="true" Precision="19" />
+    <Property Type="Decimal" Name="UnitPrice" Nullable="true" Precision="19" />
+    <Property Type="Decimal" Name="Delivered_Quentity" Nullable="true" Precision="19" />
+    <Property Type="Decimal" Name="FreeDelivered_Quentity" Nullable="true" Precision="19" />
+  </ComplexType>
+</Schema>

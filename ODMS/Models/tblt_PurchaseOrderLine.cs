@@ -16,13 +16,13 @@ namespace ODMS.Models
     {
         public int id { get; set; }
         public int POId { get; set; }
+        public int BundelItem { get; set; }
         public int sku_id { get; set; }
         public int BatchId { get; set; }
         public double Price { get; set; }
         public int PackSize { get; set; }
         public int ChallanQty { get; set; }
         public int ReciveQty { get; set; }
-        public int BundelItem { get; set; }
     
         public virtual tblt_PurchaseOrder tblt_PurchaseOrder { get; set; }
     }

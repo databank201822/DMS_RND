@@ -26,21 +26,21 @@ namespace ODMS.Models
         public Nullable<int> Status { get; set; }
         public string Name { get; set; }
         public Nullable<int> PSR_id { get; set; }
-        public string PSR_Code { get; set; }
-        public string DBCode { get; set; }
+        public Nullable<int> PSR_Code { get; set; }
+        public Nullable<int> DBCode { get; set; }
         public string OfficeAddress { get; set; }
         public string cluster { get; set; }
         public string RouteName { get; set; }
-        public int RouteID { get; set; }
-        public int OutletId { get; set; }
-        public string OutletCode { get; set; }
+        public Nullable<int> RouteID { get; set; }
+        public Nullable<int> OutletId { get; set; }
+        public Nullable<int> OutletCode { get; set; }
         public string OutletName { get; set; }
         public string OutletName_b { get; set; }
         public string Address { get; set; }
         public string OwnerName { get; set; }
         public string ContactNo { get; set; }
-        public int HaveVisicooler { get; set; }
-        public int IsActive { get; set; }
+        public Nullable<int> HaveVisicooler { get; set; }
+        public Nullable<int> IsActive { get; set; }
         public string channel_name { get; set; }
         public string outlet_category_name { get; set; }
         public string Outlet_grade { get; set; }

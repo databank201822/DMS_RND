@@ -222,7 +222,7 @@
                         <Paragraph>
                           <TextRuns>
                             <TextRun>
-                              <Value>=Round(Fields!Confirmed_Quantity.Value/Fields!PackSize.Value,2)</Value>
+                              <Value>=Round(Fields!Order_Quentity.Value/Fields!PackSize.Value,2)</Value>
                               <Style>
                                 <FontFamily>Tahoma</FontFamily>
                                 <FontSize>8pt</FontSize>
@@ -256,7 +256,7 @@
                         <Paragraph>
                           <TextRuns>
                             <TextRun>
-                              <Value>=Round(Fields!FreeConfirmed_Quantity.Value/Fields!PackSize.Value,2)</Value>
+                              <Value>=Round(Fields!FreeOrder_Quentity.Value/Fields!PackSize.Value,2)</Value>
                               <Style>
                                 <FontFamily>Tahoma</FontFamily>
                                 <FontSize>8pt</FontSize>
@@ -290,7 +290,7 @@
                         <Paragraph>
                           <TextRuns>
                             <TextRun>
-                              <Value>=Round((Fields!Confirmed_Quantity.Value+Fields!FreeConfirmed_Quantity.Value)/Fields!PackSize.Value,2)</Value>
+                              <Value>=Round((Fields!Order_Quentity.Value+Fields!FreeOrder_Quentity.Value)/Fields!PackSize.Value,2)</Value>
                               <Style>
                                 <FontFamily>Tahoma</FontFamily>
                                 <FontSize>8pt</FontSize>
@@ -374,7 +374,7 @@
                         <Paragraph>
                           <TextRuns>
                             <TextRun>
-                              <Value>=Round(Sum(Fields!Confirmed_Quantity.Value/Fields!PackSize.Value),2)</Value>
+                              <Value>=Round(Sum(Fields!Order_Quentity.Value/Fields!PackSize.Value),2)</Value>
                               <Style>
                                 <FontFamily>Tahoma</FontFamily>
                                 <FontSize>8pt</FontSize>
@@ -410,7 +410,7 @@
                         <Paragraph>
                           <TextRuns>
                             <TextRun>
-                              <Value>=Round(Sum(Fields!FreeConfirmed_Quantity.Value/Fields!PackSize.Value),2)</Value>
+                              <Value>=Round(Sum(Fields!FreeOrder_Quentity.Value/Fields!PackSize.Value),2)</Value>
                               <Style>
                                 <FontFamily>Tahoma</FontFamily>
                                 <FontSize>8pt</FontSize>
@@ -446,7 +446,7 @@
                         <Paragraph>
                           <TextRuns>
                             <TextRun>
-                              <Value>=Round(SUM((Fields!Confirmed_Quantity.Value+Fields!FreeConfirmed_Quantity.Value)/Fields!PackSize.Value),2)</Value>
+                              <Value>=Round(SUM((Fields!Order_Quentity.Value+Fields!FreeOrder_Quentity.Value)/Fields!PackSize.Value),2)</Value>
                               <Style>
                                 <FontFamily>Tahoma</FontFamily>
                                 <FontSize>8pt</FontSize>
@@ -523,7 +523,7 @@
                         <Paragraph>
                           <TextRuns>
                             <TextRun>
-                              <Value>=Round(Sum(Fields!Confirmed_Quantity.Value/Fields!PackSize.Value),2)</Value>
+                              <Value>=Round(Sum(Fields!Order_Quentity.Value/Fields!PackSize.Value),2)</Value>
                               <Style>
                                 <FontFamily>Tahoma</FontFamily>
                                 <FontSize>8pt</FontSize>
@@ -559,7 +559,7 @@
                         <Paragraph>
                           <TextRuns>
                             <TextRun>
-                              <Value>=Round(Sum(Fields!FreeConfirmed_Quantity.Value/Fields!PackSize.Value),2)</Value>
+                              <Value>=Round(Sum(Fields!FreeOrder_Quentity.Value/Fields!PackSize.Value),2)</Value>
                               <Style>
                                 <FontFamily>Tahoma</FontFamily>
                                 <FontSize>8pt</FontSize>
@@ -595,7 +595,7 @@
                         <Paragraph>
                           <TextRuns>
                             <TextRun>
-                              <Value>=Round(SUM((Fields!Confirmed_Quantity.Value+Fields!FreeConfirmed_Quantity.Value)/Fields!PackSize.Value),2)</Value>
+                              <Value>=Round(SUM((Fields!Order_Quentity.Value+Fields!FreeOrder_Quentity.Value)/Fields!PackSize.Value),2)</Value>
                               <Style>
                                 <FontFamily>Tahoma</FontFamily>
                                 <FontSize>8pt</FontSize>
@@ -672,7 +672,7 @@
                         <Paragraph>
                           <TextRuns>
                             <TextRun>
-                              <Value>=Round(Sum(Fields!Confirmed_Quantity.Value/Fields!PackSize.Value),2)</Value>
+                              <Value>=Round(Sum(Fields!Order_Quentity.Value/Fields!PackSize.Value),2)</Value>
                               <Style>
                                 <FontFamily>Tahoma</FontFamily>
                                 <FontSize>8pt</FontSize>
@@ -708,7 +708,7 @@
                         <Paragraph>
                           <TextRuns>
                             <TextRun>
-                              <Value>=Round(Sum(Fields!FreeConfirmed_Quantity.Value/Fields!PackSize.Value),2)</Value>
+                              <Value>=Round(Sum(Fields!FreeOrder_Quentity.Value/Fields!PackSize.Value),2)</Value>
                               <Style>
                                 <FontFamily>Tahoma</FontFamily>
                                 <FontSize>8pt</FontSize>
@@ -744,7 +744,7 @@
                         <Paragraph>
                           <TextRuns>
                             <TextRun>
-                              <Value>=Round(SUM((Fields!Confirmed_Quantity.Value+Fields!FreeConfirmed_Quantity.Value)/Fields!PackSize.Value),2)</Value>
+                              <Value>=Round(SUM((Fields!Order_Quentity.Value+Fields!FreeOrder_Quentity.Value)/Fields!PackSize.Value),2)</Value>
                               <Style>
                                 <FontFamily>Tahoma</FontFamily>
                                 <FontSize>8pt</FontSize>
@@ -821,7 +821,7 @@
                         <Paragraph>
                           <TextRuns>
                             <TextRun>
-                              <Value>=Round(Sum(Fields!Confirmed_Quantity.Value/Fields!PackSize.Value),2)</Value>
+                              <Value>=Round(Sum(Fields!Order_Quentity.Value/Fields!PackSize.Value),2)</Value>
                               <Style>
                                 <FontFamily>Tahoma</FontFamily>
                                 <FontSize>8pt</FontSize>
@@ -857,7 +857,7 @@
                         <Paragraph>
                           <TextRuns>
                             <TextRun>
-                              <Value>=Round(Sum(Fields!FreeConfirmed_Quantity.Value/Fields!PackSize.Value),2)</Value>
+                              <Value>=Round(Sum(Fields!FreeOrder_Quentity.Value/Fields!PackSize.Value),2)</Value>
                               <Style>
                                 <FontFamily>Tahoma</FontFamily>
                                 <FontSize>8pt</FontSize>
@@ -893,7 +893,7 @@
                         <Paragraph>
                           <TextRuns>
                             <TextRun>
-                              <Value>=Round(SUM((Fields!Confirmed_Quantity.Value+Fields!FreeConfirmed_Quantity.Value)/Fields!PackSize.Value),2)</Value>
+                              <Value>=Round(SUM((Fields!Order_Quentity.Value+Fields!FreeOrder_Quentity.Value)/Fields!PackSize.Value),2)</Value>
                               <Style>
                                 <FontFamily>Tahoma</FontFamily>
                                 <FontSize>8pt</FontSize>
@@ -970,7 +970,7 @@
                         <Paragraph>
                           <TextRuns>
                             <TextRun>
-                              <Value>=Round(Sum(Fields!Confirmed_Quantity.Value/Fields!PackSize.Value),2)</Value>
+                              <Value>=Round(Sum(Fields!Order_Quentity.Value/Fields!PackSize.Value),2)</Value>
                               <Style>
                                 <FontFamily>Tahoma</FontFamily>
                                 <FontSize>8pt</FontSize>
@@ -1006,7 +1006,7 @@
                         <Paragraph>
                           <TextRuns>
                             <TextRun>
-                              <Value>=Round(Sum(Fields!FreeConfirmed_Quantity.Value/Fields!PackSize.Value),2)</Value>
+                              <Value>=Round(Sum(Fields!FreeOrder_Quentity.Value/Fields!PackSize.Value),2)</Value>
                               <Style>
                                 <FontFamily>Tahoma</FontFamily>
                                 <FontSize>8pt</FontSize>
@@ -1042,7 +1042,7 @@
                         <Paragraph>
                           <TextRuns>
                             <TextRun>
-                              <Value>=Round(SUM((Fields!Confirmed_Quantity.Value+Fields!FreeConfirmed_Quantity.Value)/Fields!PackSize.Value),2)</Value>
+                              <Value>=Round(SUM((Fields!Order_Quentity.Value+Fields!FreeOrder_Quentity.Value)/Fields!PackSize.Value),2)</Value>
                               <Style>
                                 <FontFamily>Tahoma</FontFamily>
                                 <FontSize>8pt</FontSize>
@@ -1119,7 +1119,7 @@
                         <Paragraph>
                           <TextRuns>
                             <TextRun>
-                              <Value>=Round(Sum(Fields!Confirmed_Quantity.Value/Fields!PackSize.Value),2)</Value>
+                              <Value>=Round(Sum(Fields!Order_Quentity.Value/Fields!PackSize.Value),2)</Value>
                               <Style>
                                 <FontFamily>Tahoma</FontFamily>
                                 <FontSize>8pt</FontSize>
@@ -1155,7 +1155,7 @@
                         <Paragraph>
                           <TextRuns>
                             <TextRun>
-                              <Value>=Round(Sum(Fields!FreeConfirmed_Quantity.Value/Fields!PackSize.Value),2)</Value>
+                              <Value>=Round(Sum(Fields!FreeOrder_Quentity.Value/Fields!PackSize.Value),2)</Value>
                               <Style>
                                 <FontFamily>Tahoma</FontFamily>
                                 <FontSize>8pt</FontSize>
@@ -1191,12 +1191,12 @@
                         <Paragraph>
                           <TextRuns>
                             <TextRun>
-                              <Value>=Round(SUM((Fields!Confirmed_Quantity.Value+Fields!FreeConfirmed_Quantity.Value)/Fields!PackSize.Value),2)</Value>
+                              <Value>=Round(SUM((Fields!Order_Quentity.Value+Fields!FreeOrder_Quentity.Value)/Fields!PackSize.Value),2)</Value>
                               <Style>
                                 <FontFamily>Tahoma</FontFamily>
                                 <FontSize>8pt</FontSize>
                                 <FontWeight>Bold</FontWeight>
-                                <Color>#4c68a2</Color>
+                                <Color>White</Color>
                               </Style>
                             </TextRun>
                           </TextRuns>
@@ -1216,6 +1216,7 @@
                         <PaddingBottom>2pt</PaddingBottom>
                       </Style>
                     </Textbox>
+                    <rd:Selected>true</rd:Selected>
                   </CellContents>
                 </TablixCell>
               </TablixCells>

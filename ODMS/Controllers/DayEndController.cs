@@ -22,7 +22,7 @@ namespace ODMS.Controllers
 
             int previousChallanNotConfirmed = Db.tblt_Challan.Count(x => x.db_id == dbid && DateTime.Compare(x.delivery_date, currentDate) == 0 && x.challan_status == 1);
 
-            int currentChallanNotCreated = Db.tblt_Order.Count(x => x.db_id == dbid && DateTime.Compare(x.planned_order_date, currentDate) == 0 && x.Challan_no == 0);
+            int currentChallanNotCreated = Db.tblt_Order.Count(x => x.db_id == dbid && DateTime.Compare(x.planned_order_date, currentDate) == 0 && x.Challan_no == 0 && x.so_status == 1);
             int newOrder = Db.tblt_Order.Count(x => x.db_id == dbid && DateTime.Compare(x.planned_order_date, currentDate) == 0 && x.so_status == 1);
 
 

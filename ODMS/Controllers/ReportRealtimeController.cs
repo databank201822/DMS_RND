@@ -84,5 +84,78 @@ namespace ODMS.Controllers
 
 
         }
+
+
+        public ActionResult OrderVsDelivery()
+        {
+            return View("OrderVsDelivery/ROrderVsDelivery");
+        }
+
+        [HttpPost]
+        public ActionResult OrderVsDeliveryFilter(int[] rsMid, int[] asMid, int[] cEid, int[] id, int[] skuIds, DateTime startDate, DateTime endDate, int reportType, int parformerType)
+        {
+            string dbids = sp.Dbids(rsMid, asMid, cEid, id);
+            string skulist = null;
+            if (skuIds != null)
+            {
+
+                skulist = string.Join(",", skuIds);
+            }
+
+
+
+            if (parformerType == 1) // by DB
+            {
+                if (reportType == 1) //DB Summery
+                {
+                    List<RPT_Realtime_OrderVsdeliveredDBSummary_Result> orderVsDeleviry = Db
+                        .RPT_Realtime_OrderVsdeliveredDBSummary(startDate, endDate, dbids, skulist)
+                        .ToList();
+
+
+                    return PartialView("OrderVsDelivery/OrderVsdeliveredDBSummary", orderVsDeleviry);
+                }
+                else if (reportType == 2) // DB Details
+                {
+
+                    List<RPT_Realtime_OrderVsdeliveredDBDetails_Result> orderVsDeleviry = Db
+                        .RPT_Realtime_OrderVsdeliveredDBDetails(startDate, endDate, dbids, skulist)
+                        .ToList();
+
+
+                    return PartialView("OrderVsDelivery/OrderVsdeliveredDBDetails", orderVsDeleviry);
+
+
+                }
+            }
+            else if (parformerType == 2) // by PSR
+            {
+                if (reportType == 1) //PSR Summery
+                {
+                    List<RPT_Realtime_OrderVsdeliveredSummary_Result> orderVsDeleviry = Db
+                        .RPT_Realtime_OrderVsdeliveredSummary(startDate, endDate, dbids, skulist)
+                        .ToList();
+
+
+                    return PartialView("OrderVsDelivery/RPSRROrderVsDeliveryFilter", orderVsDeleviry);
+                }
+                else if (reportType == 2) // PSR Details
+                {
+
+                    List<RPT_Realtime_OrderVsdeliveredDetails_Result> orderVsDeleviry = Db
+                        .RPT_Realtime_OrderVsdeliveredDetails(startDate, endDate, dbids, skulist)
+                        .ToList();
+
+
+                    return PartialView("OrderVsDelivery/OrderVsdeliveredDetails", orderVsDeleviry);
+
+                }
+
+            }
+
+            return null;
+
+
+        }
     }
 }

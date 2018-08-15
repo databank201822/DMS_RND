@@ -23,8 +23,8 @@ namespace ODMS.Models
         public int id { get; set; }
         public int dbid { get; set; }
         public System.DateTime date { get; set; }
-        public int userid { get; set; }
         public System.DateTime Syatemdate { get; set; }
+        public int userid { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<tbld_AdjustmentStockItem> tbld_AdjustmentStockItem { get; set; }

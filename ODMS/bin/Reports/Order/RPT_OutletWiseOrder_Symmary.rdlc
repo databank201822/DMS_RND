@@ -260,7 +260,7 @@
                         <Paragraph>
                           <TextRuns>
                             <TextRun>
-                              <Value>=Round(SUM(Fields!Confirmed_Quantity.Value/Fields!PackSize.Value),2)</Value>
+                              <Value>=Round(SUM(Fields!Order_Quentity.Value/Fields!PackSize.Value),2)</Value>
                               <Style>
                                 <FontFamily>Tahoma</FontFamily>
                                 <FontSize>8pt</FontSize>
@@ -314,7 +314,7 @@
                         <Paragraph>
                           <TextRuns>
                             <TextRun>
-                              <Value>=Round(SUM(Fields!FreeConfirmed_Quantity.Value/Fields!PackSize.Value),2)</Value>
+                              <Value>=Round(SUM(Fields!FreeOrder_Quentity.Value/Fields!PackSize.Value),2)</Value>
                               <Style>
                                 <FontFamily>Tahoma</FontFamily>
                                 <FontSize>8pt</FontSize>
@@ -368,7 +368,7 @@
                         <Paragraph>
                           <TextRuns>
                             <TextRun>
-                              <Value>=Round(SUM(Fields!Confirmed_Quantity.Value/Fields!PackSize.Value)+SUM(Fields!FreeConfirmed_Quantity.Value/Fields!PackSize.Value),2)</Value>
+                              <Value>=Round(SUM(Fields!Order_Quentity.Value/Fields!PackSize.Value)+SUM(Fields!FreeOrder_Quentity.Value/Fields!PackSize.Value),2)</Value>
                               <Style>
                                 <FontFamily>Tahoma</FontFamily>
                                 <FontSize>8pt</FontSize>
@@ -481,10 +481,11 @@
                         <Paragraph>
                           <TextRuns>
                             <TextRun>
-                              <Value>=Round(SUM(Fields!Confirmed_Quantity.Value/Fields!PackSize.Value),2)</Value>
+                              <Value>=Round(SUM(Fields!Order_Quentity.Value/Fields!PackSize.Value),2)</Value>
                               <Style>
                                 <FontFamily>Tahoma</FontFamily>
                                 <FontSize>8pt</FontSize>
+                                <FontWeight>Bold</FontWeight>
                                 <Color>#4c68a2</Color>
                               </Style>
                             </TextRun>
@@ -536,10 +537,11 @@
                         <Paragraph>
                           <TextRuns>
                             <TextRun>
-                              <Value>=Round(SUM(Fields!FreeConfirmed_Quantity.Value/Fields!PackSize.Value),2)</Value>
+                              <Value>=Round(SUM(Fields!FreeOrder_Quentity.Value/Fields!PackSize.Value),2)</Value>
                               <Style>
                                 <FontFamily>Tahoma</FontFamily>
                                 <FontSize>8pt</FontSize>
+                                <FontWeight>Bold</FontWeight>
                                 <Color>#4c68a2</Color>
                               </Style>
                             </TextRun>
@@ -591,10 +593,11 @@
                         <Paragraph>
                           <TextRuns>
                             <TextRun>
-                              <Value>=Round(SUM(Fields!Confirmed_Quantity.Value/Fields!PackSize.Value)+SUM(Fields!FreeConfirmed_Quantity.Value/Fields!PackSize.Value),2)</Value>
+                              <Value>=Round(SUM(Fields!Order_Quentity.Value/Fields!PackSize.Value)+SUM(Fields!FreeOrder_Quentity.Value/Fields!PackSize.Value),2)</Value>
                               <Style>
                                 <FontFamily>Tahoma</FontFamily>
                                 <FontSize>8pt</FontSize>
+                                <FontWeight>Bold</FontWeight>
                                 <Color>#4c68a2</Color>
                               </Style>
                             </TextRun>
@@ -650,6 +653,7 @@
                               <Style>
                                 <FontFamily>Tahoma</FontFamily>
                                 <FontSize>8pt</FontSize>
+                                <FontWeight>Bold</FontWeight>
                                 <Color>#4c68a2</Color>
                               </Style>
                             </TextRun>
@@ -706,10 +710,11 @@
                         <Paragraph>
                           <TextRuns>
                             <TextRun>
-                              <Value>=Round(SUM(Fields!Confirmed_Quantity.Value/Fields!PackSize.Value),2)</Value>
+                              <Value>=Round(SUM(Fields!Order_Quentity.Value/Fields!PackSize.Value),2)</Value>
                               <Style>
                                 <FontFamily>Tahoma</FontFamily>
                                 <FontSize>8pt</FontSize>
+                                <FontWeight>Bold</FontWeight>
                                 <Color>#4c68a2</Color>
                               </Style>
                             </TextRun>
@@ -761,10 +766,11 @@
                         <Paragraph>
                           <TextRuns>
                             <TextRun>
-                              <Value>=Round(SUM(Fields!FreeConfirmed_Quantity.Value/Fields!PackSize.Value),2)</Value>
+                              <Value>=Round(SUM(Fields!FreeOrder_Quentity.Value/Fields!PackSize.Value),2)</Value>
                               <Style>
                                 <FontFamily>Tahoma</FontFamily>
                                 <FontSize>8pt</FontSize>
+                                <FontWeight>Bold</FontWeight>
                                 <Color>#4c68a2</Color>
                               </Style>
                             </TextRun>
@@ -816,10 +822,11 @@
                         <Paragraph>
                           <TextRuns>
                             <TextRun>
-                              <Value>=Round(SUM(Fields!Confirmed_Quantity.Value/Fields!PackSize.Value)+SUM(Fields!FreeConfirmed_Quantity.Value/Fields!PackSize.Value),2)</Value>
+                              <Value>=Round(SUM(Fields!Order_Quentity.Value/Fields!PackSize.Value)+SUM(Fields!FreeOrder_Quentity.Value/Fields!PackSize.Value),2)</Value>
                               <Style>
                                 <FontFamily>Tahoma</FontFamily>
                                 <FontSize>8pt</FontSize>
+                                <FontWeight>Bold</FontWeight>
                                 <Color>#4c68a2</Color>
                               </Style>
                             </TextRun>
@@ -875,6 +882,7 @@
                               <Style>
                                 <FontFamily>Tahoma</FontFamily>
                                 <FontSize>8pt</FontSize>
+                                <FontWeight>Bold</FontWeight>
                                 <Color>#4c68a2</Color>
                               </Style>
                             </TextRun>
@@ -931,10 +939,11 @@
                         <Paragraph>
                           <TextRuns>
                             <TextRun>
-                              <Value>=Round(SUM(Fields!Confirmed_Quantity.Value/Fields!PackSize.Value),2)</Value>
+                              <Value>=Round(SUM(Fields!Order_Quentity.Value/Fields!PackSize.Value),2)</Value>
                               <Style>
                                 <FontFamily>Tahoma</FontFamily>
                                 <FontSize>8pt</FontSize>
+                                <FontWeight>Bold</FontWeight>
                                 <Color>#4c68a2</Color>
                               </Style>
                             </TextRun>
@@ -986,10 +995,11 @@
                         <Paragraph>
                           <TextRuns>
                             <TextRun>
-                              <Value>=Round(SUM(Fields!FreeConfirmed_Quantity.Value/Fields!PackSize.Value),2)</Value>
+                              <Value>=Round(SUM(Fields!FreeOrder_Quentity.Value/Fields!PackSize.Value),2)</Value>
                               <Style>
                                 <FontFamily>Tahoma</FontFamily>
                                 <FontSize>8pt</FontSize>
+                                <FontWeight>Bold</FontWeight>
                                 <Color>#4c68a2</Color>
                               </Style>
                             </TextRun>
@@ -1041,10 +1051,11 @@
                         <Paragraph>
                           <TextRuns>
                             <TextRun>
-                              <Value>=Round(SUM(Fields!Confirmed_Quantity.Value/Fields!PackSize.Value)+SUM(Fields!FreeConfirmed_Quantity.Value/Fields!PackSize.Value),2)</Value>
+                              <Value>=Round(SUM(Fields!Order_Quentity.Value/Fields!PackSize.Value)+SUM(Fields!FreeOrder_Quentity.Value/Fields!PackSize.Value),2)</Value>
                               <Style>
                                 <FontFamily>Tahoma</FontFamily>
                                 <FontSize>8pt</FontSize>
+                                <FontWeight>Bold</FontWeight>
                                 <Color>#4c68a2</Color>
                               </Style>
                             </TextRun>
@@ -1100,6 +1111,7 @@
                               <Style>
                                 <FontFamily>Tahoma</FontFamily>
                                 <FontSize>8pt</FontSize>
+                                <FontWeight>Bold</FontWeight>
                                 <Color>#4c68a2</Color>
                               </Style>
                             </TextRun>
@@ -1156,10 +1168,11 @@
                         <Paragraph>
                           <TextRuns>
                             <TextRun>
-                              <Value>=Round(SUM(Fields!Confirmed_Quantity.Value/Fields!PackSize.Value),2)</Value>
+                              <Value>=Round(SUM(Fields!Order_Quentity.Value/Fields!PackSize.Value),2)</Value>
                               <Style>
                                 <FontFamily>Tahoma</FontFamily>
                                 <FontSize>8pt</FontSize>
+                                <FontWeight>Bold</FontWeight>
                                 <Color>#4c68a2</Color>
                               </Style>
                             </TextRun>
@@ -1211,10 +1224,11 @@
                         <Paragraph>
                           <TextRuns>
                             <TextRun>
-                              <Value>=Round(SUM(Fields!FreeConfirmed_Quantity.Value/Fields!PackSize.Value),2)</Value>
+                              <Value>=Round(SUM(Fields!FreeOrder_Quentity.Value/Fields!PackSize.Value),2)</Value>
                               <Style>
                                 <FontFamily>Tahoma</FontFamily>
                                 <FontSize>8pt</FontSize>
+                                <FontWeight>Bold</FontWeight>
                                 <Color>#4c68a2</Color>
                               </Style>
                             </TextRun>
@@ -1266,10 +1280,11 @@
                         <Paragraph>
                           <TextRuns>
                             <TextRun>
-                              <Value>=Round(SUM(Fields!Confirmed_Quantity.Value/Fields!PackSize.Value)+SUM(Fields!FreeConfirmed_Quantity.Value/Fields!PackSize.Value),2)</Value>
+                              <Value>=Round(SUM(Fields!Order_Quentity.Value/Fields!PackSize.Value)+SUM(Fields!FreeOrder_Quentity.Value/Fields!PackSize.Value),2)</Value>
                               <Style>
                                 <FontFamily>Tahoma</FontFamily>
                                 <FontSize>8pt</FontSize>
+                                <FontWeight>Bold</FontWeight>
                                 <Color>#4c68a2</Color>
                               </Style>
                             </TextRun>
@@ -1325,6 +1340,7 @@
                               <Style>
                                 <FontFamily>Tahoma</FontFamily>
                                 <FontSize>8pt</FontSize>
+                                <FontWeight>Bold</FontWeight>
                                 <Color>#4c68a2</Color>
                               </Style>
                             </TextRun>
@@ -1381,10 +1397,11 @@
                         <Paragraph>
                           <TextRuns>
                             <TextRun>
-                              <Value>=Round(SUM(Fields!Confirmed_Quantity.Value/Fields!PackSize.Value),2)</Value>
+                              <Value>=Round(SUM(Fields!Order_Quentity.Value/Fields!PackSize.Value),2)</Value>
                               <Style>
                                 <FontFamily>Tahoma</FontFamily>
                                 <FontSize>8pt</FontSize>
+                                <FontWeight>Bold</FontWeight>
                                 <Color>#4c68a2</Color>
                               </Style>
                             </TextRun>
@@ -1436,10 +1453,11 @@
                         <Paragraph>
                           <TextRuns>
                             <TextRun>
-                              <Value>=Round(SUM(Fields!FreeConfirmed_Quantity.Value/Fields!PackSize.Value),2)</Value>
+                              <Value>=Round(SUM(Fields!FreeOrder_Quentity.Value/Fields!PackSize.Value),2)</Value>
                               <Style>
                                 <FontFamily>Tahoma</FontFamily>
                                 <FontSize>8pt</FontSize>
+                                <FontWeight>Bold</FontWeight>
                                 <Color>#4c68a2</Color>
                               </Style>
                             </TextRun>
@@ -1491,10 +1509,11 @@
                         <Paragraph>
                           <TextRuns>
                             <TextRun>
-                              <Value>=Round(SUM(Fields!Confirmed_Quantity.Value/Fields!PackSize.Value)+SUM(Fields!FreeConfirmed_Quantity.Value/Fields!PackSize.Value),2)</Value>
+                              <Value>=Round(SUM(Fields!Order_Quentity.Value/Fields!PackSize.Value)+SUM(Fields!FreeOrder_Quentity.Value/Fields!PackSize.Value),2)</Value>
                               <Style>
                                 <FontFamily>Tahoma</FontFamily>
                                 <FontSize>8pt</FontSize>
+                                <FontWeight>Bold</FontWeight>
                                 <Color>#4c68a2</Color>
                               </Style>
                             </TextRun>
@@ -1550,6 +1569,7 @@
                               <Style>
                                 <FontFamily>Tahoma</FontFamily>
                                 <FontSize>8pt</FontSize>
+                                <FontWeight>Bold</FontWeight>
                                 <Color>#4c68a2</Color>
                               </Style>
                             </TextRun>
@@ -1606,10 +1626,11 @@
                         <Paragraph>
                           <TextRuns>
                             <TextRun>
-                              <Value>=Round(SUM(Fields!Confirmed_Quantity.Value/Fields!PackSize.Value),2)</Value>
+                              <Value>=Round(SUM(Fields!Order_Quentity.Value/Fields!PackSize.Value),2)</Value>
                               <Style>
                                 <FontFamily>Tahoma</FontFamily>
                                 <FontSize>8pt</FontSize>
+                                <FontWeight>Bold</FontWeight>
                                 <Color>#4c68a2</Color>
                               </Style>
                             </TextRun>
@@ -1661,10 +1682,11 @@
                         <Paragraph>
                           <TextRuns>
                             <TextRun>
-                              <Value>=Round(SUM(Fields!FreeConfirmed_Quantity.Value/Fields!PackSize.Value),2)</Value>
+                              <Value>=Round(SUM(Fields!FreeOrder_Quentity.Value/Fields!PackSize.Value),2)</Value>
                               <Style>
                                 <FontFamily>Tahoma</FontFamily>
                                 <FontSize>8pt</FontSize>
+                                <FontWeight>Bold</FontWeight>
                                 <Color>#4c68a2</Color>
                               </Style>
                             </TextRun>
@@ -1716,10 +1738,11 @@
                         <Paragraph>
                           <TextRuns>
                             <TextRun>
-                              <Value>=Round(SUM(Fields!Confirmed_Quantity.Value/Fields!PackSize.Value)+SUM(Fields!FreeConfirmed_Quantity.Value/Fields!PackSize.Value),2)</Value>
+                              <Value>=Round(SUM(Fields!Order_Quentity.Value/Fields!PackSize.Value)+SUM(Fields!FreeOrder_Quentity.Value/Fields!PackSize.Value),2)</Value>
                               <Style>
                                 <FontFamily>Tahoma</FontFamily>
                                 <FontSize>8pt</FontSize>
+                                <FontWeight>Bold</FontWeight>
                                 <Color>#4c68a2</Color>
                               </Style>
                             </TextRun>
@@ -1775,6 +1798,7 @@
                               <Style>
                                 <FontFamily>Tahoma</FontFamily>
                                 <FontSize>8pt</FontSize>
+                                <FontWeight>Bold</FontWeight>
                                 <Color>#4c68a2</Color>
                               </Style>
                             </TextRun>
@@ -4903,11 +4927,18 @@
       </ConnectionProperties>
       <rd:DataSourceID>1de18181-6d42-462e-9412-297b6d4c5933</rd:DataSourceID>
     </DataSource>
+    <DataSource Name="ODMSModels1">
+      <ConnectionProperties>
+        <DataProvider>System.Data.DataSet</DataProvider>
+        <ConnectString>/* Local Connection */</ConnectString>
+      </ConnectionProperties>
+      <rd:DataSourceID>793701d1-98c3-41eb-9e95-898bbea32253</rd:DataSourceID>
+    </DataSource>
   </DataSources>
   <DataSets>
     <DataSet Name="OutletOrder">
       <Query>
-        <DataSourceName>ODMSModels</DataSourceName>
+        <DataSourceName>ODMSModels1</DataSourceName>
         <CommandText>/* Local Query */</CommandText>
       </Query>
       <Fields>
@@ -5051,16 +5082,16 @@
           <DataField>PackSize</DataField>
           <rd:TypeName>System.Nullable`1[[System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]</rd:TypeName>
         </Field>
-        <Field Name="Confirmed_Quantity">
-          <DataField>Confirmed_Quantity</DataField>
+        <Field Name="Order_Quentity">
+          <DataField>Order_Quentity</DataField>
           <rd:TypeName>System.Nullable`1[[System.Decimal, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]</rd:TypeName>
         </Field>
         <Field Name="Value">
           <DataField>Value</DataField>
           <rd:TypeName>System.Nullable`1[[System.Double, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]</rd:TypeName>
         </Field>
-        <Field Name="FreeConfirmed_Quantity">
-          <DataField>FreeConfirmed_Quantity</DataField>
+        <Field Name="FreeOrder_Quentity">
+          <DataField>FreeOrder_Quentity</DataField>
           <rd:TypeName>System.Nullable`1[[System.Decimal, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]</rd:TypeName>
         </Field>
       </Fields>
@@ -5068,7 +5099,7 @@
         <rd:DataSetName>ODMS.Models</rd:DataSetName>
         <rd:TableName>ODMSEntities</rd:TableName>
         <rd:ObjectDataSourceSelectMethod>RPT_Order_OutletWiseSKUWiseOrder</rd:ObjectDataSourceSelectMethod>
-        <rd:ObjectDataSourceSelectMethodSignature>System.Data.Entity.Core.Objects.ObjectResult`1[ODMS.Models.RPT_Order_OutletWiseSKUWiseOrder_Result] RPT_Order_OutletWiseSKUWiseOrder(System.Nullable`1[System.DateTime], System.Nullable`1[System.DateTime])</rd:ObjectDataSourceSelectMethodSignature>
+        <rd:ObjectDataSourceSelectMethodSignature>System.Data.Entity.Core.Objects.ObjectResult`1[ODMS.Models.RPT_Order_OutletWiseSKUWiseOrder_Result] RPT_Order_OutletWiseSKUWiseOrder(System.Nullable`1[System.DateTime], System.Nullable`1[System.DateTime], System.String, System.String)</rd:ObjectDataSourceSelectMethodSignature>
         <rd:ObjectDataSourceType>ODMS.Models.ODMSEntities, ODMS, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null</rd:ObjectDataSourceType>
       </rd:DataSetInfo>
     </DataSet>

@@ -373,7 +373,7 @@
                         <Paragraph>
                           <TextRuns>
                             <TextRun>
-                              <Value>=Round(Fields!Confirmed_Quantity.Value/Fields!PackSize.Value,2)</Value>
+                              <Value>=Round(Fields!Order_Quentity.Value/Fields!PackSize.Value,2)</Value>
                               <Style>
                                 <FontFamily>Tahoma</FontFamily>
                                 <FontSize>8pt</FontSize>
@@ -427,7 +427,7 @@
                         <Paragraph>
                           <TextRuns>
                             <TextRun>
-                              <Value>=Round(Fields!FreeConfirmed_Quantity.Value/Fields!PackSize.Value,2)</Value>
+                              <Value>=Round(Fields!FreeOrder_Quentity.Value/Fields!PackSize.Value,2)</Value>
                               <Style>
                                 <FontFamily>Tahoma</FontFamily>
                                 <FontSize>8pt</FontSize>
@@ -481,7 +481,7 @@
                         <Paragraph>
                           <TextRuns>
                             <TextRun>
-                              <Value>=Round((Fields!Confirmed_Quantity.Value +Fields!FreeConfirmed_Quantity.Value)/Fields!PackSize.Value,2)</Value>
+                              <Value>=Round((Fields!Order_Quentity.Value +Fields!FreeOrder_Quentity.Value)/Fields!PackSize.Value,2)</Value>
                               <Style>
                                 <FontFamily>Tahoma</FontFamily>
                                 <FontSize>8pt</FontSize>
@@ -659,7 +659,7 @@
                         <Paragraph>
                           <TextRuns>
                             <TextRun>
-                              <Value>=System.Math.Round(Sum(Fields!Confirmed_Quantity.Value / Fields!PackSize.Value), 2)</Value>
+                              <Value>=System.Math.Round(Sum(Fields!Order_Quentity.Value / Fields!PackSize.Value), 2)</Value>
                               <Style>
                                 <FontFamily>Tahoma</FontFamily>
                                 <FontSize>8pt</FontSize>
@@ -715,7 +715,7 @@
                         <Paragraph>
                           <TextRuns>
                             <TextRun>
-                              <Value>=System.Math.Round(Sum(Fields!FreeConfirmed_Quantity.Value / Fields!PackSize.Value), 2)</Value>
+                              <Value>=System.Math.Round(Sum(Fields!FreeOrder_Quentity.Value / Fields!PackSize.Value), 2)</Value>
                               <Style>
                                 <FontFamily>Tahoma</FontFamily>
                                 <FontSize>8pt</FontSize>
@@ -771,7 +771,7 @@
                         <Paragraph>
                           <TextRuns>
                             <TextRun>
-                              <Value>=Round(Sum(Fields!Confirmed_Quantity.Value/Fields!PackSize.Value +Fields!FreeConfirmed_Quantity.Value/Fields!PackSize.Value),2)</Value>
+                              <Value>=Round(Sum(Fields!Order_Quentity.Value/Fields!PackSize.Value +Fields!FreeOrder_Quentity.Value/Fields!PackSize.Value),2)</Value>
                               <Style>
                                 <FontFamily>Tahoma</FontFamily>
                                 <FontSize>8pt</FontSize>
@@ -944,7 +944,7 @@
                         <Paragraph>
                           <TextRuns>
                             <TextRun>
-                              <Value>=System.Math.Round(SUM(Fields!Confirmed_Quantity.Value/Fields!PackSize.Value),2)</Value>
+                              <Value>=System.Math.Round(SUM(Fields!Order_Quentity.Value/Fields!PackSize.Value),2)</Value>
                               <Style>
                                 <FontFamily>Tahoma</FontFamily>
                                 <FontSize>8pt</FontSize>
@@ -1000,7 +1000,7 @@
                         <Paragraph>
                           <TextRuns>
                             <TextRun>
-                              <Value>=System.Math.Round(Sum(Fields!FreeConfirmed_Quantity.Value / Fields!PackSize.Value), 2)</Value>
+                              <Value>=System.Math.Round(Sum(Fields!FreeOrder_Quentity.Value / Fields!PackSize.Value), 2)</Value>
                               <Style>
                                 <FontFamily>Tahoma</FontFamily>
                                 <FontSize>8pt</FontSize>
@@ -1056,7 +1056,7 @@
                         <Paragraph>
                           <TextRuns>
                             <TextRun>
-                              <Value>=Round(Sum(Fields!Confirmed_Quantity.Value/Fields!PackSize.Value +Fields!FreeConfirmed_Quantity.Value/Fields!PackSize.Value),2)</Value>
+                              <Value>=Round(Sum(Fields!Order_Quentity.Value/Fields!PackSize.Value +Fields!FreeOrder_Quentity.Value/Fields!PackSize.Value),2)</Value>
                               <Style>
                                 <FontFamily>Tahoma</FontFamily>
                                 <FontSize>8pt</FontSize>
@@ -1229,7 +1229,7 @@
                         <Paragraph>
                           <TextRuns>
                             <TextRun>
-                              <Value>=System.Math.Round(SUM(Fields!Confirmed_Quantity.Value/Fields!PackSize.Value),2)</Value>
+                              <Value>=System.Math.Round(SUM(Fields!Order_Quentity.Value/Fields!PackSize.Value),2)</Value>
                               <Style>
                                 <FontFamily>Tahoma</FontFamily>
                                 <FontSize>8pt</FontSize>
@@ -1285,7 +1285,7 @@
                         <Paragraph>
                           <TextRuns>
                             <TextRun>
-                              <Value>=System.Math.Round(Sum(Fields!FreeConfirmed_Quantity.Value / Fields!PackSize.Value), 2)</Value>
+                              <Value>=System.Math.Round(Sum(Fields!FreeOrder_Quentity.Value / Fields!PackSize.Value), 2)</Value>
                               <Style>
                                 <FontFamily>Tahoma</FontFamily>
                                 <FontSize>8pt</FontSize>
@@ -1341,7 +1341,7 @@
                         <Paragraph>
                           <TextRuns>
                             <TextRun>
-                              <Value>=Round(Sum(Fields!Confirmed_Quantity.Value/Fields!PackSize.Value +Fields!FreeConfirmed_Quantity.Value/Fields!PackSize.Value),2)</Value>
+                              <Value>=Round(Sum(Fields!Order_Quentity.Value/Fields!PackSize.Value +Fields!FreeOrder_Quentity.Value/Fields!PackSize.Value),2)</Value>
                               <Style>
                                 <FontFamily>Tahoma</FontFamily>
                                 <FontSize>8pt</FontSize>
@@ -1514,7 +1514,7 @@
                         <Paragraph>
                           <TextRuns>
                             <TextRun>
-                              <Value>=System.Math.Round(SUM(Fields!Confirmed_Quantity.Value/Fields!PackSize.Value),2)</Value>
+                              <Value>=System.Math.Round(SUM(Fields!Order_Quentity.Value/Fields!PackSize.Value),2)</Value>
                               <Style>
                                 <FontFamily>Tahoma</FontFamily>
                                 <FontSize>8pt</FontSize>
@@ -1570,7 +1570,7 @@
                         <Paragraph>
                           <TextRuns>
                             <TextRun>
-                              <Value>=System.Math.Round(Sum(Fields!FreeConfirmed_Quantity.Value / Fields!PackSize.Value), 2)</Value>
+                              <Value>=System.Math.Round(Sum(Fields!FreeOrder_Quentity.Value / Fields!PackSize.Value), 2)</Value>
                               <Style>
                                 <FontFamily>Tahoma</FontFamily>
                                 <FontSize>8pt</FontSize>
@@ -1626,7 +1626,7 @@
                         <Paragraph>
                           <TextRuns>
                             <TextRun>
-                              <Value>=Round(Sum(Fields!Confirmed_Quantity.Value/Fields!PackSize.Value +Fields!FreeConfirmed_Quantity.Value/Fields!PackSize.Value),2)</Value>
+                              <Value>=Round(Sum(Fields!Order_Quentity.Value/Fields!PackSize.Value +Fields!FreeOrder_Quentity.Value/Fields!PackSize.Value),2)</Value>
                               <Style>
                                 <FontFamily>Tahoma</FontFamily>
                                 <FontSize>8pt</FontSize>
@@ -1799,7 +1799,7 @@
                         <Paragraph>
                           <TextRuns>
                             <TextRun>
-                              <Value>=System.Math.Round(SUM(Fields!Confirmed_Quantity.Value/Fields!PackSize.Value),2)</Value>
+                              <Value>=System.Math.Round(SUM(Fields!Order_Quentity.Value/Fields!PackSize.Value),2)</Value>
                               <Style>
                                 <FontFamily>Tahoma</FontFamily>
                                 <FontSize>8pt</FontSize>
@@ -1855,7 +1855,7 @@
                         <Paragraph>
                           <TextRuns>
                             <TextRun>
-                              <Value>=System.Math.Round(Sum(Fields!FreeConfirmed_Quantity.Value / Fields!PackSize.Value), 2)</Value>
+                              <Value>=System.Math.Round(Sum(Fields!FreeOrder_Quentity.Value / Fields!PackSize.Value), 2)</Value>
                               <Style>
                                 <FontFamily>Tahoma</FontFamily>
                                 <FontSize>8pt</FontSize>
@@ -1911,7 +1911,7 @@
                         <Paragraph>
                           <TextRuns>
                             <TextRun>
-                              <Value>=Round(Sum(Fields!Confirmed_Quantity.Value/Fields!PackSize.Value +Fields!FreeConfirmed_Quantity.Value/Fields!PackSize.Value),2)</Value>
+                              <Value>=Round(Sum(Fields!Order_Quentity.Value/Fields!PackSize.Value +Fields!FreeOrder_Quentity.Value/Fields!PackSize.Value),2)</Value>
                               <Style>
                                 <FontFamily>Tahoma</FontFamily>
                                 <FontSize>8pt</FontSize>
@@ -2084,7 +2084,7 @@
                         <Paragraph>
                           <TextRuns>
                             <TextRun>
-                              <Value>=System.Math.Round(SUM(Fields!Confirmed_Quantity.Value/Fields!PackSize.Value),2)</Value>
+                              <Value>=System.Math.Round(SUM(Fields!Order_Quentity.Value/Fields!PackSize.Value),2)</Value>
                               <Style>
                                 <FontFamily>Tahoma</FontFamily>
                                 <FontSize>8pt</FontSize>
@@ -2140,7 +2140,7 @@
                         <Paragraph>
                           <TextRuns>
                             <TextRun>
-                              <Value>=System.Math.Round(Sum(Fields!FreeConfirmed_Quantity.Value / Fields!PackSize.Value), 2)</Value>
+                              <Value>=System.Math.Round(Sum(Fields!FreeOrder_Quentity.Value / Fields!PackSize.Value), 2)</Value>
                               <Style>
                                 <FontFamily>Tahoma</FontFamily>
                                 <FontSize>8pt</FontSize>
@@ -2196,7 +2196,7 @@
                         <Paragraph>
                           <TextRuns>
                             <TextRun>
-                              <Value>=Round(Sum(Fields!Confirmed_Quantity.Value/Fields!PackSize.Value +Fields!FreeConfirmed_Quantity.Value/Fields!PackSize.Value),2)</Value>
+                              <Value>=Round(Sum(Fields!Order_Quentity.Value/Fields!PackSize.Value +Fields!FreeOrder_Quentity.Value/Fields!PackSize.Value),2)</Value>
                               <Style>
                                 <FontFamily>Tahoma</FontFamily>
                                 <FontSize>8pt</FontSize>
@@ -2369,7 +2369,7 @@
                         <Paragraph>
                           <TextRuns>
                             <TextRun>
-                              <Value>=System.Math.Round(SUM(Fields!Confirmed_Quantity.Value/Fields!PackSize.Value),2)</Value>
+                              <Value>=System.Math.Round(SUM(Fields!Order_Quentity.Value/Fields!PackSize.Value),2)</Value>
                               <Style>
                                 <FontFamily>Tahoma</FontFamily>
                                 <FontSize>8pt</FontSize>
@@ -2425,7 +2425,7 @@
                         <Paragraph>
                           <TextRuns>
                             <TextRun>
-                              <Value>=System.Math.Round(Sum(Fields!FreeConfirmed_Quantity.Value / Fields!PackSize.Value), 2)</Value>
+                              <Value>=System.Math.Round(Sum(Fields!FreeOrder_Quentity.Value / Fields!PackSize.Value), 2)</Value>
                               <Style>
                                 <FontFamily>Tahoma</FontFamily>
                                 <FontSize>8pt</FontSize>
@@ -2481,7 +2481,7 @@
                         <Paragraph>
                           <TextRuns>
                             <TextRun>
-                              <Value>=Round(Sum(Fields!Confirmed_Quantity.Value/Fields!PackSize.Value +Fields!FreeConfirmed_Quantity.Value/Fields!PackSize.Value),2)</Value>
+                              <Value>=Round(Sum(Fields!Order_Quentity.Value/Fields!PackSize.Value +Fields!FreeOrder_Quentity.Value/Fields!PackSize.Value),2)</Value>
                               <Style>
                                 <FontFamily>Tahoma</FontFamily>
                                 <FontSize>8pt</FontSize>
@@ -2654,7 +2654,7 @@
                         <Paragraph>
                           <TextRuns>
                             <TextRun>
-                              <Value>=System.Math.Round(SUM(Fields!Confirmed_Quantity.Value/Fields!PackSize.Value),2)</Value>
+                              <Value>=System.Math.Round(SUM(Fields!Order_Quentity.Value/Fields!PackSize.Value),2)</Value>
                               <Style>
                                 <FontFamily>Tahoma</FontFamily>
                                 <FontSize>8pt</FontSize>
@@ -2710,7 +2710,7 @@
                         <Paragraph>
                           <TextRuns>
                             <TextRun>
-                              <Value>=System.Math.Round(Sum(Fields!FreeConfirmed_Quantity.Value / Fields!PackSize.Value), 2)</Value>
+                              <Value>=System.Math.Round(Sum(Fields!FreeOrder_Quentity.Value / Fields!PackSize.Value), 2)</Value>
                               <Style>
                                 <FontFamily>Tahoma</FontFamily>
                                 <FontSize>8pt</FontSize>
@@ -2766,7 +2766,7 @@
                         <Paragraph>
                           <TextRuns>
                             <TextRun>
-                              <Value>=Round(Sum(Fields!Confirmed_Quantity.Value/Fields!PackSize.Value +Fields!FreeConfirmed_Quantity.Value/Fields!PackSize.Value),2)</Value>
+                              <Value>=Round(Sum(Fields!Order_Quentity.Value/Fields!PackSize.Value +Fields!FreeOrder_Quentity.Value/Fields!PackSize.Value),2)</Value>
                               <Style>
                                 <FontFamily>Tahoma</FontFamily>
                                 <FontSize>8pt</FontSize>
@@ -6704,11 +6704,18 @@
       </ConnectionProperties>
       <rd:DataSourceID>f8fd2220-6f0f-4088-960a-b6b70bb8b4ea</rd:DataSourceID>
     </DataSource>
+    <DataSource Name="ODMSModels1">
+      <ConnectionProperties>
+        <DataProvider>System.Data.DataSet</DataProvider>
+        <ConnectString>/* Local Connection */</ConnectString>
+      </ConnectionProperties>
+      <rd:DataSourceID>19a60360-df1b-4d87-a57d-399096999fe7</rd:DataSourceID>
+    </DataSource>
   </DataSources>
   <DataSets>
     <DataSet Name="OutletOrder">
       <Query>
-        <DataSourceName>ODMSModels</DataSourceName>
+        <DataSourceName>ODMSModels1</DataSourceName>
         <CommandText>/* Local Query */</CommandText>
       </Query>
       <Fields>
@@ -6852,16 +6859,16 @@
           <DataField>PackSize</DataField>
           <rd:TypeName>System.Nullable`1[[System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]</rd:TypeName>
         </Field>
-        <Field Name="Confirmed_Quantity">
-          <DataField>Confirmed_Quantity</DataField>
+        <Field Name="Order_Quentity">
+          <DataField>Order_Quentity</DataField>
           <rd:TypeName>System.Nullable`1[[System.Decimal, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]</rd:TypeName>
         </Field>
         <Field Name="Value">
           <DataField>Value</DataField>
           <rd:TypeName>System.Nullable`1[[System.Double, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]</rd:TypeName>
         </Field>
-        <Field Name="FreeConfirmed_Quantity">
-          <DataField>FreeConfirmed_Quantity</DataField>
+        <Field Name="FreeOrder_Quentity">
+          <DataField>FreeOrder_Quentity</DataField>
           <rd:TypeName>System.Nullable`1[[System.Decimal, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]</rd:TypeName>
         </Field>
       </Fields>
@@ -6869,7 +6876,7 @@
         <rd:DataSetName>ODMS.Models</rd:DataSetName>
         <rd:TableName>ODMSEntities</rd:TableName>
         <rd:ObjectDataSourceSelectMethod>RPT_Order_OutletWiseSKUWiseOrder</rd:ObjectDataSourceSelectMethod>
-        <rd:ObjectDataSourceSelectMethodSignature>System.Data.Entity.Core.Objects.ObjectResult`1[ODMS.Models.RPT_Order_OutletWiseSKUWiseOrder_Result] RPT_Order_OutletWiseSKUWiseOrder(System.Nullable`1[System.DateTime], System.Nullable`1[System.DateTime])</rd:ObjectDataSourceSelectMethodSignature>
+        <rd:ObjectDataSourceSelectMethodSignature>System.Data.Entity.Core.Objects.ObjectResult`1[ODMS.Models.RPT_Order_OutletWiseSKUWiseOrder_Result] RPT_Order_OutletWiseSKUWiseOrder(System.Nullable`1[System.DateTime], System.Nullable`1[System.DateTime], System.String, System.String)</rd:ObjectDataSourceSelectMethodSignature>
         <rd:ObjectDataSourceType>ODMS.Models.ODMSEntities, ODMS, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null</rd:ObjectDataSourceType>
       </rd:DataSetInfo>
     </DataSet>

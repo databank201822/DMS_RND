@@ -570,7 +570,7 @@ namespace ODMS.Controllers
                         {
                             x.qtyPs = x.qtyPs + challanlineitem.ReturnQty;
                         });
-
+                        if (challanlineitem.ReturnQty != 0) { 
 
                         // Add inventory log
                         tbll_inventory_log tbllInventoryLog = new tbll_inventory_log
@@ -587,7 +587,7 @@ namespace ODMS.Controllers
                         };
 
                         Db.tbll_inventory_log.Add(tbllInventoryLog);
-
+                        }
                         Db.SaveChanges();
 
 
@@ -611,6 +611,7 @@ namespace ODMS.Controllers
                         {
                             x.delivery_date = tbltChallan.delivery_date;
                             x.so_status = 3;
+                            x.delivery_Process_Date = DateTime.Now;
                         });
                     Db.SaveChanges();
 

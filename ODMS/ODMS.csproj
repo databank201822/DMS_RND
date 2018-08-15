@@ -301,6 +301,9 @@
     <Compile Include="Models\DB_User_check_Result.cs">
       <DependentUpon>ODMS.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\FunctionStringtoIntlist_Result.cs">
+      <DependentUpon>ODMSBI.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\ODMAPI.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -331,6 +334,21 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>ODMS.edmx</DependentUpon>
     </Compile>
+    <Compile Include="Models\ODMSBI.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ODMSBI.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ODMSBI.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ODMSBI.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ODMSBI.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ODMSBI.edmx</DependentUpon>
+    </Compile>
     <Compile Include="Models\RPT_ChallanVsDelivery_Result.cs">
       <DependentUpon>ODMS.tt</DependentUpon>
     </Compile>
@@ -338,49 +356,49 @@
       <DependentUpon>ODMS.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\RPT_Delivery_BuyerByDBDetails_Result.cs">
-      <DependentUpon>ODMS.tt</DependentUpon>
+      <DependentUpon>ODMSBI.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\RPT_Delivery_BuyerByDBsOutletList_Result.cs">
-      <DependentUpon>ODMS.tt</DependentUpon>
+      <DependentUpon>ODMSBI.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\RPT_Delivery_BuyerByDBSummary_Result.cs">
-      <DependentUpon>ODMS.tt</DependentUpon>
+      <DependentUpon>ODMSBI.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\RPT_Delivery_BuyerByPSRDetails_Result.cs">
-      <DependentUpon>ODMS.tt</DependentUpon>
+      <DependentUpon>ODMSBI.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\RPT_Delivery_BuyerByPSRsOutletList_Result.cs">
-      <DependentUpon>ODMS.tt</DependentUpon>
+      <DependentUpon>ODMSBI.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\RPT_Delivery_BuyerByPSRSummary_Result.cs">
-      <DependentUpon>ODMS.tt</DependentUpon>
+      <DependentUpon>ODMSBI.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\RPT_Delivery_DBPerformanceKPISummary_Result.cs">
-      <DependentUpon>ODMS.tt</DependentUpon>
+      <DependentUpon>ODMSBI.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\RPT_Delivery_NonBuyerByDBsOutletList_Result.cs">
-      <DependentUpon>ODMS.tt</DependentUpon>
+      <DependentUpon>ODMSBI.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\RPT_Delivery_NonBuyerByPSRsOutletList_Result.cs">
-      <DependentUpon>ODMS.tt</DependentUpon>
+      <DependentUpon>ODMSBI.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\RPT_Delivery_OutletWiseSKUWiseDelivery_Result.cs">
-      <DependentUpon>ODMS.tt</DependentUpon>
+      <DependentUpon>ODMSBI.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\RPT_Delivery_PSRPerformanceKPISummary_Result.cs">
-      <DependentUpon>ODMS.tt</DependentUpon>
+      <DependentUpon>ODMSBI.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\RPT_Delivery_PSRWiseSKUWiseDelivery_Result.cs">
-      <DependentUpon>ODMS.tt</DependentUpon>
+      <DependentUpon>ODMSBI.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\RPT_OrderVsStock_Result.cs">
       <DependentUpon>ODMS.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\RPT_Order_OutletWiseSKUWiseOrder_Result.cs">
-      <DependentUpon>ODMS.tt</DependentUpon>
+      <DependentUpon>ODMSBI.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\RPT_Order_PSRWiseSKUWiseOrder_Result.cs">
-      <DependentUpon>ODMS.tt</DependentUpon>
+      <DependentUpon>ODMSBI.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\RPT_Realtime_OrderVsdeliveredDBDetails_Result.cs">
       <DependentUpon>ODMS.tt</DependentUpon>
@@ -395,12 +413,15 @@
       <DependentUpon>ODMS.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\RPT_StockMovement_Result.cs">
-      <DependentUpon>ODMS.tt</DependentUpon>
+      <DependentUpon>ODMSBI.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\ShowInventory_Result.cs">
       <DependentUpon>ODMS.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\status.cs">
+      <DependentUpon>ODMS.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\sysdiagram.cs">
       <DependentUpon>ODMS.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\tbld_AdjustmentStock.cs">
@@ -422,6 +443,9 @@
       <DependentUpon>ODMS.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\tbld_cluster.cs">
+      <DependentUpon>ODMS.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\tbld_db_psr_outlet_zone_view.cs">
       <DependentUpon>ODMS.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\tbld_db_psr_zone_view.cs">
@@ -517,13 +541,7 @@
     <Compile Include="Models\tblm_UserLogin.cs">
       <DependentUpon>ODMS.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\tblm_visicooler_info.cs">
-      <DependentUpon>ODMS.tt</DependentUpon>
-    </Compile>
     <Compile Include="Models\tblm_visit_detail.cs">
-      <DependentUpon>ODMS.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\tblm_visit_type.cs">
       <DependentUpon>ODMS.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\tblt_Challan.cs">
@@ -542,6 +560,9 @@
       <DependentUpon>ODMS.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\tblt_Order_line.cs">
+      <DependentUpon>ODMS.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\tblt_Order_Line_type.cs">
       <DependentUpon>ODMS.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\tblt_PurchaseOrder.cs">
@@ -2670,6 +2691,23 @@
       <DependentUpon>ODMAPI.edmx</DependentUpon>
       <LastGenOutput>ODMAPI.cs</LastGenOutput>
     </Content>
+    <EntityDeploy Include="Models\ODMSBI.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>ODMSBI.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <Content Include="Models\ODMSBI.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>ODMSBI.edmx</DependentUpon>
+      <LastGenOutput>ODMSBI.Context.cs</LastGenOutput>
+    </Content>
+    <Content Include="Models\ODMSBI.edmx.diagram">
+      <DependentUpon>ODMSBI.edmx</DependentUpon>
+    </Content>
+    <Content Include="Models\ODMSBI.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>ODMSBI.edmx</DependentUpon>
+      <LastGenOutput>ODMSBI.cs</LastGenOutput>
+    </Content>
     <None Include="Properties\PublishProfiles\DMS.pubxml" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
@@ -2961,6 +2999,11 @@
     <Content Include="Views\ReportRealtime\ROrderVsDelivery\OrderVsdeliveredDBSummary.cshtml" />
     <Content Include="Views\ReportRealtime\ROrderVsDelivery\OrderVsdeliveredDBDetails.cshtml" />
     <Content Include="Views\ReportRealtime\ROrderVsDelivery\OrderVsdeliveredDetails.cshtml" />
+    <Content Include="Views\ReportRealtime\OrderVsDelivery\OrderVsdeliveredDBDetails.cshtml" />
+    <Content Include="Views\ReportRealtime\OrderVsDelivery\OrderVsdeliveredDBSummary.cshtml" />
+    <Content Include="Views\ReportRealtime\OrderVsDelivery\OrderVsdeliveredDetails.cshtml" />
+    <Content Include="Views\ReportRealtime\OrderVsDelivery\ROrderVsDelivery.cshtml" />
+    <Content Include="Views\ReportRealtime\OrderVsDelivery\RPSRROrderVsDeliveryFilter.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
