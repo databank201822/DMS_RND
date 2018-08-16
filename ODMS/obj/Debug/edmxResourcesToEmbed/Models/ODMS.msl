@@ -1188,5 +1188,53 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
+    <FunctionImportMapping FunctionImportName="RPT_Realtime_DBLifting" FunctionName="ODMSModel.Store.RPT_Realtime_DBLifting">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="ODMSModel.RPT_Realtime_DBLifting_Result">
+          <ScalarProperty Name="DB_Id" ColumnName="DB_Id" />
+          <ScalarProperty Name="DB_Name" ColumnName="DB_Name" />
+          <ScalarProperty Name="CEAREA_id" ColumnName="CEAREA_id" />
+          <ScalarProperty Name="CEAREA_Name" ColumnName="CEAREA_Name" />
+          <ScalarProperty Name="AREA_id" ColumnName="AREA_id" />
+          <ScalarProperty Name="AREA_Name" ColumnName="AREA_Name" />
+          <ScalarProperty Name="REGION_id" ColumnName="REGION_id" />
+          <ScalarProperty Name="REGION_Name" ColumnName="REGION_Name" />
+          <ScalarProperty Name="National_id" ColumnName="National_id" />
+          <ScalarProperty Name="National" ColumnName="National" />
+          <ScalarProperty Name="Status" ColumnName="Status" />
+          <ScalarProperty Name="Cluster" ColumnName="Cluster" />
+          <ScalarProperty Name="DBCode" ColumnName="DBCode" />
+          <ScalarProperty Name="OfficeAddress" ColumnName="OfficeAddress" />
+          <ScalarProperty Name="PriceBuandle_id" ColumnName="PriceBuandle_id" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="ChallanNo" ColumnName="ChallanNo" />
+          <ScalarProperty Name="DbId" ColumnName="DbId" />
+          <ScalarProperty Name="ChallanDate" ColumnName="ChallanDate" />
+          <ScalarProperty Name="ReceivedDate" ColumnName="ReceivedDate" />
+          <ScalarProperty Name="Timestamp" ColumnName="Timestamp" />
+          <ScalarProperty Name="ChallanQty" ColumnName="ChallanQty" />
+          <ScalarProperty Name="ReciveQty" ColumnName="ReciveQty" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="RPT_Realtime_TradepromotionDetails" FunctionName="ODMSModel.Store.RPT_Realtime_TradepromotionDetails">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="ODMSModel.RPT_Realtime_TradepromotionDetails_Result">
+          <ScalarProperty Name="REGION_Name" ColumnName="REGION_Name" />
+          <ScalarProperty Name="AREA_Name" ColumnName="AREA_Name" />
+          <ScalarProperty Name="CEAREA_Name" ColumnName="CEAREA_Name" />
+          <ScalarProperty Name="DB_Id" ColumnName="DB_Id" />
+          <ScalarProperty Name="DB_Name" ColumnName="DB_Name" />
+          <ScalarProperty Name="Cluster" ColumnName="Cluster" />
+          <ScalarProperty Name="code" ColumnName="code" />
+          <ScalarProperty Name="name" ColumnName="name" />
+          <ScalarProperty Name="Tp_name" ColumnName="Tp_name" />
+          <ScalarProperty Name="description" ColumnName="description" />
+          <ScalarProperty Name="start_date" ColumnName="start_date" />
+          <ScalarProperty Name="end_date" ColumnName="end_date" />
+          <ScalarProperty Name="is_active" ColumnName="is_active" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
   </EntityContainerMapping>
 </Mapping>

@@ -426,5 +426,14 @@ namespace ODMS.Controllers
 
             return null;
         }
+
+
+
+        public ActionResult TradePromotionSales()
+        {
+            return View("TradePromotionSales/TradePromotionSales");
+        }
+
+
     }
     }

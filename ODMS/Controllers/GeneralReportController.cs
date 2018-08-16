@@ -17,6 +17,21 @@ namespace ODMS.Controllers
         Supporting sp = new Supporting();
 
 
+
+        public ActionResult CurrentTp()
+        {
+            return View("CurrentTp/CurrentTp");
+        }
+
+        public ActionResult CurrentTpFilter(int[] rsMid, int[] asMid, int[] cEid, int[] id, DateTime startDate, DateTime endDate)
+        {
+            string dbids = sp.Dbids(rsMid, asMid, cEid, id);
+
+            var data = Db.RPT_Realtime_TradepromotionDetails(startDate, endDate,dbids).ToList();
+
+            return PartialView("CurrentTp/CurrentTpFilter", data);
+        }
+
         // GET: GeneralReport
         public ActionResult CurrentRouteplan()
         {
@@ -129,7 +144,9 @@ namespace ODMS.Controllers
         }
 
 
-        // GET: GeneralReport
+     
+
+        
         [HttpGet]
         public string Visitplandetails(int? id, string date)
         {

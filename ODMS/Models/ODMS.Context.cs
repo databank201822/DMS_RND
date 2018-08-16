@@ -273,5 +273,39 @@ namespace ODMS.Models
     
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<RPT_Realtime_OrderVsdeliveredDetails_Result>("RPT_Realtime_OrderVsdeliveredDetails", start_DateParameter, end_DateParameter, dbidsParameter, skuidsParameter);
         }
+    
+        public virtual ObjectResult<RPT_Realtime_DBLifting_Result> RPT_Realtime_DBLifting(Nullable<System.DateTime> start_Date, Nullable<System.DateTime> end_Date, string dbids)
+        {
+            var start_DateParameter = start_Date.HasValue ?
+                new ObjectParameter("Start_Date", start_Date) :
+                new ObjectParameter("Start_Date", typeof(System.DateTime));
+    
+            var end_DateParameter = end_Date.HasValue ?
+                new ObjectParameter("End_Date", end_Date) :
+                new ObjectParameter("End_Date", typeof(System.DateTime));
+    
+            var dbidsParameter = dbids != null ?
+                new ObjectParameter("dbids", dbids) :
+                new ObjectParameter("dbids", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<RPT_Realtime_DBLifting_Result>("RPT_Realtime_DBLifting", start_DateParameter, end_DateParameter, dbidsParameter);
+        }
+    
+        public virtual ObjectResult<RPT_Realtime_TradepromotionDetails_Result> RPT_Realtime_TradepromotionDetails(Nullable<System.DateTime> start_Date, Nullable<System.DateTime> end_Date, string dbids)
+        {
+            var start_DateParameter = start_Date.HasValue ?
+                new ObjectParameter("Start_Date", start_Date) :
+                new ObjectParameter("Start_Date", typeof(System.DateTime));
+    
+            var end_DateParameter = end_Date.HasValue ?
+                new ObjectParameter("End_Date", end_Date) :
+                new ObjectParameter("End_Date", typeof(System.DateTime));
+    
+            var dbidsParameter = dbids != null ?
+                new ObjectParameter("dbids", dbids) :
+                new ObjectParameter("dbids", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<RPT_Realtime_TradepromotionDetails_Result>("RPT_Realtime_TradepromotionDetails", start_DateParameter, end_DateParameter, dbidsParameter);
+        }
     }
 }

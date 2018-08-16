@@ -400,6 +400,9 @@
     <Compile Include="Models\RPT_Order_PSRWiseSKUWiseOrder_Result.cs">
       <DependentUpon>ODMSBI.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\RPT_Realtime_DBLifting_Result.cs">
+      <DependentUpon>ODMS.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\RPT_Realtime_OrderVsdeliveredDBDetails_Result.cs">
       <DependentUpon>ODMS.tt</DependentUpon>
     </Compile>
@@ -410,6 +413,9 @@
       <DependentUpon>ODMS.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\RPT_Realtime_OrderVsdeliveredSummary_Result.cs">
+      <DependentUpon>ODMS.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\RPT_Realtime_TradepromotionDetails_Result.cs">
       <DependentUpon>ODMS.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\RPT_StockMovement_Result.cs">
@@ -2870,10 +2876,7 @@
     <Content Include="Views\OrderProcess\Index.cshtml" />
     <Content Include="Views\OrderProcess\ShowAllProcessableOrder.cshtml" />
     <Content Include="Views\OrderProcess\ProcessOrder.cshtml" />
-    <Content Include="Views\GeneralReport\SkuList.cshtml" />
     <Content Include="Scripts\jquery-1.10.2.min.map" />
-    <Content Include="Views\GeneralReport\DbZoneFilter.cshtml" />
-    <Content Include="Views\GeneralReport\DbZone.cshtml" />
     <Content Include="Views\Challan\Index.cshtml" />
     <Content Include="Views\Challan\Createchallan.cshtml" />
     <Content Include="Views\Challan\ShowAllForCreateChallan.cshtml" />
@@ -3004,6 +3007,17 @@
     <Content Include="Views\ReportRealtime\OrderVsDelivery\OrderVsdeliveredDetails.cshtml" />
     <Content Include="Views\ReportRealtime\OrderVsDelivery\ROrderVsDelivery.cshtml" />
     <Content Include="Views\ReportRealtime\OrderVsDelivery\RPSRROrderVsDeliveryFilter.cshtml" />
+    <Content Include="Views\Purchase\DbLiftingindex.cshtml" />
+    <Content Include="Views\Purchase\ShowAllDbLifting.cshtml" />
+    <Content Include="Views\Purchase\LiftingDetails.cshtml" />
+    <Content Include="Views\GeneralReport\CurrentTp\CurrentTp.cshtml" />
+    <Content Include="Views\GeneralReport\CurrentTp\CurrentTpFilter.cshtml" />
+    <Content Include="Views\ReportDelivery\TradePromotionSales\TradePromotionSales.cshtml" />
+    <Content Include="Views\ReportDelivery\TradePromotionSales\RPTBuyerByDbDetails.cshtml" />
+    <Content Include="Views\ReportDelivery\TradePromotionSales\RPTBuyerByDbSummary.cshtml" />
+    <Content Include="Views\ReportDelivery\TradePromotionSales\RPTBuyerBypsrDetails.cshtml" />
+    <Content Include="Views\ReportDelivery\TradePromotionSales\RPTBuyerBypsrSummary.cshtml" />
+    <Content Include="Views\ReportDelivery\TradePromotionSales\RptBuyerFilter.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

@@ -43,16 +43,16 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>03/25/2018 15:18:44</publishTime>
     </File>
     <File Include="bin/App_Code.compiled">
-      <publishTime>08/14/2018 22:12:12</publishTime>
+      <publishTime>08/15/2018 11:39:22</publishTime>
     </File>
     <File Include="bin/App_Code.dll">
-      <publishTime>08/14/2018 22:12:12</publishTime>
+      <publishTime>08/15/2018 11:39:21</publishTime>
     </File>
     <File Include="bin/App_global.asax.compiled">
-      <publishTime>08/14/2018 22:12:13</publishTime>
+      <publishTime>08/15/2018 11:39:24</publishTime>
     </File>
     <File Include="bin/App_global.asax.dll">
-      <publishTime>08/14/2018 22:12:13</publishTime>
+      <publishTime>08/15/2018 11:39:24</publishTime>
     </File>
     <File Include="bin/de/Microsoft.ReportViewer.Common.resources.dll">
       <publishTime>05/16/2018 15:00:42</publishTime>
@@ -205,7 +205,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>08/09/2018 10:17:04</publishTime>
     </File>
     <File Include="bin/ODMS.dll">
-      <publishTime>08/14/2018 22:11:10</publishTime>
+      <publishTime>08/15/2018 11:20:50</publishTime>
     </File>
     <File Include="bin/pt/Microsoft.ReportViewer.Common.resources.dll">
       <publishTime>05/16/2018 15:00:45</publishTime>
@@ -253,16 +253,16 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>07/27/2018 02:09:57</publishTime>
     </File>
     <File Include="bin/Reports/Order/RPT_Order_PsrWiseSkuWiseOrderDetails.rdlc">
-      <publishTime>08/09/2018 10:08:26</publishTime>
+      <publishTime>08/14/2018 22:37:42</publishTime>
     </File>
     <File Include="bin/Reports/Order/RPT_Order_PsrWiseSkuWiseOrderSummary.rdlc">
-      <publishTime>07/27/2018 14:28:44</publishTime>
+      <publishTime>08/14/2018 22:39:55</publishTime>
     </File>
     <File Include="bin/Reports/Order/RPT_OutletWiseOrder_Details.rdlc">
-      <publishTime>07/29/2018 16:04:10</publishTime>
+      <publishTime>08/14/2018 23:01:18</publishTime>
     </File>
     <File Include="bin/Reports/Order/RPT_OutletWiseOrder_Symmary.rdlc">
-      <publishTime>08/05/2018 16:35:19</publishTime>
+      <publishTime>08/14/2018 22:57:41</publishTime>
     </File>
     <File Include="bin/Reports/RPT_ChallanVsDelivery.rdlc">
       <publishTime>06/08/2018 18:37:44</publishTime>
@@ -6355,13 +6355,16 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>07/31/2018 17:44:53</publishTime>
     </File>
     <File Include="Models/ODMS.edmx.diagram">
-      <publishTime>08/14/2018 13:06:18</publishTime>
+      <publishTime>08/15/2018 10:58:43</publishTime>
+    </File>
+    <File Include="Models/ODMSBI.edmx.diagram">
+      <publishTime>08/15/2018 10:51:31</publishTime>
     </File>
     <File Include="packages.config">
       <publishTime>08/09/2018 10:18:54</publishTime>
     </File>
     <File Include="PrecompiledApp.config">
-      <publishTime>08/14/2018 22:11:59</publishTime>
+      <publishTime>08/15/2018 11:39:01</publishTime>
     </File>
     <File Include="Reports/Delivery/RPT_Delivery_OutletWiseDeliveryDetails.rdlc">
       <publishTime>08/13/2018 16:22:25</publishTime>
@@ -6382,16 +6385,16 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>07/27/2018 02:09:57</publishTime>
     </File>
     <File Include="Reports/Order/RPT_Order_PsrWiseSkuWiseOrderDetails.rdlc">
-      <publishTime>08/09/2018 10:08:26</publishTime>
+      <publishTime>08/14/2018 22:37:42</publishTime>
     </File>
     <File Include="Reports/Order/RPT_Order_PsrWiseSkuWiseOrderSummary.rdlc">
-      <publishTime>07/27/2018 14:28:44</publishTime>
+      <publishTime>08/14/2018 22:39:55</publishTime>
     </File>
     <File Include="Reports/Order/RPT_OutletWiseOrder_Details.rdlc">
-      <publishTime>07/29/2018 16:04:10</publishTime>
+      <publishTime>08/14/2018 23:01:18</publishTime>
     </File>
     <File Include="Reports/Order/RPT_OutletWiseOrder_Symmary.rdlc">
-      <publishTime>08/05/2018 16:35:19</publishTime>
+      <publishTime>08/14/2018 22:57:41</publishTime>
     </File>
     <File Include="Reports/RPT_ChallanVsDelivery.rdlc">
       <publishTime>06/08/2018 18:37:44</publishTime>
@@ -6907,7 +6910,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>07/13/2018 14:12:21</publishTime>
     </File>
     <File Include="Views/Order/OrderEditByid.cshtml">
-      <publishTime>08/07/2018 12:55:25</publishTime>
+      <publishTime>08/14/2018 23:34:38</publishTime>
     </File>
     <File Include="Views/Order/PosInvoice.cshtml">
       <publishTime>08/03/2018 09:15:17</publishTime>
@@ -7023,6 +7026,21 @@ by editing this MSBuild file. In order to learn more about this please visit htt
     <File Include="Views/ReportOrder/PsrWiseSkuWiseOrder/RptPsrWiseSkuWiseOrderFilter.cshtml">
       <publishTime>08/12/2018 14:36:27</publishTime>
     </File>
+    <File Include="Views/ReportRealtime/OrderVsDelivery/OrderVsdeliveredDBDetails.cshtml">
+      <publishTime>08/14/2018 23:08:30</publishTime>
+    </File>
+    <File Include="Views/ReportRealtime/OrderVsDelivery/OrderVsdeliveredDBSummary.cshtml">
+      <publishTime>08/14/2018 23:08:47</publishTime>
+    </File>
+    <File Include="Views/ReportRealtime/OrderVsDelivery/OrderVsdeliveredDetails.cshtml">
+      <publishTime>08/14/2018 23:09:06</publishTime>
+    </File>
+    <File Include="Views/ReportRealtime/OrderVsDelivery/ROrderVsDelivery.cshtml">
+      <publishTime>08/14/2018 23:07:21</publishTime>
+    </File>
+    <File Include="Views/ReportRealtime/OrderVsDelivery/RPSRROrderVsDeliveryFilter.cshtml">
+      <publishTime>08/14/2018 23:09:23</publishTime>
+    </File>
     <File Include="Views/ReportRealtime/ROrderVsDelivery/OrderVsdeliveredDBDetails.cshtml">
       <publishTime>08/14/2018 15:40:44</publishTime>
     </File>
@@ -7051,7 +7069,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>07/25/2018 18:06:59</publishTime>
     </File>
     <File Include="Views/Shared/_Layout.cshtml">
-      <publishTime>08/14/2018 13:48:13</publishTime>
+      <publishTime>08/14/2018 22:25:05</publishTime>
     </File>
     <File Include="Views/SkuBrand/Create.cshtml">
       <publishTime>08/06/2018 11:37:05</publishTime>
@@ -7246,7 +7264,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>05/25/2018 15:43:27</publishTime>
     </File>
     <File Include="Web.config">
-      <publishTime>08/14/2018 22:11:19</publishTime>
+      <publishTime>08/15/2018 11:38:38</publishTime>
     </File>
   </ItemGroup>
 </Project>
