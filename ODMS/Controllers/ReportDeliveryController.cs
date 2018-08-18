@@ -7,6 +7,7 @@ using System.Web.UI;
 using System.Web.UI.WebControls;
 using Microsoft.Reporting.WebForms;
 using ODMS.Models;
+using ODMS.Models.ViewModel;
 
 namespace ODMS.Controllers
 {
@@ -14,11 +15,12 @@ namespace ODMS.Controllers
     public class ReportDeliveryController : Controller
     {
         public ODMSBIEntities Dbbi = new ODMSBIEntities();
-     Supporting sp = new Supporting();
+        public ODMSEntities Db = new ODMSEntities();
+        Supporting sp = new Supporting();
 
 
 
-     public ActionResult RptOutletWiseDelivery()
+        public ActionResult RptOutletWiseDelivery()
         {
             return View("OutletWiseDelivery/RptOutletWiseDelivery");
         }
@@ -36,7 +38,7 @@ namespace ODMS.Controllers
             ReportViewer reportViewer = new ReportViewer
             {
                 Visible = true,
-                
+
                 ProcessingMode = ProcessingMode.Local,
                 SizeToReportContent = true,
                 Width = Unit.Percentage(100),
@@ -45,7 +47,7 @@ namespace ODMS.Controllers
             };
 
             List<RPT_Delivery_OutletWiseSKUWiseDelivery_Result> delivery = Dbbi
-                .RPT_Delivery_OutletWiseSKUWiseDelivery(startDate, endDate,dbids,skulist).ToList();
+                .RPT_Delivery_OutletWiseSKUWiseDelivery(startDate, endDate, dbids, skulist).ToList();
 
             ReportParameter rp2 = null;
 
@@ -141,7 +143,7 @@ namespace ODMS.Controllers
 
         [HttpPost]
 
-        public ActionResult RptDeliveryKpiFilter(int[] rsMid, int[] asMid, int[] cEid, int[] id,  DateTime startDate, DateTime endDate, int reportType, int parformerType)
+        public ActionResult RptDeliveryKpiFilter(int[] rsMid, int[] asMid, int[] cEid, int[] id, DateTime startDate, DateTime endDate, int reportType, int parformerType)
         {
             string dbids = sp.Dbids(rsMid, asMid, cEid, id);
             ReportViewer reportViewer = new ReportViewer
@@ -166,30 +168,30 @@ namespace ODMS.Controllers
                 }
                 else if (reportType == 2) //DB BY day
                 {
-                  
+
                 }
             }
             else
-            if (parformerType == 2) // by PSR
-            {
-                if (reportType == 1) //PSR Summery
+                if (parformerType == 2) // by PSR
                 {
-                    List<RPT_Delivery_PSRPerformanceKPISummary_Result> psrkpisummary = Dbbi
-                        .RPT_Delivery_PSRPerformanceKPISummary(startDate, endDate, dbids).ToList();
+                    if (reportType == 1) //PSR Summery
+                    {
+                        List<RPT_Delivery_PSRPerformanceKPISummary_Result> psrkpisummary = Dbbi
+                            .RPT_Delivery_PSRPerformanceKPISummary(startDate, endDate, dbids).ToList();
 
-                    reportViewer.LocalReport.ReportPath = Server.MapPath(@"~\Reports\Delivery\RPT_KPIPSRSummary.rdlc");
-                    rdc = new ReportDataSource("PSRKPISUMMARY", psrkpisummary);
+                        reportViewer.LocalReport.ReportPath = Server.MapPath(@"~\Reports\Delivery\RPT_KPIPSRSummary.rdlc");
+                        rdc = new ReportDataSource("PSRKPISUMMARY", psrkpisummary);
 
+                    }
+                    else if (reportType == 2) //BY Day
+                    {
+
+                    }
                 }
-                else if (reportType == 2) //BY Day
-                {
-                  
-                }
-            }
-           
+
 
             ReportParameter rp1 = new ReportParameter("DateParameter", startDate.ToString("dd-MMM-yyy") + " TO " + endDate.ToString("dd-MMM-yyy"));
-           
+
 
             reportViewer.LocalReport.SetParameters(new[] { rp1 });
 
@@ -249,7 +251,7 @@ namespace ODMS.Controllers
                         Height = Unit.Pixel(600)
 
                     };
-                 
+
                     List<RPT_Delivery_BuyerByDBDetails_Result> psrskudelivery = Dbbi
                         .RPT_Delivery_BuyerByDBDetails(startDate, endDate, dbids, skulist).ToList();
 
@@ -265,7 +267,7 @@ namespace ODMS.Controllers
                         startDate.ToString("dd-MMM-yyy") + " TO " + endDate.ToString("dd-MMM-yyy"));
 
 
-                    reportViewer.LocalReport.SetParameters(new[] {rp1});
+                    reportViewer.LocalReport.SetParameters(new[] { rp1 });
 
                     reportViewer.LocalReport.DataSources.Add(rdc);
 
@@ -339,22 +341,22 @@ namespace ODMS.Controllers
 
 
             var outletList = Dbbi.RPT_Delivery_BuyerByDBsOutletList(startdate, endDate, id.ToString(), skuid);
-         
-                var gv = new GridView {DataSource = outletList.ToList()};
 
-                gv.DataBind();
-                Response.ClearContent();
-                Response.Buffer = true;
-                Response.AddHeader("content-disposition", "attachment; filename=" + "DBBuyerOutletList" + ".xls");
-                Response.ContentType = "application/ms-excel";
-                Response.Charset = "";
-                StringWriter objStringWriter = new StringWriter();
-                HtmlTextWriter objHtmlTextWriter = new HtmlTextWriter(objStringWriter);
-                gv.RenderControl(objHtmlTextWriter);
-                Response.Output.Write(objStringWriter.ToString());
+            var gv = new GridView { DataSource = outletList.ToList() };
 
-                Response.Flush();
-                Response.End();
+            gv.DataBind();
+            Response.ClearContent();
+            Response.Buffer = true;
+            Response.AddHeader("content-disposition", "attachment; filename=" + "DBBuyerOutletList" + ".xls");
+            Response.ContentType = "application/ms-excel";
+            Response.Charset = "";
+            StringWriter objStringWriter = new StringWriter();
+            HtmlTextWriter objHtmlTextWriter = new HtmlTextWriter(objStringWriter);
+            gv.RenderControl(objHtmlTextWriter);
+            Response.Output.Write(objStringWriter.ToString());
+
+            Response.Flush();
+            Response.End();
 
             return null;
 
@@ -435,5 +437,362 @@ namespace ODMS.Controllers
         }
 
 
+        [HttpPost]
+        public ActionResult TradePromotionSalesFilter(int[] rsMid, int[] asMid, int[] cEid, int[] id, int[] promoIds, DateTime startDate, DateTime endDate)
+        {
+            string dbids = sp.Dbids(rsMid, asMid, cEid, id);
+
+            string promoId = string.Join(",", promoIds);
+
+            var data = Dbbi.RPT_TP_Summary(startDate, endDate, dbids, promoId);
+            return PartialView("TradePromotionSales/TradePromotionSalesFilter", data.ToList());
+
+
+        }
+
+        [HttpPost]
+        public ActionResult TpList(int[] rsMid, int[] asMid, int[] cEid, int[] id, DateTime startDate, DateTime endDate)
+        {
+            string dbids = sp.Dbids(rsMid, asMid, cEid, id);
+
+            var list = Db.RPT_TP_List(startDate, endDate, dbids);
+
+            return Json(list, JsonRequestBehavior.AllowGet);
+        }
+
+
+        public ActionResult TradePromotionSalesDetails(int id, int promoid, DateTime startdate, DateTime endDate)
+        {
+
+            ReportViewer reportViewer = new ReportViewer
+            {
+                ProcessingMode = ProcessingMode.Local,
+                SizeToReportContent = true,
+                Width = Unit.Percentage(100),
+                Height = Unit.Pixel(600)
+
+            };
+
+            List<RPT_TP_OutletWiseDetails_Result> tpDetails = Dbbi
+                .RPT_TP_OutletWiseDetails(startdate, endDate, id.ToString(), promoid.ToString()).ToList();
+
+            reportViewer.LocalReport.ReportPath = Server.MapPath(@"~\Reports\Delivery\RPT_TPOutletWiseDetails.rdlc");
+            ReportDataSource rdc = new ReportDataSource("TPOutlet", tpDetails);
+
+            var tbp = Db.tblt_TradePromotion.FirstOrDefault(x=>x.id==promoid);
+
+            ReportParameter rp1 = new ReportParameter("DateParameter", startdate.ToString("dd-MMM-yyy") + " TO " + endDate.ToString("dd-MMM-yyy"));
+
+
+            if (tbp != null)
+            {
+                ReportParameter rp2 = new ReportParameter("TPNameParameter",tbp.name);
+
+
+                reportViewer.LocalReport.SetParameters(new[] { rp1, rp2 });
+            }
+
+            reportViewer.LocalReport.DataSources.Add(rdc);
+
+            reportViewer.LocalReport.Refresh();
+            reportViewer.Visible = true;
+
+            ViewBag.ReportViewer = reportViewer;
+
+
+            var orderid = tpDetails.Select(x => x.Orderid).Distinct().ToList();
+
+            ViewBag.Momonumber = string.Join(",", orderid);
+
+
+            return View("TradePromotionSales/TradePromotionSalesDetails");
+        }
+
+        [HttpPost]
+        public ActionResult BulkInvoice(string ids)
+        {
+
+
+            int numOfLineInInvoice = 8;
+            List<InvoiceVm> invoiceList = new List<InvoiceVm>();
+
+            var orderid = ids.Split(',').Select(Int32.Parse).ToList();
+
+            var inv = Db.tblt_Order.Where(x => orderid.Contains(x.Orderid));
+            foreach (var invitem in inv)
+            {
+                int id = invitem.Orderid;
+                int dbid = invitem.db_id;
+
+                InvoiceVm invoiceVm = new InvoiceVm();
+
+                var invoiceLineItemSdata = (from a in Db.tblt_Order_line
+                                            join b in Db.tbld_SKU on a.sku_id equals b.SKU_id
+                                            where a.Orderid == id
+                                            orderby a.id ascending
+                                            select new InvoiceLineDetilsVm
+                                            {
+                                                SkuCode = b.SKUcode,
+                                                SkuId = a.sku_id,
+                                                SkuName = b.SKUName,
+                                                BetchId = a.Betch_id,
+                                                PackSize = a.Pack_size
+
+                                            }).Distinct().ToList();
+                var numberofmemo = (double)invoiceLineItemSdata.Count() / numOfLineInInvoice;
+                if (numberofmemo <= 1)
+                {
+                    List<InvoiceLineDetilsVm> invoiceLineItem = new List<InvoiceLineDetilsVm>();
+                    var outlet = Db.tbld_Outlet.SingleOrDefault(x => x.OutletId == invitem.outlet_id);
+                    var dbHouse = Db.tbld_distribution_house.SingleOrDefault(x => x.DB_Id == invitem.db_id);
+                    var psrInfo = Db.tbld_distribution_employee.SingleOrDefault(x => x.id == invitem.psr_id);
+
+                    var totalDelivered = (int)(invitem.total_delivered ?? 0);
+                    var salesOrderTypeId = invitem.sales_order_type_id ?? 0;
+                    var manualDiscount = (int)(invitem.manual_discount ?? 0);
+
+                    if (outlet != null)
+                        if (dbHouse != null)
+                            if (psrInfo != null)
+                                invoiceVm = new InvoiceVm
+                                {
+                                    Orderid = id,
+                                    SoId = invitem.so_id,
+                                    RouteName = Db.tbld_distributor_Route
+                                        .Where(x => x.RouteID == invitem.route_id)
+                                        .Select(x => x.RouteName).SingleOrDefault(),
+                                    OutletName = outlet.OutletName,
+                                    OutletAddress = outlet.Address,
+                                    ChallanNo = invitem.Challan_no,
+                                    PlannedOrderDate = invitem.planned_order_date,
+                                    DeliveryDate = invitem.delivery_date,
+                                    DbName = dbHouse.DBName ?? "",
+                                    DbAddress = dbHouse.OfficeAddress,
+                                    DbMobile = dbHouse.OwnerMoble,
+                                    PsrName = psrInfo.Name,
+                                    PsrMobile = psrInfo.contact_no,
+                                    TotalDelivered = totalDelivered,
+                                    SalesOrderTypeId = salesOrderTypeId,
+                                    ManualDiscount = manualDiscount
+                                };
+
+
+
+                    foreach (var lineItem in invoiceLineItemSdata)
+                    {
+                        int confirmQty = 0;
+                        int freeQty = 0;
+
+                        double unitSalePrice = (from a in Db.tbld_bundle_price_details
+                                                join b in Db.tbld_distribution_house on a.bundle_price_id equals b.PriceBuandle_id
+                                                where a.sku_id == lineItem.SkuId && a.batch_id == lineItem.BetchId && b.DB_Id == dbid
+                                                select a.outlet_lifting_price).SingleOrDefault();
+
+
+                        var orderQtysum = (from b in Db.tblt_Order_line
+                                           where b.Orderid == id && b.sku_id == lineItem.SkuId &&
+                                                 b.Betch_id == lineItem.BetchId && b.sku_order_type_id == 1
+                                           select (int?)b.quantity_delivered).Sum();
+
+                        var freeQtysum = (from b in Db.tblt_Order_line
+                                          where b.Orderid == id && b.sku_id == lineItem.SkuId &&
+                                                b.Betch_id == lineItem.BetchId && b.sku_order_type_id == 2
+                                          select (int?)b.quantity_delivered).Sum();
+
+                        if (orderQtysum != null)
+                        {
+                            confirmQty = (int)orderQtysum;
+                        }
+
+                        if (freeQtysum != null)
+                        {
+                            freeQty = (int)freeQtysum;
+                        }
+                        var totalSalePrice = Db.tblt_Order_line
+                                                 .Where(b => b.Orderid == id && b.sku_id == lineItem.SkuId &&
+                                                             b.Betch_id == lineItem.BetchId &&
+                                                             b.sku_order_type_id == 1)
+                                                 .Sum(x => (double?)(x.total_sale_price)) ?? 0;
+                        var totalDiscountAmount = Db.tblt_Order_line
+                                                      .Where(b => b.Orderid == id && b.sku_id == lineItem.SkuId &&
+                                                                  b.Betch_id == lineItem.BetchId &&
+                                                                  b.sku_order_type_id == 1)
+                                                      .Sum(x => (double?)(x.total_discount_amount)) ?? 0;
+                        var totalBilledAmount = Db.tblt_Order_line
+                                                    .Where(b => b.Orderid == id && b.sku_id == lineItem.SkuId &&
+                                                                b.Betch_id == lineItem.BetchId &&
+                                                                b.sku_order_type_id == 1)
+                                                    .Sum(x => (double?)(x.total_billed_amount)) ?? 0;
+
+                        InvoiceLineDetilsVm invoiceLineDetilsVm = new InvoiceLineDetilsVm
+                        {
+                            SkuCode = lineItem.SkuCode,
+                            SkuName = lineItem.SkuName,
+                            BetchId = lineItem.BetchId,
+                            PackSize = lineItem.PackSize,
+                            UnitSalePrice = confirmQty == 0 ? 0 : unitSalePrice,
+                            QuantityDeliveredCs = confirmQty / lineItem.PackSize,
+                            QuantityDeliveredPs = confirmQty % lineItem.PackSize,
+                            QuantityFree = freeQty,
+                            TotalSalePrice = Math.Round(totalSalePrice),
+                            TotalDiscountAmount = Math.Round(totalDiscountAmount),
+                            TotalBilledAmount = Math.Round(totalBilledAmount)
+
+
+
+                        };
+                        invoiceLineItem.Add(invoiceLineDetilsVm);
+
+                    }
+
+
+                    invoiceVm.InvoiceLine = invoiceLineItem;
+                    invoiceList.Add(invoiceVm);
+                }
+                else
+                {
+                    double numberofInvoice = (double)invoiceLineItemSdata.Count() / numOfLineInInvoice;
+
+                    for (int j = 0; j <= numberofInvoice; j++)
+                    {
+                        List<InvoiceLineDetilsVm> invoiceLineItem = new List<InvoiceLineDetilsVm>();
+
+
+                        var outlet = Db.tbld_Outlet.SingleOrDefault(x => x.OutletId == invitem.outlet_id);
+                        var dbHouse =
+                            Db.tbld_distribution_house.SingleOrDefault(x => x.DB_Id == invitem.db_id);
+                        var psrInfo =
+                            Db.tbld_distribution_employee.SingleOrDefault(x => x.id == invitem.psr_id);
+
+                        var totalDelivered = (int)(invitem.total_delivered ?? 0);
+                        var salesOrderTypeId = invitem.sales_order_type_id ?? 0;
+                        var manualDiscount = (int)(invitem.manual_discount ?? 0);
+
+                        if (outlet != null) { }
+                        if (dbHouse != null) { }
+                        if (psrInfo != null) { }
+                        invoiceVm = new InvoiceVm
+                        {
+                            Orderid = id,
+                            SoId = invitem.so_id,
+                            RouteName = Db.tbld_distributor_Route
+                                .Where(x => x.RouteID == invitem.route_id)
+                                .Select(x => x.RouteName).SingleOrDefault(),
+                            OutletName = outlet.OutletName,
+                            OutletAddress = outlet.Address,
+                            ChallanNo = invitem.Challan_no,
+                            PlannedOrderDate = invitem.planned_order_date,
+                            DeliveryDate = invitem.delivery_date,
+                            DbName = dbHouse.DBName ?? "",
+                            DbAddress = dbHouse.OfficeAddress,
+                            DbMobile = dbHouse.OwnerMoble,
+                            PsrName = psrInfo.Name,
+                            PsrMobile = psrInfo.contact_no,
+                            TotalDelivered = totalDelivered,
+                            SalesOrderTypeId = salesOrderTypeId,
+                            ManualDiscount = manualDiscount
+                        };
+
+
+
+                        foreach (var lineItem in invoiceLineItemSdata.Take(numOfLineInInvoice))
+                        {
+
+
+
+
+                            int confirmQty = 0;
+                            int freeQty = 0;
+
+                            double unitSalePrice = (from a in Db.tbld_bundle_price_details
+                                                    join b in Db.tbld_distribution_house on a.bundle_price_id equals b
+                                                        .PriceBuandle_id
+                                                    where a.sku_id == lineItem.SkuId && a.batch_id == lineItem.BetchId &&
+                                                          b.DB_Id == dbid
+                                                    select a.outlet_lifting_price).SingleOrDefault();
+
+
+                            var orderQtysum = (from b in Db.tblt_Order_line
+                                               where b.Orderid == id && b.sku_id == lineItem.SkuId &&
+                                                     b.Betch_id == lineItem.BetchId && b.sku_order_type_id == 1
+                                               select (int?)b.quantity_delivered).Sum();
+
+                            var freeQtysum = (from b in Db.tblt_Order_line
+                                              where b.Orderid == id && b.sku_id == lineItem.SkuId &&
+                                                    b.Betch_id == lineItem.BetchId && b.sku_order_type_id == 2
+                                              select (int?)b.quantity_delivered).Sum();
+
+                            if (orderQtysum != null)
+                            {
+                                confirmQty = (int)orderQtysum;
+                            }
+
+                            if (freeQtysum != null)
+                            {
+                                freeQty = (int)freeQtysum;
+                            }
+                            var totalSalePrice = Db.tblt_Order_line
+                                                     .Where(b => b.Orderid == id &&
+                                                                 b.sku_id == lineItem.SkuId &&
+                                                                 b.Betch_id == lineItem.BetchId &&
+                                                                 b.sku_order_type_id == 1)
+                                                     .Sum(x => (double?)(x.total_sale_price)) ?? 0;
+                            var totalDiscountAmount = Db.tblt_Order_line
+                                                          .Where(b => b.Orderid == id &&
+                                                                      b.sku_id == lineItem.SkuId &&
+                                                                      b.Betch_id == lineItem.BetchId &&
+                                                                      b.sku_order_type_id == 1)
+                                                          .Sum(x => (double?)(x.total_discount_amount)) ?? 0;
+                            var totalBilledAmount = Db.tblt_Order_line
+                                                        .Where(b => b.Orderid == id &&
+                                                                    b.sku_id == lineItem.SkuId &&
+                                                                    b.Betch_id == lineItem.BetchId &&
+                                                                    b.sku_order_type_id == 1)
+                                                        .Sum(x => (double?)(x.total_billed_amount)) ?? 0;
+
+                            InvoiceLineDetilsVm invoiceLineDetilsVm = new InvoiceLineDetilsVm
+                            {
+                                SkuCode = lineItem.SkuCode,
+                                SkuName = lineItem.SkuName,
+                                BetchId = lineItem.BetchId,
+                                PackSize = lineItem.PackSize,
+                                UnitSalePrice = confirmQty == 0 ? 0 : unitSalePrice,
+                                QuantityDeliveredCs = confirmQty / lineItem.PackSize,
+                                QuantityDeliveredPs = confirmQty % lineItem.PackSize,
+                                QuantityFree = freeQty,
+                                TotalSalePrice = totalSalePrice,
+                                TotalDiscountAmount = totalDiscountAmount,
+                                TotalBilledAmount = totalBilledAmount
+
+
+
+                            };
+                            invoiceLineItem.Add(invoiceLineDetilsVm);
+
+
+                        }
+
+
+                        invoiceVm.InvoiceLine = invoiceLineItem;
+
+                        invoiceList.Add(invoiceVm);
+                        if (invoiceLineItemSdata.Count() >= numOfLineInInvoice)
+                        {
+                            invoiceLineItemSdata.RemoveRange(0, numOfLineInInvoice);
+                        }
+
+
+                    }
+
+
+
+                }
+            }
+
+            return PartialView("TradePromotionSales/BulkInvoice", invoiceList);
+
+        }
+
+
     }
-    }
+}

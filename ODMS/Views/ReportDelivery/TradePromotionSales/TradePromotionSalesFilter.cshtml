@@ -1,0 +1,136 @@
+﻿@model IEnumerable<ODMS.Models.RPT_TP_Summary_Result>
+
+
+
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <div class="clearfix ">
+
+           
+        </div>
+    </div>
+    <div class="panel-body">
+        <table class="table table-bordered">
+            <thead>
+                <tr>
+                    <th>
+                        @Html.DisplayNameFor(model => model.REGION_Name)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.AREA_Name)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.CEAREA_Name)
+                    </th>
+                    <th style="min-width: 200px;">
+                        @Html.DisplayNameFor(model => model.DB_Name)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.DBCode)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.OfficeAddress)
+                    </th>
+                    <th style="min-width: 100px;">
+                        @Html.DisplayNameFor(model => model.cluster)
+                    </th>
+                    <th style="min-width: 200px;">
+                        Trade Promotation Name
+                    </th>
+                    <th style="min-width: 250px;">
+                        Promtional SKU Name
+                    </th>
+                
+                   
+                    <th>
+                        Sales Qty[CS]
+                    </th>
+                    <th style="min-width: 250px;">
+                        Free SKU
+                    </th>
+                    <th>
+                        Free Qty[CS]
+                    </th>
+                    <th>
+                        Amount
+                    </th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+
+            <tbody>
+
+
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.REGION_Name)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.AREA_Name)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.CEAREA_Name)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.DB_Name)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.DBCode)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.OfficeAddress)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.cluster)
+                        </td>
+         
+                        <td>
+                            @Html.DisplayFor(modelItem => item.NAME)
+                        </td>
+                       
+                        <td>
+                            
+                            
+                            @item.SKUList
+                        </td>
+                       
+                        <td>
+                            @item.quantity_delivered.ToString("0.00")
+                          
+                        </td>
+                        <td>
+                           @item.FreeSKU
+                      
+                        <td>
+                           @item.Free_quantity_delivered.ToString("0.00")
+                        </td>
+                        <td>
+                           @item.Free_Amount_delivered.ToString("0.00")
+                        </td>
+                        <td>
+                            @if (item.StartDate != null)
+                            {
+                                if (item.EndDate != null)
+                                {
+                                    @Html.ActionLink("Details", "TradePromotionSalesDetails", new {id = item.db_id, promoid = item.Promo_id, startdate = item.StartDate.Value.ToString("yyyy-MM-dd"), endDate = item.EndDate.Value.ToString("yyyy-MM-dd"),}, new
+                                    {
+                                        @class = "btn btn-sm btn-warning ", target = "_blank"
+                                    })
+                                }
+                            }
+                        </td>
+                    </tr>
+                }
+
+        </table>
+    </div>
+</div>
+
+<script>
+    $(document).ready(function() {
+        $("#ajax_load").hide();
+    });
+
+</script>

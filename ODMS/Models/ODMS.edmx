@@ -1114,6 +1114,11 @@ warning 6002: The table/view 'ODMS.dbo.tbld_db_zone_view' does not have a primar
           <Parameter Name="End_Date" Type="datetime" Mode="In" />
           <Parameter Name="dbids" Type="varchar(max)" Mode="In" />
         </Function>
+        <Function Name="RPT_TP_List" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="Start_Date" Type="datetime" Mode="In" />
+          <Parameter Name="End_Date" Type="datetime" Mode="In" />
+          <Parameter Name="dbids" Type="varchar(max)" Mode="In" />
+        </Function>
         <Function Name="User_check" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="UserName" Type="varchar" Mode="In" />
           <Parameter Name="Password" Type="varchar" Mode="In" />
@@ -1477,6 +1482,11 @@ warning 6002: The table/view 'ODMS.dbo.tbld_db_zone_view' does not have a primar
             <Parameter Name="dbids" Mode="In" Type="String" />
           </FunctionImport>
           <FunctionImport Name="RPT_Realtime_TradepromotionDetails" ReturnType="Collection(ODMSModel.RPT_Realtime_TradepromotionDetails_Result)">
+            <Parameter Name="Start_Date" Mode="In" Type="DateTime" />
+            <Parameter Name="End_Date" Mode="In" Type="DateTime" />
+            <Parameter Name="dbids" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="RPT_TP_List" ReturnType="Collection(ODMSModel.RPT_TP_List_Result)">
             <Parameter Name="Start_Date" Mode="In" Type="DateTime" />
             <Parameter Name="End_Date" Mode="In" Type="DateTime" />
             <Parameter Name="dbids" Mode="In" Type="String" />
@@ -2782,6 +2792,10 @@ warning 6002: The table/view 'ODMS.dbo.tbld_db_zone_view' does not have a primar
           <Property Type="DateTime" Name="end_date" Nullable="true" />
           <Property Type="Int32" Name="is_active" Nullable="true" />
         </ComplexType>
+        <ComplexType Name="RPT_TP_List_Result">
+          <Property Type="Int32" Name="id" Nullable="false" />
+          <Property Type="String" Name="name" Nullable="false" MaxLength="255" />
+        </ComplexType>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -4020,6 +4034,14 @@ warning 6002: The table/view 'ODMS.dbo.tbld_db_zone_view' does not have a primar
                 <ScalarProperty Name="start_date" ColumnName="start_date" />
                 <ScalarProperty Name="end_date" ColumnName="end_date" />
                 <ScalarProperty Name="is_active" ColumnName="is_active" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="RPT_TP_List" FunctionName="ODMSModel.Store.RPT_TP_List">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="ODMSModel.RPT_TP_List_Result">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="name" ColumnName="name" />
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>

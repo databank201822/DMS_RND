@@ -1,0 +1,113 @@
+﻿@model IEnumerable<ODMS.Models.RPT_Delivery_BuyerByPSRSummary_Result>
+
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <div class="clearfix ">
+
+
+
+        </div>
+    </div>
+    <div class="panel-body">
+        <table class="table table-bordered">
+            <thead>
+                <tr>
+
+
+                    <th>
+                        @Html.DisplayNameFor(model => model.REGION_Name)
+                    </th>
+
+                    <th>
+                        @Html.DisplayNameFor(model => model.AREA_Name)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.CEAREA_Name)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.DB_Name)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.DBCode)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.cluster)
+                    </th>
+
+                    <th>
+                        @Html.DisplayNameFor(model => model.PSR_Code)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.PSR_Name)
+                    </th>
+
+
+                    <th>
+                        @Html.DisplayNameFor(model => model.TotalOutlet)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.BuyerOutlet)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.NonBuyer)
+                    </th>
+
+                </tr>
+            </thead>
+
+            <tbody>
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.REGION_Name)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.AREA_Name)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.CEAREA_Name)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.DB_Name)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.DBCode)
+                        </td>
+
+                        <td>
+                            @Html.DisplayFor(modelItem => item.cluster)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.PSR_Code)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.PSR_Name)
+                        </td>
+
+
+                        <td>
+                            @Html.DisplayFor(modelItem => item.TotalOutlet)
+                        </td>
+                        <td>
+                            @Html.ActionLink(item.BuyerOutlet.ToString(), "PsrWiseBuyerDetails", new { id = item.PSR_id, startdate = @ViewBag.startDate, endDate = @ViewBag.endDate, skuid = @ViewBag.skulist }, new { })
+
+
+                        </td>
+                        <td>
+                            @Html.ActionLink(item.NonBuyer.ToString(), "PsrWiseNonBuyerdetails", new { id = item.PSR_id, startdate = @ViewBag.startDate, endDate = @ViewBag.endDate, skuid = @ViewBag.skulist }, new { })
+
+
+                        </td>
+
+                    </tr>
+                }
+
+        </table>
+    </div>
+</div>
+<script>
+    $(document).ready(function () {
+        $("#ajax_load").hide();
+    });
+</script>

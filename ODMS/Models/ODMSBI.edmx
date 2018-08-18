@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-    <Schema Namespace="ODMSBIModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+    <Schema Namespace="ODMSBIModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <Function Name="FunctionStringtoIntlist" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="list" Type="varchar" Mode="In" />
           <Parameter Name="delim" Type="varchar" Mode="In" />
@@ -109,8 +109,19 @@
           <Parameter Name="End_Date" Type="datetime" Mode="In" />
           <Parameter Name="dbid" Type="int" Mode="In" />
         </Function>
-        <EntityContainer Name="ODMSBIModelStoreContainer">
-        </EntityContainer>
+        <Function Name="RPT_TP_OutletWiseDetails" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="Start_Date" Type="datetime" Mode="In" />
+          <Parameter Name="End_Date" Type="datetime" Mode="In" />
+          <Parameter Name="dbids" Type="varchar(max)" Mode="In" />
+          <Parameter Name="Promo_id" Type="varchar(max)" Mode="In" />
+        </Function>
+        <Function Name="RPT_TP_Summary" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="Start_Date" Type="datetime" Mode="In" />
+          <Parameter Name="End_Date" Type="datetime" Mode="In" />
+          <Parameter Name="dbids" Type="varchar(max)" Mode="In" />
+          <Parameter Name="Promo_id" Type="varchar(max)" Mode="In" />
+        </Function>
+        <EntityContainer Name="ODMSBIModelStoreContainer" />
       </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
@@ -215,6 +226,18 @@
             <Parameter Name="End_Date" Mode="In" Type="DateTime" />
             <Parameter Name="dbids" Mode="In" Type="String" />
             <Parameter Name="skuids" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="RPT_TP_Summary" ReturnType="Collection(ODMSBIModel.RPT_TP_Summary_Result)">
+            <Parameter Name="Start_Date" Mode="In" Type="DateTime" />
+            <Parameter Name="End_Date" Mode="In" Type="DateTime" />
+            <Parameter Name="dbids" Mode="In" Type="String" />
+            <Parameter Name="Promo_id" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="RPT_TP_OutletWiseDetails" ReturnType="Collection(ODMSBIModel.RPT_TP_OutletWiseDetails_Result)">
+            <Parameter Name="Start_Date" Mode="In" Type="DateTime" />
+            <Parameter Name="End_Date" Mode="In" Type="DateTime" />
+            <Parameter Name="dbids" Mode="In" Type="String" />
+            <Parameter Name="Promo_id" Mode="In" Type="String" />
           </FunctionImport>
         </EntityContainer>
         <ComplexType Name="RPT_Delivery_BuyerByDBDetails_Result">
@@ -541,6 +564,61 @@
           <Property Type="Decimal" Name="UnitPrice" Nullable="true" Precision="19" />
           <Property Type="Decimal" Name="Delivered_Quentity" Nullable="true" Precision="19" />
           <Property Type="Decimal" Name="FreeDelivered_Quentity" Nullable="true" Precision="19" />
+        </ComplexType>
+        <ComplexType Name="RPT_TP_Summary_Result">
+          <Property Type="DateTime" Name="StartDate" Nullable="true" Precision="23" />
+          <Property Type="DateTime" Name="EndDate" Nullable="true" Precision="23" />
+          <Property Type="String" Name="REGION_Name" Nullable="true" MaxLength="200" />
+          <Property Type="String" Name="AREA_Name" Nullable="true" MaxLength="200" />
+          <Property Type="String" Name="CEAREA_Name" Nullable="true" MaxLength="200" />
+          <Property Type="String" Name="DB_Name" Nullable="true" MaxLength="200" />
+          <Property Type="String" Name="DBCode" Nullable="true" MaxLength="200" />
+          <Property Type="String" Name="OfficeAddress" Nullable="true" MaxLength="200" />
+          <Property Type="String" Name="cluster" Nullable="true" MaxLength="200" />
+          <Property Type="Int32" Name="db_id" Nullable="false" />
+          <Property Type="Int32" Name="Promo_id" Nullable="false" />
+          <Property Type="String" Name="NAME" Nullable="false" MaxLength="255" />
+          <Property Type="String" Name="SKUList" Nullable="true" />
+          <Property Type="String" Name="FreeSKU" Nullable="true" />
+          <Property Type="Double" Name="quantity_ordered" Nullable="false" />
+          <Property Type="Double" Name="quantity_delivered" Nullable="false" />
+          <Property Type="Double" Name="Free_quantity_ordered" Nullable="false" />
+          <Property Type="Double" Name="Free_Amount_ordered" Nullable="false" />
+          <Property Type="Double" Name="Free_quantity_delivered" Nullable="false" />
+          <Property Type="Double" Name="Free_Amount_delivered" Nullable="false" />
+        </ComplexType>
+        <ComplexType Name="RPT_TP_OutletWiseDetails_Result">
+          <Property Type="Int32" Name="REGION_id" Nullable="true" />
+          <Property Type="Int32" Name="AREA_id" Nullable="true" />
+          <Property Type="Int32" Name="CEAREA_id" Nullable="true" />
+          <Property Type="String" Name="REGION_Name" Nullable="true" MaxLength="200" />
+          <Property Type="String" Name="AREA_Name" Nullable="true" MaxLength="200" />
+          <Property Type="String" Name="CEAREA_Name" Nullable="true" MaxLength="200" />
+          <Property Type="Int32" Name="DBCode" Nullable="true" />
+          <Property Type="String" Name="DB_Name" Nullable="true" MaxLength="200" />
+          <Property Type="String" Name="PSR" Nullable="true" MaxLength="200" />
+          <Property Type="Int32" Name="PSR_Code" Nullable="true" />
+          <Property Type="String" Name="RouteName" Nullable="true" MaxLength="200" />
+          <Property Type="Int32" Name="OutletCode" Nullable="true" />
+          <Property Type="String" Name="OutletName" Nullable="true" MaxLength="200" />
+          <Property Type="String" Name="Address" Nullable="true" MaxLength="200" />
+          <Property Type="String" Name="OwnerName" Nullable="true" MaxLength="200" />
+          <Property Type="String" Name="ContactNo" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="channel_name" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="outlet_category_name" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="Outlet_grade" Nullable="true" MaxLength="50" />
+          <Property Type="Int32" Name="TPid" Nullable="false" />
+          <Property Type="String" Name="TPName" Nullable="false" MaxLength="255" />
+          <Property Type="DateTime" Name="planned_order_date" Nullable="true" />
+          <Property Type="DateTime" Name="delivery_date" Nullable="true" />
+          <Property Type="Int32" Name="Orderid" Nullable="true" />
+          <Property Type="String" Name="so_id" Nullable="true" MaxLength="200" />
+          <Property Type="String" Name="SKUName" Nullable="true" MaxLength="200" />
+          <Property Type="Int32" Name="Pack_size" Nullable="true" />
+          <Property Type="Decimal" Name="unit_sale_price" Nullable="true" Precision="19" />
+          <Property Type="Int32" Name="sku_order_type_id" Nullable="true" />
+          <Property Type="Int32" Name="quantity_ordered" Nullable="true" />
+          <Property Type="Int32" Name="quantity_delivered" Nullable="true" />
         </ComplexType>
       </Schema>
     </edmx:ConceptualModels>
@@ -938,6 +1016,69 @@
                 <ScalarProperty Name="UnitPrice" ColumnName="UnitPrice" />
                 <ScalarProperty Name="Delivered_Quentity" ColumnName="Delivered_Quentity" />
                 <ScalarProperty Name="FreeDelivered_Quentity" ColumnName="FreeDelivered_Quentity" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="RPT_TP_Summary" FunctionName="ODMSBIModel.Store.RPT_TP_Summary">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="ODMSBIModel.RPT_TP_Summary_Result">
+                <ScalarProperty Name="StartDate" ColumnName="StartDate" />
+                <ScalarProperty Name="EndDate" ColumnName="EndDate" />
+                <ScalarProperty Name="REGION_Name" ColumnName="REGION_Name" />
+                <ScalarProperty Name="AREA_Name" ColumnName="AREA_Name" />
+                <ScalarProperty Name="CEAREA_Name" ColumnName="CEAREA_Name" />
+                <ScalarProperty Name="DB_Name" ColumnName="DB_Name" />
+                <ScalarProperty Name="DBCode" ColumnName="DBCode" />
+                <ScalarProperty Name="OfficeAddress" ColumnName="OfficeAddress" />
+                <ScalarProperty Name="cluster" ColumnName="cluster" />
+                <ScalarProperty Name="db_id" ColumnName="db_id" />
+                <ScalarProperty Name="Promo_id" ColumnName="Promo_id" />
+                <ScalarProperty Name="NAME" ColumnName="NAME" />
+                <ScalarProperty Name="SKUList" ColumnName="SKUList" />
+                <ScalarProperty Name="FreeSKU" ColumnName="FreeSKU" />
+                <ScalarProperty Name="quantity_ordered" ColumnName="quantity_ordered" />
+                <ScalarProperty Name="quantity_delivered" ColumnName="quantity_delivered" />
+                <ScalarProperty Name="Free_quantity_ordered" ColumnName="Free_quantity_ordered" />
+                <ScalarProperty Name="Free_Amount_ordered" ColumnName="Free_Amount_ordered" />
+                <ScalarProperty Name="Free_quantity_delivered" ColumnName="Free_quantity_delivered" />
+                <ScalarProperty Name="Free_Amount_delivered" ColumnName="Free_Amount_delivered" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="RPT_TP_OutletWiseDetails" FunctionName="ODMSBIModel.Store.RPT_TP_OutletWiseDetails">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="ODMSBIModel.RPT_TP_OutletWiseDetails_Result">
+                <ScalarProperty Name="REGION_id" ColumnName="REGION_id" />
+                <ScalarProperty Name="AREA_id" ColumnName="AREA_id" />
+                <ScalarProperty Name="CEAREA_id" ColumnName="CEAREA_id" />
+                <ScalarProperty Name="REGION_Name" ColumnName="REGION_Name" />
+                <ScalarProperty Name="AREA_Name" ColumnName="AREA_Name" />
+                <ScalarProperty Name="CEAREA_Name" ColumnName="CEAREA_Name" />
+                <ScalarProperty Name="DBCode" ColumnName="DBCode" />
+                <ScalarProperty Name="DB_Name" ColumnName="DB_Name" />
+                <ScalarProperty Name="PSR" ColumnName="PSR" />
+                <ScalarProperty Name="PSR_Code" ColumnName="PSR_Code" />
+                <ScalarProperty Name="RouteName" ColumnName="RouteName" />
+                <ScalarProperty Name="OutletCode" ColumnName="OutletCode" />
+                <ScalarProperty Name="OutletName" ColumnName="OutletName" />
+                <ScalarProperty Name="Address" ColumnName="Address" />
+                <ScalarProperty Name="OwnerName" ColumnName="OwnerName" />
+                <ScalarProperty Name="ContactNo" ColumnName="ContactNo" />
+                <ScalarProperty Name="channel_name" ColumnName="channel_name" />
+                <ScalarProperty Name="outlet_category_name" ColumnName="outlet_category_name" />
+                <ScalarProperty Name="Outlet_grade" ColumnName="Outlet_grade" />
+                <ScalarProperty Name="TPid" ColumnName="TPid" />
+                <ScalarProperty Name="TPName" ColumnName="TPName" />
+                <ScalarProperty Name="planned_order_date" ColumnName="planned_order_date" />
+                <ScalarProperty Name="delivery_date" ColumnName="delivery_date" />
+                <ScalarProperty Name="Orderid" ColumnName="Orderid" />
+                <ScalarProperty Name="so_id" ColumnName="so_id" />
+                <ScalarProperty Name="SKUName" ColumnName="SKUName" />
+                <ScalarProperty Name="Pack_size" ColumnName="Pack_size" />
+                <ScalarProperty Name="unit_sale_price" ColumnName="unit_sale_price" />
+                <ScalarProperty Name="sku_order_type_id" ColumnName="sku_order_type_id" />
+                <ScalarProperty Name="quantity_ordered" ColumnName="quantity_ordered" />
+                <ScalarProperty Name="quantity_delivered" ColumnName="quantity_delivered" />
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>

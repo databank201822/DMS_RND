@@ -79,9 +79,9 @@ namespace ODMS.Controllers
 
             tblt_TradePromotion tbltTradePromotion = new tblt_TradePromotion
             {
-                name = sp.Remove_Special_Characters(tradePromotionCreateVm.Name),
+                name = sp.Remove_whitespace(tradePromotionCreateVm.Name),
                 code = tradePromotionCreateVm.Code,
-                description = sp.Remove_Special_Characters(tradePromotionCreateVm.Description),
+                description = sp.Remove_whitespace(tradePromotionCreateVm.Description),
                 TP_type = 1,
                 TPOffer_type = 1,
                 promotion_unit_id = 1,

@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 using ODMS.Models;
 
 namespace ODMS.Controllers
@@ -138,5 +139,16 @@ namespace ODMS.Controllers
             }
             return sb.ToString();
         }
+
+        public string Remove_whitespace (string str)
+        {
+            
+            RegexOptions options = RegexOptions.None;
+            Regex regex = new Regex("[ ]{2,}", options);
+            str = regex.Replace(str, " ");
+            return str;
+
+        }
+
     }
 }

@@ -1109,6 +1109,11 @@ warning 6002: The table/view 'ODMS.dbo.tbld_db_zone_view' does not have a primar
     <Parameter Name="End_Date" Type="datetime" Mode="In" />
     <Parameter Name="dbids" Type="varchar(max)" Mode="In" />
   </Function>
+  <Function Name="RPT_TP_List" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="Start_Date" Type="datetime" Mode="In" />
+    <Parameter Name="End_Date" Type="datetime" Mode="In" />
+    <Parameter Name="dbids" Type="varchar(max)" Mode="In" />
+  </Function>
   <Function Name="User_check" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
     <Parameter Name="UserName" Type="varchar" Mode="In" />
     <Parameter Name="Password" Type="varchar" Mode="In" />

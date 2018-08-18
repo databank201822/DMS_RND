@@ -168,6 +168,11 @@
       <Parameter Name="End_Date" Mode="In" Type="DateTime" />
       <Parameter Name="dbids" Mode="In" Type="String" />
     </FunctionImport>
+    <FunctionImport Name="RPT_TP_List" ReturnType="Collection(ODMSModel.RPT_TP_List_Result)">
+      <Parameter Name="Start_Date" Mode="In" Type="DateTime" />
+      <Parameter Name="End_Date" Mode="In" Type="DateTime" />
+      <Parameter Name="dbids" Mode="In" Type="String" />
+    </FunctionImport>
   </EntityContainer>
   <ComplexType Name="DB_User_check_Result">
     <Property Type="Int32" Name="id" Nullable="false" />
@@ -1468,5 +1473,9 @@
     <Property Type="DateTime" Name="start_date" Nullable="true" />
     <Property Type="DateTime" Name="end_date" Nullable="true" />
     <Property Type="Int32" Name="is_active" Nullable="true" />
+  </ComplexType>
+  <ComplexType Name="RPT_TP_List_Result">
+    <Property Type="Int32" Name="id" Nullable="false" />
+    <Property Type="String" Name="name" Nullable="false" MaxLength="255" />
   </ComplexType>
 </Schema>

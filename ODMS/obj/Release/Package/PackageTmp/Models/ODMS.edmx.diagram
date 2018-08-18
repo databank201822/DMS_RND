@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="86c6645cdb28465f91842b772d32e9df" Name="Diagram" ZoomLevel="67">
+        <EntityTypeShape EntityType="ODMSModel.status" Width="1.5" PointX="0.75" PointY="0.75" />
+        <EntityTypeShape EntityType="ODMSModel.sysdiagram" Width="1.5" PointX="2.75" PointY="0.75" />
+        <EntityTypeShape EntityType="ODMSModel.tbl_calendar" Width="1.5" PointX="4.75" PointY="0.75" />
+        <EntityTypeShape EntityType="ODMSModel.tbl_MainMenu" Width="1.5" PointX="0.75" PointY="3" />
+        <EntityTypeShape EntityType="ODMSModel.tbl_Manu_Role_mapping" Width="1.5" PointX="2.75" PointY="15.75" />
+        <EntityTypeShape EntityType="ODMSModel.tbl_SubMenu" Width="1.5" PointX="3" PointY="6.375" />
+        <EntityTypeShape EntityType="ODMSModel.tbl_SubMenuSecond" Width="1.5" PointX="5.25" PointY="4.625" />
+        <EntityTypeShape EntityType="ODMSModel.tbld_AdjustmentStock" Width="1.5" PointX="12.75" PointY="6.125" />
+        <EntityTypeShape EntityType="ODMSModel.tbld_AdjustmentStockItem" Width="1.5" PointX="15" PointY="6" />
+        <EntityTypeShape EntityType="ODMSModel.tbld_bundle_price" Width="1.5" PointX="12.75" PointY="1.625" />
+        <EntityTypeShape EntityType="ODMSModel.tbld_bundle_price_details" Width="1.5" PointX="15" PointY="1" />
+        <EntityTypeShape EntityType="ODMSModel.tbld_business_zone" Width="1.5" PointX="15.75" PointY="9.75" />
+        <EntityTypeShape EntityType="ODMSModel.tbld_business_zone_hierarchy" Width="1.5" PointX="10.75" PointY="15.75" />
+        <EntityTypeShape EntityType="ODMSModel.tbld_cluster" Width="1.5" PointX="15.75" PointY="12.75" />
+        <EntityTypeShape EntityType="ODMSModel.tbld_distribution_employee" Width="1.5" PointX="12.75" PointY="15.75" />
+        <EntityTypeShape EntityType="ODMSModel.tbld_distribution_employee_Type" Width="1.5" PointX="14.75" PointY="15.75" />
+        <EntityTypeShape EntityType="ODMSModel.tbld_distribution_house" Width="1.5" PointX="4.75" PointY="16.75" />
+        <EntityTypeShape EntityType="ODMSModel.tbld_distributor_Route" Width="1.5" PointX="6.75" PointY="16.75" />
+        <EntityTypeShape EntityType="ODMSModel.tbld_distributor_RouteType" Width="1.5" PointX="16.75" PointY="15.75" />
+        <EntityTypeShape EntityType="ODMSModel.tbld_management_employee" Width="1.5" PointX="17.75" PointY="0.75" />
+        <EntityTypeShape EntityType="ODMSModel.tbld_Outlet" Width="1.5" PointX="17.75" PointY="4.75" />
+        <EntityTypeShape EntityType="ODMSModel.tbld_Outlet_category" Width="1.5" PointX="17.75" PointY="10.75" />
+        <EntityTypeShape EntityType="ODMSModel.tbld_Outlet_channel" Width="1.5" PointX="0.75" PointY="18.75" />
+        <EntityTypeShape EntityType="ODMSModel.tbld_Outlet_grade" Width="1.5" PointX="8.75" PointY="18.75" />
+        <EntityTypeShape EntityType="ODMSModel.tbld_Outlet_new" Width="1.5" PointX="18.75" PointY="13.75" />
+        <EntityTypeShape EntityType="ODMSModel.tbld_ReportList" Width="1.5" PointX="14.75" PointY="18.75" />
+        <EntityTypeShape EntityType="ODMSModel.tbld_Route_Plan" Width="1.5" PointX="10.75" PointY="11" />
+        <EntityTypeShape EntityType="ODMSModel.tbld_Route_plan_Current_Route" Width="1.5" PointX="19.75" PointY="0.75" />
+        <EntityTypeShape EntityType="ODMSModel.tbld_Route_Plan_Detail" Width="1.5" PointX="13" PointY="11.25" />
+        <EntityTypeShape EntityType="ODMSModel.tbld_Route_Plan_Mapping" Width="1.5" PointX="19.75" PointY="3.75" />
+        <EntityTypeShape EntityType="ODMSModel.tbld_SKU" Width="1.5" PointX="19.75" PointY="6.75" />
+        <EntityTypeShape EntityType="ODMSModel.tbld_SKU_Brand" Width="1.5" PointX="20.75" PointY="12.75" />
+        <EntityTypeShape EntityType="ODMSModel.tbld_SKU_Brand_category" Width="1.5" PointX="20.75" PointY="15.75" />
+        <EntityTypeShape EntityType="ODMSModel.tbld_sku_category" Width="1.5" PointX="16.75" PointY="20.75" />
+        <EntityTypeShape EntityType="ODMSModel.tbld_SKU_unit" Width="1.5" PointX="20.75" PointY="18.75" />
+        <EntityTypeShape EntityType="ODMSModel.tbld_SKUContainertype" Width="1.5" PointX="21.75" PointY="0.75" />
+        <EntityTypeShape EntityType="ODMSModel.tbld_SKUtype" Width="1.5" PointX="0.75" PointY="21.75" />
+        <EntityTypeShape EntityType="ODMSModel.tbld_Target" Width="1.5" PointX="2.75" PointY="21.75" />
+        <EntityTypeShape EntityType="ODMSModel.tbld_Target_Details" Width="1.5" PointX="21.75" PointY="3.75" />
+        <EntityTypeShape EntityType="ODMSModel.tbld_Target_PSR_Details" Width="1.5" PointX="4.75" PointY="21.75" />
+        <EntityTypeShape EntityType="ODMSModel.tbll_inventory_log" Width="1.5" PointX="6.75" PointY="21.75" />
+        <EntityTypeShape EntityType="ODMSModel.tblt_Challan" Width="1.5" PointX="5.75" PointY="11.125" />
+        <EntityTypeShape EntityType="ODMSModel.tblt_Challan_line" Width="1.5" PointX="8" PointY="11.25" />
+        <EntityTypeShape EntityType="ODMSModel.tblt_inventory" Width="1.5" PointX="21.75" PointY="7.75" />
+        <EntityTypeShape EntityType="ODMSModel.tblt_Order" Width="1.5" PointX="0.75" PointY="10.125" />
+        <EntityTypeShape EntityType="ODMSModel.tblt_Order_line" Width="1.5" PointX="3" PointY="10.5" />
+        <EntityTypeShape EntityType="ODMSModel.tblt_Order_Line_type" Width="1.5" PointX="8.75" PointY="21.75" />
+        <EntityTypeShape EntityType="ODMSModel.tblt_OrderType" Width="1.5" PointX="10.75" PointY="21.75" />
+        <EntityTypeShape EntityType="ODMSModel.tblt_PurchaseOrder" Width="1.5" PointX="7.75" PointY="7.25" />
+        <EntityTypeShape EntityType="ODMSModel.tblt_PurchaseOrderLine" Width="1.5" PointX="10" PointY="7" />
+        <EntityTypeShape EntityType="ODMSModel.tblt_System" Width="1.5" PointX="12.75" PointY="21.75" />
+        <EntityTypeShape EntityType="ODMSModel.tblt_TradePromotion" Width="1.5" PointX="7.75" PointY="1.375" />
+        <EntityTypeShape EntityType="ODMSModel.tblt_TradePromotionConditionType" Width="1.5" PointX="22.75" PointY="11.75" />
+        <EntityTypeShape EntityType="ODMSModel.tblt_TradePromotionDBhouseMapping" Width="1.5" PointX="22.75" PointY="14.75" />
+        <EntityTypeShape EntityType="ODMSModel.tblt_TradePromotionDefinition" Width="1.5" PointX="10" PointY="1" />
+        <EntityTypeShape EntityType="ODMSModel.tblt_TradePromotionOfferType" Width="1.5" PointX="22.75" PointY="17.75" />
+        <EntityTypeShape EntityType="ODMSModel.tblt_TradePromotionRule" Width="1.5" PointX="18.75" PointY="22.75" />
+        <EntityTypeShape EntityType="ODMSModel.tblt_TradePromotionType" Width="1.5" PointX="22.75" PointY="20.75" />
+        <EntityTypeShape EntityType="ODMSModel.user_info" Width="1.5" PointX="23.75" PointY="0.75" />
+        <EntityTypeShape EntityType="ODMSModel.user_role" Width="1.5" PointX="23.75" PointY="3.75" />
+        <AssociationConnector Association="ODMSModel.FK_tbl_SubMenuSecond_tbl_MainMenu" />
+        <AssociationConnector Association="ODMSModel.FK_tblSubMenu_tblRoles" />
+        <AssociationConnector Association="ODMSModel.FK_tbl_2ndSubMenu_tbl_SubMenu" />
+        <AssociationConnector Association="ODMSModel.FK_tbld_AdjustmentStockItem_tbld_AdjustmentStock" />
+        <AssociationConnector Association="ODMSModel.FK_tbld_bundle_price_details_tbld_bundle_price" />
+        <AssociationConnector Association="ODMSModel.FK_tbld_Route_Plan_Detail_tbld_Route_Plan" />
+        <AssociationConnector Association="ODMSModel.FK_tblt_Challan_line_tblt_Challan" />
+        <AssociationConnector Association="ODMSModel.FK_tblt_Order_line_tblt_Order" />
+        <AssociationConnector Association="ODMSModel.FK_tblt_PurchaseOrderLine_tblt_PurchaseOrder" />
+        <AssociationConnector Association="ODMSModel.FK_tblt_TradePromotionDefinition_tblt_TradePromotion" />
+        <EntityTypeShape EntityType="ODMSModel.tblm_notorder_reason" Width="1.5" PointX="15.375" PointY="23.75" />
+        <EntityTypeShape EntityType="ODMSModel.tbld_db_psr_outlet_zone_view" Width="1.5" PointX="21.75" PointY="23.75" />
+        <EntityTypeShape EntityType="ODMSModel.tbld_db_psr_zone_view" Width="1.5" PointX="23.75" PointY="23.75" />
+        <EntityTypeShape EntityType="ODMSModel.tbld_db_zone_view" Width="1.5" PointX="0.75" PointY="24.75" />
+        <EntityTypeShape EntityType="ODMSModel.tblm_visit_detail" Width="1.5" PointX="24.375" PointY="7.75" />
+        <EntityTypeShape EntityType="ODMSModel.tblm_UserLogin" Width="1.5" PointX="9.375" PointY="24.75" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

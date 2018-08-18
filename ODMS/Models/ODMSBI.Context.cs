@@ -365,5 +365,47 @@ namespace ODMS.Models
     
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<RPT_Delivery_PSRWiseSKUWiseDelivery_Result>("RPT_Delivery_PSRWiseSKUWiseDelivery", start_DateParameter, end_DateParameter, dbidsParameter, skuidsParameter);
         }
+    
+        public virtual ObjectResult<RPT_TP_Summary_Result> RPT_TP_Summary(Nullable<System.DateTime> start_Date, Nullable<System.DateTime> end_Date, string dbids, string promo_id)
+        {
+            var start_DateParameter = start_Date.HasValue ?
+                new ObjectParameter("Start_Date", start_Date) :
+                new ObjectParameter("Start_Date", typeof(System.DateTime));
+    
+            var end_DateParameter = end_Date.HasValue ?
+                new ObjectParameter("End_Date", end_Date) :
+                new ObjectParameter("End_Date", typeof(System.DateTime));
+    
+            var dbidsParameter = dbids != null ?
+                new ObjectParameter("dbids", dbids) :
+                new ObjectParameter("dbids", typeof(string));
+    
+            var promo_idParameter = promo_id != null ?
+                new ObjectParameter("Promo_id", promo_id) :
+                new ObjectParameter("Promo_id", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<RPT_TP_Summary_Result>("RPT_TP_Summary", start_DateParameter, end_DateParameter, dbidsParameter, promo_idParameter);
+        }
+    
+        public virtual ObjectResult<RPT_TP_OutletWiseDetails_Result> RPT_TP_OutletWiseDetails(Nullable<System.DateTime> start_Date, Nullable<System.DateTime> end_Date, string dbids, string promo_id)
+        {
+            var start_DateParameter = start_Date.HasValue ?
+                new ObjectParameter("Start_Date", start_Date) :
+                new ObjectParameter("Start_Date", typeof(System.DateTime));
+    
+            var end_DateParameter = end_Date.HasValue ?
+                new ObjectParameter("End_Date", end_Date) :
+                new ObjectParameter("End_Date", typeof(System.DateTime));
+    
+            var dbidsParameter = dbids != null ?
+                new ObjectParameter("dbids", dbids) :
+                new ObjectParameter("dbids", typeof(string));
+    
+            var promo_idParameter = promo_id != null ?
+                new ObjectParameter("Promo_id", promo_id) :
+                new ObjectParameter("Promo_id", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<RPT_TP_OutletWiseDetails_Result>("RPT_TP_OutletWiseDetails", start_DateParameter, end_DateParameter, dbidsParameter, promo_idParameter);
+        }
     }
 }

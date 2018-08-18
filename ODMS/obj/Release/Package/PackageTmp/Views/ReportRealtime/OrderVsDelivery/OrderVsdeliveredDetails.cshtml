@@ -1,0 +1,139 @@
+﻿@model IEnumerable<ODMS.Models.RPT_Realtime_OrderVsdeliveredDetails_Result>
+
+
+
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <div class="clearfix ">
+
+
+          
+        </div>
+    </div>
+    <div class="panel-body">
+        
+    <table class="table table-bordered">
+        
+        <thead>
+           
+        <tr>
+
+            <th>
+                @Html.DisplayNameFor(model => model.REGION_Name)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.AREA_Name)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.CEAREA_Name)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.DBCode)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.DB_Name)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.PSR_Code)
+            </th>
+
+            <th>
+                PSR Name
+            </th>
+
+
+            <th style="min-width: 70px;">
+                Cluster
+            </th>
+            <th style="min-width: 100px;">
+                SKU Name
+            </th>
+            <th>
+                Order Qty [CS]
+            </th>
+            <th>
+                Free Order[CS]
+            </th>
+            <th>
+                Order Amount
+            </th>
+          
+            <th>
+                Delivery [CS]
+            </th>
+
+            <th>
+                Free Delivery [CS]
+            </th>
+            <th>
+                Delivery Amount
+            </th>
+            <th>Actions</th>
+        </tr>
+        </thead>
+
+        <tbody>
+
+
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @item.REGION_Name
+                </td>
+                <td>
+                    @item.AREA_Name
+                </td>
+                <td>
+                    @item.CEAREA_Name
+                </td>
+                <td>
+                    @item.DBCode
+                </td>
+                <td >
+                    @item.DB_Name
+                </td>
+                
+                <td>
+                    @item.PSR_Code
+                </td>
+
+                <td>
+                    @item.Name
+                </td>
+
+                <td >
+                    @item.cluster
+                </td>
+                <td>
+                    @item.SKUName
+                </td>
+                <td >
+                    @item.quantity_ordered.ToString("N")
+                </td>
+                <td >
+                    @item.Freequantity_ordered.ToString("N")
+                </td>
+                <td >
+                    @item.quantity_ordered_value.ToString("N")
+                </td>
+               
+
+                <td >
+                    @item.quantity_delivered.ToString("N")
+                </td>
+
+                <td >
+                    @item.Freequantity_delivered.ToString("N")
+                </td>
+                <td >
+                    @item.quantity_delivered_value.ToString("N")
+                </td>
+                <td></td>
+            </tr>
+        }
+
+    </table>
+      
+    </div>
+</div>

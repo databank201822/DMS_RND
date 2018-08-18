@@ -1236,5 +1236,13 @@
         </ComplexTypeMapping>
       </ResultMapping>
     </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="RPT_TP_List" FunctionName="ODMSModel.Store.RPT_TP_List">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="ODMSModel.RPT_TP_List_Result">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="name" ColumnName="name" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
   </EntityContainerMapping>
 </Mapping>

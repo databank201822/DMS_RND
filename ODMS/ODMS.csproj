@@ -421,6 +421,15 @@
     <Compile Include="Models\RPT_StockMovement_Result.cs">
       <DependentUpon>ODMSBI.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\RPT_TP_List_Result.cs">
+      <DependentUpon>ODMS.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\RPT_TP_OutletWiseDetails_Result.cs">
+      <DependentUpon>ODMSBI.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\RPT_TP_Summary_Result.cs">
+      <DependentUpon>ODMSBI.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\ShowInventory_Result.cs">
       <DependentUpon>ODMS.tt</DependentUpon>
     </Compile>
@@ -3013,11 +3022,9 @@
     <Content Include="Views\GeneralReport\CurrentTp\CurrentTp.cshtml" />
     <Content Include="Views\GeneralReport\CurrentTp\CurrentTpFilter.cshtml" />
     <Content Include="Views\ReportDelivery\TradePromotionSales\TradePromotionSales.cshtml" />
-    <Content Include="Views\ReportDelivery\TradePromotionSales\RPTBuyerByDbDetails.cshtml" />
-    <Content Include="Views\ReportDelivery\TradePromotionSales\RPTBuyerByDbSummary.cshtml" />
-    <Content Include="Views\ReportDelivery\TradePromotionSales\RPTBuyerBypsrDetails.cshtml" />
-    <Content Include="Views\ReportDelivery\TradePromotionSales\RPTBuyerBypsrSummary.cshtml" />
-    <Content Include="Views\ReportDelivery\TradePromotionSales\RptBuyerFilter.cshtml" />
+    <Content Include="Views\ReportDelivery\TradePromotionSales\TradePromotionSalesFilter.cshtml" />
+    <Content Include="Views\ReportDelivery\TradePromotionSales\TradePromotionSalesDetails.cshtml" />
+    <Content Include="Views\ReportDelivery\TradePromotionSales\BulkInvoice.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -3075,6 +3082,7 @@
     <EmbeddedResource Include="Reports\Delivery\RPT_Delivery_BuyerByDBDetails.rdlc" />
     <EmbeddedResource Include="Reports\Delivery\RPT_Delivery_BuyerByPSRDetails.rdlc" />
     <EmbeddedResource Include="Reports\Delivery\RPT_KPIDBSummary.rdlc" />
+    <EmbeddedResource Include="Reports\Delivery\RPT_TPOutletWiseDetails.rdlc" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

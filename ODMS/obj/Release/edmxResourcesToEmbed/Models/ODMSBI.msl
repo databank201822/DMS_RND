@@ -1,0 +1,398 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="ODMSBIModelStoreContainer" CdmEntityContainer="ODMSBIEntities">
+    <FunctionImportMapping FunctionName="ODMSBIModel.Store.FunctionStringtoIntlist" FunctionImportName="FunctionStringtoIntlist">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="ODMSBIModel.FunctionStringtoIntlist_Result">
+          <ScalarProperty Name="Value" ColumnName="Value" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="RPT_Delivery_BuyerByDBDetails" FunctionName="ODMSBIModel.Store.RPT_Delivery_BuyerByDBDetails">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="ODMSBIModel.RPT_Delivery_BuyerByDBDetails_Result">
+          <ScalarProperty Name="DB_Id" ColumnName="DB_Id" />
+          <ScalarProperty Name="DB_Name" ColumnName="DB_Name" />
+          <ScalarProperty Name="CEAREA_Name" ColumnName="CEAREA_Name" />
+          <ScalarProperty Name="AREA_Name" ColumnName="AREA_Name" />
+          <ScalarProperty Name="REGION_Name" ColumnName="REGION_Name" />
+          <ScalarProperty Name="Status" ColumnName="Status" />
+          <ScalarProperty Name="Cluster" ColumnName="Cluster" />
+          <ScalarProperty Name="DBCode" ColumnName="DBCode" />
+          <ScalarProperty Name="OfficeAddress" ColumnName="OfficeAddress" />
+          <ScalarProperty Name="SKU_id" ColumnName="SKU_id" />
+          <ScalarProperty Name="SKUName" ColumnName="SKUName" />
+          <ScalarProperty Name="TotalOutlet" ColumnName="TotalOutlet" />
+          <ScalarProperty Name="BuyerOutlet" ColumnName="BuyerOutlet" />
+          <ScalarProperty Name="NonBuyer" ColumnName="NonBuyer" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="RPT_Delivery_BuyerByDBsOutletList" FunctionName="ODMSBIModel.Store.RPT_Delivery_BuyerByDBsOutletList">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="ODMSBIModel.RPT_Delivery_BuyerByDBsOutletList_Result">
+          <ScalarProperty Name="REGION_Name" ColumnName="REGION_Name" />
+          <ScalarProperty Name="AREA_Name" ColumnName="AREA_Name" />
+          <ScalarProperty Name="CEAREA_Name" ColumnName="CEAREA_Name" />
+          <ScalarProperty Name="DB_Name" ColumnName="DB_Name" />
+          <ScalarProperty Name="DBCode" ColumnName="DBCode" />
+          <ScalarProperty Name="cluster" ColumnName="cluster" />
+          <ScalarProperty Name="PSR_Name" ColumnName="PSR_Name" />
+          <ScalarProperty Name="PSR_Code" ColumnName="PSR_Code" />
+          <ScalarProperty Name="RouteName" ColumnName="RouteName" />
+          <ScalarProperty Name="OutletCode" ColumnName="OutletCode" />
+          <ScalarProperty Name="OutletName" ColumnName="OutletName" />
+          <ScalarProperty Name="Address" ColumnName="Address" />
+          <ScalarProperty Name="OwnerName" ColumnName="OwnerName" />
+          <ScalarProperty Name="ContactNo" ColumnName="ContactNo" />
+          <ScalarProperty Name="HaveVisicooler" ColumnName="HaveVisicooler" />
+          <ScalarProperty Name="Channel" ColumnName="Channel" />
+          <ScalarProperty Name="Category" ColumnName="Category" />
+          <ScalarProperty Name="Grade" ColumnName="Grade" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="RPT_Delivery_BuyerByDBSummary" FunctionName="ODMSBIModel.Store.RPT_Delivery_BuyerByDBSummary">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="ODMSBIModel.RPT_Delivery_BuyerByDBSummary_Result">
+          <ScalarProperty Name="DB_Id" ColumnName="DB_Id" />
+          <ScalarProperty Name="DB_Name" ColumnName="DB_Name" />
+          <ScalarProperty Name="CEAREA_Name" ColumnName="CEAREA_Name" />
+          <ScalarProperty Name="AREA_Name" ColumnName="AREA_Name" />
+          <ScalarProperty Name="REGION_Name" ColumnName="REGION_Name" />
+          <ScalarProperty Name="Status" ColumnName="Status" />
+          <ScalarProperty Name="cluster" ColumnName="cluster" />
+          <ScalarProperty Name="DBCode" ColumnName="DBCode" />
+          <ScalarProperty Name="OfficeAddress" ColumnName="OfficeAddress" />
+          <ScalarProperty Name="TotalOutlet" ColumnName="TotalOutlet" />
+          <ScalarProperty Name="BuyerOutlet" ColumnName="BuyerOutlet" />
+          <ScalarProperty Name="NonBuyer" ColumnName="NonBuyer" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="RPT_Delivery_BuyerByPSRDetails" FunctionName="ODMSBIModel.Store.RPT_Delivery_BuyerByPSRDetails">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="ODMSBIModel.RPT_Delivery_BuyerByPSRDetails_Result">
+          <ScalarProperty Name="DB_Name" ColumnName="DB_Name" />
+          <ScalarProperty Name="CEAREA_Name" ColumnName="CEAREA_Name" />
+          <ScalarProperty Name="AREA_Name" ColumnName="AREA_Name" />
+          <ScalarProperty Name="REGION_Name" ColumnName="REGION_Name" />
+          <ScalarProperty Name="PSR_id" ColumnName="PSR_id" />
+          <ScalarProperty Name="PSR_Code" ColumnName="PSR_Code" />
+          <ScalarProperty Name="PSR_Name" ColumnName="PSR_Name" />
+          <ScalarProperty Name="cluster" ColumnName="cluster" />
+          <ScalarProperty Name="DBCode" ColumnName="DBCode" />
+          <ScalarProperty Name="OfficeAddress" ColumnName="OfficeAddress" />
+          <ScalarProperty Name="SKU_id" ColumnName="SKU_id" />
+          <ScalarProperty Name="SKUName" ColumnName="SKUName" />
+          <ScalarProperty Name="TotalOutlet" ColumnName="TotalOutlet" />
+          <ScalarProperty Name="BuyerOutlet" ColumnName="BuyerOutlet" />
+          <ScalarProperty Name="NonBuyer" ColumnName="NonBuyer" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="RPT_Delivery_BuyerByPSRsOutletList" FunctionName="ODMSBIModel.Store.RPT_Delivery_BuyerByPSRsOutletList">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="ODMSBIModel.RPT_Delivery_BuyerByPSRsOutletList_Result">
+          <ScalarProperty Name="REGION_Name" ColumnName="REGION_Name" />
+          <ScalarProperty Name="AREA_Name" ColumnName="AREA_Name" />
+          <ScalarProperty Name="CEAREA_Name" ColumnName="CEAREA_Name" />
+          <ScalarProperty Name="DB_Name" ColumnName="DB_Name" />
+          <ScalarProperty Name="DBCode" ColumnName="DBCode" />
+          <ScalarProperty Name="cluster" ColumnName="cluster" />
+          <ScalarProperty Name="PSR_Name" ColumnName="PSR_Name" />
+          <ScalarProperty Name="PSR_Code" ColumnName="PSR_Code" />
+          <ScalarProperty Name="RouteName" ColumnName="RouteName" />
+          <ScalarProperty Name="OutletCode" ColumnName="OutletCode" />
+          <ScalarProperty Name="OutletName" ColumnName="OutletName" />
+          <ScalarProperty Name="Address" ColumnName="Address" />
+          <ScalarProperty Name="OwnerName" ColumnName="OwnerName" />
+          <ScalarProperty Name="ContactNo" ColumnName="ContactNo" />
+          <ScalarProperty Name="HaveVisicooler" ColumnName="HaveVisicooler" />
+          <ScalarProperty Name="Channel" ColumnName="Channel" />
+          <ScalarProperty Name="Category" ColumnName="Category" />
+          <ScalarProperty Name="Grade" ColumnName="Grade" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="RPT_Delivery_BuyerByPSRSummary" FunctionName="ODMSBIModel.Store.RPT_Delivery_BuyerByPSRSummary">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="ODMSBIModel.RPT_Delivery_BuyerByPSRSummary_Result">
+          <ScalarProperty Name="DB_Name" ColumnName="DB_Name" />
+          <ScalarProperty Name="CEAREA_Name" ColumnName="CEAREA_Name" />
+          <ScalarProperty Name="AREA_Name" ColumnName="AREA_Name" />
+          <ScalarProperty Name="REGION_Name" ColumnName="REGION_Name" />
+          <ScalarProperty Name="PSR_id" ColumnName="PSR_id" />
+          <ScalarProperty Name="PSR_Code" ColumnName="PSR_Code" />
+          <ScalarProperty Name="PSR_Name" ColumnName="PSR_Name" />
+          <ScalarProperty Name="cluster" ColumnName="cluster" />
+          <ScalarProperty Name="DBCode" ColumnName="DBCode" />
+          <ScalarProperty Name="OfficeAddress" ColumnName="OfficeAddress" />
+          <ScalarProperty Name="TotalOutlet" ColumnName="TotalOutlet" />
+          <ScalarProperty Name="BuyerOutlet" ColumnName="BuyerOutlet" />
+          <ScalarProperty Name="NonBuyer" ColumnName="NonBuyer" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="RPT_Delivery_DBPerformanceKPISummary" FunctionName="ODMSBIModel.Store.RPT_Delivery_DBPerformanceKPISummary">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="ODMSBIModel.RPT_Delivery_DBPerformanceKPISummary_Result">
+          <ScalarProperty Name="DB_Id" ColumnName="DB_Id" />
+          <ScalarProperty Name="DB_Name" ColumnName="DB_Name" />
+          <ScalarProperty Name="CEAREA_Name" ColumnName="CEAREA_Name" />
+          <ScalarProperty Name="AREA_Name" ColumnName="AREA_Name" />
+          <ScalarProperty Name="REGION_Name" ColumnName="REGION_Name" />
+          <ScalarProperty Name="DBCode" ColumnName="DBCode" />
+          <ScalarProperty Name="OfficeAddress" ColumnName="OfficeAddress" />
+          <ScalarProperty Name="PerformerId" ColumnName="PerformerId" />
+          <ScalarProperty Name="PerformerName" ColumnName="PerformerName" />
+          <ScalarProperty Name="TotalTGTCS" ColumnName="TotalTGTCS" />
+          <ScalarProperty Name="TotalTGTVolume8oz" ColumnName="TotalTGTVolume8oz" />
+          <ScalarProperty Name="SalesScheduleCall" ColumnName="SalesScheduleCall" />
+          <ScalarProperty Name="SalesMemo" ColumnName="SalesMemo" />
+          <ScalarProperty Name="TotalLineSold" ColumnName="TotalLineSold" />
+          <ScalarProperty Name="TotalSoldInVolume8oZ" ColumnName="TotalSoldInVolume8oZ" />
+          <ScalarProperty Name="TotalSoldInCase" ColumnName="TotalSoldInCase" />
+          <ScalarProperty Name="TotalSoldInValue" ColumnName="TotalSoldInValue" />
+          <ScalarProperty Name="TotalOrderedInVolume8oZ" ColumnName="TotalOrderedInVolume8oZ" />
+          <ScalarProperty Name="TotalOrderedInCase" ColumnName="TotalOrderedInCase" />
+          <ScalarProperty Name="TotalOrderedInValue" ColumnName="TotalOrderedInValue" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="RPT_Delivery_NonBuyerByDBsOutletList" FunctionName="ODMSBIModel.Store.RPT_Delivery_NonBuyerByDBsOutletList">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="ODMSBIModel.RPT_Delivery_NonBuyerByDBsOutletList_Result">
+          <ScalarProperty Name="REGION_Name" ColumnName="REGION_Name" />
+          <ScalarProperty Name="AREA_Name" ColumnName="AREA_Name" />
+          <ScalarProperty Name="CEAREA_Name" ColumnName="CEAREA_Name" />
+          <ScalarProperty Name="DB_Name" ColumnName="DB_Name" />
+          <ScalarProperty Name="DBCode" ColumnName="DBCode" />
+          <ScalarProperty Name="cluster" ColumnName="cluster" />
+          <ScalarProperty Name="PSR_Name" ColumnName="PSR_Name" />
+          <ScalarProperty Name="PSR_Code" ColumnName="PSR_Code" />
+          <ScalarProperty Name="RouteName" ColumnName="RouteName" />
+          <ScalarProperty Name="OutletCode" ColumnName="OutletCode" />
+          <ScalarProperty Name="OutletName" ColumnName="OutletName" />
+          <ScalarProperty Name="Address" ColumnName="Address" />
+          <ScalarProperty Name="OwnerName" ColumnName="OwnerName" />
+          <ScalarProperty Name="ContactNo" ColumnName="ContactNo" />
+          <ScalarProperty Name="HaveVisicooler" ColumnName="HaveVisicooler" />
+          <ScalarProperty Name="Channel" ColumnName="Channel" />
+          <ScalarProperty Name="Category" ColumnName="Category" />
+          <ScalarProperty Name="Grade" ColumnName="Grade" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="RPT_Delivery_NonBuyerByPSRsOutletList" FunctionName="ODMSBIModel.Store.RPT_Delivery_NonBuyerByPSRsOutletList">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="ODMSBIModel.RPT_Delivery_NonBuyerByPSRsOutletList_Result">
+          <ScalarProperty Name="REGION_Name" ColumnName="REGION_Name" />
+          <ScalarProperty Name="AREA_Name" ColumnName="AREA_Name" />
+          <ScalarProperty Name="CEAREA_Name" ColumnName="CEAREA_Name" />
+          <ScalarProperty Name="DB_Name" ColumnName="DB_Name" />
+          <ScalarProperty Name="DBCode" ColumnName="DBCode" />
+          <ScalarProperty Name="cluster" ColumnName="cluster" />
+          <ScalarProperty Name="PSR_Name" ColumnName="PSR_Name" />
+          <ScalarProperty Name="PSR_Code" ColumnName="PSR_Code" />
+          <ScalarProperty Name="RouteName" ColumnName="RouteName" />
+          <ScalarProperty Name="OutletCode" ColumnName="OutletCode" />
+          <ScalarProperty Name="OutletName" ColumnName="OutletName" />
+          <ScalarProperty Name="Address" ColumnName="Address" />
+          <ScalarProperty Name="OwnerName" ColumnName="OwnerName" />
+          <ScalarProperty Name="ContactNo" ColumnName="ContactNo" />
+          <ScalarProperty Name="HaveVisicooler" ColumnName="HaveVisicooler" />
+          <ScalarProperty Name="Channel" ColumnName="Channel" />
+          <ScalarProperty Name="Category" ColumnName="Category" />
+          <ScalarProperty Name="Grade" ColumnName="Grade" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="RPT_Delivery_OutletWiseSKUWiseDelivery" FunctionName="ODMSBIModel.Store.RPT_Delivery_OutletWiseSKUWiseDelivery">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="ODMSBIModel.RPT_Delivery_OutletWiseSKUWiseDelivery_Result">
+          <ScalarProperty Name="DB_Id" ColumnName="DB_Id" />
+          <ScalarProperty Name="DB_Name" ColumnName="DB_Name" />
+          <ScalarProperty Name="CEAREA_id" ColumnName="CEAREA_id" />
+          <ScalarProperty Name="CEAREA_Name" ColumnName="CEAREA_Name" />
+          <ScalarProperty Name="AREA_id" ColumnName="AREA_id" />
+          <ScalarProperty Name="AREA_Name" ColumnName="AREA_Name" />
+          <ScalarProperty Name="REGION_id" ColumnName="REGION_id" />
+          <ScalarProperty Name="REGION_Name" ColumnName="REGION_Name" />
+          <ScalarProperty Name="National_id" ColumnName="National_id" />
+          <ScalarProperty Name="National" ColumnName="National" />
+          <ScalarProperty Name="Status" ColumnName="Status" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="PSR_id" ColumnName="PSR_id" />
+          <ScalarProperty Name="PSR_Code" ColumnName="PSR_Code" />
+          <ScalarProperty Name="DBCode" ColumnName="DBCode" />
+          <ScalarProperty Name="OfficeAddress" ColumnName="OfficeAddress" />
+          <ScalarProperty Name="cluster" ColumnName="cluster" />
+          <ScalarProperty Name="RouteName" ColumnName="RouteName" />
+          <ScalarProperty Name="RouteID" ColumnName="RouteID" />
+          <ScalarProperty Name="OutletId" ColumnName="OutletId" />
+          <ScalarProperty Name="OutletCode" ColumnName="OutletCode" />
+          <ScalarProperty Name="OutletName" ColumnName="OutletName" />
+          <ScalarProperty Name="OutletName_b" ColumnName="OutletName_b" />
+          <ScalarProperty Name="Address" ColumnName="Address" />
+          <ScalarProperty Name="OwnerName" ColumnName="OwnerName" />
+          <ScalarProperty Name="ContactNo" ColumnName="ContactNo" />
+          <ScalarProperty Name="HaveVisicooler" ColumnName="HaveVisicooler" />
+          <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+          <ScalarProperty Name="channel_name" ColumnName="channel_name" />
+          <ScalarProperty Name="outlet_category_name" ColumnName="outlet_category_name" />
+          <ScalarProperty Name="Outlet_grade" ColumnName="Outlet_grade" />
+          <ScalarProperty Name="Distributorid" ColumnName="Distributorid" />
+          <ScalarProperty Name="SKUId" ColumnName="SKUId" />
+          <ScalarProperty Name="SKUName" ColumnName="SKUName" />
+          <ScalarProperty Name="PackSize" ColumnName="PackSize" />
+          <ScalarProperty Name="Delivered_Quentity" ColumnName="Delivered_Quentity" />
+          <ScalarProperty Name="Value" ColumnName="Value" />
+          <ScalarProperty Name="FreeDelivered_Quentity" ColumnName="FreeDelivered_Quentity" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="RPT_Delivery_OutletWiseSummary" FunctionName="ODMSBIModel.Store.RPT_Delivery_OutletWiseSummary" />
+    <FunctionImportMapping FunctionImportName="RPT_Order_OutletWiseSKUWiseOrder" FunctionName="ODMSBIModel.Store.RPT_Order_OutletWiseSKUWiseOrder">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="ODMSBIModel.RPT_Order_OutletWiseSKUWiseOrder_Result">
+          <ScalarProperty Name="DB_Id" ColumnName="DB_Id" />
+          <ScalarProperty Name="DB_Name" ColumnName="DB_Name" />
+          <ScalarProperty Name="CEAREA_id" ColumnName="CEAREA_id" />
+          <ScalarProperty Name="CEAREA_Name" ColumnName="CEAREA_Name" />
+          <ScalarProperty Name="AREA_id" ColumnName="AREA_id" />
+          <ScalarProperty Name="AREA_Name" ColumnName="AREA_Name" />
+          <ScalarProperty Name="REGION_id" ColumnName="REGION_id" />
+          <ScalarProperty Name="REGION_Name" ColumnName="REGION_Name" />
+          <ScalarProperty Name="National_id" ColumnName="National_id" />
+          <ScalarProperty Name="National" ColumnName="National" />
+          <ScalarProperty Name="Status" ColumnName="Status" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="PSR_id" ColumnName="PSR_id" />
+          <ScalarProperty Name="PSR_Code" ColumnName="PSR_Code" />
+          <ScalarProperty Name="DBCode" ColumnName="DBCode" />
+          <ScalarProperty Name="OfficeAddress" ColumnName="OfficeAddress" />
+          <ScalarProperty Name="cluster" ColumnName="cluster" />
+          <ScalarProperty Name="RouteName" ColumnName="RouteName" />
+          <ScalarProperty Name="RouteID" ColumnName="RouteID" />
+          <ScalarProperty Name="OutletId" ColumnName="OutletId" />
+          <ScalarProperty Name="OutletCode" ColumnName="OutletCode" />
+          <ScalarProperty Name="OutletName" ColumnName="OutletName" />
+          <ScalarProperty Name="OutletName_b" ColumnName="OutletName_b" />
+          <ScalarProperty Name="Address" ColumnName="Address" />
+          <ScalarProperty Name="OwnerName" ColumnName="OwnerName" />
+          <ScalarProperty Name="ContactNo" ColumnName="ContactNo" />
+          <ScalarProperty Name="HaveVisicooler" ColumnName="HaveVisicooler" />
+          <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+          <ScalarProperty Name="channel_name" ColumnName="channel_name" />
+          <ScalarProperty Name="outlet_category_name" ColumnName="outlet_category_name" />
+          <ScalarProperty Name="Outlet_grade" ColumnName="Outlet_grade" />
+          <ScalarProperty Name="Distributorid" ColumnName="Distributorid" />
+          <ScalarProperty Name="SKUId" ColumnName="SKUId" />
+          <ScalarProperty Name="SKUName" ColumnName="SKUName" />
+          <ScalarProperty Name="PackSize" ColumnName="PackSize" />
+          <ScalarProperty Name="Order_Quentity" ColumnName="Order_Quentity" />
+          <ScalarProperty Name="Value" ColumnName="Value" />
+          <ScalarProperty Name="FreeOrder_Quentity" ColumnName="FreeOrder_Quentity" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="RPT_Order_PSRWiseSKUWiseOrder" FunctionName="ODMSBIModel.Store.RPT_Order_PSRWiseSKUWiseOrder">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="ODMSBIModel.RPT_Order_PSRWiseSKUWiseOrder_Result">
+          <ScalarProperty Name="DB_Id" ColumnName="DB_Id" />
+          <ScalarProperty Name="DB_Name" ColumnName="DB_Name" />
+          <ScalarProperty Name="CEAREA_id" ColumnName="CEAREA_id" />
+          <ScalarProperty Name="CEAREA_Name" ColumnName="CEAREA_Name" />
+          <ScalarProperty Name="AREA_id" ColumnName="AREA_id" />
+          <ScalarProperty Name="AREA_Name" ColumnName="AREA_Name" />
+          <ScalarProperty Name="REGION_id" ColumnName="REGION_id" />
+          <ScalarProperty Name="REGION_Name" ColumnName="REGION_Name" />
+          <ScalarProperty Name="PSRId" ColumnName="PSRId" />
+          <ScalarProperty Name="PSRName" ColumnName="PSRName" />
+          <ScalarProperty Name="SKUId" ColumnName="SKUId" />
+          <ScalarProperty Name="SKUName" ColumnName="SKUName" />
+          <ScalarProperty Name="PackSize" ColumnName="PackSize" />
+          <ScalarProperty Name="SKUVolume8oz" ColumnName="SKUVolume8oz" />
+          <ScalarProperty Name="UnitPrice" ColumnName="UnitPrice" />
+          <ScalarProperty Name="Order_Quentity" ColumnName="Order_Quentity" />
+          <ScalarProperty Name="Confirmed_Quantity" ColumnName="Confirmed_Quantity" />
+          <ScalarProperty Name="FreeOrder_Quentity" ColumnName="FreeOrder_Quentity" />
+          <ScalarProperty Name="FreeConfirmed_Quantity" ColumnName="FreeConfirmed_Quantity" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="RPT_StockMovement" FunctionName="ODMSBIModel.Store.RPT_StockMovement">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="ODMSBIModel.RPT_StockMovement_Result">
+          <ScalarProperty Name="db_id" ColumnName="db_id" />
+          <ScalarProperty Name="sku_id" ColumnName="sku_id" />
+          <ScalarProperty Name="skuname" ColumnName="skuname" />
+          <ScalarProperty Name="PackSize" ColumnName="PackSize" />
+          <ScalarProperty Name="batch_id" ColumnName="batch_id" />
+          <ScalarProperty Name="db_lifting_price" ColumnName="db_lifting_price" />
+          <ScalarProperty Name="outlet_lifting_price" ColumnName="outlet_lifting_price" />
+          <ScalarProperty Name="mrp" ColumnName="mrp" />
+          <ScalarProperty Name="OpeningSoundStockQty" ColumnName="OpeningSoundStockQty" />
+          <ScalarProperty Name="OpeningBookedStockQty" ColumnName="OpeningBookedStockQty" />
+          <ScalarProperty Name="PrimaryChallanQty" ColumnName="PrimaryChallanQty" />
+          <ScalarProperty Name="PrimaryQty" ColumnName="PrimaryQty" />
+          <ScalarProperty Name="SalesQty" ColumnName="SalesQty" />
+          <ScalarProperty Name="FreeSalesQty" ColumnName="FreeSalesQty" />
+          <ScalarProperty Name="ClosingStockQty" ColumnName="ClosingStockQty" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="RPT_Delivery_PSRPerformanceKPISummary" FunctionName="ODMSBIModel.Store.RPT_Delivery_PSRPerformanceKPISummary">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="ODMSBIModel.RPT_Delivery_PSRPerformanceKPISummary_Result">
+          <ScalarProperty Name="DB_Id" ColumnName="DB_Id" />
+          <ScalarProperty Name="DB_Name" ColumnName="DB_Name" />
+          <ScalarProperty Name="CEAREA_Name" ColumnName="CEAREA_Name" />
+          <ScalarProperty Name="AREA_Name" ColumnName="AREA_Name" />
+          <ScalarProperty Name="REGION_Name" ColumnName="REGION_Name" />
+          <ScalarProperty Name="DBCode" ColumnName="DBCode" />
+          <ScalarProperty Name="OfficeAddress" ColumnName="OfficeAddress" />
+          <ScalarProperty Name="cluster" ColumnName="cluster" />
+          <ScalarProperty Name="PSR_Code" ColumnName="PSR_Code" />
+          <ScalarProperty Name="PerformerId" ColumnName="PerformerId" />
+          <ScalarProperty Name="PerformerName" ColumnName="PerformerName" />
+          <ScalarProperty Name="TotalTGTCS" ColumnName="TotalTGTCS" />
+          <ScalarProperty Name="TotalTGTVolume8oz" ColumnName="TotalTGTVolume8oz" />
+          <ScalarProperty Name="SalesScheduleCall" ColumnName="SalesScheduleCall" />
+          <ScalarProperty Name="SalesMemo" ColumnName="SalesMemo" />
+          <ScalarProperty Name="TotalLineSold" ColumnName="TotalLineSold" />
+          <ScalarProperty Name="TotalSoldInVolume8oZ" ColumnName="TotalSoldInVolume8oZ" />
+          <ScalarProperty Name="TotalSoldInCase" ColumnName="TotalSoldInCase" />
+          <ScalarProperty Name="TotalSoldInValue" ColumnName="TotalSoldInValue" />
+          <ScalarProperty Name="TotalOrderedInVolume8oZ" ColumnName="TotalOrderedInVolume8oZ" />
+          <ScalarProperty Name="TotalOrderedInCase" ColumnName="TotalOrderedInCase" />
+          <ScalarProperty Name="TotalOrderedInValue" ColumnName="TotalOrderedInValue" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="RPT_Delivery_PSRWiseSKUWiseDelivery" FunctionName="ODMSBIModel.Store.RPT_Delivery_PSRWiseSKUWiseDelivery">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="ODMSBIModel.RPT_Delivery_PSRWiseSKUWiseDelivery_Result">
+          <ScalarProperty Name="DB_Id" ColumnName="DB_Id" />
+          <ScalarProperty Name="DB_Name" ColumnName="DB_Name" />
+          <ScalarProperty Name="CEAREA_id" ColumnName="CEAREA_id" />
+          <ScalarProperty Name="CEAREA_Name" ColumnName="CEAREA_Name" />
+          <ScalarProperty Name="AREA_id" ColumnName="AREA_id" />
+          <ScalarProperty Name="AREA_Name" ColumnName="AREA_Name" />
+          <ScalarProperty Name="REGION_id" ColumnName="REGION_id" />
+          <ScalarProperty Name="REGION_Name" ColumnName="REGION_Name" />
+          <ScalarProperty Name="PSRId" ColumnName="PSRId" />
+          <ScalarProperty Name="PSRName" ColumnName="PSRName" />
+          <ScalarProperty Name="SKUId" ColumnName="SKUId" />
+          <ScalarProperty Name="SKUName" ColumnName="SKUName" />
+          <ScalarProperty Name="PackSize" ColumnName="PackSize" />
+          <ScalarProperty Name="SKUVolume8oz" ColumnName="SKUVolume8oz" />
+          <ScalarProperty Name="UnitPrice" ColumnName="UnitPrice" />
+          <ScalarProperty Name="Delivered_Quentity" ColumnName="Delivered_Quentity" />
+          <ScalarProperty Name="FreeDelivered_Quentity" ColumnName="FreeDelivered_Quentity" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+  </EntityContainerMapping>
+</Mapping>
