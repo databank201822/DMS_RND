@@ -1,4 +1,5 @@
-﻿using System.Linq;
+﻿using System;
+using System.Linq;
 using System.Web.Mvc;
 using ODMS.Models;
 using ODMS.Models.ViewModel;
@@ -38,7 +39,9 @@ namespace ODMS.Controllers
                             Session["User_biz_role_id"] = y.User_biz_role_id;
                             Session["biz_zone_id"] = y.biz_zone_id;
                             Session["User_role_id"] = y.User_role_id;
-                            Session["MenuMaster"] = Db.tbl_Manu_Role_mapping.Where(s=> s.Roleid == y.User_role_id).ToList();
+                          
+
+
 
                         }
                         else
@@ -49,6 +52,22 @@ namespace ODMS.Controllers
                             return PartialView();
                         }
                     }
+
+
+                    var userRole = Convert.ToInt32(Session["User_role_id"]);
+
+                    var mainManuid = Db.tbl_Manu_Role_mapping.Where(s => s.Roleid == userRole).Select(s=>s.MainMenuid).ToList();
+                    var submenuListid = Db.tbl_Manu_Role_mapping.Where(s => s.Roleid == userRole).Select(s=>s.SubMenuid).ToList();
+                    var submenuSecondListid = Db.tbl_Manu_Role_mapping.Where(s => s.Roleid == userRole).Select(s=>s.SubMenuSecondid).ToList();
+
+
+                    Session["MainMenus"] = Db.tbl_MainMenu.Where(s => mainManuid.Contains(s.Id)).OrderBy(s=>s.sl)
+                        .ToList();
+                    Session["SubMenu"] = Db.tbl_SubMenu.Where(s => submenuListid.Contains(s.Id)).OrderBy(s => s.sl)
+                        .ToList();
+                    Session["SubMenuSecond"] = Db.tbl_SubMenuSecond.Where(s => submenuSecondListid.Contains(s.Id))
+                        .OrderBy(s => s.sl).ToList();
+                  
                     return RedirectToAction("Index", "Home");
 
                 }
@@ -84,7 +103,19 @@ namespace ODMS.Controllers
                     }
 
 
-                    
+                    var userRole = Convert.ToInt32(Session["User_role_id"]);
+
+                    var mainManuid = Db.tbl_Manu_Role_mapping.Where(s => s.Roleid == userRole).Select(s => s.MainMenuid).ToList();
+                    var submenuListid = Db.tbl_Manu_Role_mapping.Where(s => s.Roleid == userRole).Select(s => s.SubMenuid).ToList();
+                    var submenuSecondListid = Db.tbl_Manu_Role_mapping.Where(s => s.Roleid == userRole).Select(s => s.SubMenuSecondid).ToList();
+
+
+                    Session["MainMenus"] = Db.tbl_MainMenu.Where(s => mainManuid.Contains(s.Id)).OrderBy(s => s.sl)
+                        .ToList();
+                    Session["SubMenu"] = Db.tbl_SubMenu.Where(s => submenuListid.Contains(s.Id)).OrderBy(s => s.sl)
+                        .ToList();
+                    Session["SubMenuSecond"] = Db.tbl_SubMenuSecond.Where(s => submenuSecondListid.Contains(s.Id))
+                        .OrderBy(s => s.sl).ToList();
 
                     return RedirectToAction("Index", "Home");
                 }

@@ -415,6 +415,12 @@
     <Compile Include="Models\RPT_Realtime_OrderVsdeliveredSummary_Result.cs">
       <DependentUpon>ODMS.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\RPT_Realtime_OutletWiseOrder_Result.cs">
+      <DependentUpon>ODMS.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\RPT_Realtime_SKUWiseOrder_Result.cs">
+      <DependentUpon>ODMS.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\RPT_Realtime_TradepromotionDetails_Result.cs">
       <DependentUpon>ODMS.tt</DependentUpon>
     </Compile>
@@ -3025,6 +3031,10 @@
     <Content Include="Views\ReportDelivery\TradePromotionSales\TradePromotionSalesFilter.cshtml" />
     <Content Include="Views\ReportDelivery\TradePromotionSales\TradePromotionSalesDetails.cshtml" />
     <Content Include="Views\ReportDelivery\TradePromotionSales\BulkInvoice.cshtml" />
+    <Content Include="Views\ReportRealtime\CurrentPsrWiseOrder\CurrentPsrWiseOrder.cshtml" />
+    <Content Include="Views\ReportRealtime\CurrentOutletwiseOrder\CurrentOutletwiseOrder.cshtml" />
+    <Content Include="Views\ReportRealtime\CurrentPsrWiseOrder\CurrentPsrWiseOrderFilter.cshtml" />
+    <Content Include="Views\ReportRealtime\CurrentOutletwiseOrder\CurrentOutletwiseOrderFilter.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -3083,6 +3093,7 @@
     <EmbeddedResource Include="Reports\Delivery\RPT_Delivery_BuyerByPSRDetails.rdlc" />
     <EmbeddedResource Include="Reports\Delivery\RPT_KPIDBSummary.rdlc" />
     <EmbeddedResource Include="Reports\Delivery\RPT_TPOutletWiseDetails.rdlc" />
+    <EmbeddedResource Include="Reports\Realtime\RPT_Realtime_SKUWiseOrder.rdlc" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

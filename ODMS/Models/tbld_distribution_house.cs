@@ -30,5 +30,9 @@ namespace ODMS.Models
         public int PriceBuandle_id { get; set; }
         public int DeliveryModuleStatus { get; set; }
         public int Status { get; set; }
+        public Nullable<int> MV { get; set; }
+        public Nullable<int> NMV { get; set; }
+        public Nullable<System.DateTime> LastReplacement { get; set; }
+        public string Remark { get; set; }
     }
 }

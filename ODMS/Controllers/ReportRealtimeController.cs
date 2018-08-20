@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Web.Mvc;
+using System.Web.UI.WebControls;
+using Microsoft.Reporting.WebForms;
 using ODMS.Models;
 
 namespace ODMS.Controllers
@@ -156,6 +158,91 @@ namespace ODMS.Controllers
             return null;
 
 
+        }
+
+        public ActionResult CurrentPsrWiseOrder()
+        {
+            return View("CurrentPsrWiseOrder/CurrentPsrWiseOrder");
+        }
+
+        [HttpPost]
+        public ActionResult CurrentPsrWiseOrderFilter(int[] rsMid, int[] asMid, int[] cEid, int[] id, int[] skuIds, DateTime startDate, DateTime endDate)
+        {
+            string dbids = sp.Dbids(rsMid, asMid, cEid, id);
+            string skulist = null;
+            if (skuIds != null)
+            {
+
+                skulist = string.Join(",", skuIds);
+            }
+
+            ReportViewer reportViewer = new ReportViewer
+            {
+                ProcessingMode = ProcessingMode.Local,
+                SizeToReportContent = true,
+                Width = Unit.Percentage(100),
+                Height = Unit.Pixel(600)
+
+            };
+
+            List<RPT_Realtime_SKUWiseOrder_Result> skuOrder = Db.RPT_Realtime_SKUWiseOrder(startDate, endDate, dbids, skulist)
+                .ToList();
+
+
+            reportViewer.LocalReport.ReportPath = Server.MapPath(@"~\Reports\Realtime\RPT_Realtime_SKUWiseOrder.rdlc");
+
+
+            ReportDataSource rdc = new ReportDataSource("SKUOrder", skuOrder);
+
+            reportViewer.LocalReport.DataSources.Add(rdc);
+            reportViewer.LocalReport.Refresh();
+            reportViewer.Visible = true;
+
+            ViewBag.ReportViewer = reportViewer;
+
+            return PartialView("CurrentPsrWiseOrder/CurrentPsrWiseOrderFilter");
+        }
+
+
+
+        public ActionResult CurrentOutletwiseOrder()
+        {
+            return View("CurrentOutletwiseOrder/CurrentOutletwiseOrder");
+        }
+
+
+        [HttpPost]
+        public ActionResult CurrentOutletwiseOrderFilter(int[] rsMid, int[] asMid, int[] cEid, int[] id,DateTime startDate, DateTime endDate)
+        {
+            string dbids = sp.Dbids(rsMid, asMid, cEid, id);
+            string skulist = null;
+           
+
+            ReportViewer reportViewer = new ReportViewer
+            {
+                ProcessingMode = ProcessingMode.Local,
+                SizeToReportContent = true,
+                Width = Unit.Percentage(100),
+                Height = Unit.Pixel(600)
+
+            };
+
+            //List<RPT_Realtime_SKUWiseOrder> outletOrder = Db.RPT_Realtime_SKUWiseOrder(startDate, endDate, dbids, skulist)
+            //    .ToList();
+
+
+            //reportViewer.LocalReport.ReportPath = Server.MapPath(@"~\Reports\Order\RPT_OutletWiseOrder_Symmary.rdlc");
+
+
+            //ReportDataSource rdc = new ReportDataSource("OutletOrder", outletOrder);
+
+            //reportViewer.LocalReport.DataSources.Add(rdc);
+            //reportViewer.LocalReport.Refresh();
+            //reportViewer.Visible = true;
+
+            //ViewBag.ReportViewer = reportViewer;
+
+            return PartialView("CurrentPsrWiseOrder/CurrentPsrWiseOrderFilter");
         }
     }
 }

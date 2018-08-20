@@ -79,12 +79,11 @@ namespace ODMS.Controllers
 
                 };
 
-            if (data != null)
-            {
-                DBhouseiMv dBhouseiMv = new DBhouseiMv();
+          
+              
                 foreach (var item in data)
                 {
-                    dBhouseiMv = new DBhouseiMv()
+                    DBhouseiMv dBhouseiMv = new DBhouseiMv()
                     {
                         DbId = item.DbId,
                         DbName = item.DbName,
@@ -100,7 +99,7 @@ namespace ODMS.Controllers
                         Status = item.Status
 
                     };
-                }
+                
 
                 return View(dBhouseiMv);
             }
@@ -138,14 +137,16 @@ namespace ODMS.Controllers
                     OwnerName = dBhouseMv.OwnerName,
                     OwnerMoble = dBhouseMv.OwnerMoble,
                     EmailAddress = dBhouseMv.EmailAddress,
-                    CreateDate = dBhouseMv.CreateDate,
-                    ModifiedDate = dBhouseMv.ModifiedDate,
+                    CreateDate = DateTime.Now,
+                    ModifiedDate = DateTime.Now,
                     Cluster_id = dBhouseMv.ClusterId,
                     Zone_id = dBhouseMv.ZoneId,
                     PriceBuandle_id = dBhouseMv.PriceBuandleId,
                     DeliveryModuleStatus = dBhouseMv.DeliveryModuleStatus,
-                    Status = dBhouseMv.Status
-
+                    Status = dBhouseMv.Status,
+                    MV = dBhouseMv.Mv,
+                    NMV = dBhouseMv.Nmv,
+                    Remark = dBhouseMv.Remark,
 
                 };
 
@@ -208,8 +209,11 @@ namespace ODMS.Controllers
                     ZoneId = tbldDistributionHouse.Zone_id,
                     PriceBuandleId = tbldDistributionHouse.PriceBuandle_id,
                     DeliveryModuleStatus = tbldDistributionHouse.DeliveryModuleStatus,
-                    Status = tbldDistributionHouse.Status
-
+                    Status = tbldDistributionHouse.Status,
+                    Mv = tbldDistributionHouse.MV,
+                    Nmv = tbldDistributionHouse.NMV,
+                    LastReplacement = tbldDistributionHouse.LastReplacement,
+                    Remark = tbldDistributionHouse.Remark
 
                 };
                 dBhouseMv.ModifiedDate = DateTime.Now;
@@ -230,6 +234,8 @@ namespace ODMS.Controllers
         {
             if (ModelState.IsValid)
             {
+               
+
                 tbld_distribution_house tbldDistributionHouse = new tbld_distribution_house
                 {
                     DB_Id = dBhouseMv.DbId,
@@ -242,15 +248,25 @@ namespace ODMS.Controllers
                     OwnerMoble = dBhouseMv.OwnerMoble,
                     EmailAddress = dBhouseMv.EmailAddress,
                     CreateDate = dBhouseMv.CreateDate,
-                    ModifiedDate = dBhouseMv.ModifiedDate,
+                    ModifiedDate = DateTime.Now,
                     Cluster_id = dBhouseMv.ClusterId,
                     Zone_id = dBhouseMv.ZoneId,
                     PriceBuandle_id = dBhouseMv.PriceBuandleId,
                     DeliveryModuleStatus = dBhouseMv.DeliveryModuleStatus,
-                    Status = dBhouseMv.Status
+                    Status = dBhouseMv.Status,
+                    MV = dBhouseMv.Mv,
+                    NMV = dBhouseMv.Nmv,
+                    Remark = dBhouseMv.Remark,
+                    LastReplacement = dBhouseMv.LastReplacement
+                    };
 
+                if (dBhouseMv.IsReplacement == true)
+                {
+                    tbldDistributionHouse.LastReplacement = DateTime.Today;
+                }
+               
+              
 
-                };
                 Db.Entry(tbldDistributionHouse).State = EntityState.Modified;
                 Db.SaveChanges();
 

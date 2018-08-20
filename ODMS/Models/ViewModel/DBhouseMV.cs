@@ -70,11 +70,25 @@ namespace ODMS.Models.ViewModel
         [DisplayName("Delivery Module")]
         [Required(ErrorMessage = "Select DB House Delivery Module status")]
         public int DeliveryModuleStatus { get; set; }
+        [DisplayName("Mechanical Vehicle")]
+        public int? Mv { get; set; }
+        [DisplayName("Non Mechanical Vehicle")]
+        public int? Nmv { get; set; }
+
+        [DisplayName("Last Replacement")]
+        [Column(TypeName = "datetime2")]
+        public DateTime? LastReplacement { get; set; }
+
+        [DisplayName("Remark")]
+        public string Remark { get; set; }
 
         [DisplayName("Status")]
         [Required(ErrorMessage = "Select DB House  status")]
+
         public int Status { get; set; }
 
+        public bool IsReplacement { get; set; }
+        
     }
     public class DBhouseiMv
     {

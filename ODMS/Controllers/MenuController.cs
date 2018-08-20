@@ -1,4 +1,4 @@
-﻿using System;
+﻿using System.Collections.Generic;
 using System.Linq;
 using System.Web.Mvc;
 using ODMS.Models;
@@ -15,17 +15,11 @@ namespace ODMS.Controllers
         public ActionResult ShowMainMenu()
         {
             
-            var userRole = Convert.ToInt32(Session["User_role_id"]);
-
-            var mainManuid = Db.tbl_Manu_Role_mapping.Where(s => s.Roleid == userRole).Select(x => x.MainMenuid).ToList();
-            var submenuListid = Db.tbl_Manu_Role_mapping.Where(s => s.Roleid == userRole).Select(x => x.SubMenuid).ToList();
-            var submenuSecondListid = Db.tbl_Manu_Role_mapping.Where(s => s.Roleid == userRole).Select(x => x.SubMenuSecondid).ToList();
-
             MenuiVm menuiVm = new MenuiVm()
             {
-                MainMenus = Db.tbl_MainMenu.Where(s => mainManuid.Contains(s.Id)).OrderBy(x=>x.sl).ToList(),
-                SubMenu = Db.tbl_SubMenu.Where(s => submenuListid.Contains(s.Id)).OrderBy(x=>x.sl).ToList(),
-                SubMenuSecond = Db.tbl_SubMenuSecond.Where(s => submenuSecondListid.Contains(s.Id)).OrderBy(x=>x.sl).ToList()
+                MainMenus = (List<tbl_MainMenu>) Session["MainMenus"],
+                SubMenu =(List<tbl_SubMenu>) Session["SubMenu"],
+                SubMenuSecond =(List<tbl_SubMenuSecond>) Session["SubMenuSecond"]
             };
             return PartialView(menuiVm);
         }
