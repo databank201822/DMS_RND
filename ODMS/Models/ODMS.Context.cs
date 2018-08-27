@@ -325,27 +325,6 @@ namespace ODMS.Models
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<RPT_TP_List_Result>("RPT_TP_List", start_DateParameter, end_DateParameter, dbidsParameter);
         }
     
-        public virtual ObjectResult<RPT_Realtime_OutletWiseOrder_Result> RPT_Realtime_OutletWiseOrder(Nullable<System.DateTime> start_Date, Nullable<System.DateTime> end_Date, string dbids, string skuids)
-        {
-            var start_DateParameter = start_Date.HasValue ?
-                new ObjectParameter("Start_Date", start_Date) :
-                new ObjectParameter("Start_Date", typeof(System.DateTime));
-    
-            var end_DateParameter = end_Date.HasValue ?
-                new ObjectParameter("End_Date", end_Date) :
-                new ObjectParameter("End_Date", typeof(System.DateTime));
-    
-            var dbidsParameter = dbids != null ?
-                new ObjectParameter("dbids", dbids) :
-                new ObjectParameter("dbids", typeof(string));
-    
-            var skuidsParameter = skuids != null ?
-                new ObjectParameter("skuids", skuids) :
-                new ObjectParameter("skuids", typeof(string));
-    
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<RPT_Realtime_OutletWiseOrder_Result>("RPT_Realtime_OutletWiseOrder", start_DateParameter, end_DateParameter, dbidsParameter, skuidsParameter);
-        }
-    
         public virtual ObjectResult<RPT_Realtime_SKUWiseOrder_Result> RPT_Realtime_SKUWiseOrder(Nullable<System.DateTime> start_Date, Nullable<System.DateTime> end_Date, string dbids, string skuids)
         {
             var start_DateParameter = start_Date.HasValue ?
@@ -365,6 +344,23 @@ namespace ODMS.Models
                 new ObjectParameter("skuids", typeof(string));
     
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<RPT_Realtime_SKUWiseOrder_Result>("RPT_Realtime_SKUWiseOrder", start_DateParameter, end_DateParameter, dbidsParameter, skuidsParameter);
+        }
+    
+        public virtual ObjectResult<RPT_Realtime_OutletWiseOrder_Result> RPT_Realtime_OutletWiseOrder(Nullable<System.DateTime> start_Date, Nullable<System.DateTime> end_Date, string dbids)
+        {
+            var start_DateParameter = start_Date.HasValue ?
+                new ObjectParameter("Start_Date", start_Date) :
+                new ObjectParameter("Start_Date", typeof(System.DateTime));
+    
+            var end_DateParameter = end_Date.HasValue ?
+                new ObjectParameter("End_Date", end_Date) :
+                new ObjectParameter("End_Date", typeof(System.DateTime));
+    
+            var dbidsParameter = dbids != null ?
+                new ObjectParameter("dbids", dbids) :
+                new ObjectParameter("dbids", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<RPT_Realtime_OutletWiseOrder_Result>("RPT_Realtime_OutletWiseOrder", start_DateParameter, end_DateParameter, dbidsParameter);
         }
     }
 }

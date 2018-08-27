@@ -173,6 +173,17 @@
       <Parameter Name="End_Date" Mode="In" Type="DateTime" />
       <Parameter Name="dbids" Mode="In" Type="String" />
     </FunctionImport>
+    <FunctionImport Name="RPT_Realtime_SKUWiseOrder" ReturnType="Collection(ODMSModel.RPT_Realtime_SKUWiseOrder_Result)">
+      <Parameter Name="Start_Date" Mode="In" Type="DateTime" />
+      <Parameter Name="End_Date" Mode="In" Type="DateTime" />
+      <Parameter Name="dbids" Mode="In" Type="String" />
+      <Parameter Name="skuids" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="RPT_Realtime_OutletWiseOrder" ReturnType="Collection(ODMSModel.RPT_Realtime_OutletWiseOrder_Result)">
+      <Parameter Name="Start_Date" Mode="In" Type="DateTime" />
+      <Parameter Name="End_Date" Mode="In" Type="DateTime" />
+      <Parameter Name="dbids" Mode="In" Type="String" />
+    </FunctionImport>
   </EntityContainer>
   <ComplexType Name="DB_User_check_Result">
     <Property Type="Int32" Name="id" Nullable="false" />
@@ -580,6 +591,10 @@
     <Property Name="PriceBuandle_id" Type="Int32" Nullable="false" />
     <Property Name="DeliveryModuleStatus" Type="Int32" Nullable="false" />
     <Property Name="Status" Type="Int32" Nullable="false" />
+    <Property Name="MV" Type="Int32" />
+    <Property Name="NMV" Type="Int32" />
+    <Property Name="LastReplacement" Type="DateTime" Precision="3" />
+    <Property Name="Remark" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
   </EntityType>
   <EntityType Name="tbld_distributor_Route">
     <Key>
@@ -1477,5 +1492,53 @@
   <ComplexType Name="RPT_TP_List_Result">
     <Property Type="Int32" Name="id" Nullable="false" />
     <Property Type="String" Name="name" Nullable="false" MaxLength="255" />
+  </ComplexType>
+  <ComplexType Name="RPT_Realtime_SKUWiseOrder_Result">
+    <Property Type="Int32" Name="DB_Id" Nullable="false" />
+    <Property Type="String" Name="DB_Name" Nullable="false" MaxLength="50" />
+    <Property Type="String" Name="CEAREA_Name" Nullable="false" MaxLength="30" />
+    <Property Type="String" Name="AREA_Name" Nullable="false" MaxLength="30" />
+    <Property Type="String" Name="REGION_Name" Nullable="false" MaxLength="30" />
+    <Property Type="String" Name="DBCode" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="cluster" Nullable="false" MaxLength="100" />
+    <Property Type="String" Name="PSR_Code" Nullable="true" MaxLength="30" />
+    <Property Type="String" Name="Name" Nullable="true" MaxLength="256" />
+    <Property Type="Int32" Name="SKU_id" Nullable="false" />
+    <Property Type="String" Name="SKUName" Nullable="false" MaxLength="200" />
+    <Property Type="Double" Name="quantity_ordered" Nullable="false" />
+    <Property Type="Int32" Name="quantity_confirmed" Nullable="false" />
+    <Property Type="Double" Name="quantity_ordered_value" Nullable="false" />
+    <Property Type="Double" Name="quantity_confirmed_value" Nullable="false" />
+    <Property Type="Double" Name="Freequantity_ordered" Nullable="false" />
+    <Property Type="Int32" Name="Freequantity_confirmed" Nullable="false" />
+  </ComplexType>
+  <ComplexType Name="RPT_Realtime_OutletWiseOrder_Result">
+    <Property Type="String" Name="REGION_Name" Nullable="true" MaxLength="30" />
+    <Property Type="String" Name="AREA_Name" Nullable="true" MaxLength="30" />
+    <Property Type="String" Name="CEAREA_Name" Nullable="true" MaxLength="30" />
+    <Property Type="Int32" Name="DB_Id" Nullable="true" />
+    <Property Type="String" Name="DB_Name" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="DBCode" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="Cluster" Nullable="true" MaxLength="100" />
+    <Property Type="String" Name="OfficeAddress" Nullable="true" />
+    <Property Type="Int32" Name="PSR_id" Nullable="true" />
+    <Property Type="String" Name="PSR_Name" Nullable="true" MaxLength="256" />
+    <Property Type="Int32" Name="RouteID" Nullable="true" />
+    <Property Type="String" Name="RouteName" Nullable="true" MaxLength="200" />
+    <Property Type="String" Name="OutletCode" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="OutletName" Nullable="true" MaxLength="200" />
+    <Property Type="Int32" Name="outlet_id" Nullable="false" />
+    <Property Type="Int32" Name="sku_id" Nullable="false" />
+    <Property Type="String" Name="SKUName" Nullable="false" MaxLength="200" />
+    <Property Type="Int32" Name="Betch_id" Nullable="false" />
+    <Property Type="Int32" Name="Pack_size" Nullable="false" />
+    <Property Type="Double" Name="unit_sale_price" Nullable="false" />
+    <Property Type="Int32" Name="sku_order_type_id" Nullable="false" />
+    <Property Type="Int32" Name="quantity_ordered" Nullable="true" />
+    <Property Type="Int32" Name="quantity_confirmed" Nullable="true" />
+    <Property Type="Double" Name="OrderAmount" Nullable="true" />
+    <Property Type="Int32" Name="REGION_id" Nullable="true" />
+    <Property Type="Int32" Name="AREA_id" Nullable="true" />
+    <Property Type="Int32" Name="CEAREA_id" Nullable="true" />
   </ComplexType>
 </Schema>

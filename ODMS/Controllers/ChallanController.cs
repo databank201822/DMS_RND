@@ -278,7 +278,7 @@ namespace ODMS.Controllers
             if (challaniVm != null)
             {
                 int count = Db.tblt_Challan.Count(x => x.System_date == date && x.db_id == dbid) + 1;
-                string challanNumber = "C-" + challaniVm.OrderDate.ToString("yyyymmdd") + "-" + dbid + "-" + challaniVm.PsrId + "-" + count;
+                string challanNumber = "C-" + challaniVm.OrderDate.ToString("yyyyMMdd") + "-" + dbid + "-" + challaniVm.PsrId + "-" + count;
                 tblt_Challan tbltChallan = new tblt_Challan
                 {
                     challan_number = challanNumber,
@@ -466,8 +466,9 @@ namespace ODMS.Controllers
                     challanlineVmList.Add(challanlineVm);
                     civm.GrandTotalCs = civm.GrandTotalCs + Convert.ToDouble((skuListitem.Order_qty + skuListitem.Free_qty + skuListitem.Extra_qty) / skuListitem.Pack_size);
                     civm.GrandTotal = civm.GrandTotal + Convert.ToDouble((skuListitem.Order_qty + skuListitem.Free_qty + skuListitem.Extra_qty) * skuListitem.price);
-                    civm.DeliveryGrandTotalCs = civm.GrandTotalCs + Convert.ToDouble((confirmQty + freeQty) / skuListitem.Pack_size);
-                    civm.DeliveryGrandTotal = civm.GrandTotal + Convert.ToDouble((confirmQty + freeQty) * skuListitem.price);
+                    civm.DeliveryGrandTotalCs = civm.GrandTotalCs + Convert.ToDouble((confirmQty + freeQty)) / skuListitem.Pack_size;
+                    civm.DeliveryGrandTotal = civm.GrandTotal +
+                                              Convert.ToDouble((confirmQty + freeQty)) * skuListitem.price;
                 }
 
 
@@ -475,6 +476,38 @@ namespace ODMS.Controllers
 
 
                 civm.Challanline = challanlineVmList.ToList();
+
+
+                DateTime? blankTime = null;
+                var data = from a in Db.tblt_Order
+                           where a.Challan_no == tbltChallan.id && a.isProcess == 1
+                    select new OrderiVm
+                    {
+                        Orderid = a.Orderid,
+                        SoId = a.so_id,
+
+                        RouteName = Db.tbld_distributor_Route.Where(x => x.RouteID == a.route_id).Select(x => x.RouteName)
+                            .FirstOrDefault(),
+                        OutletName = Db.tbld_Outlet.Where(x => x.OutletId == a.outlet_id).Select(x => x.OutletName)
+                            .FirstOrDefault(),
+                        ChallanNo = a.Challan_no,
+                        PlannedOrderDate = a.planned_order_date,
+                        DeliveryDate = a.so_status == 3 ? a.delivery_date : blankTime,
+                        PsrName = Db.tbld_distribution_employee.Where(x => x.id == a.psr_id).Select(x => x.Name)
+                            .FirstOrDefault(),
+                        SoStatus = a.so_status,
+                        OrderCs = Db.tblt_Order_line.Where(x => x.Orderid == a.Orderid && x.sku_order_type_id == 1)
+                            .Select(x => x.quantity_confirmed / x.Pack_size).Sum().ToString(),
+                        DeliveryCs = a.so_status == 3
+                            ? Db.tblt_Order_line.Where(x => x.Orderid == a.Orderid && x.sku_order_type_id == 1)
+                                .Select(x => x.quantity_delivered / x.Pack_size).Sum().ToString()
+                            : "",
+                        TotalOrder = a.total_confirmed.ToString(),
+                        TotalDelivered = a.so_status == 3 ? a.total_delivered.ToString() : "",
+                        IsProcess = a.isProcess
+                    };
+
+                civm.Orderline = data.ToList();
 
                 return View(civm);
             }
@@ -764,6 +797,37 @@ namespace ODMS.Controllers
 
                 civm.Challanline = challanlineVmList.ToList();
 
+                DateTime? blankTime = null;
+                var data = from a in Db.tblt_Order
+                    where a.Challan_no == tbltChallan.id && a.isProcess == 1
+                    select new OrderiVm
+                    {
+                        Orderid = a.Orderid,
+                        SoId = a.so_id,
+
+                        RouteName = Db.tbld_distributor_Route.Where(x => x.RouteID == a.route_id).Select(x => x.RouteName)
+                            .FirstOrDefault(),
+                        OutletName = Db.tbld_Outlet.Where(x => x.OutletId == a.outlet_id).Select(x => x.OutletName)
+                            .FirstOrDefault(),
+                        ChallanNo = a.Challan_no,
+                        PlannedOrderDate = a.planned_order_date,
+                        DeliveryDate = a.so_status == 3 ? a.delivery_date : blankTime,
+                        PsrName = Db.tbld_distribution_employee.Where(x => x.id == a.psr_id).Select(x => x.Name)
+                            .FirstOrDefault(),
+                        SoStatus = a.so_status,
+                        OrderCs = Db.tblt_Order_line.Where(x => x.Orderid == a.Orderid && x.sku_order_type_id == 1)
+                            .Select(x => x.quantity_confirmed / x.Pack_size).Sum().ToString(),
+                        DeliveryCs = a.so_status == 3
+                            ? Db.tblt_Order_line.Where(x => x.Orderid == a.Orderid && x.sku_order_type_id == 1)
+                                .Select(x => x.quantity_delivered / x.Pack_size).Sum().ToString()
+                            : "",
+                        TotalOrder = a.total_confirmed.ToString(),
+                        TotalDelivered = a.so_status == 3 ? a.total_delivered.ToString() : "",
+                        IsProcess = a.isProcess
+                    };
+
+                civm.Orderline = data.ToList();
+
                 return View(civm);
             }
             return PartialView("EmptyOrder");
@@ -776,127 +840,135 @@ namespace ODMS.Controllers
 
             if (tbltChallan != null)
             {
-                ChallaniVm civm = new ChallaniVm
+                var db = Db.tbld_distribution_house.SingleOrDefault(x => x.DB_Id == tbltChallan.db_id);
+                if (db != null)
                 {
-                    Id = id,
-                    OrderDate = tbltChallan.order_date,
-                    PsrId = tbltChallan.psr_id,
-                    PsrName = tbltChallan.psr_Name,
-                    RouteId = tbltChallan.route_id,
-                    RouteName = tbltChallan.route_Name,
-                    NoOfMemo = tbltChallan.No_of_memo,
-                    ChallanStatus = tbltChallan.challan_status
-
-                };
-
-
-                List<ChallanlineVm> challanlineVmList = new List<ChallanlineVm>();
-
-                var skuList = from a in Db.tblt_Challan_line
-                              join b in Db.tbld_SKU on a.sku_id equals b.SKU_id
-                              where a.challan_id == id
-                              select a;
-
-                if (tbltChallan.challan_status != 2)
-                {
-                    foreach (var skuListitem in skuList)
+                    ChallaniVm civm = new ChallaniVm
                     {
-                        ChallanlineVm challanlineVm = new ChallanlineVm
+                        Id = id,
+                        ChallanNumber=tbltChallan.challan_number,
+                        Dbname = db.DBName,
+                        DbAddress=db.WarehouseAddress,
+                        OrderDate = tbltChallan.order_date,
+                        DeliveryDate=tbltChallan.delivery_date,
+                        PsrId = tbltChallan.psr_id,
+                        PsrName = tbltChallan.psr_Name,
+                        RouteId = tbltChallan.route_id,
+                        RouteName = tbltChallan.route_Name,
+                        NoOfMemo = tbltChallan.No_of_memo,
+                        ChallanStatus = tbltChallan.challan_status
+
+                    };
+
+
+                    List<ChallanlineVm> challanlineVmList = new List<ChallanlineVm>();
+
+                    var skuList = from a in Db.tblt_Challan_line
+                        join b in Db.tbld_SKU on a.sku_id equals b.SKU_id
+                        where a.challan_id == id
+                        select a;
+
+                    if (tbltChallan.challan_status != 2)
+                    {
+                        foreach (var skuListitem in skuList)
                         {
-                            SkuId = skuListitem.sku_id,
-                            SkuName = Db.tbld_SKU.Where(x => x.SKU_id == skuListitem.sku_id).Select(x => x.SKUName).SingleOrDefault(),
-                            BatchId = skuListitem.batch_id,
-                            Price = skuListitem.price,
-                            PackSize = skuListitem.Pack_size,
+                            ChallanlineVm challanlineVm = new ChallanlineVm
+                            {
+                                SkuId = skuListitem.sku_id,
+                                SkuName = Db.tbld_SKU.Where(x => x.SKU_id == skuListitem.sku_id).Select(x => x.SKUName).SingleOrDefault(),
+                                BatchId = skuListitem.batch_id,
+                                Price = skuListitem.price,
+                                PackSize = skuListitem.Pack_size,
 
-                            FreeCsQty = skuListitem.Free_qty / skuListitem.Pack_size,
-                            FreePsQty = skuListitem.Free_qty % skuListitem.Pack_size,
-                            FreeQty = skuListitem.Free_qty,
+                                FreeCsQty = skuListitem.Free_qty / skuListitem.Pack_size,
+                                FreePsQty = skuListitem.Free_qty % skuListitem.Pack_size,
+                                FreeQty = skuListitem.Free_qty,
 
-                            OrderCsQty = skuListitem.Order_qty / skuListitem.Pack_size,
-                            OrderPsQty = skuListitem.Order_qty % skuListitem.Pack_size,
-                            OrderQty = skuListitem.Total_qty,
-                            ExtraQty = skuListitem.Extra_qty,
+                                OrderCsQty = skuListitem.Order_qty / skuListitem.Pack_size,
+                                OrderPsQty = skuListitem.Order_qty % skuListitem.Pack_size,
+                                OrderQty = skuListitem.Total_qty,
+                                ExtraQty = skuListitem.Extra_qty,
 
-                            TotalCsQty = (skuListitem.Total_qty - skuListitem.Free_qty) / skuListitem.Pack_size,
-                            TotalPsQty = (skuListitem.Total_qty - skuListitem.Free_qty) % skuListitem.Pack_size,
-                            TotalQty = skuListitem.Total_qty - skuListitem.Free_qty,
-                            OrderQtyPrice = skuListitem.Order_qty_price,
+                                TotalCsQty = (skuListitem.Total_qty - skuListitem.Free_qty) / skuListitem.Pack_size,
+                                TotalPsQty = (skuListitem.Total_qty - skuListitem.Free_qty) % skuListitem.Pack_size,
+                                TotalQty = skuListitem.Total_qty - skuListitem.Free_qty,
+                                OrderQtyPrice = skuListitem.Order_qty_price,
 
-                            ReturnQty = skuListitem.Total_qty - skuListitem.Free_qty,
+                                ReturnQty = skuListitem.Total_qty - skuListitem.Free_qty,
 
-                        };
+                            };
 
-                        challanlineVmList.Add(challanlineVm);
-                        civm.GrandTotalCs = civm.GrandTotalCs + Convert.ToDouble((skuListitem.Order_qty + skuListitem.Free_qty + skuListitem.Extra_qty) / skuListitem.Pack_size);
-                        civm.GrandTotal = civm.GrandTotal + Convert.ToDouble((skuListitem.Order_qty + skuListitem.Free_qty + skuListitem.Extra_qty) * skuListitem.price);
-                        civm.DeliveryGrandTotalCs = 0;
-                        civm.DeliveryGrandTotal = 0;
+                            challanlineVmList.Add(challanlineVm);
+                            civm.GrandTotalCs = civm.GrandTotalCs + Convert.ToDouble((skuListitem.Order_qty + skuListitem.Free_qty + skuListitem.Extra_qty) / skuListitem.Pack_size);
+                            civm.GrandTotal = civm.GrandTotal + Convert.ToDouble((skuListitem.Order_qty + skuListitem.Free_qty + skuListitem.Extra_qty) * skuListitem.price);
+                            civm.DeliveryGrandTotalCs = 0;
+                            civm.DeliveryGrandTotal = 0;
+                        }
                     }
-                }
-                else
-                {
-
-                    foreach (var skuListitem in skuList)
+                    else
                     {
 
-                        ChallanlineVm challanlineVm = new ChallanlineVm
+                        foreach (var skuListitem in skuList)
                         {
-                            SkuId = skuListitem.sku_id,
-                            SkuName = Db.tbld_SKU.Where(x => x.SKU_id == skuListitem.sku_id).Select(x => x.SKUName)
-                                .SingleOrDefault(),
-                            BatchId = skuListitem.batch_id,
-                            Price = skuListitem.price,
-                            PackSize = skuListitem.Pack_size,
 
-                            FreeCsQty = skuListitem.Confirm_Free_qty / skuListitem.Pack_size,
-                            FreePsQty = skuListitem.Confirm_Free_qty % skuListitem.Pack_size,
-                            FreeQty = skuListitem.Confirm_Free_qty,
+                            ChallanlineVm challanlineVm = new ChallanlineVm
+                            {
+                                SkuId = skuListitem.sku_id,
+                                SkuName = Db.tbld_SKU.Where(x => x.SKU_id == skuListitem.sku_id).Select(x => x.SKUName)
+                                    .SingleOrDefault(),
+                                BatchId = skuListitem.batch_id,
+                                Price = skuListitem.price,
+                                PackSize = skuListitem.Pack_size,
 
-                            OrderCsQty = skuListitem.Order_qty / skuListitem.Pack_size,
-                            OrderPsQty = skuListitem.Order_qty % skuListitem.Pack_size,
-                            OrderQty = skuListitem.Total_qty,
-                            ExtraQty = skuListitem.Extra_qty,
+                                FreeCsQty = skuListitem.Confirm_Free_qty / skuListitem.Pack_size,
+                                FreePsQty = skuListitem.Confirm_Free_qty % skuListitem.Pack_size,
+                                FreeQty = skuListitem.Confirm_Free_qty,
 
-                            TotalCsQty = skuListitem.Order_qty / skuListitem.Pack_size,
-                            TotalPsQty = skuListitem.Order_qty % skuListitem.Pack_size,
-                            TotalQty = skuListitem.Order_qty,
-                            OrderQtyPrice = skuListitem.Order_qty_price,
+                                OrderCsQty = skuListitem.Order_qty / skuListitem.Pack_size,
+                                OrderPsQty = skuListitem.Order_qty % skuListitem.Pack_size,
+                                OrderQty = skuListitem.Total_qty,
+                                ExtraQty = skuListitem.Extra_qty,
 
-                            ConfirmQty = skuListitem.Confirm_qty,
-                            ConfirmCsQty = skuListitem.Confirm_qty / skuListitem.Pack_size,
-                            ConfirmPsQty = skuListitem.Confirm_qty % skuListitem.Pack_size,
-                            ConfirmQtyPrice = skuListitem.Confirm_qty_price,
-                            ReturnQty = skuListitem.Total_qty - (skuListitem.Confirm_qty + skuListitem.Confirm_Free_qty)
+                                TotalCsQty = skuListitem.Order_qty / skuListitem.Pack_size,
+                                TotalPsQty = skuListitem.Order_qty % skuListitem.Pack_size,
+                                TotalQty = skuListitem.Order_qty,
+                                OrderQtyPrice = skuListitem.Order_qty_price,
 
-                        };
+                                ConfirmQty = skuListitem.Confirm_qty,
+                                ConfirmCsQty = skuListitem.Confirm_qty / skuListitem.Pack_size,
+                                ConfirmPsQty = skuListitem.Confirm_qty % skuListitem.Pack_size,
+                                ConfirmQtyPrice = skuListitem.Confirm_qty_price,
+                                ReturnQty = skuListitem.Total_qty - (skuListitem.Confirm_qty + skuListitem.Confirm_Free_qty)
 
-                        challanlineVmList.Add(challanlineVm);
-                        civm.GrandTotalCs = civm.GrandTotalCs +
-                                            Convert.ToDouble(
-                                                (skuListitem.Order_qty + skuListitem.Free_qty + skuListitem.Extra_qty) /
-                                                skuListitem.Pack_size);
-                        civm.GrandTotal = civm.GrandTotal +
-                                          Convert.ToDouble(
-                                              (skuListitem.Order_qty + skuListitem.Free_qty + skuListitem.Extra_qty) *
-                                              skuListitem.price);
-                        civm.DeliveryGrandTotalCs = civm.GrandTotalCs +
-                                                    Convert.ToDouble(
-                                                        (skuListitem.Confirm_qty + skuListitem.Confirm_Free_qty) /
-                                                        skuListitem.Pack_size);
-                        civm.DeliveryGrandTotal = civm.GrandTotal +
-                                                  Convert.ToDouble((skuListitem.Confirm_qty) * skuListitem.price);
+                            };
+
+                            challanlineVmList.Add(challanlineVm);
+                            civm.GrandTotalCs = civm.GrandTotalCs +
+                                                Convert.ToDouble(
+                                                    (skuListitem.Order_qty + skuListitem.Free_qty + skuListitem.Extra_qty) /
+                                                    skuListitem.Pack_size);
+                            civm.GrandTotal = civm.GrandTotal +
+                                              Convert.ToDouble(
+                                                  (skuListitem.Order_qty + skuListitem.Free_qty + skuListitem.Extra_qty) *
+                                                  skuListitem.price);
+                            civm.DeliveryGrandTotalCs = civm.GrandTotalCs +
+                                                        Convert.ToDouble(
+                                                            (skuListitem.Confirm_qty + skuListitem.Confirm_Free_qty) /
+                                                            skuListitem.Pack_size);
+                            civm.DeliveryGrandTotal = civm.GrandTotal +
+                                                      Convert.ToDouble((skuListitem.Confirm_qty) * skuListitem.price);
+                        }
                     }
+
+                    var myList = Db.tblt_Order.Where(x => x.Challan_no == tbltChallan.id).Select(x => x.Orderid).ToList();
+
+
+                    civm.Momonumber = string.Join(",", myList.ToArray());
+
+                    civm.Challanline = challanlineVmList.ToList();
+
+                    return PartialView(civm);
                 }
-
-                var myList = Db.tblt_Order.Where(x => x.Challan_no == tbltChallan.id).Select(x => x.Orderid).ToList();
-
-
-                civm.Momonumber = string.Join(",", myList.ToArray());
-
-                civm.Challanline = challanlineVmList.ToList();
-
-                return PartialView(civm);
             }
             return PartialView("EmptyOrder");
         }

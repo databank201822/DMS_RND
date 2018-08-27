@@ -78,6 +78,10 @@ namespace ODMS.Models.ViewModel
     {
         public int Id { get; set; }
         public string ChallanNumber { get; set; }
+
+        public string Dbname { get; set; }
+
+        public string DbAddress { get; set; }
         public int DbId { get; set; }
         public int PsrId { get; set; }
         public string PsrName { get; set; }
@@ -97,7 +101,8 @@ namespace ODMS.Models.ViewModel
         public string Momonumber { get; set; }
         
         public List<ChallanlineVm> Challanline{ get; set; }
+        public List<OrderiVm> Orderline { get; set; }
         
-
+        
     }
 }

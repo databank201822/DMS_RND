@@ -215,7 +215,6 @@ namespace ODMS.Controllers
         public ActionResult CurrentOutletwiseOrderFilter(int[] rsMid, int[] asMid, int[] cEid, int[] id,DateTime startDate, DateTime endDate)
         {
             string dbids = sp.Dbids(rsMid, asMid, cEid, id);
-            string skulist = null;
            
 
             ReportViewer reportViewer = new ReportViewer
@@ -227,20 +226,20 @@ namespace ODMS.Controllers
 
             };
 
-            //List<RPT_Realtime_SKUWiseOrder> outletOrder = Db.RPT_Realtime_SKUWiseOrder(startDate, endDate, dbids, skulist)
-            //    .ToList();
+            List<RPT_Realtime_OutletWiseOrder_Result> outletOrder = Db.RPT_Realtime_OutletWiseOrder(startDate, endDate, dbids)
+                .ToList();
 
 
-            //reportViewer.LocalReport.ReportPath = Server.MapPath(@"~\Reports\Order\RPT_OutletWiseOrder_Symmary.rdlc");
+            reportViewer.LocalReport.ReportPath = Server.MapPath(@"~\Reports\Realtime\RPT_Realtime_OutletWiseOrder.rdlc");
 
 
-            //ReportDataSource rdc = new ReportDataSource("OutletOrder", outletOrder);
+            ReportDataSource rdc = new ReportDataSource("OutletOrder", outletOrder);
 
-            //reportViewer.LocalReport.DataSources.Add(rdc);
-            //reportViewer.LocalReport.Refresh();
-            //reportViewer.Visible = true;
+            reportViewer.LocalReport.DataSources.Add(rdc);
+            reportViewer.LocalReport.Refresh();
+            reportViewer.Visible = true;
 
-            //ViewBag.ReportViewer = reportViewer;
+            ViewBag.ReportViewer = reportViewer;
 
             return PartialView("CurrentPsrWiseOrder/CurrentPsrWiseOrderFilter");
         }

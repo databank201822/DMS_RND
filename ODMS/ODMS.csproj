@@ -3093,6 +3093,7 @@
     <EmbeddedResource Include="Reports\Delivery\RPT_Delivery_BuyerByPSRDetails.rdlc" />
     <EmbeddedResource Include="Reports\Delivery\RPT_KPIDBSummary.rdlc" />
     <EmbeddedResource Include="Reports\Delivery\RPT_TPOutletWiseDetails.rdlc" />
+    <EmbeddedResource Include="Reports\Realtime\RPT_Realtime_OutletWiseOrder.rdlc" />
     <EmbeddedResource Include="Reports\Realtime\RPT_Realtime_SKUWiseOrder.rdlc" />
   </ItemGroup>
   <PropertyGroup>
