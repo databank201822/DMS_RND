@@ -25,14 +25,14 @@ namespace ODMS.Models
         public string cluster { get; set; }
         public int SKU_id { get; set; }
         public string SKUName { get; set; }
-        public int quantity_ordered { get; set; }
+        public double quantity_ordered { get; set; }
         public int quantity_confirmed { get; set; }
         public double quantity_ordered_value { get; set; }
         public double quantity_confirmed_value { get; set; }
-        public int Freequantity_ordered { get; set; }
-        public int Freequantity_confirmed { get; set; }
-        public int quantity_delivered { get; set; }
+        public double Freequantity_ordered { get; set; }
+        public double Freequantity_confirmed { get; set; }
+        public double quantity_delivered { get; set; }
         public double quantity_delivered_value { get; set; }
-        public int Freequantity_delivered { get; set; }
+        public double Freequantity_delivered { get; set; }
     }
 }

@@ -295,8 +295,8 @@
 
 
     function savedata() {
-       
-
+        debugger;
+        $("#ajax_load").show();
         var purchaseLine = [];
 
         $('input[name="SkuId"]').each(function () {
@@ -330,9 +330,9 @@
             dataType: "json",
             success: function (data) {
 
-                if (data === "Success") {
+                if (data) {
 
-                    window.location.href = "/Inventory/Index";
+                    window.location.href = "/Purchase/LiftingDetails/" + data;
 
                 } 
             }

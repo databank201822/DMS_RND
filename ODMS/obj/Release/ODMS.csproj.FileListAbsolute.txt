@@ -124,8 +124,10 @@ D:\Dropbox\ODMS\ODMS\bin\pt\Microsoft.ReportViewer.WinForms.resources.dll
 D:\Dropbox\ODMS\ODMS\bin\ru\Microsoft.ReportViewer.WinForms.resources.dll
 D:\Dropbox\ODMS\ODMS\bin\zh-CHS\Microsoft.ReportViewer.WinForms.resources.dll
 D:\Dropbox\ODMS\ODMS\bin\zh-CHT\Microsoft.ReportViewer.WinForms.resources.dll
-D:\Dropbox\ODMS\ODMS\obj\Release\ODMS.csprojResolveAssemblyReference.cache
 D:\Dropbox\ODMS\ODMS\obj\Release\RdlCompile.cache
 D:\Dropbox\ODMS\ODMS\obj\Release\RdlCompile.compiled
 D:\Dropbox\ODMS\ODMS\obj\Release\ODMS.dll
 D:\Dropbox\ODMS\ODMS\obj\Release\ODMS.pdb
+D:\Dropbox\ODMS\ODMS\bin\Reports\Realtime\RPT_Realtime_OutletWiseOrder.rdlc
+D:\Dropbox\ODMS\ODMS\bin\Reports\Realtime\RPT_Realtime_SKUWiseOrder.rdlc
+D:\Dropbox\ODMS\ODMS\obj\Release\ODMS.csprojResolveAssemblyReference.cache

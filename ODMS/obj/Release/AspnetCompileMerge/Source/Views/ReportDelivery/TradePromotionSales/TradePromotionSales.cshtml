@@ -1,0 +1,218 @@
+﻿@{
+    ViewBag.Title = "Trade Promotion Sales[211]";
+}
+
+
+<div class="card">
+    <div class="row">
+        <div id="zone_filter"></div>
+        <div class="col-md-6">
+            <!--GEO Layer start-->
+            <div class="panel panel-primary">
+                <div class="panel-heading ">
+                    <div class="clearfix ">
+                        Date Range :
+                    </div>
+                </div>
+                <div class="panel-body">
+
+                    <div class="form-group">
+                        <div class="row">
+
+                            <label class="col-md-3 control-label">Date Range</label>
+                            <div class="col-md-3"><input type="text" class="form-control" name="startDate" id="startDate" value="@Session[" systemdate"]" /></div>
+                            <label class="col-md-1 control-label">TO</label>
+
+                            <div class="col-md-3">
+                                <input type="text" class="form-control" name="endDate" id="endDate" value="@Session[" systemdate"]">
+                            </div>
+                        </div>
+
+
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-6">
+
+
+            <div class="panel panel-primary">
+                <div class="panel-heading ">
+                    <div class="clearfix ">
+                        Promotation Filter
+                        <button type="button" onclick="GetPromo()" class="btn btn-sm btn-warning pull-right">Get Promotation List</button>
+                    </div>
+                </div>
+                <div class="panel-body">
+
+                    <div class="row">
+                        <label class="col-md-3">
+                            Promotation List
+                        </label>
+                        <label class="col-md-1">:</label>
+                        <div class="col-md-8">
+                            @Html.DropDownList("promo_ids", Enumerable.Empty<SelectListItem>(), new { multiple = "multiple", @class = "form-control", style = "min-width: 250px  !important;" })
+                            <br />
+
+
+                        </div>
+                    </div>
+
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+
+
+    <div class="row">
+
+
+
+        <div class="col-md-6 col-md-offset-6"><button type="button" onclick="GetData()" class="btn btn-success pull-right">Search</button></div>
+    </div>
+</div>
+
+<br />
+<div class="row">
+    <div class="col-md-12">
+        <div id="ReportDetails">
+
+        </div>
+    </div>
+
+</div>
+@{
+    DateTime systemDate = DateTime.Now;
+    if (Session["SystemDate"] != null)
+    {
+        systemDate = (DateTime)Session["SystemDate"];
+    }
+
+    var newDate = systemDate.AddDays(1);
+}
+<script>
+
+
+    $(document).ready(function () {
+
+        Get_Zonefilter();
+
+        $("#endDate,#startDate").datepicker(
+               {
+                   dateFormat: 'dd-mm-yy',
+                   maxDate: '@newDate.ToString("dd-MM-yyyy")'
+
+               }
+           );
+
+
+        $("#endDate,#startDate").val('@systemDate.ToString("dd-MM-yyyy")');
+        $('select').multiselect().multiselectfilter();
+    });
+
+
+    function GetData() {
+
+        var dbIds = $("#DB_ids").val();
+        var ceIds = $("#CE_ids").val();
+        var asmIds = $("#ASM_ids").val();
+        var rsmIds = $("#RSM_ids").val();
+        var promoIds = $("#promo_ids").val();
+        var startDate = $("#startDate").val();
+        var endDate = $("#endDate").val();
+
+
+
+        $("#ajax_load").show();
+        if (promoIds.length !== 0) {
+            if (dbIds.length !== 0 || rsmIds.length !== 0 || asmIds.length !== 0 || ceIds.length !== 0) {
+
+                $("#ReportDetails").html("");
+                $.ajax({
+                    type: "POST",
+                    url: "/ReportDelivery/TradePromotionSalesFilter",
+                    data: {
+                        RSMid: rsmIds,
+                        ASMid: asmIds,
+                        CEid: ceIds,
+                        id: dbIds,
+                        promoIds: promoIds,
+                        startDate: startDate,
+                        endDate: endDate
+                    },
+                    dataType: "HTML",
+                    async: "true",
+                    cache: "false",
+                    success: function (data) {
+                        $("#ReportDetails").html(data);
+                        convert_data_tabel();
+                    }
+                });
+
+            } else {
+                $("#ajax_load").hide();
+                swal("Sorry!", "Please select DB house !", "error");
+            }
+        } else {
+            $("#ajax_load").hide();
+            swal("Sorry!", "Please select Promotation !", "error");
+        }
+    }
+
+
+    function GetPromo() {
+      
+        var dbIds = $("#DB_ids").val();
+        var ceIds = $("#CE_ids").val();
+        var asmIds = $("#ASM_ids").val();
+        var rsmIds = $("#RSM_ids").val();
+        var startDate = $("#startDate").val();
+        var endDate = $("#endDate").val();
+
+
+
+
+        $("#ajax_load").show();
+      
+            if (dbIds.length !== 0 || rsmIds.length !== 0 || asmIds.length !== 0 || ceIds.length !== 0) {
+
+                $("#ReportDetails").html("");
+                $.ajax({
+                    type: "POST",
+                    url: "/ReportDelivery/TpList",
+                    data: {
+                        RSMid: rsmIds,
+                        ASMid: asmIds,
+                        CEid: ceIds,
+                        id: dbIds,
+                        startDate: startDate,
+                        endDate: endDate
+                       
+                    },
+                    dataType: "Json",
+                    async: "true",
+                    cache: "false",
+                    success: function (data) {
+                        var options = '';
+                        for (var i = 0; i < data.length; i++) {
+                            options += '<option value="' + data[i].id + '">' + data[i].name + '</option>';
+                        }
+                        $("#promo_ids").html(options);
+                        $("#promo_ids").multiselect("refresh");
+
+                        $("#ajax_load").hide();
+                    }
+                });
+
+            } else {
+                $("#ajax_load").hide();
+                swal("Sorry!", "Please select DB house !", "error");
+            }
+       
+    }
+
+</script>

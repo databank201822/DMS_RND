@@ -87,37 +87,37 @@
                 <br><br>
                 <table id="order_table_header">
                     <tr>
-                        <td class="none" style="text-align: left; font-size: 15px;"><b>Outlet Name &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:</b></td>
-                        <td class="none" style="font-size: 15px;">@modelitem.OutletName</td>
+                        <td class="none" style="text-align: left; font-size: 15px;"><b>Outlet Name</b></td>
+                        <td class="none" style="font-size: 15px;">: @modelitem.OutletName</td>
                         <td class="none" style="text-align: left; font-size: 15px;"><b>Distributor Name:</b></td>
-                        <td class="none" style="font-size: 15px;"> @modelitem.DbName</td>
+                        <td class="none" style="font-size: 15px;">: @modelitem.DbName</td>
                         <td class="none" style="text-align: left; font-size: 15px;"><b>Memo No:</b></td>
-                        <td class="none" style="font-size: 15px;">@modelitem.SoId</td>
+                        <td class="none" style="font-size: 15px;">: @modelitem.SoId</td>
                     </tr>
                     <tr>
-                        <td class="none" style="text-align: left; font-size: 15px;"><b>Outlet Address &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:</b></td>
-                        <td class="none" style="width: 150px; font-size: 15px;">@modelitem.OutletAddress</td>
-                        <td class="none" style="text-align: left; font-size: 15px;"><b>Distributor Address:</b></td>
-                        <td class="none" style="width: 150px; font-size: 15px;">@modelitem.DbAddress</td>
-                        <td class="none" style="text-align: left; font-size: 15px;"><b>Order Date :</b></td>
-                        <td class="none" style="font-size: 15px;">@modelitem.PlannedOrderDate.ToString("dd-MMMM-yyyy")</td>
+                        <td class="none" style="text-align: left; font-size: 15px;"><b>Outlet Address</b></td>
+                        <td class="none" style="width: 150px; font-size: 15px;">: @modelitem.OutletAddress</td>
+                        <td class="none" style="text-align: left; font-size: 15px;"><b>Distributor Address</b></td>
+                        <td class="none" style="width: 150px; font-size: 15px;">: @modelitem.DbAddress</td>
+                        <td class="none" style="text-align: left; font-size: 15px;"><b>Order Date</b></td>
+                        <td class="none" style="font-size: 15px;">: @modelitem.PlannedOrderDate.ToString("dd-MMMM-yyyy")</td>
                     </tr>
                     <tr>
 
-                        <td class="none" style="text-align: left; font-size: 15px;"><b>Sub Route &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:</b></td>
-                        <td class="none" style="text-align: left; font-size: 15px;">@modelitem.RouteName</td>
-                        <td class="none" style="text-align: left; font-size: 15px;"><b>Distributor Mobile NO:</b></td>
-                        <td class="none" style="font-size: 15px;">@modelitem.DbMobile</td>
-                        <td class="none" style="text-align: left; font-size: 15px;"><b>Delivery Date:</b></td>
-                        <td class="none" style="font-size: 15px;">@modelitem.DeliveryDate.ToString("dd-MMMM-yyyy")</td>
+                        <td class="none" style="text-align: left; font-size: 15px;"><b>Sub Route</b></td>
+                        <td class="none" style="text-align: left; font-size: 15px;">: @modelitem.RouteName</td>
+                        <td class="none" style="text-align: left; font-size: 15px;"><b>Distributor Mobile NO</b></td>
+                        <td class="none" style="font-size: 15px;">: @modelitem.DbMobile</td>
+                        <td class="none" style="text-align: left; font-size: 15px;"><b>Delivery Date</b></td>
+                        <td class="none" style="font-size: 15px;">: @modelitem.DeliveryDate.ToString("dd-MMMM-yyyy")</td>
                     </tr>
                     <tr>
-                        <td class="none" style="width: 150px; font-size: 15px;"><b>PSR Name:</b></td>
-                        <td class="none" style="text-align: left; font-size: 15px;">@modelitem.PsrName</td>
-                        <td class="none" style="width: 150px; font-size: 15px;"><b>PSR Mobile No:</b></td>
-                        <td class="none" style="text-align: left; font-size: 15px;">@modelitem.PsrMobile</td>
-                        <td class="none" style="font-size: 15px;"><b>Delivery Man Name:</b></td>
-                        <td class="none" style="text-align: left; font-size: 15px;"></td>
+                        <td class="none" style="width: 150px; font-size: 15px;"><b>PSR Name</b></td>
+                        <td class="none" style="text-align: left; font-size: 15px;">: @modelitem.PsrName</td>
+                        <td class="none" style="width: 150px; font-size: 15px;"><b>PSR Mobile No</b></td>
+                        <td class="none" style="text-align: left; font-size: 15px;">: @modelitem.PsrMobile</td>
+                        <td class="none" style="font-size: 15px;"><b>Delivery Man Name</b></td>
+                        <td class="none" style="text-align: left; font-size: 15px;">: </td>
                     </tr>
 
                 </table>
@@ -162,7 +162,7 @@
                             <td class="order_table_font_size align-right">@item.PackSize</td>
                             <td class="order_table_font_size align-right">
                                 @{ int price = (int) (item.UnitSalePrice * item.PackSize); }
-                                @price.ToString("0.00")
+                                @price.ToString("N")
                             </td>
                             <td class="order_table_font_size align-right">
                                 @item.QuantityDeliveredCs
@@ -171,13 +171,13 @@
                                 @item.QuantityDeliveredPs
                             </td>
                             <td class="order_table_font_size align-right">@item.QuantityFree</td>
-                            <td class="order_table_font_size align-right">@item.TotalDiscountAmount.ToString("0.00")</td>
+                            <td class="order_table_font_size align-right">@item.TotalDiscountAmount.ToString("N")</td>
                             <td class="order_table_font_size align-right"></td>
                             <td class="order_table_font_size align-right"></td>
                             <!-- this is gross value-->
-                            <td class="order_table_font_size align-right">@item.TotalSalePrice.ToString("0.00")</td>
-                            <td class="order_table_font_size align-right">@item.TotalDiscountAmount.ToString("0.00")</td>
-                            <td class="order_table_font_size align-right">@item.TotalBilledAmount.ToString("0.00")</td>
+                            <td class="order_table_font_size align-right">@item.TotalSalePrice.ToString("N")</td>
+                            <td class="order_table_font_size align-right">@item.TotalDiscountAmount.ToString("N")</td>
+                            <td class="order_table_font_size align-right">@item.TotalBilledAmount.ToString("N")</td>
                         </tr>
                         
                         
@@ -192,7 +192,7 @@
                         <td style="width: 70px;" class="align-right"></td>
                         <td style="width: 70px;" class="align-right"></td>
                         <td style="width: 70px;" class="align-right"></td>
-                        <td class="order_table_font_size align-right" style="width: 70px;">@totalDelivered.ToString("0.00")</td>
+                        <td class="order_table_font_size align-right" style="width: 70px;">@totalDelivered.ToString("N")</td>
                     </tr>
                     <tr>
                         <td colspan="7" class="none"></td>
@@ -200,7 +200,7 @@
                         <td class="align-right"></td>
                         <td class="align-right"></td>
                         <td class="align-right"></td>
-                        <td class="order_table_font_size align-right" style="width: 64px;">@modelitem.ManualDiscount.ToString("0.00")</td>
+                        <td class="order_table_font_size align-right" style="width: 64px;">@modelitem.ManualDiscount.ToString("N")</td>
                     </tr>
                     <tr>
                         <td colspan="7" class="none"></td>
@@ -208,7 +208,7 @@
                         <td class="align-right"></td>
                         <td class="align-right"></td>
                         <td class="align-right"></td>
-                        <td class="order_table_font_size align-right" style="width: 64px;">@totalDelivered.ToString("0.00")</td>
+                        <td class="order_table_font_size align-right" style="width: 64px;">@totalDelivered.ToString("N")</td>
                     </tr>
 
                     </tfoot>

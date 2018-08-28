@@ -8,12 +8,12 @@
                     </div>
                     <div class="col-xs-9 text-right">
                         @*<h1 class="huge">@Session["ipAddress"]</h1>*@
-                        <h2>
+                        <h3>
                             @{
                             DateTime systemDate = (DateTime)Session["SystemDate"];
                         }
                         @systemDate.ToString("dd-MMM-yyyy")
-                    </h2>
+                    </h3>
                     <div>System Date</div>
                 </div>
             </div>
@@ -35,7 +35,7 @@
                     <i class="fa fa-truck fa-5x"></i>
                 </div>
                 <div class="col-xs-9 text-right">
-                    <h1>@ViewBag.DeliveryPainding</h1>
+                    <h3>@ViewBag.DeliveryPainding</h3>
                     <div>Delivery Painding</div>
                 </div>
             </div>
@@ -57,7 +57,7 @@
                     <i class="fa fa-shopping-cart fa-5x"></i>
                 </div>
                 <div class="col-xs-9 text-right">
-                    <h1>@ViewBag.OrderCS CS</h1>
+                    <h3>@ViewBag.OrderCS CS</h3>
                     <div>Order</div>
                 </div>
             </div>
@@ -79,7 +79,7 @@
                     <i class="fa fa-comments fa-5x"></i>
                 </div>
                 <div class="col-xs-9 text-right">
-                    <h1>0</h1>
+                    <h3>0</h3>
                     <div>Visit Status</div>
                 </div>
             </div>

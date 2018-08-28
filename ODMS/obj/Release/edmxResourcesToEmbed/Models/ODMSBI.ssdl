@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<Schema Namespace="ODMSBIModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+<Schema Namespace="ODMSBIModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
   <Function Name="FunctionStringtoIntlist" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
     <Parameter Name="list" Type="varchar" Mode="In" />
     <Parameter Name="delim" Type="varchar" Mode="In" />
@@ -103,6 +103,18 @@
     <Parameter Name="Start_Date" Type="datetime" Mode="In" />
     <Parameter Name="End_Date" Type="datetime" Mode="In" />
     <Parameter Name="dbid" Type="int" Mode="In" />
+  </Function>
+  <Function Name="RPT_TP_OutletWiseDetails" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="Start_Date" Type="datetime" Mode="In" />
+    <Parameter Name="End_Date" Type="datetime" Mode="In" />
+    <Parameter Name="dbids" Type="varchar(max)" Mode="In" />
+    <Parameter Name="Promo_id" Type="varchar(max)" Mode="In" />
+  </Function>
+  <Function Name="RPT_TP_Summary" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="Start_Date" Type="datetime" Mode="In" />
+    <Parameter Name="End_Date" Type="datetime" Mode="In" />
+    <Parameter Name="dbids" Type="varchar(max)" Mode="In" />
+    <Parameter Name="Promo_id" Type="varchar(max)" Mode="In" />
   </Function>
   <EntityContainer Name="ODMSBIModelStoreContainer" />
 </Schema>

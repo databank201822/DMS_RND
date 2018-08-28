@@ -12,6 +12,9 @@
     }
 
     .challanInfo {
+        font-family: arial, sans-serif;
+        border-collapse: collapse;
+        font-size: 10px;
         border: 0 solid black;
     }
 
@@ -26,64 +29,172 @@
         text-align: left;
     }
 </style>
-
 <table class="challanInfo">
-    <tr>
-        <th class="challanInfo" style="text-align: left; width: 150px">
-            PSR Name
-        </th>
-        <th class="challanInfo" style="width: 10px">
-            :
-        </th>
-        <th class="challanInfo" style="text-align: left; width: 200px">
+    <tr class="challanInfo">
+        <td class="challanInfo">
+            <table class="challanInfo">
+                <tr>
+                    <th class="challanInfo" colspan="3" style="text-align: left; width: 150px">
+                        <h1>
+                            @Model.Dbname
+                        </h1>
+                        <h3>
+                            @Model.DbAddress
+                        </h3>
+                    </th>
 
-            @Model.PsrName
+
+                </tr>
+                <tr>
+                    <th class="challanInfo" style="text-align: left; width: 150px">
+                        PSR Name
+                    </th>
+                    <th class="challanInfo" style="width: 10px">
+                        :
+                    </th>
+                    <th class="challanInfo" style="text-align: left; width: 200px">
+
+                        @Model.PsrName
 
 
 
-        </th>
+                    </th>
 
+                </tr>
+
+                <tr>
+                    <th class="challanInfo" style="text-align: left; width: 150px">
+                        Sub Route Name
+                    </th>
+                    <th class="challanInfo" style="width: 10px">
+                        :
+                    </th>
+                    <th class="challanInfo" style="text-align: left; width: 200px">
+
+                        @Model.RouteName
+
+
+                    </th>
+                </tr>
+                <tr>
+                    <th class="challanInfo" style="text-align: left; width: 150px">
+                        Order Date
+                    </th>
+                    <th class="challanInfo" style="width: 10px">
+                        :
+                    </th>
+                    <th class="challanInfo" style="text-align: left; width: 200px">
+                        @Model.OrderDate.ToString("dd-MM-yyyy")
+                    </th>
+                </tr>
+                <tr>
+                    <th class="challanInfo" style="text-align: left; width: 150px">
+                        Number of Memo
+                    </th>
+                    <th class="challanInfo">
+                        :
+                    </th>
+                    <th class="challanInfo" style="text-align: left; width: 200px">
+                        @Model.NoOfMemo
+                    </th>
+
+
+                </tr>
+
+            </table>
+        </td>
+        <td class="challanInfo">
+            <table class="challanInfo">
+                <tr class="challanInfo">
+                 
+                    <th colspan="3" class="challanInfo" style="text-align: left; width: 150px">
+                   
+                        <br/>
+                        <br/>
+                        <br/>
+                        
+                        <br/>
+                    </th>
+
+                </tr>
+                <tr class="challanInfo">
+                 
+                    <th class="challanInfo" style="text-align: left; width: 150px">
+                        Print Date & Time
+                    </th>
+                    <th class="challanInfo" style="width: 10px">
+                        :
+                    </th>
+                    <th class="challanInfo" style="text-align: left; width: 200px">
+                        @DateTime.Now.ToString("yyyy MMMM dd hh:MM.ss tt")
+                       
+
+
+
+                    </th>
+
+                </tr>
+                <tr>
+                    <th class="challanInfo" style="text-align: left; width: 150px">
+                        Delivery Man  
+                    </th>
+                    <th class="challanInfo" style="width: 10px">
+                        :
+                    </th>
+                    <th class="challanInfo" style="text-align: left; width: 200px">
+
+                       
+
+
+
+                    </th>
+
+                </tr>
+
+                <tr>
+                    <th class="challanInfo" style="text-align: left; width: 150px">
+                        Driver 
+                    </th>
+                    <th class="challanInfo" style="width: 10px">
+                        :
+                    </th>
+                    <th class="challanInfo" style="text-align: left; width: 200px">
+
+                        
+
+
+                    </th>
+                </tr>
+                <tr>
+                    <th class="challanInfo" style="text-align: left; width: 150px">
+                        Delivery Date
+                    </th>
+                    <th class="challanInfo" style="width: 10px">
+                        :
+                    </th>
+                    <th class="challanInfo" style="text-align: left; width: 200px">
+                        @Model.DeliveryDate.ToString("dd-MM-yyyy")
+                    </th>
+                </tr>
+                <tr>
+                    <th class="challanInfo" style="text-align: left; width: 150px">
+                        Challan No    
+                    </th>
+                    <th class="challanInfo">
+                        :
+                    </th>
+                    <th class="challanInfo" style="text-align: left; width: 200px">
+                        @Model.ChallanNumber
+                    </th>
+
+
+                </tr>
+
+            </table>
+        </td>
     </tr>
-    <tr>
-        <th class="challanInfo" style="text-align: left; width: 150px">
-            Sub Route Name
-        </th>
-        <th class="challanInfo" style="width: 10px">
-            :
-        </th>
-        <th class="challanInfo" style="text-align: left; width: 200px">
-
-            @Model.RouteName
-
-
-        </th>
-    </tr>
-    <tr>
-        <th class="challanInfo" style="text-align: left; width: 150px">
-            Order Date
-        </th>
-        <th class="challanInfo" style="width: 10px">
-            :
-        </th>
-        <th class="challanInfo" style="text-align: left; width: 200px">
-            @Model.OrderDate.ToString("dd-MM-yyyy")
-        </th>
-    </tr>
-    <tr>
-        <th class="challanInfo" style="text-align: left; width: 150px">
-            Number of Memo
-        </th>
-        <th class="challanInfo">
-            :
-        </th>
-        <th class="challanInfo" style="text-align: left; width: 200px">
-            @Model.NoOfMemo
-        </th>
-
-
-    </tr>
-
 </table>
+
 
 <br><br>
 <table class="sales_order" id="sales_order">
@@ -112,12 +223,8 @@
             <th style="text-align: center; max-width: 5%;" colspan="2">
                 Total  Qty
             </th>
-            <th style="text-align: center; max-width: 5%;" colspan="2">
-                1st trip
-            </th>
-            <th style="text-align: center; max-width: 5%;" colspan="2">
-                2nd trip
-            </th>
+
+
             <th style="text-align: center; max-width: 5%;" colspan="2">
                 Total Delivery Qty
             </th>
@@ -144,18 +251,7 @@
             <th style="text-align: center; max-width: 30px;">
                 CS
             </th>
-            <th style="text-align: center; max-width: 30px;">
-                PCS
-            </th>
-            <th style="text-align: center; max-width: 30px;">
-                CS
-            </th>
-            <th>
-                PCS
-            </th>
-            <th style="text-align: center; max-width: 30px;">
-                CS
-            </th>
+
             <th style="text-align: center; max-width: 30px;">
                 PCS
             </th>
@@ -186,7 +282,7 @@
 
         </tr>
     </thead>
-    <tbody id="tbody_order">
+    <tbody  id="tbody_order">
 
         @{
             var sl = 1;
@@ -241,83 +337,84 @@
 
 
                 </td>
-                <td>
+                <td style="text-align: center;">
                     @item.BatchId
                 </td>
-                <td>
+                <td style="text-align: center;">
 
-                    @csPrice
+                    @csPrice.ToString("N")
 
 
                 </td>
 
-                <td>
+                <td style="text-align: center;">
 
                     @item.OrderCsQty.EmptyIfZero()
 
                 </td>
-                <td>
+                <td style="text-align: center;">
                     @item.OrderPsQty.EmptyIfZero()
 
                 </td>
-                <td>
+                <td style="text-align: center;">
 
                     @extraQtyCs.EmptyIfZero()
 
                 </td>
-                <td>
+                <td style="text-align: center;">
                     @extraQtyPs.EmptyIfZero()
 
                 </td>
-                <td>
+                <td style="text-align: center;">
 
                     @item.TotalCsQty.EmptyIfZero()
 
                 </td>
-                <td>
+                <td style="text-align: center;">
                     @item.TotalPsQty.EmptyIfZero()
 
                 </td>
-                <td></td>
-                <td></td>
-
-                <td></td>
-                <td></td>
-                <td>
+                <td style="text-align: center;">
                     @if (Model.ChallanStatus == 2)
                     {@item.ConfirmCsQty.EmptyIfZero()}
                 </td>
-                <td>
+                     <td style="text-align: center;">
                     @if (Model.ChallanStatus == 2)
                     {@item.ConfirmPsQty.EmptyIfZero()}
                 </td>
 
-                <td>
+                     <td style="text-align: center;">
                     @item.FreeQty.EmptyIfZero()
                 </td>
 
-                <td>
+                     <td style="text-align: center;">
                     @if (Model.ChallanStatus == 2)
                     {@deliverygapCs.EmptyIfZero()
                     }
 
                 </td>
-                <td>
+                     <td style="text-align: center;">
                     @if (Model.ChallanStatus == 2)
-                    {@deliverygapPs.EmptyIfZero()}
+                    {
+                        @deliverygapPs.EmptyIfZero()
+                            
+                    }
 
 
 
                 </td>
-                <td>
+                     <td style="text-align:right;">
 
-                    @item.OrderQtyPrice
+                    @item.OrderQtyPrice.ToString("N")
 
                 </td>
 
-                <td>
+                     <td style="text-align: right;">
                     @if (Model.ChallanStatus == 2)
-                    {@item.ConfirmQtyPrice}
+                    {
+                        @item.ConfirmQtyPrice.ToString("N")
+                            
+                    }
                 </td>
 
 
@@ -334,24 +431,22 @@
             <td></td>
             <td></td>
             <td></td>
-            <td></td>
-            <td></td>
-            <td colspan=2 style="text-align: right;">Gross Total</td>
-            <td colspan="2">
+        
+            <td colspan="4" style="text-align: right;">Gross Total</td>
+            <td style="text-align: center;" colspan="2">
                 @grandTotalCs.ToString("#.##")
             </td>
-            <td colspan="2"> </td>
-            <td colspan="2"> </td>
-            <td colspan="2">
+
+            <td style="text-align: center;" colspan="2">
                 @deliveryGrandTotalCs.ToString("#.##")
             </td>
 
             <td></td>
             <td colspan="2"></td>
-            <td>
+            <td style="text-align: right;">
                 @grandTotalOrderAmount.ToString("#.##")
             </td>
-            <td>
+            <td style="text-align: right;">
                 @grandTotalDeliveryAmount.ToString("#.##")
             </td>
         </tr>
@@ -364,5 +459,5 @@
 
 <script type="text/javascript">
     window.print();
-    setTimeout('window.close()', 500);
+     setTimeout('window.close()', 500);
 </script>

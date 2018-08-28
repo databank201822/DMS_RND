@@ -121,7 +121,7 @@
                     }
                     double lpsc = 0;
 
-                    if (item.ProductiveMemo != 0 || item.ScheduleCall != 0)
+                    if (item.ProductiveMemo != 0 || item.Tlsd != 0)
                     {
                         lpsc = item.Tlsd / (double)item.ProductiveMemo;
 
@@ -140,12 +140,12 @@
                         <th style="border:1px solid #1a61d7;">@item.Performar</th>
                         <td style="border:1px solid #1a61d7; text-align: center;">@item.ScheduleCall</td>
                         <td style="border:1px solid #1a61d7; text-align: center;">@item.ProductiveMemo</td>
-                        <td style="border:1px solid #1a61d7; text-align: center;">@strikeRate.ToString("#.##") %</td>
+                        <td style="border:1px solid #1a61d7; text-align: center;">@strikeRate.ToString("F") %</td>
                         <td style="border:1px solid #1a61d7; text-align: center;">@item.Tlsd</td>
-                        <td style="border:1px solid #1a61d7; text-align: center;">@lpsc.ToString("#.##")</td>
-                        <td style="border:1px solid #1a61d7; text-align: center;">@item.MtdTarget.ToString("#.##")</td>
-                        <td style="border:1px solid #1a61d7; text-align: center;">@item.Order.ToString("#.##")</td>
-                        <td style="border:1px solid #1a61d7; text-align: center;">@drop.ToString("#.##")</td>
+                        <td style="border:1px solid #1a61d7; text-align: center;">@lpsc.ToString("0.00")</td>
+                        <td style="border:1px solid #1a61d7; text-align: center;">@item.MtdTarget.ToString("0.00")</td>
+                        <td style="border:1px solid #1a61d7; text-align: center;">@item.Order.ToString("0.00")</td>
+                        <td style="border:1px solid #1a61d7; text-align: center;">@drop.ToString("0.00")</td>
 
 
                     </tr>

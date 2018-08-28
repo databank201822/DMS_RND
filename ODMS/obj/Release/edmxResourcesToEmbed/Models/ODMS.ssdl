@@ -203,6 +203,10 @@
     <Property Name="PriceBuandle_id" Type="int" Nullable="false" />
     <Property Name="DeliveryModuleStatus" Type="int" Nullable="false" />
     <Property Name="Status" Type="int" Nullable="false" />
+    <Property Name="MV" Type="int" />
+    <Property Name="NMV" Type="int" />
+    <Property Name="LastReplacement" Type="datetime" />
+    <Property Name="Remark" Type="text" />
   </EntityType>
   <EntityType Name="tbld_distributor_Route">
     <Key>
@@ -1075,6 +1079,11 @@ warning 6002: The table/view 'ODMS.dbo.tbld_db_zone_view' does not have a primar
   <Function Name="RPT_OrderVsStock" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
     <Parameter Name="DBID" Type="int" Mode="In" />
   </Function>
+  <Function Name="RPT_Realtime_DBLifting" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="Start_Date" Type="datetime" Mode="In" />
+    <Parameter Name="End_Date" Type="datetime" Mode="In" />
+    <Parameter Name="dbids" Type="varchar(max)" Mode="In" />
+  </Function>
   <Function Name="RPT_Realtime_OrderVsdeliveredDBDetails" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
     <Parameter Name="Start_Date" Type="datetime" Mode="In" />
     <Parameter Name="End_Date" Type="datetime" Mode="In" />
@@ -1098,6 +1107,27 @@ warning 6002: The table/view 'ODMS.dbo.tbld_db_zone_view' does not have a primar
     <Parameter Name="End_Date" Type="datetime" Mode="In" />
     <Parameter Name="dbids" Type="varchar(max)" Mode="In" />
     <Parameter Name="skuids" Type="varchar(max)" Mode="In" />
+  </Function>
+  <Function Name="RPT_Realtime_OutletWiseOrder" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="Start_Date" Type="datetime" Mode="In" />
+    <Parameter Name="End_Date" Type="datetime" Mode="In" />
+    <Parameter Name="dbids" Type="varchar(max)" Mode="In" />
+  </Function>
+  <Function Name="RPT_Realtime_SKUWiseOrder" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="Start_Date" Type="datetime" Mode="In" />
+    <Parameter Name="End_Date" Type="datetime" Mode="In" />
+    <Parameter Name="dbids" Type="varchar(max)" Mode="In" />
+    <Parameter Name="skuids" Type="varchar(max)" Mode="In" />
+  </Function>
+  <Function Name="RPT_Realtime_TradepromotionDetails" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="Start_Date" Type="datetime" Mode="In" />
+    <Parameter Name="End_Date" Type="datetime" Mode="In" />
+    <Parameter Name="dbids" Type="varchar(max)" Mode="In" />
+  </Function>
+  <Function Name="RPT_TP_List" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="Start_Date" Type="datetime" Mode="In" />
+    <Parameter Name="End_Date" Type="datetime" Mode="In" />
+    <Parameter Name="dbids" Type="varchar(max)" Mode="In" />
   </Function>
   <Function Name="User_check" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
     <Parameter Name="UserName" Type="varchar" Mode="In" />

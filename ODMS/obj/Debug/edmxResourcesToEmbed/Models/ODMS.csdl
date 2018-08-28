@@ -28,30 +28,6 @@
     <FunctionImport Name="RPT_CurrentStock" ReturnType="Collection(ODMSModel.RPT_CurrentStock_Result)">
       <Parameter Name="dbids" Mode="In" Type="String" />
     </FunctionImport>
-    <FunctionImport Name="RPT_Realtime_OrderVsdeliveredSummary" ReturnType="Collection(ODMSModel.RPT_Realtime_OrderVsdeliveredSummary_Result)">
-      <Parameter Name="Start_Date" Mode="In" Type="DateTime" />
-      <Parameter Name="End_Date" Mode="In" Type="DateTime" />
-      <Parameter Name="dbids" Mode="In" Type="String" />
-      <Parameter Name="skuids" Mode="In" Type="String" />
-    </FunctionImport>
-    <FunctionImport Name="RPT_Realtime_OrderVsdeliveredDBDetails" ReturnType="Collection(ODMSModel.RPT_Realtime_OrderVsdeliveredDBDetails_Result)">
-      <Parameter Name="Start_Date" Mode="In" Type="DateTime" />
-      <Parameter Name="End_Date" Mode="In" Type="DateTime" />
-      <Parameter Name="dbids" Mode="In" Type="String" />
-      <Parameter Name="skuids" Mode="In" Type="String" />
-    </FunctionImport>
-    <FunctionImport Name="RPT_Realtime_OrderVsdeliveredDBSummary" ReturnType="Collection(ODMSModel.RPT_Realtime_OrderVsdeliveredDBSummary_Result)">
-      <Parameter Name="Start_Date" Mode="In" Type="DateTime" />
-      <Parameter Name="End_Date" Mode="In" Type="DateTime" />
-      <Parameter Name="dbids" Mode="In" Type="String" />
-      <Parameter Name="skuids" Mode="In" Type="String" />
-    </FunctionImport>
-    <FunctionImport Name="RPT_Realtime_OrderVsdeliveredDetails" ReturnType="Collection(ODMSModel.RPT_Realtime_OrderVsdeliveredDetails_Result)">
-      <Parameter Name="Start_Date" Mode="In" Type="DateTime" />
-      <Parameter Name="End_Date" Mode="In" Type="DateTime" />
-      <Parameter Name="dbids" Mode="In" Type="String" />
-      <Parameter Name="skuids" Mode="In" Type="String" />
-    </FunctionImport>
     <EntitySet Name="status" EntityType="ODMSModel.status" />
     <EntitySet Name="sysdiagrams" EntityType="ODMSModel.sysdiagram" />
     <EntitySet Name="tbl_calendar" EntityType="ODMSModel.tbl_calendar" />
@@ -184,6 +160,30 @@
       <Parameter Name="End_Date" Mode="In" Type="DateTime" />
       <Parameter Name="dbids" Mode="In" Type="String" />
     </FunctionImport>
+    <FunctionImport Name="RPT_Realtime_OrderVsdeliveredDBDetails" ReturnType="Collection(ODMSModel.RPT_Realtime_OrderVsdeliveredDBDetails_Result)">
+      <Parameter Name="Start_Date" Mode="In" Type="DateTime" />
+      <Parameter Name="End_Date" Mode="In" Type="DateTime" />
+      <Parameter Name="dbids" Mode="In" Type="String" />
+      <Parameter Name="skuids" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="RPT_Realtime_OrderVsdeliveredDBSummary" ReturnType="Collection(ODMSModel.RPT_Realtime_OrderVsdeliveredDBSummary_Result)">
+      <Parameter Name="Start_Date" Mode="In" Type="DateTime" />
+      <Parameter Name="End_Date" Mode="In" Type="DateTime" />
+      <Parameter Name="dbids" Mode="In" Type="String" />
+      <Parameter Name="skuids" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="RPT_Realtime_OrderVsdeliveredDetails" ReturnType="Collection(ODMSModel.RPT_Realtime_OrderVsdeliveredDetails_Result)">
+      <Parameter Name="Start_Date" Mode="In" Type="DateTime" />
+      <Parameter Name="End_Date" Mode="In" Type="DateTime" />
+      <Parameter Name="dbids" Mode="In" Type="String" />
+      <Parameter Name="skuids" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="RPT_Realtime_OrderVsdeliveredSummary" ReturnType="Collection(ODMSModel.RPT_Realtime_OrderVsdeliveredSummary_Result)">
+      <Parameter Name="Start_Date" Mode="In" Type="DateTime" />
+      <Parameter Name="End_Date" Mode="In" Type="DateTime" />
+      <Parameter Name="dbids" Mode="In" Type="String" />
+      <Parameter Name="skuids" Mode="In" Type="String" />
+    </FunctionImport>
   </EntityContainer>
   <ComplexType Name="DB_User_check_Result">
     <Property Type="Int32" Name="id" Nullable="false" />
@@ -295,88 +295,6 @@
     <Property Type="Int32" Name="qtyPs" Nullable="false" />
     <Property Type="Int32" Name="bookedqty" Nullable="false" />
     <Property Type="Int32" Name="totalqty" Nullable="true" />
-  </ComplexType>
-  <ComplexType Name="RPT_Realtime_OrderVsdeliveredSummary_Result">
-    <Property Type="Int32" Name="DB_Id" Nullable="false" />
-    <Property Type="String" Name="DB_Name" Nullable="false" MaxLength="50" />
-    <Property Type="String" Name="CEAREA_Name" Nullable="false" MaxLength="30" />
-    <Property Type="String" Name="AREA_Name" Nullable="false" MaxLength="30" />
-    <Property Type="String" Name="REGION_Name" Nullable="false" MaxLength="30" />
-    <Property Type="String" Name="Name" Nullable="true" MaxLength="256" />
-    <Property Type="Int32" Name="PSR_id" Nullable="false" />
-    <Property Type="String" Name="PSR_Code" Nullable="true" MaxLength="30" />
-    <Property Type="String" Name="DBCode" Nullable="true" MaxLength="50" />
-    <Property Type="String" Name="cluster" Nullable="false" MaxLength="100" />
-    <Property Type="Int32" Name="quantity_ordered" Nullable="false" />
-    <Property Type="Int32" Name="quantity_confirmed" Nullable="false" />
-    <Property Type="Double" Name="quantity_ordered_value" Nullable="false" />
-    <Property Type="Double" Name="quantity_confirmed_value" Nullable="false" />
-    <Property Type="Int32" Name="Freequantity_ordered" Nullable="false" />
-    <Property Type="Int32" Name="Freequantity_confirmed" Nullable="false" />
-    <Property Type="Int32" Name="quantity_delivered" Nullable="false" />
-    <Property Type="Double" Name="quantity_delivered_value" Nullable="false" />
-    <Property Type="Int32" Name="Freequantity_delivered" Nullable="false" />
-  </ComplexType>
-  <ComplexType Name="RPT_Realtime_OrderVsdeliveredDBDetails_Result">
-    <Property Type="Int32" Name="DB_Id" Nullable="false" />
-    <Property Type="String" Name="DB_Name" Nullable="false" MaxLength="50" />
-    <Property Type="String" Name="CEAREA_Name" Nullable="false" MaxLength="30" />
-    <Property Type="String" Name="AREA_Name" Nullable="false" MaxLength="30" />
-    <Property Type="String" Name="REGION_Name" Nullable="false" MaxLength="30" />
-    <Property Type="String" Name="DBCode" Nullable="true" MaxLength="50" />
-    <Property Type="String" Name="cluster" Nullable="false" MaxLength="100" />
-    <Property Type="Int32" Name="SKU_id" Nullable="false" />
-    <Property Type="String" Name="SKUName" Nullable="false" MaxLength="200" />
-    <Property Type="Int32" Name="quantity_ordered" Nullable="false" />
-    <Property Type="Int32" Name="quantity_confirmed" Nullable="false" />
-    <Property Type="Double" Name="quantity_ordered_value" Nullable="false" />
-    <Property Type="Double" Name="quantity_confirmed_value" Nullable="false" />
-    <Property Type="Int32" Name="Freequantity_ordered" Nullable="false" />
-    <Property Type="Int32" Name="Freequantity_confirmed" Nullable="false" />
-    <Property Type="Int32" Name="quantity_delivered" Nullable="false" />
-    <Property Type="Double" Name="quantity_delivered_value" Nullable="false" />
-    <Property Type="Int32" Name="Freequantity_delivered" Nullable="false" />
-  </ComplexType>
-  <ComplexType Name="RPT_Realtime_OrderVsdeliveredDBSummary_Result">
-    <Property Type="Int32" Name="DB_Id" Nullable="false" />
-    <Property Type="String" Name="DB_Name" Nullable="false" MaxLength="50" />
-    <Property Type="String" Name="CEAREA_Name" Nullable="false" MaxLength="30" />
-    <Property Type="String" Name="AREA_Name" Nullable="false" MaxLength="30" />
-    <Property Type="String" Name="REGION_Name" Nullable="false" MaxLength="30" />
-    <Property Type="String" Name="DBCode" Nullable="true" MaxLength="50" />
-    <Property Type="String" Name="cluster" Nullable="false" MaxLength="100" />
-    <Property Type="Int32" Name="quantity_ordered" Nullable="false" />
-    <Property Type="Int32" Name="quantity_confirmed" Nullable="false" />
-    <Property Type="Double" Name="quantity_ordered_value" Nullable="false" />
-    <Property Type="Double" Name="quantity_confirmed_value" Nullable="false" />
-    <Property Type="Int32" Name="Freequantity_ordered" Nullable="false" />
-    <Property Type="Int32" Name="Freequantity_confirmed" Nullable="false" />
-    <Property Type="Int32" Name="quantity_delivered" Nullable="false" />
-    <Property Type="Double" Name="quantity_delivered_value" Nullable="false" />
-    <Property Type="Int32" Name="Freequantity_delivered" Nullable="false" />
-  </ComplexType>
-  <ComplexType Name="RPT_Realtime_OrderVsdeliveredDetails_Result">
-    <Property Type="Int32" Name="DB_Id" Nullable="false" />
-    <Property Type="String" Name="DB_Name" Nullable="false" MaxLength="50" />
-    <Property Type="String" Name="CEAREA_Name" Nullable="false" MaxLength="30" />
-    <Property Type="String" Name="AREA_Name" Nullable="false" MaxLength="30" />
-    <Property Type="String" Name="REGION_Name" Nullable="false" MaxLength="30" />
-    <Property Type="String" Name="Name" Nullable="true" MaxLength="256" />
-    <Property Type="Int32" Name="PSR_id" Nullable="false" />
-    <Property Type="String" Name="PSR_Code" Nullable="true" MaxLength="30" />
-    <Property Type="String" Name="DBCode" Nullable="true" MaxLength="50" />
-    <Property Type="String" Name="cluster" Nullable="false" MaxLength="100" />
-    <Property Type="Int32" Name="SKU_id" Nullable="false" />
-    <Property Type="String" Name="SKUName" Nullable="false" MaxLength="200" />
-    <Property Type="Int32" Name="quantity_ordered" Nullable="false" />
-    <Property Type="Int32" Name="quantity_confirmed" Nullable="false" />
-    <Property Type="Double" Name="quantity_ordered_value" Nullable="false" />
-    <Property Type="Double" Name="quantity_confirmed_value" Nullable="false" />
-    <Property Type="Int32" Name="Freequantity_ordered" Nullable="false" />
-    <Property Type="Int32" Name="Freequantity_confirmed" Nullable="false" />
-    <Property Type="Int32" Name="quantity_delivered" Nullable="false" />
-    <Property Type="Double" Name="quantity_delivered_value" Nullable="false" />
-    <Property Type="Int32" Name="Freequantity_delivered" Nullable="false" />
   </ComplexType>
   <EntityType Name="status">
     <Key>
@@ -1540,5 +1458,87 @@
     <Property Type="Int32" Name="REGION_id" Nullable="true" />
     <Property Type="Int32" Name="AREA_id" Nullable="true" />
     <Property Type="Int32" Name="CEAREA_id" Nullable="true" />
+  </ComplexType>
+  <ComplexType Name="RPT_Realtime_OrderVsdeliveredDBDetails_Result">
+    <Property Type="Int32" Name="DB_Id" Nullable="false" />
+    <Property Type="String" Name="DB_Name" Nullable="false" MaxLength="50" />
+    <Property Type="String" Name="CEAREA_Name" Nullable="false" MaxLength="30" />
+    <Property Type="String" Name="AREA_Name" Nullable="false" MaxLength="30" />
+    <Property Type="String" Name="REGION_Name" Nullable="false" MaxLength="30" />
+    <Property Type="String" Name="DBCode" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="cluster" Nullable="false" MaxLength="100" />
+    <Property Type="Int32" Name="SKU_id" Nullable="false" />
+    <Property Type="String" Name="SKUName" Nullable="false" MaxLength="200" />
+    <Property Type="Double" Name="quantity_ordered" Nullable="false" />
+    <Property Type="Double" Name="quantity_confirmed" Nullable="false" />
+    <Property Type="Double" Name="quantity_ordered_value" Nullable="false" />
+    <Property Type="Double" Name="quantity_confirmed_value" Nullable="false" />
+    <Property Type="Double" Name="Freequantity_ordered" Nullable="false" />
+    <Property Type="Double" Name="Freequantity_confirmed" Nullable="false" />
+    <Property Type="Double" Name="quantity_delivered" Nullable="false" />
+    <Property Type="Double" Name="quantity_delivered_value" Nullable="false" />
+    <Property Type="Double" Name="Freequantity_delivered" Nullable="false" />
+  </ComplexType>
+  <ComplexType Name="RPT_Realtime_OrderVsdeliveredDBSummary_Result">
+    <Property Type="Int32" Name="DB_Id" Nullable="false" />
+    <Property Type="String" Name="DB_Name" Nullable="false" MaxLength="50" />
+    <Property Type="String" Name="CEAREA_Name" Nullable="false" MaxLength="30" />
+    <Property Type="String" Name="AREA_Name" Nullable="false" MaxLength="30" />
+    <Property Type="String" Name="REGION_Name" Nullable="false" MaxLength="30" />
+    <Property Type="String" Name="DBCode" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="cluster" Nullable="false" MaxLength="100" />
+    <Property Type="Double" Name="quantity_ordered" Nullable="false" />
+    <Property Type="Double" Name="quantity_confirmed" Nullable="false" />
+    <Property Type="Double" Name="quantity_ordered_value" Nullable="false" />
+    <Property Type="Double" Name="quantity_confirmed_value" Nullable="false" />
+    <Property Type="Double" Name="Freequantity_ordered" Nullable="false" />
+    <Property Type="Double" Name="Freequantity_confirmed" Nullable="false" />
+    <Property Type="Double" Name="quantity_delivered" Nullable="false" />
+    <Property Type="Double" Name="quantity_delivered_value" Nullable="false" />
+    <Property Type="Double" Name="Freequantity_delivered" Nullable="false" />
+  </ComplexType>
+  <ComplexType Name="RPT_Realtime_OrderVsdeliveredDetails_Result">
+    <Property Type="Int32" Name="DB_Id" Nullable="false" />
+    <Property Type="String" Name="DB_Name" Nullable="false" MaxLength="50" />
+    <Property Type="String" Name="CEAREA_Name" Nullable="false" MaxLength="30" />
+    <Property Type="String" Name="AREA_Name" Nullable="false" MaxLength="30" />
+    <Property Type="String" Name="REGION_Name" Nullable="false" MaxLength="30" />
+    <Property Type="String" Name="Name" Nullable="true" MaxLength="256" />
+    <Property Type="Int32" Name="PSR_id" Nullable="false" />
+    <Property Type="String" Name="PSR_Code" Nullable="true" MaxLength="30" />
+    <Property Type="String" Name="DBCode" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="cluster" Nullable="false" MaxLength="100" />
+    <Property Type="Int32" Name="SKU_id" Nullable="false" />
+    <Property Type="String" Name="SKUName" Nullable="false" MaxLength="200" />
+    <Property Type="Double" Name="quantity_ordered" Nullable="false" />
+    <Property Type="Int32" Name="quantity_confirmed" Nullable="false" />
+    <Property Type="Double" Name="quantity_ordered_value" Nullable="false" />
+    <Property Type="Double" Name="quantity_confirmed_value" Nullable="false" />
+    <Property Type="Double" Name="Freequantity_ordered" Nullable="false" />
+    <Property Type="Double" Name="Freequantity_confirmed" Nullable="false" />
+    <Property Type="Double" Name="quantity_delivered" Nullable="false" />
+    <Property Type="Double" Name="quantity_delivered_value" Nullable="false" />
+    <Property Type="Double" Name="Freequantity_delivered" Nullable="false" />
+  </ComplexType>
+  <ComplexType Name="RPT_Realtime_OrderVsdeliveredSummary_Result">
+    <Property Type="Int32" Name="DB_Id" Nullable="false" />
+    <Property Type="String" Name="DB_Name" Nullable="false" MaxLength="50" />
+    <Property Type="String" Name="CEAREA_Name" Nullable="false" MaxLength="30" />
+    <Property Type="String" Name="AREA_Name" Nullable="false" MaxLength="30" />
+    <Property Type="String" Name="REGION_Name" Nullable="false" MaxLength="30" />
+    <Property Type="String" Name="Name" Nullable="true" MaxLength="256" />
+    <Property Type="Int32" Name="PSR_id" Nullable="false" />
+    <Property Type="String" Name="PSR_Code" Nullable="true" MaxLength="30" />
+    <Property Type="String" Name="DBCode" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="cluster" Nullable="false" MaxLength="100" />
+    <Property Type="Double" Name="quantity_ordered" Nullable="false" />
+    <Property Type="Double" Name="quantity_confirmed" Nullable="false" />
+    <Property Type="Double" Name="quantity_ordered_value" Nullable="false" />
+    <Property Type="Double" Name="quantity_confirmed_value" Nullable="false" />
+    <Property Type="Double" Name="Freequantity_ordered" Nullable="false" />
+    <Property Type="Double" Name="Freequantity_confirmed" Nullable="false" />
+    <Property Type="Double" Name="quantity_delivered" Nullable="false" />
+    <Property Type="Double" Name="quantity_delivered_value" Nullable="false" />
+    <Property Type="Double" Name="Freequantity_delivered" Nullable="false" />
   </ComplexType>
 </Schema>

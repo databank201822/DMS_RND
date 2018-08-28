@@ -4638,7 +4638,7 @@
         </TablixRowHierarchy>
         <DataSetName>DBKPI</DataSetName>
         <Height>1.5in</Height>
-        <Width>21.88333in</Width>
+        <Width>21.88334in</Width>
         <Style>
           <Border>
             <Style>None</Style>
@@ -4649,7 +4649,7 @@
     <Height>2in</Height>
     <Style />
   </Body>
-  <Width>21.88333in</Width>
+  <Width>21.88334in</Width>
   <Page>
     <PageHeader>
       <Height>1in</Height>

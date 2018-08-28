@@ -1361,30 +1361,6 @@ warning 6002: The table/view 'ODMS.dbo.tbld_db_zone_view' does not have a primar
           <FunctionImport Name="RPT_CurrentStock" ReturnType="Collection(ODMSModel.RPT_CurrentStock_Result)">
           <Parameter Name="dbids" Mode="In" Type="String" />
           </FunctionImport>
-          <FunctionImport Name="RPT_Realtime_OrderVsdeliveredSummary" ReturnType="Collection(ODMSModel.RPT_Realtime_OrderVsdeliveredSummary_Result)">
-            <Parameter Name="Start_Date" Mode="In" Type="DateTime" />
-            <Parameter Name="End_Date" Mode="In" Type="DateTime" />
-            <Parameter Name="dbids" Mode="In" Type="String" />
-            <Parameter Name="skuids" Mode="In" Type="String" />
-          </FunctionImport>
-          <FunctionImport Name="RPT_Realtime_OrderVsdeliveredDBDetails" ReturnType="Collection(ODMSModel.RPT_Realtime_OrderVsdeliveredDBDetails_Result)">
-            <Parameter Name="Start_Date" Mode="In" Type="DateTime" />
-            <Parameter Name="End_Date" Mode="In" Type="DateTime" />
-            <Parameter Name="dbids" Mode="In" Type="String" />
-            <Parameter Name="skuids" Mode="In" Type="String" />
-          </FunctionImport>
-          <FunctionImport Name="RPT_Realtime_OrderVsdeliveredDBSummary" ReturnType="Collection(ODMSModel.RPT_Realtime_OrderVsdeliveredDBSummary_Result)">
-            <Parameter Name="Start_Date" Mode="In" Type="DateTime" />
-            <Parameter Name="End_Date" Mode="In" Type="DateTime" />
-            <Parameter Name="dbids" Mode="In" Type="String" />
-            <Parameter Name="skuids" Mode="In" Type="String" />
-          </FunctionImport>
-          <FunctionImport Name="RPT_Realtime_OrderVsdeliveredDetails" ReturnType="Collection(ODMSModel.RPT_Realtime_OrderVsdeliveredDetails_Result)">
-            <Parameter Name="Start_Date" Mode="In" Type="DateTime" />
-            <Parameter Name="End_Date" Mode="In" Type="DateTime" />
-            <Parameter Name="dbids" Mode="In" Type="String" />
-            <Parameter Name="skuids" Mode="In" Type="String" />
-          </FunctionImport>
           <EntitySet Name="status" EntityType="ODMSModel.status" />
           <EntitySet Name="sysdiagrams" EntityType="ODMSModel.sysdiagram" />
           <EntitySet Name="tbl_calendar" EntityType="ODMSModel.tbl_calendar" />
@@ -1517,6 +1493,30 @@ warning 6002: The table/view 'ODMS.dbo.tbld_db_zone_view' does not have a primar
             <Parameter Name="End_Date" Mode="In" Type="DateTime" />
             <Parameter Name="dbids" Mode="In" Type="String" />
           </FunctionImport>
+          <FunctionImport Name="RPT_Realtime_OrderVsdeliveredDBDetails" ReturnType="Collection(ODMSModel.RPT_Realtime_OrderVsdeliveredDBDetails_Result)">
+            <Parameter Name="Start_Date" Mode="In" Type="DateTime" />
+            <Parameter Name="End_Date" Mode="In" Type="DateTime" />
+            <Parameter Name="dbids" Mode="In" Type="String" />
+            <Parameter Name="skuids" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="RPT_Realtime_OrderVsdeliveredDBSummary" ReturnType="Collection(ODMSModel.RPT_Realtime_OrderVsdeliveredDBSummary_Result)">
+            <Parameter Name="Start_Date" Mode="In" Type="DateTime" />
+            <Parameter Name="End_Date" Mode="In" Type="DateTime" />
+            <Parameter Name="dbids" Mode="In" Type="String" />
+            <Parameter Name="skuids" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="RPT_Realtime_OrderVsdeliveredDetails" ReturnType="Collection(ODMSModel.RPT_Realtime_OrderVsdeliveredDetails_Result)">
+            <Parameter Name="Start_Date" Mode="In" Type="DateTime" />
+            <Parameter Name="End_Date" Mode="In" Type="DateTime" />
+            <Parameter Name="dbids" Mode="In" Type="String" />
+            <Parameter Name="skuids" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="RPT_Realtime_OrderVsdeliveredSummary" ReturnType="Collection(ODMSModel.RPT_Realtime_OrderVsdeliveredSummary_Result)">
+            <Parameter Name="Start_Date" Mode="In" Type="DateTime" />
+            <Parameter Name="End_Date" Mode="In" Type="DateTime" />
+            <Parameter Name="dbids" Mode="In" Type="String" />
+            <Parameter Name="skuids" Mode="In" Type="String" />
+          </FunctionImport>
         </EntityContainer>
         <ComplexType Name="DB_User_check_Result">
           <Property Type="Int32" Name="id" Nullable="false" />
@@ -1628,88 +1628,6 @@ warning 6002: The table/view 'ODMS.dbo.tbld_db_zone_view' does not have a primar
           <Property Type="Int32" Name="qtyPs" Nullable="false" />
           <Property Type="Int32" Name="bookedqty" Nullable="false" />
           <Property Type="Int32" Name="totalqty" Nullable="true" />
-        </ComplexType>
-        <ComplexType Name="RPT_Realtime_OrderVsdeliveredSummary_Result">
-          <Property Type="Int32" Name="DB_Id" Nullable="false" />
-          <Property Type="String" Name="DB_Name" Nullable="false" MaxLength="50" />
-          <Property Type="String" Name="CEAREA_Name" Nullable="false" MaxLength="30" />
-          <Property Type="String" Name="AREA_Name" Nullable="false" MaxLength="30" />
-          <Property Type="String" Name="REGION_Name" Nullable="false" MaxLength="30" />
-          <Property Type="String" Name="Name" Nullable="true" MaxLength="256" />
-          <Property Type="Int32" Name="PSR_id" Nullable="false" />
-          <Property Type="String" Name="PSR_Code" Nullable="true" MaxLength="30" />
-          <Property Type="String" Name="DBCode" Nullable="true" MaxLength="50" />
-          <Property Type="String" Name="cluster" Nullable="false" MaxLength="100" />
-          <Property Type="Int32" Name="quantity_ordered" Nullable="false" />
-          <Property Type="Int32" Name="quantity_confirmed" Nullable="false" />
-          <Property Type="Double" Name="quantity_ordered_value" Nullable="false" />
-          <Property Type="Double" Name="quantity_confirmed_value" Nullable="false" />
-          <Property Type="Int32" Name="Freequantity_ordered" Nullable="false" />
-          <Property Type="Int32" Name="Freequantity_confirmed" Nullable="false" />
-          <Property Type="Int32" Name="quantity_delivered" Nullable="false" />
-          <Property Type="Double" Name="quantity_delivered_value" Nullable="false" />
-          <Property Type="Int32" Name="Freequantity_delivered" Nullable="false" />
-        </ComplexType>
-        <ComplexType Name="RPT_Realtime_OrderVsdeliveredDBDetails_Result">
-          <Property Type="Int32" Name="DB_Id" Nullable="false" />
-          <Property Type="String" Name="DB_Name" Nullable="false" MaxLength="50" />
-          <Property Type="String" Name="CEAREA_Name" Nullable="false" MaxLength="30" />
-          <Property Type="String" Name="AREA_Name" Nullable="false" MaxLength="30" />
-          <Property Type="String" Name="REGION_Name" Nullable="false" MaxLength="30" />
-          <Property Type="String" Name="DBCode" Nullable="true" MaxLength="50" />
-          <Property Type="String" Name="cluster" Nullable="false" MaxLength="100" />
-          <Property Type="Int32" Name="SKU_id" Nullable="false" />
-          <Property Type="String" Name="SKUName" Nullable="false" MaxLength="200" />
-          <Property Type="Int32" Name="quantity_ordered" Nullable="false" />
-          <Property Type="Int32" Name="quantity_confirmed" Nullable="false" />
-          <Property Type="Double" Name="quantity_ordered_value" Nullable="false" />
-          <Property Type="Double" Name="quantity_confirmed_value" Nullable="false" />
-          <Property Type="Int32" Name="Freequantity_ordered" Nullable="false" />
-          <Property Type="Int32" Name="Freequantity_confirmed" Nullable="false" />
-          <Property Type="Int32" Name="quantity_delivered" Nullable="false" />
-          <Property Type="Double" Name="quantity_delivered_value" Nullable="false" />
-          <Property Type="Int32" Name="Freequantity_delivered" Nullable="false" />
-        </ComplexType>
-        <ComplexType Name="RPT_Realtime_OrderVsdeliveredDBSummary_Result">
-          <Property Type="Int32" Name="DB_Id" Nullable="false" />
-          <Property Type="String" Name="DB_Name" Nullable="false" MaxLength="50" />
-          <Property Type="String" Name="CEAREA_Name" Nullable="false" MaxLength="30" />
-          <Property Type="String" Name="AREA_Name" Nullable="false" MaxLength="30" />
-          <Property Type="String" Name="REGION_Name" Nullable="false" MaxLength="30" />
-          <Property Type="String" Name="DBCode" Nullable="true" MaxLength="50" />
-          <Property Type="String" Name="cluster" Nullable="false" MaxLength="100" />
-          <Property Type="Int32" Name="quantity_ordered" Nullable="false" />
-          <Property Type="Int32" Name="quantity_confirmed" Nullable="false" />
-          <Property Type="Double" Name="quantity_ordered_value" Nullable="false" />
-          <Property Type="Double" Name="quantity_confirmed_value" Nullable="false" />
-          <Property Type="Int32" Name="Freequantity_ordered" Nullable="false" />
-          <Property Type="Int32" Name="Freequantity_confirmed" Nullable="false" />
-          <Property Type="Int32" Name="quantity_delivered" Nullable="false" />
-          <Property Type="Double" Name="quantity_delivered_value" Nullable="false" />
-          <Property Type="Int32" Name="Freequantity_delivered" Nullable="false" />
-        </ComplexType>
-        <ComplexType Name="RPT_Realtime_OrderVsdeliveredDetails_Result">
-          <Property Type="Int32" Name="DB_Id" Nullable="false" />
-          <Property Type="String" Name="DB_Name" Nullable="false" MaxLength="50" />
-          <Property Type="String" Name="CEAREA_Name" Nullable="false" MaxLength="30" />
-          <Property Type="String" Name="AREA_Name" Nullable="false" MaxLength="30" />
-          <Property Type="String" Name="REGION_Name" Nullable="false" MaxLength="30" />
-          <Property Type="String" Name="Name" Nullable="true" MaxLength="256" />
-          <Property Type="Int32" Name="PSR_id" Nullable="false" />
-          <Property Type="String" Name="PSR_Code" Nullable="true" MaxLength="30" />
-          <Property Type="String" Name="DBCode" Nullable="true" MaxLength="50" />
-          <Property Type="String" Name="cluster" Nullable="false" MaxLength="100" />
-          <Property Type="Int32" Name="SKU_id" Nullable="false" />
-          <Property Type="String" Name="SKUName" Nullable="false" MaxLength="200" />
-          <Property Type="Int32" Name="quantity_ordered" Nullable="false" />
-          <Property Type="Int32" Name="quantity_confirmed" Nullable="false" />
-          <Property Type="Double" Name="quantity_ordered_value" Nullable="false" />
-          <Property Type="Double" Name="quantity_confirmed_value" Nullable="false" />
-          <Property Type="Int32" Name="Freequantity_ordered" Nullable="false" />
-          <Property Type="Int32" Name="Freequantity_confirmed" Nullable="false" />
-          <Property Type="Int32" Name="quantity_delivered" Nullable="false" />
-          <Property Type="Double" Name="quantity_delivered_value" Nullable="false" />
-          <Property Type="Int32" Name="Freequantity_delivered" Nullable="false" />
         </ComplexType>
         <EntityType Name="status">
           <Key>
@@ -2874,6 +2792,88 @@ warning 6002: The table/view 'ODMS.dbo.tbld_db_zone_view' does not have a primar
           <Property Type="Int32" Name="AREA_id" Nullable="true" />
           <Property Type="Int32" Name="CEAREA_id" Nullable="true" />
         </ComplexType>
+        <ComplexType Name="RPT_Realtime_OrderVsdeliveredDBDetails_Result">
+          <Property Type="Int32" Name="DB_Id" Nullable="false" />
+          <Property Type="String" Name="DB_Name" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="CEAREA_Name" Nullable="false" MaxLength="30" />
+          <Property Type="String" Name="AREA_Name" Nullable="false" MaxLength="30" />
+          <Property Type="String" Name="REGION_Name" Nullable="false" MaxLength="30" />
+          <Property Type="String" Name="DBCode" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="cluster" Nullable="false" MaxLength="100" />
+          <Property Type="Int32" Name="SKU_id" Nullable="false" />
+          <Property Type="String" Name="SKUName" Nullable="false" MaxLength="200" />
+          <Property Type="Double" Name="quantity_ordered" Nullable="false" />
+          <Property Type="Double" Name="quantity_confirmed" Nullable="false" />
+          <Property Type="Double" Name="quantity_ordered_value" Nullable="false" />
+          <Property Type="Double" Name="quantity_confirmed_value" Nullable="false" />
+          <Property Type="Double" Name="Freequantity_ordered" Nullable="false" />
+          <Property Type="Double" Name="Freequantity_confirmed" Nullable="false" />
+          <Property Type="Double" Name="quantity_delivered" Nullable="false" />
+          <Property Type="Double" Name="quantity_delivered_value" Nullable="false" />
+          <Property Type="Double" Name="Freequantity_delivered" Nullable="false" />
+        </ComplexType>
+        <ComplexType Name="RPT_Realtime_OrderVsdeliveredDBSummary_Result">
+          <Property Type="Int32" Name="DB_Id" Nullable="false" />
+          <Property Type="String" Name="DB_Name" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="CEAREA_Name" Nullable="false" MaxLength="30" />
+          <Property Type="String" Name="AREA_Name" Nullable="false" MaxLength="30" />
+          <Property Type="String" Name="REGION_Name" Nullable="false" MaxLength="30" />
+          <Property Type="String" Name="DBCode" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="cluster" Nullable="false" MaxLength="100" />
+          <Property Type="Double" Name="quantity_ordered" Nullable="false" />
+          <Property Type="Double" Name="quantity_confirmed" Nullable="false" />
+          <Property Type="Double" Name="quantity_ordered_value" Nullable="false" />
+          <Property Type="Double" Name="quantity_confirmed_value" Nullable="false" />
+          <Property Type="Double" Name="Freequantity_ordered" Nullable="false" />
+          <Property Type="Double" Name="Freequantity_confirmed" Nullable="false" />
+          <Property Type="Double" Name="quantity_delivered" Nullable="false" />
+          <Property Type="Double" Name="quantity_delivered_value" Nullable="false" />
+          <Property Type="Double" Name="Freequantity_delivered" Nullable="false" />
+        </ComplexType>
+        <ComplexType Name="RPT_Realtime_OrderVsdeliveredDetails_Result">
+          <Property Type="Int32" Name="DB_Id" Nullable="false" />
+          <Property Type="String" Name="DB_Name" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="CEAREA_Name" Nullable="false" MaxLength="30" />
+          <Property Type="String" Name="AREA_Name" Nullable="false" MaxLength="30" />
+          <Property Type="String" Name="REGION_Name" Nullable="false" MaxLength="30" />
+          <Property Type="String" Name="Name" Nullable="true" MaxLength="256" />
+          <Property Type="Int32" Name="PSR_id" Nullable="false" />
+          <Property Type="String" Name="PSR_Code" Nullable="true" MaxLength="30" />
+          <Property Type="String" Name="DBCode" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="cluster" Nullable="false" MaxLength="100" />
+          <Property Type="Int32" Name="SKU_id" Nullable="false" />
+          <Property Type="String" Name="SKUName" Nullable="false" MaxLength="200" />
+          <Property Type="Double" Name="quantity_ordered" Nullable="false" />
+          <Property Type="Int32" Name="quantity_confirmed" Nullable="false" />
+          <Property Type="Double" Name="quantity_ordered_value" Nullable="false" />
+          <Property Type="Double" Name="quantity_confirmed_value" Nullable="false" />
+          <Property Type="Double" Name="Freequantity_ordered" Nullable="false" />
+          <Property Type="Double" Name="Freequantity_confirmed" Nullable="false" />
+          <Property Type="Double" Name="quantity_delivered" Nullable="false" />
+          <Property Type="Double" Name="quantity_delivered_value" Nullable="false" />
+          <Property Type="Double" Name="Freequantity_delivered" Nullable="false" />
+        </ComplexType>
+        <ComplexType Name="RPT_Realtime_OrderVsdeliveredSummary_Result">
+          <Property Type="Int32" Name="DB_Id" Nullable="false" />
+          <Property Type="String" Name="DB_Name" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="CEAREA_Name" Nullable="false" MaxLength="30" />
+          <Property Type="String" Name="AREA_Name" Nullable="false" MaxLength="30" />
+          <Property Type="String" Name="REGION_Name" Nullable="false" MaxLength="30" />
+          <Property Type="String" Name="Name" Nullable="true" MaxLength="256" />
+          <Property Type="Int32" Name="PSR_id" Nullable="false" />
+          <Property Type="String" Name="PSR_Code" Nullable="true" MaxLength="30" />
+          <Property Type="String" Name="DBCode" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="cluster" Nullable="false" MaxLength="100" />
+          <Property Type="Double" Name="quantity_ordered" Nullable="false" />
+          <Property Type="Double" Name="quantity_confirmed" Nullable="false" />
+          <Property Type="Double" Name="quantity_ordered_value" Nullable="false" />
+          <Property Type="Double" Name="quantity_confirmed_value" Nullable="false" />
+          <Property Type="Double" Name="Freequantity_ordered" Nullable="false" />
+          <Property Type="Double" Name="Freequantity_confirmed" Nullable="false" />
+          <Property Type="Double" Name="quantity_delivered" Nullable="false" />
+          <Property Type="Double" Name="quantity_delivered_value" Nullable="false" />
+          <Property Type="Double" Name="Freequantity_delivered" Nullable="false" />
+        </ComplexType>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -3007,104 +3007,6 @@ warning 6002: The table/view 'ODMS.dbo.tbld_db_zone_view' does not have a primar
                 <ScalarProperty Name="qtyPs" ColumnName="qtyPs" />
                 <ScalarProperty Name="bookedqty" ColumnName="bookedqty" />
                 <ScalarProperty Name="totalqty" ColumnName="totalqty" />
-              </ComplexTypeMapping>
-            </ResultMapping>
-          </FunctionImportMapping>
-          <FunctionImportMapping FunctionImportName="RPT_Realtime_OrderVsdeliveredSummary" FunctionName="ODMSModel.Store.RPT_Realtime_OrderVsdeliveredSummary">
-            <ResultMapping>
-              <ComplexTypeMapping TypeName="ODMSModel.RPT_Realtime_OrderVsdeliveredSummary_Result">
-                <ScalarProperty Name="DB_Id" ColumnName="DB_Id" />
-                <ScalarProperty Name="DB_Name" ColumnName="DB_Name" />
-                <ScalarProperty Name="CEAREA_Name" ColumnName="CEAREA_Name" />
-                <ScalarProperty Name="AREA_Name" ColumnName="AREA_Name" />
-                <ScalarProperty Name="REGION_Name" ColumnName="REGION_Name" />
-                <ScalarProperty Name="Name" ColumnName="Name" />
-                <ScalarProperty Name="PSR_id" ColumnName="PSR_id" />
-                <ScalarProperty Name="PSR_Code" ColumnName="PSR_Code" />
-                <ScalarProperty Name="DBCode" ColumnName="DBCode" />
-                <ScalarProperty Name="cluster" ColumnName="cluster" />
-                <ScalarProperty Name="quantity_ordered" ColumnName="quantity_ordered" />
-                <ScalarProperty Name="quantity_confirmed" ColumnName="quantity_confirmed" />
-                <ScalarProperty Name="quantity_ordered_value" ColumnName="quantity_ordered_value" />
-                <ScalarProperty Name="quantity_confirmed_value" ColumnName="quantity_confirmed_value" />
-                <ScalarProperty Name="Freequantity_ordered" ColumnName="Freequantity_ordered" />
-                <ScalarProperty Name="Freequantity_confirmed" ColumnName="Freequantity_confirmed" />
-                <ScalarProperty Name="quantity_delivered" ColumnName="quantity_delivered" />
-                <ScalarProperty Name="quantity_delivered_value" ColumnName="quantity_delivered_value" />
-                <ScalarProperty Name="Freequantity_delivered" ColumnName="Freequantity_delivered" />
-              </ComplexTypeMapping>
-            </ResultMapping>
-          </FunctionImportMapping>
-          <FunctionImportMapping FunctionImportName="RPT_Realtime_OrderVsdeliveredDBDetails" FunctionName="ODMSModel.Store.RPT_Realtime_OrderVsdeliveredDBDetails">
-            <ResultMapping>
-              <ComplexTypeMapping TypeName="ODMSModel.RPT_Realtime_OrderVsdeliveredDBDetails_Result">
-                <ScalarProperty Name="DB_Id" ColumnName="DB_Id" />
-                <ScalarProperty Name="DB_Name" ColumnName="DB_Name" />
-                <ScalarProperty Name="CEAREA_Name" ColumnName="CEAREA_Name" />
-                <ScalarProperty Name="AREA_Name" ColumnName="AREA_Name" />
-                <ScalarProperty Name="REGION_Name" ColumnName="REGION_Name" />
-                <ScalarProperty Name="DBCode" ColumnName="DBCode" />
-                <ScalarProperty Name="cluster" ColumnName="cluster" />
-                <ScalarProperty Name="SKU_id" ColumnName="SKU_id" />
-                <ScalarProperty Name="SKUName" ColumnName="SKUName" />
-                <ScalarProperty Name="quantity_ordered" ColumnName="quantity_ordered" />
-                <ScalarProperty Name="quantity_confirmed" ColumnName="quantity_confirmed" />
-                <ScalarProperty Name="quantity_ordered_value" ColumnName="quantity_ordered_value" />
-                <ScalarProperty Name="quantity_confirmed_value" ColumnName="quantity_confirmed_value" />
-                <ScalarProperty Name="Freequantity_ordered" ColumnName="Freequantity_ordered" />
-                <ScalarProperty Name="Freequantity_confirmed" ColumnName="Freequantity_confirmed" />
-                <ScalarProperty Name="quantity_delivered" ColumnName="quantity_delivered" />
-                <ScalarProperty Name="quantity_delivered_value" ColumnName="quantity_delivered_value" />
-                <ScalarProperty Name="Freequantity_delivered" ColumnName="Freequantity_delivered" />
-              </ComplexTypeMapping>
-            </ResultMapping>
-          </FunctionImportMapping>
-          <FunctionImportMapping FunctionImportName="RPT_Realtime_OrderVsdeliveredDBSummary" FunctionName="ODMSModel.Store.RPT_Realtime_OrderVsdeliveredDBSummary">
-            <ResultMapping>
-              <ComplexTypeMapping TypeName="ODMSModel.RPT_Realtime_OrderVsdeliveredDBSummary_Result">
-                <ScalarProperty Name="DB_Id" ColumnName="DB_Id" />
-                <ScalarProperty Name="DB_Name" ColumnName="DB_Name" />
-                <ScalarProperty Name="CEAREA_Name" ColumnName="CEAREA_Name" />
-                <ScalarProperty Name="AREA_Name" ColumnName="AREA_Name" />
-                <ScalarProperty Name="REGION_Name" ColumnName="REGION_Name" />
-                <ScalarProperty Name="DBCode" ColumnName="DBCode" />
-                <ScalarProperty Name="cluster" ColumnName="cluster" />
-                <ScalarProperty Name="quantity_ordered" ColumnName="quantity_ordered" />
-                <ScalarProperty Name="quantity_confirmed" ColumnName="quantity_confirmed" />
-                <ScalarProperty Name="quantity_ordered_value" ColumnName="quantity_ordered_value" />
-                <ScalarProperty Name="quantity_confirmed_value" ColumnName="quantity_confirmed_value" />
-                <ScalarProperty Name="Freequantity_ordered" ColumnName="Freequantity_ordered" />
-                <ScalarProperty Name="Freequantity_confirmed" ColumnName="Freequantity_confirmed" />
-                <ScalarProperty Name="quantity_delivered" ColumnName="quantity_delivered" />
-                <ScalarProperty Name="quantity_delivered_value" ColumnName="quantity_delivered_value" />
-                <ScalarProperty Name="Freequantity_delivered" ColumnName="Freequantity_delivered" />
-              </ComplexTypeMapping>
-            </ResultMapping>
-          </FunctionImportMapping>
-          <FunctionImportMapping FunctionImportName="RPT_Realtime_OrderVsdeliveredDetails" FunctionName="ODMSModel.Store.RPT_Realtime_OrderVsdeliveredDetails">
-            <ResultMapping>
-              <ComplexTypeMapping TypeName="ODMSModel.RPT_Realtime_OrderVsdeliveredDetails_Result">
-                <ScalarProperty Name="DB_Id" ColumnName="DB_Id" />
-                <ScalarProperty Name="DB_Name" ColumnName="DB_Name" />
-                <ScalarProperty Name="CEAREA_Name" ColumnName="CEAREA_Name" />
-                <ScalarProperty Name="AREA_Name" ColumnName="AREA_Name" />
-                <ScalarProperty Name="REGION_Name" ColumnName="REGION_Name" />
-                <ScalarProperty Name="Name" ColumnName="Name" />
-                <ScalarProperty Name="PSR_id" ColumnName="PSR_id" />
-                <ScalarProperty Name="PSR_Code" ColumnName="PSR_Code" />
-                <ScalarProperty Name="DBCode" ColumnName="DBCode" />
-                <ScalarProperty Name="cluster" ColumnName="cluster" />
-                <ScalarProperty Name="SKU_id" ColumnName="SKU_id" />
-                <ScalarProperty Name="SKUName" ColumnName="SKUName" />
-                <ScalarProperty Name="quantity_ordered" ColumnName="quantity_ordered" />
-                <ScalarProperty Name="quantity_confirmed" ColumnName="quantity_confirmed" />
-                <ScalarProperty Name="quantity_ordered_value" ColumnName="quantity_ordered_value" />
-                <ScalarProperty Name="quantity_confirmed_value" ColumnName="quantity_confirmed_value" />
-                <ScalarProperty Name="Freequantity_ordered" ColumnName="Freequantity_ordered" />
-                <ScalarProperty Name="Freequantity_confirmed" ColumnName="Freequantity_confirmed" />
-                <ScalarProperty Name="quantity_delivered" ColumnName="quantity_delivered" />
-                <ScalarProperty Name="quantity_delivered_value" ColumnName="quantity_delivered_value" />
-                <ScalarProperty Name="Freequantity_delivered" ColumnName="Freequantity_delivered" />
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>
@@ -4180,6 +4082,104 @@ warning 6002: The table/view 'ODMS.dbo.tbld_db_zone_view' does not have a primar
                 <ScalarProperty Name="REGION_id" ColumnName="REGION_id" />
                 <ScalarProperty Name="AREA_id" ColumnName="AREA_id" />
                 <ScalarProperty Name="CEAREA_id" ColumnName="CEAREA_id" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="RPT_Realtime_OrderVsdeliveredDBDetails" FunctionName="ODMSModel.Store.RPT_Realtime_OrderVsdeliveredDBDetails">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="ODMSModel.RPT_Realtime_OrderVsdeliveredDBDetails_Result">
+                <ScalarProperty Name="DB_Id" ColumnName="DB_Id" />
+                <ScalarProperty Name="DB_Name" ColumnName="DB_Name" />
+                <ScalarProperty Name="CEAREA_Name" ColumnName="CEAREA_Name" />
+                <ScalarProperty Name="AREA_Name" ColumnName="AREA_Name" />
+                <ScalarProperty Name="REGION_Name" ColumnName="REGION_Name" />
+                <ScalarProperty Name="DBCode" ColumnName="DBCode" />
+                <ScalarProperty Name="cluster" ColumnName="cluster" />
+                <ScalarProperty Name="SKU_id" ColumnName="SKU_id" />
+                <ScalarProperty Name="SKUName" ColumnName="SKUName" />
+                <ScalarProperty Name="quantity_ordered" ColumnName="quantity_ordered" />
+                <ScalarProperty Name="quantity_confirmed" ColumnName="quantity_confirmed" />
+                <ScalarProperty Name="quantity_ordered_value" ColumnName="quantity_ordered_value" />
+                <ScalarProperty Name="quantity_confirmed_value" ColumnName="quantity_confirmed_value" />
+                <ScalarProperty Name="Freequantity_ordered" ColumnName="Freequantity_ordered" />
+                <ScalarProperty Name="Freequantity_confirmed" ColumnName="Freequantity_confirmed" />
+                <ScalarProperty Name="quantity_delivered" ColumnName="quantity_delivered" />
+                <ScalarProperty Name="quantity_delivered_value" ColumnName="quantity_delivered_value" />
+                <ScalarProperty Name="Freequantity_delivered" ColumnName="Freequantity_delivered" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="RPT_Realtime_OrderVsdeliveredDBSummary" FunctionName="ODMSModel.Store.RPT_Realtime_OrderVsdeliveredDBSummary">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="ODMSModel.RPT_Realtime_OrderVsdeliveredDBSummary_Result">
+                <ScalarProperty Name="DB_Id" ColumnName="DB_Id" />
+                <ScalarProperty Name="DB_Name" ColumnName="DB_Name" />
+                <ScalarProperty Name="CEAREA_Name" ColumnName="CEAREA_Name" />
+                <ScalarProperty Name="AREA_Name" ColumnName="AREA_Name" />
+                <ScalarProperty Name="REGION_Name" ColumnName="REGION_Name" />
+                <ScalarProperty Name="DBCode" ColumnName="DBCode" />
+                <ScalarProperty Name="cluster" ColumnName="cluster" />
+                <ScalarProperty Name="quantity_ordered" ColumnName="quantity_ordered" />
+                <ScalarProperty Name="quantity_confirmed" ColumnName="quantity_confirmed" />
+                <ScalarProperty Name="quantity_ordered_value" ColumnName="quantity_ordered_value" />
+                <ScalarProperty Name="quantity_confirmed_value" ColumnName="quantity_confirmed_value" />
+                <ScalarProperty Name="Freequantity_ordered" ColumnName="Freequantity_ordered" />
+                <ScalarProperty Name="Freequantity_confirmed" ColumnName="Freequantity_confirmed" />
+                <ScalarProperty Name="quantity_delivered" ColumnName="quantity_delivered" />
+                <ScalarProperty Name="quantity_delivered_value" ColumnName="quantity_delivered_value" />
+                <ScalarProperty Name="Freequantity_delivered" ColumnName="Freequantity_delivered" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="RPT_Realtime_OrderVsdeliveredDetails" FunctionName="ODMSModel.Store.RPT_Realtime_OrderVsdeliveredDetails">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="ODMSModel.RPT_Realtime_OrderVsdeliveredDetails_Result">
+                <ScalarProperty Name="DB_Id" ColumnName="DB_Id" />
+                <ScalarProperty Name="DB_Name" ColumnName="DB_Name" />
+                <ScalarProperty Name="CEAREA_Name" ColumnName="CEAREA_Name" />
+                <ScalarProperty Name="AREA_Name" ColumnName="AREA_Name" />
+                <ScalarProperty Name="REGION_Name" ColumnName="REGION_Name" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="PSR_id" ColumnName="PSR_id" />
+                <ScalarProperty Name="PSR_Code" ColumnName="PSR_Code" />
+                <ScalarProperty Name="DBCode" ColumnName="DBCode" />
+                <ScalarProperty Name="cluster" ColumnName="cluster" />
+                <ScalarProperty Name="SKU_id" ColumnName="SKU_id" />
+                <ScalarProperty Name="SKUName" ColumnName="SKUName" />
+                <ScalarProperty Name="quantity_ordered" ColumnName="quantity_ordered" />
+                <ScalarProperty Name="quantity_confirmed" ColumnName="quantity_confirmed" />
+                <ScalarProperty Name="quantity_ordered_value" ColumnName="quantity_ordered_value" />
+                <ScalarProperty Name="quantity_confirmed_value" ColumnName="quantity_confirmed_value" />
+                <ScalarProperty Name="Freequantity_ordered" ColumnName="Freequantity_ordered" />
+                <ScalarProperty Name="Freequantity_confirmed" ColumnName="Freequantity_confirmed" />
+                <ScalarProperty Name="quantity_delivered" ColumnName="quantity_delivered" />
+                <ScalarProperty Name="quantity_delivered_value" ColumnName="quantity_delivered_value" />
+                <ScalarProperty Name="Freequantity_delivered" ColumnName="Freequantity_delivered" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="RPT_Realtime_OrderVsdeliveredSummary" FunctionName="ODMSModel.Store.RPT_Realtime_OrderVsdeliveredSummary">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="ODMSModel.RPT_Realtime_OrderVsdeliveredSummary_Result">
+                <ScalarProperty Name="DB_Id" ColumnName="DB_Id" />
+                <ScalarProperty Name="DB_Name" ColumnName="DB_Name" />
+                <ScalarProperty Name="CEAREA_Name" ColumnName="CEAREA_Name" />
+                <ScalarProperty Name="AREA_Name" ColumnName="AREA_Name" />
+                <ScalarProperty Name="REGION_Name" ColumnName="REGION_Name" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="PSR_id" ColumnName="PSR_id" />
+                <ScalarProperty Name="PSR_Code" ColumnName="PSR_Code" />
+                <ScalarProperty Name="DBCode" ColumnName="DBCode" />
+                <ScalarProperty Name="cluster" ColumnName="cluster" />
+                <ScalarProperty Name="quantity_ordered" ColumnName="quantity_ordered" />
+                <ScalarProperty Name="quantity_confirmed" ColumnName="quantity_confirmed" />
+                <ScalarProperty Name="quantity_ordered_value" ColumnName="quantity_ordered_value" />
+                <ScalarProperty Name="quantity_confirmed_value" ColumnName="quantity_confirmed_value" />
+                <ScalarProperty Name="Freequantity_ordered" ColumnName="Freequantity_ordered" />
+                <ScalarProperty Name="Freequantity_confirmed" ColumnName="Freequantity_confirmed" />
+                <ScalarProperty Name="quantity_delivered" ColumnName="quantity_delivered" />
+                <ScalarProperty Name="quantity_delivered_value" ColumnName="quantity_delivered_value" />
+                <ScalarProperty Name="Freequantity_delivered" ColumnName="Freequantity_delivered" />
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>

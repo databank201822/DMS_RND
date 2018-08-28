@@ -140,7 +140,7 @@ input[type=number]::-webkit-outer-spin-button {
                                     <img src="~/App_res/login.png" class="img-circle" alt="User Image">
                                     <p>
                                         @Session["first_name"]
-                                        <small>Current Ip Address @Session["IpAddress"]</small>
+                                        @*<small>Current Ip Address @Session["IpAddress"]</small>*@
                                     </p>
                                 </li>
 
@@ -217,7 +217,7 @@ input[type=number]::-webkit-outer-spin-button {
             Design and Developed by <strong>Md. Mahtab Ullah</strong>. Copyright &copy; @DateTime.Now.Year All rights reserved
 
             <div class="pull-right hidden-xs">
-                <b>Version</b> 2.1.5
+                <b>Version</b> 2.1.9
             </div>
         </footer>
 
@@ -285,15 +285,13 @@ input[type=number]::-webkit-outer-spin-button {
         $('[href="' + pathname + '"]').parent("li").parent("ul").parent("li").parent("ul").parent("li").parent("ul").parent("li").addClass("active");
 
 
-        // $('.select2').select2();
+       
 
 
     });
-	$(document).on("wheel", "input[type=number]", function () {
-    $(this).blur();
-});
+	$(document).on("wheel", "input[type=number]", function () {$(this).blur();});
 
     $(window).on('load', function () {
-        //  $("#ajax_load").hide();
+       
     });
 </script>

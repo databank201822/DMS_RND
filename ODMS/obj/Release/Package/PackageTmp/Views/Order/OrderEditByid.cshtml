@@ -281,9 +281,14 @@
                                             {
                                                 @class = "btn btn-sm btn-warning"@*, target = "_blank"*@})
                                         }
-                                        @if (Model.SoStatus != 9 && Model.SoStatus != 3)
+                                        @if (Model.SoStatus == 1)
                                         {
                                             <button type="submit" onclick="cancleOrder();" class="btn btn-sm btn-danger">Cancle Order </button>
+                                           
+                                        }
+                                        @if (Model.SoStatus != 9 && Model.SoStatus != 3)
+                                        {
+                                            
                                             <button type="submit" onclick="saveClosedata();" class="btn btn-sm btn-primary">Save </button>
                                         }
 

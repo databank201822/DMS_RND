@@ -1,0 +1,91 @@
+﻿@model ODMS.Models.ViewModel.PurchaseDetailsVM
+
+@{
+    ViewBag.Title = "LiftingDetails";
+}
+
+
+
+
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <div class="clearfix ">
+
+            @Html.ActionLink("Back", "DbLiftingindex",null, new { @class = "btn btn-sm btn-primary pull-right" })
+          
+        </div>
+    </div>
+    <div class="panel-body">
+        
+
+        <table class="table table-bordered">
+            <thead>
+            <tr>
+                <th>
+                    SL
+                </th>
+                <th>
+                    SKU Name
+                </th>
+                <th>
+                    BetchId
+                </th>
+                <th>
+                    PackSize
+                </th>
+                <th>
+                    UnitSalePrice
+                </th>
+                <th>
+                    ChallanQuantity
+                </th>
+                <th>
+                    ReciveQty
+                </th>
+                <th>TotalPrice</th>
+            </tr>
+            </thead>
+
+            <tbody>
+
+            @{ int i = 0; }
+            @foreach (var item in Model.PurchaseLine)
+            {
+                i++;
+                <tr>
+                    <td>@i
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.SkuName)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.BetchId)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.PackSize)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.UnitSalePrice)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.ChallanQuantity)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.ReciveQty)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.TotalPrice)
+                    </td>
+
+                </tr>
+            }
+
+        </table>
+    </div>
+</div>
+<script>
+    $(document).ready(function() {
+        convert_data_tabel();
+    });
+
+</script>

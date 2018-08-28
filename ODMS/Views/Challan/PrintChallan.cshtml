@@ -342,7 +342,7 @@
                 </td>
                 <td style="text-align: center;">
 
-                    @csPrice
+                    @csPrice.ToString("N")
 
 
                 </td>
@@ -395,20 +395,26 @@
                 </td>
                      <td style="text-align: center;">
                     @if (Model.ChallanStatus == 2)
-                    {@deliverygapPs.EmptyIfZero()}
+                    {
+                        @deliverygapPs.EmptyIfZero()
+                            
+                    }
 
 
 
                 </td>
                      <td style="text-align:right;">
 
-                    @item.OrderQtyPrice
+                    @item.OrderQtyPrice.ToString("N")
 
                 </td>
 
                      <td style="text-align: right;">
                     @if (Model.ChallanStatus == 2)
-                    {@item.ConfirmQtyPrice}
+                    {
+                        @item.ConfirmQtyPrice.ToString("N")
+                            
+                    }
                 </td>
 
 
