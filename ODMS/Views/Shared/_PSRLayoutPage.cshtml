@@ -1,0 +1,28 @@
+﻿<!DOCTYPE html>
+
+
+<link rel="stylesheet" href="~/Content/tamplate/bower_components/bootstrap/dist/css/bootstrap.min.css">
+<link href="~/Content/mobilestyle.css" rel="stylesheet" />
+
+<script src="~/Content/tamplate/bower_components/jquery/dist/jquery.min.js"></script>
+<script src="~/Content/tamplate/bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+
+<!------ Include the above in your HEAD tag ---------->
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>@ViewBag.Title</title>
+</head>
+<body>
+   
+<div class="container">
+    <div class="row">
+       
+                @RenderBody()
+         
+        </div>
+    </div>
+</body>
+</html>
+
+

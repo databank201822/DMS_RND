@@ -208,6 +208,7 @@
     <Compile Include="App_Start\FontAwesomeBundleConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
+    <Compile Include="ControllersApi\AppsActivityController.cs" />
     <Compile Include="ControllersApi\DefaultController.cs" />
     <Compile Include="ControllersApi\LoginApiController.cs" />
     <Compile Include="ControllersApi\OutletApiController.cs" />
@@ -399,6 +400,9 @@
     </Compile>
     <Compile Include="Models\RPT_Order_PSRWiseSKUWiseOrder_Result.cs">
       <DependentUpon>ODMSBI.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\RPT_Realtime_DayEndReport_Result.cs">
+      <DependentUpon>ODMS.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\RPT_Realtime_DBLifting_Result.cs">
       <DependentUpon>ODMS.tt</DependentUpon>
@@ -678,6 +682,7 @@
     <Content Include="App_res\gif-load.gif" />
     <Content Include="App_res\lock.png" />
     <Content Include="App_res\login.png" />
+    <Content Include="App_res\logo.png" />
     <Content Include="App_res\logo_pepsi.png" />
     <Content Include="App_res\notfound.png" />
     <Content Include="App_res\pepsi.png" />
@@ -707,6 +712,7 @@
     <Content Include="Content\jqueryUi\jquery.multiselect.css" />
     <Content Include="Content\jqueryUi\jquery.multiselect.filter.css" />
     <Content Include="Content\Pepsi.png" />
+    <Content Include="Content\mobilestyle.css" />
     <Content Include="Content\style.css" />
     <Content Include="Content\login.css" />
     <Content Include="Content\select2\select2.min.css" />
@@ -3035,6 +3041,11 @@
     <Content Include="Views\ReportRealtime\CurrentOutletwiseOrder\CurrentOutletwiseOrder.cshtml" />
     <Content Include="Views\ReportRealtime\CurrentPsrWiseOrder\CurrentPsrWiseOrderFilter.cshtml" />
     <Content Include="Views\ReportRealtime\CurrentOutletwiseOrder\CurrentOutletwiseOrderFilter.cshtml" />
+    <Content Include="Views\GeneralReport\DayEnd\RptDayEnd.cshtml" />
+    <Content Include="Views\GeneralReport\DayEnd\RptDayEndFilter.cshtml" />
+    <Content Include="Views\AppsActivity\Login.cshtml" />
+    <Content Include="Views\Shared\_PSRLayoutPage.cshtml" />
+    <Content Include="Views\AppsActivity\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -3097,6 +3108,9 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </EmbeddedResource>
     <EmbeddedResource Include="Reports\Realtime\RPT_Realtime_SKUWiseOrder.rdlc">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reports\RPT_DayEndReport.rdlc">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </EmbeddedResource>
   </ItemGroup>

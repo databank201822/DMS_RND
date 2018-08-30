@@ -131,7 +131,10 @@
         Price [CS]
     </th>
     <th style="text-align: center;" colspan="2">
-        Order Qty
+        Net Order Qty
+    </th>
+    <th style="text-align: center;" colspan="2">
+        Free Order Qty
     </th>
     <th style="text-align: center;" colspan="2">
         Extra Qty
@@ -143,7 +146,7 @@
         Total Delivery Qty
     </th>
     <th style="text-align: center;" colspan="2">
-        Free Qty
+        Free Delivery Qty
     </th>
     <th style="text-align: center;" colspan="2">
         Return Qty
@@ -156,6 +159,12 @@
     </th>
 </tr>
 <tr>
+    <th>
+        CS
+    </th>
+    <th>
+        PCS
+    </th>
     <th>
         CS
     </th>
@@ -271,6 +280,16 @@
             @item.OrderPsQty.EmptyIfZero()
 
         </td>
+
+        <td>
+
+            @item.FreeCsQty.EmptyIfZero()
+
+        </td>
+        <td>
+            @item.FreePsQty.EmptyIfZero()
+
+        </td>
         <td>
 
             @extraQtyCs.EmptyIfZero()
@@ -301,10 +320,14 @@
         </td>
 
         <td>
-            @item.FreeCsQty.EmptyIfZero()
+            @if (Model.ChallanStatus == 2)
+            {@item.ConfirmFreeCsQty.EmptyIfZero()
+            }
         </td>
         <td>
-            @item.FreePsQty.EmptyIfZero()
+            @if (Model.ChallanStatus == 2)
+            {@item.ConfirmFreePsQty.EmptyIfZero()
+            }
         </td>
         <td>
             @if (Model.ChallanStatus == 2)
@@ -344,11 +367,14 @@
 <tr>
     <td></td>
     <td></td>
-    <td></td>
-    <td></td>
-    <td></td>
-    <td></td>
+   
+    
     <td colspan=2 style="text-align: right;">Gross Total</td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td><td></td>
+<td></td>
     <td colspan="2">
         @grandTotalCs.ToString("#.##")
     </td>

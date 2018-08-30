@@ -105,6 +105,7 @@ namespace ODMS.Controllers
     }
 
 
+    // ReSharper disable once InconsistentNaming
     public class DBAccessAttribute : ActionFilterAttribute
     {
         public override void OnActionExecuting(ActionExecutingContext filterContext)
@@ -126,27 +127,21 @@ namespace ODMS.Controllers
 
 
     }
-
-    public class AccessLogAttribute : ActionFilterAttribute
+    
+    // ReSharper disable once InconsistentNaming
+    public class PSRAccessExpireAttribute : ActionFilterAttribute
     {
         public override void OnActionExecuting(ActionExecutingContext filterContext)
         {
-            HttpContext ctx = HttpContext.Current;
-
-            var descriptor = filterContext.ActionDescriptor;
-            var actionName = descriptor.ActionName;
-            var controllerName = descriptor.ControllerDescriptor.ControllerName;
-            var value = descriptor.GetParameters();
-
-                base.OnActionExecuting(filterContext);
+            // check  sessions here
+            if (HttpContext.Current.Session["user_role_code"] == null)
+            {
+                filterContext.Result = new RedirectResult("/AppsActivity/Login");
                 return;
-           
+            }
+
+            base.OnActionExecuting(filterContext);
         }
-
-
     }
-
-
-
 
 }

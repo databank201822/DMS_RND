@@ -66,6 +66,9 @@ namespace ODMS.Models.ViewModel
         public int ReturnQty { get; set; }
         public int ConfirmCsQty { get; set; }
         public int ConfirmPsQty { get; set; }
+
+        public int ConfirmFreeCsQty { get; set; }
+        public int ConfirmFreePsQty { get; set; }
         public int ConfirmFreeQty { get; set; }
         public double TotalQtyInCs { get; set; }
         public double OrderQtyPrice { get; set; }

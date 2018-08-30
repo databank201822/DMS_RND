@@ -362,5 +362,14 @@ namespace ODMS.Models
     
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<RPT_Realtime_OrderVsdeliveredSummary_Result>("RPT_Realtime_OrderVsdeliveredSummary", start_DateParameter, end_DateParameter, dbidsParameter, skuidsParameter);
         }
+    
+        public virtual ObjectResult<RPT_Realtime_DayEndReport_Result> RPT_Realtime_DayEndReport(string dbids)
+        {
+            var dbidsParameter = dbids != null ?
+                new ObjectParameter("dbids", dbids) :
+                new ObjectParameter("dbids", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<RPT_Realtime_DayEndReport_Result>("RPT_Realtime_DayEndReport", dbidsParameter);
+        }
     }
 }

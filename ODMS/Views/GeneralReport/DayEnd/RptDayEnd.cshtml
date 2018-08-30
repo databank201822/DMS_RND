@@ -1,0 +1,76 @@
+﻿@{
+    ViewBag.Title = "Day End Report";
+}
+
+<div class="card">
+    <div class="row">
+        <div id="zone_filter"></div>
+
+      
+    </div>
+    <div class="row">
+
+        <div class="col-md-6"><button type="button" onclick="GetData()" class="btn btn-success pull-right">Search</button></div>
+    </div>
+</div>
+<br />
+<div class="row">
+    <div class="col-md-12">
+        <div id="ReportDetails">
+
+        </div>
+    </div>
+
+</div>
+
+<script>
+
+
+    $(document).ready(function () {
+        Get_Zonefilter();
+    });
+
+    function GetData() {
+
+        var dbIds = $("#DB_ids").val();
+        var ceIds = $("#CE_ids").val();
+        var asmIds = $("#ASM_ids").val();
+        var rsmIds = $("#RSM_ids").val();
+        var startDate = $("#startDate").val();
+        var endDate = $("#endDate").val();
+     
+
+        $("#ajax_load").show();
+      
+            if (dbIds.length !== 0 || rsmIds.length !== 0 || asmIds.length !== 0 || ceIds.length !== 0) {
+
+                $.ajax({
+                    type: "POST",
+                    url: "/GeneralReport/RptDayEndFilter",
+                    data: {
+                        RSMid: rsmIds,
+                        ASMid: asmIds,
+                        CEid: ceIds,
+                        id: dbIds
+                    },
+                    dataType: "HTML",
+                    
+                    cache: "false",
+                    success: function (data) {
+                      
+                        $("#ReportDetails").html(data);
+                      
+                    }
+                });
+
+            } else {
+                $("#ajax_load").hide();
+                swal("Sorry!", "Please select DB house !", "error");
+            }
+        
+    }
+
+
+   
+   
+</script>

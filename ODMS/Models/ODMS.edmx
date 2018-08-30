@@ -196,7 +196,7 @@
           <Property Name="DBName" Type="varchar" MaxLength="50" Nullable="false" />
           <Property Name="DBCode" Type="varchar" MaxLength="50" />
           <Property Name="DBDescription" Type="text" />
-          <Property Name="OfficeAddress" Type="nvarchar(max)" />
+          <Property Name="OfficeAddress" Type="varchar(max)" />
           <Property Name="WarehouseAddress" Type="text" />
           <Property Name="OwnerName" Type="varchar" MaxLength="50" />
           <Property Name="OwnerMoble" Type="varchar" MaxLength="50" />
@@ -1084,6 +1084,9 @@ warning 6002: The table/view 'ODMS.dbo.tbld_db_zone_view' does not have a primar
         <Function Name="RPT_OrderVsStock" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="DBID" Type="int" Mode="In" />
         </Function>
+        <Function Name="RPT_Realtime_DayEndReport" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="dbids" Type="varchar(max)" Mode="In" />
+        </Function>
         <Function Name="RPT_Realtime_DBLifting" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="Start_Date" Type="datetime" Mode="In" />
           <Parameter Name="End_Date" Type="datetime" Mode="In" />
@@ -1517,6 +1520,9 @@ warning 6002: The table/view 'ODMS.dbo.tbld_db_zone_view' does not have a primar
             <Parameter Name="dbids" Mode="In" Type="String" />
             <Parameter Name="skuids" Mode="In" Type="String" />
           </FunctionImport>
+          <FunctionImport Name="RPT_Realtime_DayEndReport" ReturnType="Collection(ODMSModel.RPT_Realtime_DayEndReport_Result)">
+            <Parameter Name="dbids" Mode="In" Type="String" />
+          </FunctionImport>
         </EntityContainer>
         <ComplexType Name="DB_User_check_Result">
           <Property Type="Int32" Name="id" Nullable="false" />
@@ -1830,7 +1836,7 @@ warning 6002: The table/view 'ODMS.dbo.tbld_db_zone_view' does not have a primar
           <Property Name="DBName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="DBCode" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="DBDescription" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
-          <Property Name="OfficeAddress" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="OfficeAddress" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
           <Property Name="WarehouseAddress" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
           <Property Name="OwnerName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="OwnerMoble" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
@@ -2873,6 +2879,23 @@ warning 6002: The table/view 'ODMS.dbo.tbld_db_zone_view' does not have a primar
           <Property Type="Double" Name="quantity_delivered" Nullable="false" />
           <Property Type="Double" Name="quantity_delivered_value" Nullable="false" />
           <Property Type="Double" Name="Freequantity_delivered" Nullable="false" />
+        </ComplexType>
+        <ComplexType Name="RPT_Realtime_DayEndReport_Result">
+          <Property Type="DateTime" Name="LastWorkingday" Nullable="true" />
+          <Property Type="Int32" Name="NotWorking" Nullable="true" />
+          <Property Type="DateTime" Name="UpdateDate" Nullable="true" Precision="23" />
+          <Property Type="Int32" Name="DB_Id" Nullable="false" />
+          <Property Type="String" Name="DB_Name" Nullable="false" MaxLength="50" />
+          <Property Type="Int32" Name="CEAREA_id" Nullable="false" />
+          <Property Type="String" Name="CEAREA_Name" Nullable="false" MaxLength="30" />
+          <Property Type="Int32" Name="AREA_id" Nullable="false" />
+          <Property Type="String" Name="AREA_Name" Nullable="false" MaxLength="30" />
+          <Property Type="Int32" Name="REGION_id" Nullable="false" />
+          <Property Type="String" Name="REGION_Name" Nullable="false" MaxLength="30" />
+          <Property Type="Int32" Name="Status" Nullable="false" />
+          <Property Type="String" Name="Cluster" Nullable="false" MaxLength="100" />
+          <Property Type="String" Name="DBCode" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="OfficeAddress" Nullable="true" />
         </ComplexType>
       </Schema>
     </edmx:ConceptualModels>
@@ -4180,6 +4203,27 @@ warning 6002: The table/view 'ODMS.dbo.tbld_db_zone_view' does not have a primar
                 <ScalarProperty Name="quantity_delivered" ColumnName="quantity_delivered" />
                 <ScalarProperty Name="quantity_delivered_value" ColumnName="quantity_delivered_value" />
                 <ScalarProperty Name="Freequantity_delivered" ColumnName="Freequantity_delivered" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="RPT_Realtime_DayEndReport" FunctionName="ODMSModel.Store.RPT_Realtime_DayEndReport">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="ODMSModel.RPT_Realtime_DayEndReport_Result">
+                <ScalarProperty Name="LastWorkingday" ColumnName="LastWorkingday" />
+                <ScalarProperty Name="NotWorking" ColumnName="NotWorking" />
+                <ScalarProperty Name="UpdateDate" ColumnName="UpdateDate" />
+                <ScalarProperty Name="DB_Id" ColumnName="DB_Id" />
+                <ScalarProperty Name="DB_Name" ColumnName="DB_Name" />
+                <ScalarProperty Name="CEAREA_id" ColumnName="CEAREA_id" />
+                <ScalarProperty Name="CEAREA_Name" ColumnName="CEAREA_Name" />
+                <ScalarProperty Name="AREA_id" ColumnName="AREA_id" />
+                <ScalarProperty Name="AREA_Name" ColumnName="AREA_Name" />
+                <ScalarProperty Name="REGION_id" ColumnName="REGION_id" />
+                <ScalarProperty Name="REGION_Name" ColumnName="REGION_Name" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+                <ScalarProperty Name="Cluster" ColumnName="Cluster" />
+                <ScalarProperty Name="DBCode" ColumnName="DBCode" />
+                <ScalarProperty Name="OfficeAddress" ColumnName="OfficeAddress" />
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>

@@ -59,10 +59,10 @@ namespace ODMS.Controllers
         {
 
             //var date = (DateTime)Session["SystemDate"];
-           
+
             var subroutebyPsr = (from a in Db.tbld_Route_Plan_Mapping
                                  join b in Db.tbld_distributor_Route on a.route_id equals b.RouteID
-                                where a.db_emp_id == psrId
+                                 where a.db_emp_id == psrId
                                  select (new { b.RouteID, b.RouteName })).Distinct().ToList();
 
 
@@ -195,7 +195,7 @@ namespace ODMS.Controllers
                 return PartialView("EmptyOrder");
             }
             return PartialView("OrdernotProcess");
-            
+
         }
 
         [HttpPost]
@@ -327,7 +327,7 @@ namespace ODMS.Controllers
                         Confirm_qty_price = 0
                     };
                     Db.tblt_Challan_line.Add(tbltChallanLine);
-                  
+
 
 
                     //Update Inventory
@@ -341,11 +341,11 @@ namespace ODMS.Controllers
                     tbll_inventory_log tbllInventoryLog = new tbll_inventory_log
                     {
                         db_id = dbid,
-                        sku_id = challanlineitem.SkuId ,
+                        sku_id = challanlineitem.SkuId,
                         batch_id = challanlineitem.BatchId,
-                        price=0,
+                        price = 0,
                         tx_qty_ps = challanlineitem.TotalQty,
-                        tx_type=2,
+                        tx_type = 2,
                         tx_System_date = date,
                         tx_date = DateTime.Now,
                         tx_challan = challanid
@@ -481,31 +481,31 @@ namespace ODMS.Controllers
                 DateTime? blankTime = null;
                 var data = from a in Db.tblt_Order
                            where a.Challan_no == tbltChallan.id && a.isProcess == 1
-                    select new OrderiVm
-                    {
-                        Orderid = a.Orderid,
-                        SoId = a.so_id,
+                           select new OrderiVm
+                           {
+                               Orderid = a.Orderid,
+                               SoId = a.so_id,
 
-                        RouteName = Db.tbld_distributor_Route.Where(x => x.RouteID == a.route_id).Select(x => x.RouteName)
-                            .FirstOrDefault(),
-                        OutletName = Db.tbld_Outlet.Where(x => x.OutletId == a.outlet_id).Select(x => x.OutletName)
-                            .FirstOrDefault(),
-                        ChallanNo = a.Challan_no,
-                        PlannedOrderDate = a.planned_order_date,
-                        DeliveryDate = a.so_status == 3 ? a.delivery_date : blankTime,
-                        PsrName = Db.tbld_distribution_employee.Where(x => x.id == a.psr_id).Select(x => x.Name)
-                            .FirstOrDefault(),
-                        SoStatus = a.so_status,
-                        OrderCs = Db.tblt_Order_line.Where(x => x.Orderid == a.Orderid && x.sku_order_type_id == 1)
-                            .Select(x => x.quantity_confirmed / x.Pack_size).Sum().ToString(),
-                        DeliveryCs = a.so_status == 3
-                            ? Db.tblt_Order_line.Where(x => x.Orderid == a.Orderid && x.sku_order_type_id == 1)
-                                .Select(x => x.quantity_delivered / x.Pack_size).Sum().ToString()
-                            : "",
-                        TotalOrder = a.total_confirmed.ToString(),
-                        TotalDelivered = a.so_status == 3 ? a.total_delivered.ToString() : "",
-                        IsProcess = a.isProcess
-                    };
+                               RouteName = Db.tbld_distributor_Route.Where(x => x.RouteID == a.route_id).Select(x => x.RouteName)
+                                   .FirstOrDefault(),
+                               OutletName = Db.tbld_Outlet.Where(x => x.OutletId == a.outlet_id).Select(x => x.OutletName)
+                                   .FirstOrDefault(),
+                               ChallanNo = a.Challan_no,
+                               PlannedOrderDate = a.planned_order_date,
+                               DeliveryDate = a.so_status == 3 ? a.delivery_date : blankTime,
+                               PsrName = Db.tbld_distribution_employee.Where(x => x.id == a.psr_id).Select(x => x.Name)
+                                   .FirstOrDefault(),
+                               SoStatus = a.so_status,
+                               OrderCs = Db.tblt_Order_line.Where(x => x.Orderid == a.Orderid && x.sku_order_type_id == 1)
+                                   .Select(x => x.quantity_confirmed / x.Pack_size).Sum().ToString(),
+                               DeliveryCs = a.so_status == 3
+                                   ? Db.tblt_Order_line.Where(x => x.Orderid == a.Orderid && x.sku_order_type_id == 1)
+                                       .Select(x => x.quantity_delivered / x.Pack_size).Sum().ToString()
+                                   : "",
+                               TotalOrder = a.total_confirmed.ToString(),
+                               TotalDelivered = a.so_status == 3 ? a.total_delivered.ToString() : "",
+                               IsProcess = a.isProcess
+                           };
 
                 civm.Orderline = data.ToList();
 
@@ -595,7 +595,7 @@ namespace ODMS.Controllers
                                 x.Return_qty = challanlineitem.ReturnQty;
                                 x.Confirm_qty_price = challanlineitem.ConfirmQty * x.price;
                             });
-                   
+
 
                         //Update Inventory
                         Db.tblt_inventory.Where(x => x.dbId == tbltChallan.db_id && x.skuId == challanlineitem.SkuId &&
@@ -603,28 +603,29 @@ namespace ODMS.Controllers
                         {
                             x.qtyPs = x.qtyPs + challanlineitem.ReturnQty;
                         });
-                        if (challanlineitem.ReturnQty != 0) { 
-
-                        // Add inventory log
-                        tbll_inventory_log tbllInventoryLog = new tbll_inventory_log
+                        if (challanlineitem.ReturnQty != 0)
                         {
-                            db_id = tbltChallan.db_id,
-                            sku_id = challanlineitem.SkuId,
-                            batch_id = challanlineitem.BatchId,
-                            price = 0,
-                            tx_qty_ps = challanlineitem.ReturnQty,
-                            tx_type = 3,
-                            tx_System_date = date,
-                            tx_date = DateTime.Now,
-                            tx_challan = challanlineitem.ChallanId
-                        };
 
-                        Db.tbll_inventory_log.Add(tbllInventoryLog);
+                            // Add inventory log
+                            tbll_inventory_log tbllInventoryLog = new tbll_inventory_log
+                            {
+                                db_id = tbltChallan.db_id,
+                                sku_id = challanlineitem.SkuId,
+                                batch_id = challanlineitem.BatchId,
+                                price = 0,
+                                tx_qty_ps = challanlineitem.ReturnQty,
+                                tx_type = 3,
+                                tx_System_date = date,
+                                tx_date = DateTime.Now,
+                                tx_challan = challanlineitem.ChallanId
+                            };
+
+                            Db.tbll_inventory_log.Add(tbllInventoryLog);
                         }
                         Db.SaveChanges();
 
 
-                        
+
                         deliveryGrandTotalCs = deliveryGrandTotalCs + ((Double)challanlineitem.ConfirmQty / challanlineitem.PackSize);
                         deliveryGrandTotal = deliveryGrandTotal + (challanlineitem.ConfirmQty * challanlineitem.Price);
                     }
@@ -714,14 +715,14 @@ namespace ODMS.Controllers
                             FreePsQty = skuListitem.Free_qty % skuListitem.Pack_size,
                             FreeQty = skuListitem.Free_qty,
 
-                            OrderCsQty = skuListitem.Order_qty / skuListitem.Pack_size,
-                            OrderPsQty = skuListitem.Order_qty % skuListitem.Pack_size,
-                            OrderQty = skuListitem.Total_qty,
+                            OrderCsQty = (skuListitem.Order_qty) / skuListitem.Pack_size,
+                            OrderPsQty = (skuListitem.Order_qty) % skuListitem.Pack_size,
+                            OrderQty = (skuListitem.Order_qty),
                             ExtraQty = skuListitem.Extra_qty,
 
-                            TotalCsQty = (skuListitem.Total_qty - skuListitem.Free_qty) / skuListitem.Pack_size,
-                            TotalPsQty = (skuListitem.Total_qty - skuListitem.Free_qty) % skuListitem.Pack_size,
-                            TotalQty = skuListitem.Total_qty - skuListitem.Free_qty,
+                            TotalCsQty = (skuListitem.Total_qty) / skuListitem.Pack_size,
+                            TotalPsQty = (skuListitem.Total_qty) % skuListitem.Pack_size,
+                            TotalQty = skuListitem.Total_qty,
                             OrderQtyPrice = skuListitem.Order_qty_price,
 
                             ReturnQty = skuListitem.Total_qty - skuListitem.Free_qty,
@@ -750,23 +751,28 @@ namespace ODMS.Controllers
                             Price = skuListitem.price,
                             PackSize = skuListitem.Pack_size,
 
-                            FreeCsQty = skuListitem.Confirm_Free_qty / skuListitem.Pack_size,
-                            FreePsQty = skuListitem.Confirm_Free_qty % skuListitem.Pack_size,
-                            FreeQty = skuListitem.Confirm_Free_qty,
+                            FreeCsQty = skuListitem.Free_qty / skuListitem.Pack_size,
+                            FreePsQty = skuListitem.Free_qty % skuListitem.Pack_size,
+                            FreeQty = skuListitem.Free_qty,
 
-                            OrderCsQty = skuListitem.Order_qty / skuListitem.Pack_size,
-                            OrderPsQty = skuListitem.Order_qty % skuListitem.Pack_size,
-                            OrderQty = skuListitem.Total_qty,
+                            OrderCsQty = (skuListitem.Order_qty) / skuListitem.Pack_size,
+                            OrderPsQty = (skuListitem.Order_qty) % skuListitem.Pack_size,
+                            OrderQty = (skuListitem.Order_qty),
                             ExtraQty = skuListitem.Extra_qty,
 
-                            TotalCsQty = skuListitem.Order_qty / skuListitem.Pack_size,
-                            TotalPsQty = skuListitem.Order_qty % skuListitem.Pack_size,
-                            TotalQty = skuListitem.Order_qty,
+                            TotalCsQty = (skuListitem.Total_qty) / skuListitem.Pack_size,
+                            TotalPsQty = (skuListitem.Total_qty) % skuListitem.Pack_size,
+                            TotalQty = skuListitem.Total_qty,
+
+                            ConfirmFreeCsQty = skuListitem.Confirm_Free_qty / skuListitem.Pack_size,
+                            ConfirmFreePsQty = skuListitem.Confirm_Free_qty % skuListitem.Pack_size,
+                            ConfirmFreeQty = skuListitem.Confirm_Free_qty,
+
                             OrderQtyPrice = skuListitem.Order_qty_price,
 
-                            ConfirmQty = skuListitem.Confirm_qty,
-                            ConfirmCsQty = skuListitem.Confirm_qty / skuListitem.Pack_size,
-                            ConfirmPsQty = skuListitem.Confirm_qty % skuListitem.Pack_size,
+                            ConfirmQty = (skuListitem.Confirm_qty + skuListitem.Confirm_Free_qty),
+                            ConfirmCsQty = (skuListitem.Confirm_qty + skuListitem.Confirm_Free_qty) / skuListitem.Pack_size,
+                            ConfirmPsQty = (skuListitem.Confirm_qty + skuListitem.Confirm_Free_qty) % skuListitem.Pack_size,
                             ConfirmQtyPrice = skuListitem.Confirm_qty_price,
                             ReturnQty = skuListitem.Total_qty - (skuListitem.Confirm_qty + skuListitem.Confirm_Free_qty)
 
@@ -799,32 +805,29 @@ namespace ODMS.Controllers
 
                 DateTime? blankTime = null;
                 var data = from a in Db.tblt_Order
-                    where a.Challan_no == tbltChallan.id && a.isProcess == 1
-                    select new OrderiVm
-                    {
-                        Orderid = a.Orderid,
-                        SoId = a.so_id,
+                           where a.Challan_no == tbltChallan.id && a.isProcess == 1
+                           select new OrderiVm
+                           {
+                               Orderid = a.Orderid,
+                               SoId = a.so_id,
 
-                        RouteName = Db.tbld_distributor_Route.Where(x => x.RouteID == a.route_id).Select(x => x.RouteName)
-                            .FirstOrDefault(),
-                        OutletName = Db.tbld_Outlet.Where(x => x.OutletId == a.outlet_id).Select(x => x.OutletName)
-                            .FirstOrDefault(),
-                        ChallanNo = a.Challan_no,
-                        PlannedOrderDate = a.planned_order_date,
-                        DeliveryDate = a.so_status == 3 ? a.delivery_date : blankTime,
-                        PsrName = Db.tbld_distribution_employee.Where(x => x.id == a.psr_id).Select(x => x.Name)
-                            .FirstOrDefault(),
-                        SoStatus = a.so_status,
-                        OrderCs = Db.tblt_Order_line.Where(x => x.Orderid == a.Orderid && x.sku_order_type_id == 1)
-                            .Select(x => x.quantity_confirmed / x.Pack_size).Sum().ToString(),
-                        DeliveryCs = a.so_status == 3
-                            ? Db.tblt_Order_line.Where(x => x.Orderid == a.Orderid && x.sku_order_type_id == 1)
-                                .Select(x => x.quantity_delivered / x.Pack_size).Sum().ToString()
-                            : "",
-                        TotalOrder = a.total_confirmed.ToString(),
-                        TotalDelivered = a.so_status == 3 ? a.total_delivered.ToString() : "",
-                        IsProcess = a.isProcess
-                    };
+                               RouteName = Db.tbld_distributor_Route.Where(x => x.RouteID == a.route_id).Select(x => x.RouteName)
+                                   .FirstOrDefault(),
+                               OutletName = Db.tbld_Outlet.Where(x => x.OutletId == a.outlet_id).Select(x => x.OutletName)
+                                   .FirstOrDefault(),
+                               ChallanNo = a.Challan_no,
+                               PlannedOrderDate = a.planned_order_date,
+                               DeliveryDate = a.so_status == 3 ? a.delivery_date : blankTime,
+                               PsrName = Db.tbld_distribution_employee.Where(x => x.id == a.psr_id).Select(x => x.Name)
+                                   .FirstOrDefault(),
+                               SoStatus = a.so_status,
+                               OrderCs = Db.tblt_Order_line.Where(x => x.Orderid == a.Orderid && x.sku_order_type_id == 1)
+                                   .Select(x => x.quantity_confirmed / x.Pack_size).Sum().ToString(),
+                               DeliveryCs = (a.so_status == 3 ? Db.tblt_Order_line.Where(x => x.Orderid == a.Orderid && x.sku_order_type_id == 1).Select(x => x.quantity_delivered / x.Pack_size).Sum().ToString() : ""),
+                               TotalOrder = a.total_confirmed.ToString(),
+                               TotalDelivered = a.so_status == 3 ? a.total_delivered.ToString() : "",
+                               IsProcess = a.isProcess
+                           };
 
                 civm.Orderline = data.ToList();
 
@@ -846,11 +849,11 @@ namespace ODMS.Controllers
                     ChallaniVm civm = new ChallaniVm
                     {
                         Id = id,
-                        ChallanNumber=tbltChallan.challan_number,
+                        ChallanNumber = tbltChallan.challan_number,
                         Dbname = db.DBName,
-                        DbAddress=db.WarehouseAddress,
+                        DbAddress = db.WarehouseAddress,
                         OrderDate = tbltChallan.order_date,
-                        DeliveryDate=tbltChallan.delivery_date,
+                        DeliveryDate = tbltChallan.delivery_date,
                         PsrId = tbltChallan.psr_id,
                         PsrName = tbltChallan.psr_Name,
                         RouteId = tbltChallan.route_id,
@@ -864,9 +867,9 @@ namespace ODMS.Controllers
                     List<ChallanlineVm> challanlineVmList = new List<ChallanlineVm>();
 
                     var skuList = from a in Db.tblt_Challan_line
-                        join b in Db.tbld_SKU on a.sku_id equals b.SKU_id
-                        where a.challan_id == id
-                        select a;
+                                  join b in Db.tbld_SKU on a.sku_id equals b.SKU_id
+                                  where a.challan_id == id
+                                  select a;
 
                     if (tbltChallan.challan_status != 2)
                     {
@@ -884,14 +887,14 @@ namespace ODMS.Controllers
                                 FreePsQty = skuListitem.Free_qty % skuListitem.Pack_size,
                                 FreeQty = skuListitem.Free_qty,
 
-                                OrderCsQty = skuListitem.Order_qty / skuListitem.Pack_size,
-                                OrderPsQty = skuListitem.Order_qty % skuListitem.Pack_size,
-                                OrderQty = skuListitem.Total_qty,
+                                OrderCsQty = (skuListitem.Order_qty) / skuListitem.Pack_size,
+                                OrderPsQty = (skuListitem.Order_qty) % skuListitem.Pack_size,
+                                OrderQty = (skuListitem.Order_qty),
                                 ExtraQty = skuListitem.Extra_qty,
 
-                                TotalCsQty = (skuListitem.Total_qty - skuListitem.Free_qty) / skuListitem.Pack_size,
-                                TotalPsQty = (skuListitem.Total_qty - skuListitem.Free_qty) % skuListitem.Pack_size,
-                                TotalQty = skuListitem.Total_qty - skuListitem.Free_qty,
+                                TotalCsQty = (skuListitem.Total_qty) / skuListitem.Pack_size,
+                                TotalPsQty = (skuListitem.Total_qty) % skuListitem.Pack_size,
+                                TotalQty = skuListitem.Total_qty,
                                 OrderQtyPrice = skuListitem.Order_qty_price,
 
                                 ReturnQty = skuListitem.Total_qty - skuListitem.Free_qty,
@@ -920,23 +923,28 @@ namespace ODMS.Controllers
                                 Price = skuListitem.price,
                                 PackSize = skuListitem.Pack_size,
 
-                                FreeCsQty = skuListitem.Confirm_Free_qty / skuListitem.Pack_size,
-                                FreePsQty = skuListitem.Confirm_Free_qty % skuListitem.Pack_size,
-                                FreeQty = skuListitem.Confirm_Free_qty,
+                                FreeCsQty = skuListitem.Free_qty / skuListitem.Pack_size,
+                                FreePsQty = skuListitem.Free_qty % skuListitem.Pack_size,
+                                FreeQty = skuListitem.Free_qty,
 
-                                OrderCsQty = skuListitem.Order_qty / skuListitem.Pack_size,
-                                OrderPsQty = skuListitem.Order_qty % skuListitem.Pack_size,
-                                OrderQty = skuListitem.Total_qty,
+                                OrderCsQty = (skuListitem.Order_qty) / skuListitem.Pack_size,
+                                OrderPsQty = (skuListitem.Order_qty) % skuListitem.Pack_size,
+                                OrderQty = (skuListitem.Order_qty),
                                 ExtraQty = skuListitem.Extra_qty,
 
-                                TotalCsQty = skuListitem.Order_qty / skuListitem.Pack_size,
-                                TotalPsQty = skuListitem.Order_qty % skuListitem.Pack_size,
-                                TotalQty = skuListitem.Order_qty,
+                                TotalCsQty = (skuListitem.Total_qty) / skuListitem.Pack_size,
+                                TotalPsQty = (skuListitem.Total_qty) % skuListitem.Pack_size,
+                                TotalQty = skuListitem.Total_qty,
+
+                                ConfirmFreeCsQty = skuListitem.Confirm_Free_qty / skuListitem.Pack_size,
+                                ConfirmFreePsQty = skuListitem.Confirm_Free_qty % skuListitem.Pack_size,
+                                ConfirmFreeQty = skuListitem.Confirm_Free_qty,
+
                                 OrderQtyPrice = skuListitem.Order_qty_price,
 
-                                ConfirmQty = skuListitem.Confirm_qty,
-                                ConfirmCsQty = skuListitem.Confirm_qty / skuListitem.Pack_size,
-                                ConfirmPsQty = skuListitem.Confirm_qty % skuListitem.Pack_size,
+                                ConfirmQty = (skuListitem.Confirm_qty + skuListitem.Confirm_Free_qty),
+                                ConfirmCsQty = (skuListitem.Confirm_qty + skuListitem.Confirm_Free_qty) / skuListitem.Pack_size,
+                                ConfirmPsQty = (skuListitem.Confirm_qty + skuListitem.Confirm_Free_qty) % skuListitem.Pack_size,
                                 ConfirmQtyPrice = skuListitem.Confirm_qty_price,
                                 ReturnQty = skuListitem.Total_qty - (skuListitem.Confirm_qty + skuListitem.Confirm_Free_qty)
 
@@ -959,6 +967,8 @@ namespace ODMS.Controllers
                                                       Convert.ToDouble((skuListitem.Confirm_qty) * skuListitem.price);
                         }
                     }
+
+
 
                     var myList = Db.tblt_Order.Where(x => x.Challan_no == tbltChallan.id).Select(x => x.Orderid).ToList();
 

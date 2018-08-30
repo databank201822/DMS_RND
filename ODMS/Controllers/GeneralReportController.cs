@@ -296,6 +296,50 @@ namespace ODMS.Controllers
         }
 
 
+        public ActionResult RptDayEnd()
+        {
+            return View("DayEnd/RptDayEnd");
+        }
+
+        [HttpPost]
+        public ActionResult RptDayEndFilter(int[] rsMid, int[] asMid, int[] cEid, int[] id)
+        {
+            string dbids = sp.Dbids(rsMid, asMid, cEid, id);
+           
+           
+            ReportViewer reportViewer = new ReportViewer
+            {
+                Visible = true,
+
+                ProcessingMode = ProcessingMode.Local,
+                SizeToReportContent = true,
+                Width = Unit.Percentage(100),
+                Height = Unit.Pixel(600)
+
+            };
+
+            List<RPT_Realtime_DayEndReport_Result> rptDayEnd = Db.RPT_Realtime_DayEndReport(dbids).ToList();
+
+
+            reportViewer.LocalReport.ReportPath = Server.MapPath(@"~\Reports\RPT_DayEndReport.rdlc");
+
+            
+          //  ReportParameter rp1 = new ReportParameter("DateParameter", startDate.ToString("dd-MMM-yyy") + " TO " + endDate.ToString("dd-MMM-yyy"));
+                ReportDataSource rdc = new ReportDataSource("rptDayEnd", rptDayEnd);
+
+
+           // reportViewer.LocalReport.SetParameters(new[] { rp1});
+
+            reportViewer.LocalReport.DataSources.Add(rdc);
+
+            reportViewer.LocalReport.Refresh();
+            reportViewer.Visible = true;
+
+            ViewBag.ReportViewer = reportViewer;
+
+            return PartialView("DayEnd/RptDayEndFilter");
+        }
+
 
 
     }

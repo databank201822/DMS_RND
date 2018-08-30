@@ -25,8 +25,7 @@
     <!-- jQuery 3 -->
     <script src="~/Content/tamplate/bower_components/jquery/dist/jquery.min.js"></script>
     <!-- Google Font -->
-    <link rel="stylesheet"
-          href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic">
+    @*<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic">*@
 
 
     <link rel="stylesheet" type="text/css" href="~/Content/style.css" />
@@ -90,13 +89,14 @@
             margin-top: -32px; /* -1 * image height / 2 */
             display: block;
         }
-input[type=number]::-webkit-inner-spin-button, 
-input[type=number]::-webkit-outer-spin-button { 
-    -webkit-appearance: none;
-    -moz-appearance: none;
-    
-    margin: 0; 
-}
+
+        input[type=number]::-webkit-inner-spin-button,
+        input[type=number]::-webkit-outer-spin-button {
+            -webkit-appearance: none;
+            -moz-appearance: none;
+            margin: 0;
+        }
+
         .reportSearch {
             border-radius: 3px;
             border: 1px solid #fff;
@@ -177,7 +177,7 @@ input[type=number]::-webkit-outer-spin-button {
         @{
             Html.RenderAction("ShowMainMenu", "Menu");
         }
-        <div id="ajax_load" style="display:none;" >
+        <div id="ajax_load" style="display:none;">
             <img src="@Url.Content("~/App_res/ajax-loader.gif")" class="ajax-loader" />  @*Loader*@
         </div>
         <!-- Content Wrapper. Contains page content -->
@@ -221,8 +221,7 @@ input[type=number]::-webkit-outer-spin-button {
             </div>
         </footer>
 
-        <!-- Add the sidebar's background. This div must be placed
-        immediately after the control sidebar -->
+        <!-- Add the sidebar's background. This div must be placed  immediately after the control sidebar -->
         <div class="control-sidebar-bg"></div>
     </div>
     <!-- ./wrapper -->
@@ -284,14 +283,10 @@ input[type=number]::-webkit-outer-spin-button {
         $('[href="' + pathname + '"]').parent("li").parent("ul").parent("li").parent("ul").parent("li").addClass("active");
         $('[href="' + pathname + '"]').parent("li").parent("ul").parent("li").parent("ul").parent("li").parent("ul").parent("li").addClass("active");
 
-
-       
-
-
     });
-	$(document).on("wheel", "input[type=number]", function () {$(this).blur();});
+    $(document).on("wheel", "input[type=number]", function () { $(this).blur(); });
 
     $(window).on('load', function () {
-       
+
     });
 </script>

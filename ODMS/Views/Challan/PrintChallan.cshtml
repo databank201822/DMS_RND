@@ -342,7 +342,7 @@
                 </td>
                 <td style="text-align: center;">
 
-                    @csPrice.ToString("N")
+                    @csPrice.ToString("0.00")
 
 
                 </td>
@@ -405,14 +405,14 @@
                 </td>
                      <td style="text-align:right;">
 
-                    @item.OrderQtyPrice.ToString("N")
+                    @item.OrderQtyPrice.ToString("0.00")
 
                 </td>
 
                      <td style="text-align: right;">
                     @if (Model.ChallanStatus == 2)
                     {
-                        @item.ConfirmQtyPrice.ToString("N")
+                        @item.ConfirmQtyPrice.ToString("0.00")
                             
                     }
                 </td>
@@ -434,20 +434,20 @@
         
             <td colspan="4" style="text-align: right;">Gross Total</td>
             <td style="text-align: center;" colspan="2">
-                @grandTotalCs.ToString("#.##")
+                @grandTotalCs.ToString("N")
             </td>
 
             <td style="text-align: center;" colspan="2">
-                @deliveryGrandTotalCs.ToString("#.##")
+                @deliveryGrandTotalCs.ToString("N")
             </td>
 
             <td></td>
             <td colspan="2"></td>
             <td style="text-align: right;">
-                @grandTotalOrderAmount.ToString("#.##")
+                @grandTotalOrderAmount.ToString("0.00")
             </td>
             <td style="text-align: right;">
-                @grandTotalDeliveryAmount.ToString("#.##")
+                @grandTotalDeliveryAmount.ToString("0.00")
             </td>
         </tr>
 

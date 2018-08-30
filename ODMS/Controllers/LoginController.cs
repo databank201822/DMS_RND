@@ -23,7 +23,7 @@ namespace ODMS.Controllers
             if (ModelState.IsValid)
             {
                 var x = Db.User_check(userinfoVm.UserName, userinfoVm.UserPassword).ToList(); //from Procudure for Zone
-                var z = Db.DB_User_check(userinfoVm.UserName, userinfoVm.UserPassword).ToList();//from Procudure for db User
+                var z = Db.DB_User_check(userinfoVm.UserName, userinfoVm.UserPassword).Where(a=>a.User_role_id==7).ToList();//from Procudure for db User
                 if (x.Count() == 1)
                 {
                     foreach (var y in x)
